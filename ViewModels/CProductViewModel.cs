@@ -51,6 +51,7 @@ namespace sln_SingleApartment.ViewModels
         public int MainCategoryID { get { return entity.ProductSubCategory.ProductMainCategoryID; } }
         [DisplayName("商品主類別")]
         public string MainCategoryName { get { return entity.ProductSubCategory.ProductMainCategory.ProductMainCategoryName; } }
+        public ProductPictures prodpic { get { return entity.ProductPictures.FirstOrDefault(); } }/*12/6*/
     }
 
     public class CProductMainCategoryViewModel
