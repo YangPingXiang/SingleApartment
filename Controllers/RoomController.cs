@@ -293,130 +293,80 @@ namespace sln_SingelApartment.Controllers
 
 
         // RoomBooking
-
-        public ActionResult BookingInfo(int id)
+        public ActionResult BookingInfo(int id, string MemberName)
         {
-            CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
-            //For room
-            List<CRoomViewModel> r_VM_lt = new List<CRoomViewModel>();
-            var a = dbSA.Room.Where(r => r.RoomStyleID == id);
-            foreach (var item in a)
-            {
-                r_VM_lt.Add(new CRoomViewModel() { entity_room = item });
-            }
-            abtRoom_VM.roomViewModels = r_VM_lt;
+            CMember member = Session[CDictionary.welcome] as CMember;
 
+            var model = new CRoomBooking();
 
-            // For roomstyle
-            CRoomStyleViewModel roomsty_VM = new CRoomStyleViewModel();
-            List<CRoomStyleViewModel> rsty_VM_lt = new List<CRoomStyleViewModel>();
-            var b = dbSA.RoomStyle.Where(r => r.ID == id);
-            foreach (var item in b)
-            {
-                rsty_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-            }
-            abtRoom_VM.roomStyleViewModels = rsty_VM_lt;
+            model.RoomId = id;
+            model.MemberId = member.fMemberId;
+            model.MemberName = member.fAccount;
 
-
-            //for pic.
-            CPictureViewModel roompic_VM = new CPictureViewModel();
-            List<CPictureViewModel> rpic_VM_lt = new List<CPictureViewModel>();
-            var c = dbSA.Picture.Where(r => r.ID == id);
-            foreach (var item in c)
-            {
-                rpic_VM_lt.Add(new CPictureViewModel() { entity_picture = item });
-            }
-            abtRoom_VM.roomPicViewModels = rpic_VM_lt;
-
-
-            //for facility
-            CFacilityViewModel facility_VM = new CFacilityViewModel();
-            List<CFacilityViewModel> facility_VM_lt = new List<CFacilityViewModel>();
-
-            var i = dbSA.RoomStyle.Where(r => r.ID == id).FirstOrDefault();
-            foreach (var item in i.RoomFacilities)
-            {
-                facility_VM_lt.Add(new CFacilityViewModel() { entity_Facility = item.Facility });
-            }
-
-            abtRoom_VM.facilityViewModels = facility_VM_lt;
-
-            if (Session[CDictionary.welcome] == null)
-            {
-                return Content("請先登入");
-            }
-            else
-            {
-                return View(abtRoom_VM);
-            }
+            return View(model);
 
         }
 
-        public ActionResult MemberInfo()
+        [HttpPost]
+        public ActionResult BookingInfo(CRoomBooking objBookingInfo)
         {
-            CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-
-            List<CMemberViewModel> mem_VM_lt = new List<CMemberViewModel>();
-            var a = dbSA.tMember.Where(m => m.fMemberId == 1);
-            foreach (var item in a)
+            Lease roomBooking = new Lease()
             {
-                mem_VM_lt.Add(new CMemberViewModel() { entity_Member = item });
-            }
-            abtRoom_VM.memberViewModels = mem_VM_lt;
+                MemberID = objBookingInfo.MemberId,
+                RoomID = objBookingInfo.RoomId,
+                StartDate = objBookingInfo.StartTime,
+                ExpiryDate = objBookingInfo.EndTime,
 
-            return View(abtRoom_VM);
+            };
 
+            dbSA.Lease.Add(roomBooking);
+            dbSA.SaveChanges();
+            return Json(data: new { message = "Booking is successfully", success = true }, JsonRequestBehavior.AllowGet);
+
+            //return Json(new { data = model });
+
+            //return Content(model.MemberId.ToString());
         }
 
-        public ActionResult PayInfo(int id)
+        public ActionResult MyRoom()
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
-            //For room
-            List<CRoomViewModel> r_VM_lt = new List<CRoomViewModel>();
-            var a = dbSA.Room.Where(r => r.RoomStyleID == id);
-            foreach (var item in a)
+            CMember member = Session[CDictionary.welcome] as CMember;
+            int memberID = member.fMemberId;
+
+            var result = from L in dbSA.Lease
+                         join R in dbSA.Room
+                         on L.RoomID equals R.ID
+                         where L.MemberID == memberID
+                         select new { L, R };
+
+            List<CRoomViewModel> List_Room = new List<CRoomViewModel>();
+            List<CLeaseViewModel> List_Lease = new List<CLeaseViewModel>();
+
+            var test = result.ToList();
+            foreach (var item in result)
             {
-                r_VM_lt.Add(new CRoomViewModel() { entity_room = item });
-            }
-            abtRoom_VM.roomViewModels = r_VM_lt;
+                CRoomViewModel ViewM_Room = new CRoomViewModel() { entity_room = item.R };
+                List_Room.Add(ViewM_Room);
 
-            // For roomstyle
-            CRoomStyleViewModel roomsty_VM = new CRoomStyleViewModel();
-            List<CRoomStyleViewModel> rsty_VM_lt = new List<CRoomStyleViewModel>();
-            var b = dbSA.RoomStyle.Where(r => r.ID == id);
-            foreach (var item in b)
-            {
-                rsty_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-            }
-            abtRoom_VM.roomStyleViewModels = rsty_VM_lt;
-
-
-            //for pic.
-            CPictureViewModel roompic_VM = new CPictureViewModel();
-            List<CPictureViewModel> rpic_VM_lt = new List<CPictureViewModel>();
-            var c = dbSA.Picture.Where(r => r.ID == id);
-            foreach (var item in c)
-            {
-                rpic_VM_lt.Add(new CPictureViewModel() { entity_picture = item });
-            }
-            abtRoom_VM.roomPicViewModels = rpic_VM_lt;
-
-
-            //for facility
-            CFacilityViewModel facility_VM = new CFacilityViewModel();
-            List<CFacilityViewModel> facility_VM_lt = new List<CFacilityViewModel>();
-
-            var i = dbSA.RoomStyle.Where(r => r.ID == id).FirstOrDefault();
-            foreach (var item in i.RoomFacilities)
-            {
-                facility_VM_lt.Add(new CFacilityViewModel() { entity_Facility = item.Facility });
+                CLeaseViewModel ViewM_Lease = new CLeaseViewModel() { entity_lease = item.L };
+                List_Lease.Add(ViewM_Lease);
             }
 
-            abtRoom_VM.facilityViewModels = facility_VM_lt;
+            abtRoom_VM.roomViewModels = List_Room;
+            abtRoom_VM.leaseViewModels = List_Lease;
+
+            ViewData.Model = abtRoom_VM;
 
             return View(abtRoom_VM);
+        }
+
+
+        public ActionResult PayInfo()
+        {
+            return View();
 
         }
 
