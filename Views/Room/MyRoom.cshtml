@@ -1,0 +1,62 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+
+@{
+    ViewBag.Title = "MyRoom";
+    //Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    Layout = "~/Views/Shared/Back_Layout.cshtml";
+
+}
+
+
+<section class="wrapper" style="padding:3em">
+    <div class="inner">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        房間編號
+                    </th>
+                    <th>
+                        房間名稱
+                    </th>
+                    <th>
+                        合約開始日
+                    </th>
+                    <th>
+                        合約到期日
+                    </th>
+                    <th>
+                        租金
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.leaseViewModels)
+                {
+                    <tr>
+                        <td>
+                            @item.entity_lease.Room.ID
+                        </td>
+                        <td>
+                            @item.entity_lease.Room.RoomName
+                        </td>
+                        <td>
+                            @item.entity_lease.StartDate
+                        </td>
+                        <td>
+                            @item.entity_lease.ExpiryDate
+                        </td>
+                        <td>
+                            @item.entity_lease.Room.RoomStyle.Rent / 月
+                        </td>
+                        <td>
+                            <a href="~/Room/PayInfo">前往繳費</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+

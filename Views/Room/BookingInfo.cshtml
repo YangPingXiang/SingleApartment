@@ -1,110 +1,205 @@
-﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+﻿@model sln_SingleApartment.Models.CRoomBooking
 
 @{
     ViewBag.Title = "BookingInfo";
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
-<!--room booking start-->
-<div class="room-booking ptb-100 white_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="booking_form">
-                    <div class="form-title">
-                        <h2>Book A Room</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority ve sffered alteration in some form, by injected humour</p>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            if (!$("#formBoking").valid()) {
+                return;
+            }
+
+            AddBookingInfo();
+
+        });
+    });
+
+    function AddBookingInfo() {
+        var objBookingInfo = {};
+        objBookingInfo.MemberId = $("#txtMemberID").val();
+        objBookingInfo.RoomID = $("#txtRoomID").val();
+        objBookingInfo.StartTime = $("#txtStartTime").val();
+        objBookingInfo.EndTime = $("#txtEndTime").val();
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            url: '/Room/BookingInfo',
+            data: JSON.stringify(objBookingInfo),
+            success: function (data) {
+                if (data.success === true) {
+                    alert(data.message);
+                }
+
+            },
+            error: function () {
+                alert("WRONG!");
+            }
+        })
+
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+
+    <input type="hidden" id="RomId" name="RoomId" value="@Model.RoomId" />
+    <div class="room-booking ptb-100 white_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="booking_form">
+                        <div class="form-title">
+                            <h2>Book A Room</h2>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority ve sffered alteration in some form, by injected humour</p>
+                        </div>
+
+
+                        <div class="room-booking-box">
+                            <form action="#" id="formBooking">
+
+                                <div class="booking-box2 mb-15 fix">
+                                    <div @*class="booking-filed"*@ class="col-md-6">
+                                        @Html.LabelFor(model => model.MemberId, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.MemberId, htmlAttributes: new { @class = "form-control", @id = "txtMemberID" })
+                                        @Html.ValidationMessageFor(model => model.MemberId, validationMessage: null, htmlAttributes: new { @class = "text-danger" })
+                                        @*<input type="text" placeholder="your name" id="MemberId" name="MemberId" value="@Model.MemberName">*@
+                                    </div>
+                                    <div @*class="booking-filed"*@ class="col-md-6">
+                                        @Html.LabelFor(model => model.RoomId, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.RoomId, htmlAttributes: new { @class = "form-control", @id = "txtRoomID" })
+                                        @Html.ValidationMessageFor(model => model.RoomId, validationMessage: null, htmlAttributes: new { @class = "text-danger" })
+                                        @*<input type="text" placeholder="your name" id="MemberId" name="MemberId" value="@Model.MemberName">*@
+                                    </div>
+                                </div>
+
+                                @*<div class="booking-box1 mb-15 fix">
+                                        <div class="booking-filed" class="col-md-6">
+                                            @Html.LabelFor(model => model.RoomId, htmlAttributes: new { @class = "control-label" })
+                                            @Html.TextBoxFor(model => model.RoomId, htmlAttributes: new { @class = "form-control" })
+                                            <input type="text" placeholder="your name" id="MemberId" name="MemberId" value="@Model.MemberName">
+                                        </div>
+                                        <div class="booking-filed">
+                                            <input type="text" placeholder="your name" id="RoomName" name="RoomName" value="@Model.RoomId">
+                                        </div>
+                                    </div>*@
+
+                                <div class="booking-box2 mb-15 fix">
+
+                                    <div @*class="booking-filed"*@ class="col-md-6">
+                                        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.StartTime, additionalViewData: new { @class = "form-control", @id = "txtStartTime" })
+                                        @Html.ValidationMessageFor(model => model.RoomId, validationMessage: null, htmlAttributes: new { @class = "text-danger" })
+                                        @*<input type="text" placeholder="your name" id="MemberId" name="MemberId" value="@Model.MemberName">*@
+                                    </div>
+
+                                    <div @*class="booking-filed"*@ class="col-md-6">
+                                        @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.EndTime, additionalViewData: new { @class = "form-control", @id = "txtEndTime" })
+                                        @Html.ValidationMessageFor(model => model.RoomId, validationMessage: null, htmlAttributes: new { @class = "text-danger" })
+                                        @*<input type="text" placeholder="your name" id="MemberId" name="MemberId" value="@Model.MemberName">*@
+                                    </div>
+
+                                    @*<div class="b_date">
+                                            <input type="date" placeholder="Arrive Date" id="arriveDate" name="arriveDate" value="@Model.StartTime.ToString("yyyymmdd")">
+                                        </div>
+                                        <div class="b_date">
+                                            <input type="date" placeholder="Departure Date" id="departureDate" name="departureDate" value="@Model.EndTime.ToString("yyyymmdd")">
+                                        </div>*@
+                                    @*<div class="b_date">
+                                            <input class="date-picker" type="text" placeholder="Arrive Date" id="arriveDate" name="arriveDate" value="@Model.StartTime.ToString("yyyymmdd")">
+                                            <i class="mdi mdi-calendar-text"></i>
+                                        </div>*@
+                                    @*<div class="b_date">
+                                            <input  class="date-picker" type="text" placeholder="Departure Date" id="departureDate" name="departureDate" value="@Model.EndTime.ToString("yyyymmdd")">
+                                            <i class="mdi mdi-calendar-text"></i>
+                                        </div>*@
+                                </div>
+                                <div class="select-book room  mb-15 fix">
+                                    @*<select name="roomID" id="roomID">
+                                            @foreach (var item in Model.roomViewModels)
+                                            {
+                                                <option value="" selected>@Html.DisplayFor(modelitem => item.roomname) </option>
+                                            }
+                                        </select>*@
+                                </div>
+                                @*<div class="booking-comment fix">
+                                        <textarea placeholder="comment"></textarea>
+                                    </div>*@
+                                <div class="submit-form mt-25">
+                                    @*@foreach (var a in Model.roomStyleViewModels)
+                                        {
+                                            <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
+                                        }*@
+
+                                    <button id="btnSave" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+
                     </div>
-
-
-                    <div class="room-booking-box">
-                        <form action="#">
-                            <div class="booking-box1 mb-15 fix">
-                                <div class="booking-filed">
-                                    <input type="text" placeholder="your name" value="Your name">
-                                </div>
-                            </div>
-                            <div class="booking-box2 mb-15 fix">
-                                <div class="b_date">
-                                    <input class="date-picker" type="text" placeholder="Arrive Date">
-                                    <i class="mdi mdi-calendar-text"></i>
-                                </div>
-                                <div class="b_date">
-                                    <input class="date-picker" type="text" placeholder="Departure Date">
-                                    <i class="mdi mdi-calendar-text"></i>
-                                </div>
-                            </div>
-                            <div class="select-book room  mb-15 fix">                                
-                                <select name="book">
-                                    @foreach (var item in Model.roomViewModels)
-                                    {
-                                        <option value="" selected>@Html.DisplayFor(modelitem => item.roomname) </option>
-                                    }
-                                </select>
-                            </div>
-                            <div class="booking-comment fix">
-                                <textarea placeholder="comment"></textarea>
-                            </div>
-                            <div class="submit-form mt-25">
-                                @foreach (var a in Model.roomStyleViewModels)
-                                {
-                                    <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
-                                }
-
-                            </div>
-                        </form>
-                    </div>
-
-
                 </div>
-            </div>
 
-            @foreach (var items in Model.roomStyleViewModels)
-            {
-                <div class="col-md-4">
-                    <div class="selcted-room">
-                        <div class="select-room-inner">
-                            <div class="select-room-title">
-                                <h3>Selected Room</h3>
-                                <p>There are many variations of passages of Lorem Ipsum available,</p>
-                            </div>
-                            <div class="room-rent fix mb-45">
-                                <div class="room-rent-img">
-                                    <img src="~/Content/Room/images/room/房間1.jpg" alt="">
+                @*@foreach (var items in Model.roomStyleViewModels)
+                    {
+                        <div class="col-md-4">
+                            <div class="selcted-room">
+                                <div class="select-room-inner">
+                                    <div class="select-room-title">
+                                        <h3>Selected Room</h3>
+                                        <p>There are many variations of passages of Lorem Ipsum available,</p>
+                                    </div>
+                                    <div class="room-rent fix mb-45">
+                                        <div class="room-rent-img">
+                                            <img src="~/Content/Room/images/room/房間1.jpg" alt="">
+                                        </div>
+                                        <div class="room-rent-desc">
+                                            <h3 class="roome-rent-title">@Html.DisplayFor(modelitem => items.roomStyleName)</h3>
+                                            <div class="room-sub-desc">
+                                                <h4>Total Price</h4>
+                                                <h3>
+                                                    @Html.DisplayFor(modelitem => items.rent)
+                                                    <span> /per month1 </span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="room-social-share mb-45">
+                                        <h3>Social share</h3>
+                                        <p>There are many variations of passages of Lorem Ipsum available,</p>
+                                        <div class="social-links">
+                                            <a href="#"><i class="mdi mdi-facebook"></i></a>
+                                            <a href="#"><i class="mdi mdi-rss"></i></a>
+                                            <a href="#"><i class="mdi mdi-google-plus"></i></a>
+                                            <a href="#"><i class="mdi mdi-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="need-help">
+                                        <h3>Need Booking Help?</h3>
+                                        <h4>
+                                            Phone:
+                                            <span>+98 98 95547 587</span>
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="room-rent-desc">
-                                    <h3 class="roome-rent-title">@Html.DisplayFor(modelitem => items.roomStyleName)</h3>
-                                    <div class="room-sub-desc">
-                                        <h4>Total Price</h4>
-                                        <h3>
-                                            @Html.DisplayFor(modelitem => items.rent)
-                                        <span> /per month1 </span>
-                                    </h3>
-                                </div>
                             </div>
                         </div>
-                        <div class="room-social-share mb-45">
-                            <h3>Social share</h3>
-                            <p>There are many variations of passages of Lorem Ipsum available,</p>
-                            <div class="social-links">
-                                <a href="#"><i class="mdi mdi-facebook"></i></a>
-                                <a href="#"><i class="mdi mdi-rss"></i></a>
-                                <a href="#"><i class="mdi mdi-google-plus"></i></a>
-                                <a href="#"><i class="mdi mdi-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="need-help">
-                            <h3>Need Booking Help?</h3>
-                            <h4>
-                                Phone:
-                                <span>+98 98 95547 587</span>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
+                    }*@
             </div>
-        }
         </div>
     </div>
-</div>
+
+    <script>
+
+    </script>
+
+}
+<!--room booking start-->
 <!--room booking end-->
