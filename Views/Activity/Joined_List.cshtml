@@ -1,0 +1,139 @@
+﻿@model IEnumerable<sln_SingleApartment.ViewModel.CActivity>
+
+@{
+    ViewBag.Title = "Joined_List";
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
+}
+
+<body>
+    <header id="header">
+        <nav class="left">
+            <a href="#menu"><span>Menu</span></a>
+        </nav>
+        <a href="index.html" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+        <nav class="right">
+            <a href="#" class="button alt">Log in</a>
+        </nav>
+
+
+    </header>
+    <!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="generic.html">Generic</a>
+            </li>
+            <li>
+                <a href="elements.html">Elements</a>
+            </li>
+            <li>
+                <a href="/Order/List">訂單List</a>
+            </li>
+        </ul>
+        <ul class="actions vertical">
+            <li>
+                <a href="#" class="button fit">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <section id="main" class="wrapper" style="padding:3em">
+        <!--style="border:solid 1px;border-color:black"-->
+        <div class="inner">
+            <header class="align-center">
+                <h1 style="font-size:2em;font-weight:700;line-height:1.3">您選擇參加的活動</h1>
+            </header>
+            @*<h2>您選擇參加的活動</h2>*@
+
+            <p>
+                @Html.ActionLink("返回活動列表", "List")
+            </p>
+            <table class="table">
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ActivityID)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubCategoryDetailID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActivityName)
+                    </th>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndTime)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.PeopleCount)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.MeetingPoint)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Note)
+                    </th>
+
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ActivityID)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubCategoryDetailID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeopleCount)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingPoint)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>
+
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>*@
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+
+                            @Html.ActionLink("取消", "Delete", new { id=item.ActivityID },
+                           new { OnClick="return confirm('確定要取消嗎?')" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            </div>
+    </section>
+
+
+</body>
+

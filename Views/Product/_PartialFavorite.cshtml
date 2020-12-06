@@ -1,0 +1,69 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModels.CFavoriteList>
+<h1>this is PartialView</h1>
+<input type="hidden" name="MemberID" value="@ViewBag.MemberID"/>
+<table id="shopping-cart-table" class="data-table cart-table">
+    <tr>
+        <th class="low1"></th>
+        <th>圖片</th>
+        <th class="low2">商品名稱</th>
+        <th>商品單價</th>
+        <th class="low5"></th>
+    </tr>
+    @{
+
+        foreach (var item in Model)
+        {
+
+            string pic = item.ProductID + ".jpg";
+            <tr>
+                <td class="sop-icon1">
+                    <a href="" class="mydeleteFav" name="@item.ProductID">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+                <td class="sop-cart">
+                    <a href="#"><img class="primary-image" alt="" src="~/Content/Product/img/products/@pic"></a>
+                </td>
+                <td class="sop-cart an-sh">
+                    <div class="tb-beg">
+                        <a href="#">@item.Product.ProductName</a>
+                    </div>
+                    <div class="last-cart l-mrgn">
+                        <a class="las4" href="#">Quick View</a>
+                    </div>
+                </td>
+                <td class="sop-cart">
+                    <div class="tb-product-price font-noraure-3">
+                        <span class="amount2 ana">$ @item.Product.UnitPrice</span>
+                    </div>
+                </td>
+                <td class="sop-cart">
+                    <div class="last-cart l-mrgn wish">
+                        <a class="las4" href="#">加入購物車</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<h1>this is PartialView</h1>
+@Html.PagedListPager(Model, page => Url.Action("PartialFavorite", new { page = page, MemberID=ViewBag.MemberID  }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+{
+    HttpMethod = "Get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "mycontainer"
+}))
+
+<script>
+    $(function () {
+        $('.mydeleteFav').click((function () {
+            DeleteFavorite($(event.currentTarget).prop("name"));
+        }));
+    })
+</script>
+
+
+

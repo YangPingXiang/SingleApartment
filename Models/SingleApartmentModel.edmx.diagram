@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1">
+        <EntityTypeShape EntityType="SingleApartmentModel.Activity" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivityMainCategory" Width="1.5" PointX="1.5" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategory" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategoryDetail" Width="1.5" PointX="3" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.BuildCase" Width="1.5" PointX="1.5" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Discount" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Facility" Width="1.5" PointX="4.5" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.FavoriteList" Width="1.5" PointX="6" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Information" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.InformationCategory" Width="1.5" PointX="3" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.InformationContent" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Lease" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.MemberInformationCategory" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Order" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.OrderDetails" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.OrderStatus" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Participant" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Picture" Width="1.5" PointX="3.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductMainCategory" Width="1.5" PointX="1.5" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductPictures" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductSubCategory" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Room" Width="1.5" PointX="3.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomFacilities" Width="1.5" PointX="6.75" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomFavorite" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomStyle" Width="1.5" PointX="1.5" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.tActivityCart" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SingleApartmentModel.tMember" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Activity_ActivitySubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Activity_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Participant_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_ActivitySubCategory_ActivityCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_ActivitySubCategoryDetail_ActivitySubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Room_BuildCase" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_OrderDetails_Discount" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomFacilities_Facility1" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_FavoriteList_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_FavoriteList_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Information_InformationCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Information_MemberInformationCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Information_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Lease_Room1" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Lease_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_MemberInformationCategory_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Order_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Order_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_OrderDetails_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_OrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Participant_tMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Picture_RoomStyle" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Product_ProductSubClass" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_ProductPictures_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_ProductSubCategory_ProductMainCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Room_RoomStyle" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomFacilities_RoomStyle" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomFavorite_RoomStyle" ManuallyRouted="false" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomFavorite_tMember" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

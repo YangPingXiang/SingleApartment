@@ -1,0 +1,51 @@
+﻿@using sln_SingleApartment.ViewModels
+@{ Layout = @"~/Views/Shared/HomePage/_Layout_HomePage.cshtml";}
+@{
+    ViewBag.Title = "LogIn";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+    <div class="login-right">
+        <div class="container">
+            <h3 style="color:#f6755e">Login</h3>
+            <div class="login-top">
+
+                <div class="form-info">
+                    <form method="post" id="frm" name="frm" onclick="return false">
+                        <input type="text" class="text" id="account" placeholder="請輸入帳號 or Email 或 手機號碼" required name="txtaccount">
+                        <input type="password" id="pwd" placeholder="請輸入密碼" required name="txtpwd">
+                        <ul class="login-icons">
+                            <li>
+                                <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
+                            </li>
+
+
+                        </ul>
+                        <label class="hvr-sweep-to-right">
+                            <input type="submit" value="Submit">
+                        </label>
+                    </form>
+                </div>
+                <div class="create">
+
+                    <a class="hvr-sweep-to-right" href="../Member/Register">Create an Account</a>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link href="~/Content/LogIn/assests/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <script src="~/Content/LogIn/assests/js/jquery.min.js"></script>
+    <script src="~/Content/LogIn/assests/js/scripts.js"></script>
+    <link href="~/Content/LogIn/assests/css/styles.css" rel="stylesheet">
+    <link href="~/Content/LogIn/assests/css/style.css" rel="stylesheet" type="text/css" media="all">
+</body>
+
+}

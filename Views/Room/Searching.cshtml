@@ -1,0 +1,295 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+@{
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    ViewBag.Title = "Searching";
+
+}
+@using (Html.BeginForm())
+{
+
+    <body>
+   
+        <div class="preloader">
+            <div class="loading-center">
+                <div class="loading-center-absolute">
+                    <div class="object object_one"></div>
+                    <div class="object object_two"></div>
+                    <div class="object object_three"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <!--Header section start-->
+            <div class="header-section">
+                <div class="bg-opacity"></div>
+                <div class="top-header sticky-header">
+                    <div class="top-header-inner">
+                        <div class="container">
+                            <div class="mgea-full-width">
+                                <div class="row">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu start -->
+                    <div class="mobile-menu-area hidden-lg hidden-md">
+                        <div class="container">
+                            <div class="col-md-12">
+                                <nav id="dropdown">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li><a href="about-us.html">About</a></li>
+                                        <li><a href="gallery.html">Gallery</a></li>
+                                        <li>
+                                            <a href="#">pages</a>
+                                            <ul>
+                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="booking-information.html">Booking Information</a></li>
+                                                <li><a href="personal-information.html">Personal Information</a></li>
+                                                <li><a href="payment-information.html">Parment Information</a></li>
+                                                <li><a href="booking-done.html">Booking Done</a></li>
+                                                <li><a href="room-booking.html">Room booking</a></li>
+                                                <li><a href="news.html">News</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                                <li><a href="staff.html">Staff</a></li>
+                                                <li><a href="our-room.html">Room</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact-us.html">contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile menu end -->
+                </div>
+
+                <!--Welcome secton-->
+                <div class="welcome-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-5">
+                                <div class="booking-box">
+                                    <div class="booking-title">
+                                        <h3>Book A Room</h3>
+                              
+                                    </div>
+                                    <div class="booking-form">
+                                        <form action="#" method="post">
+
+                                            <div class="select-book mb-15">
+                                                <select id="buildcaseID" name="buildcaseID" class="select-booking">
+                                                    <option value="" selected>建案...</option>
+                                                    @foreach (var item in Model.buildcaseViewModels)
+                                                    {
+                                                        <option name="buildcaseID" value="@item.ID"> @Html.DisplayFor(itemmodel => item.buildcasename)</option>
+                                                    }
+
+                                                </select>
+                                            </div>
+                                            <div class="select-book mb-15">
+                                                <select id="peoplecount" name="peoplecount" class="select-booking">
+                                                    <option value="" selected>人數...</option>
+                                                    @foreach (var item in Model.roomStyleViewModels.Distinct())
+                                                    {
+                                                        <option name="peoplecount" value="@item.maxnumberofpeople"> @Html.DisplayFor(itemmodel => item.maxnumberofpeople)</option>
+                                                    }
+
+                                                </select>
+                                            </div>
+                                            <div class="select-book  mb-30">
+                                                <select id="roomstyleID" name="roomstyleID" class="select-booking">
+                                                    <option value="" selected>房型...</option>
+                                                    @foreach (var item in Model.roomStyleViewModels)
+                                                    {
+                                                        <option name="roomstyleID" value="@item.ID"> @Html.DisplayFor(itemmodel => item.roomStyleName)</option>
+                                                    }
+
+                                                </select>
+                                            </div>
+
+                                            <div class="select-book  mb-30">
+                                                <select id="amountrent" name="amountrent" class="select-booking">
+                                                    <option value="" selected>租金...</option>
+                                                    @foreach (var item in Model.roomStyleViewModels.Distinct())
+                                                    {
+                                                        <option name="amountrent" value="@item.ID"> NT @Html.DisplayFor(itemmodel => item.rent)</option>
+                                                    }
+
+                                                </select>
+                                            </div>
+                                            <!---Search button -->
+                                            <div class="submit-form">
+                                                <input type="button" id="check" value="Search" />
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-7">
+                                <div class="welcome-text">
+                                    <h2>
+                                        <span>WELCOEM TO</span> <span class="coloring">WoJu</span>
+                                    </h2>
+                                    <h1 class="cd-headline clip">
+                                        <span>找租屋找</span>
+                                        <span class="cd-words-wrapper coloring">
+                                            <b class="is-visible"> 窩居</b>
+                                            <b>窩居公寓</b>
+
+                                        </span>
+                                    </h1>
+                                    <p class="welcome-desc">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header section end -->
+            <!-- searchbar Start -->
+            <div class="search-bar animated slideOutUp">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="search-form-wrap">
+                                        <button class="close-search"><i class="mdi mdi-close"></i></button>
+                                        <form action="#">
+                                            <input type="text" placeholder="Search here..." value="Search here..." />
+                                            <button class="search-button" type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- search bar End -->
+            <!--result start-->
+            <div class="our-room-show">
+                <div class="row">
+                    <div class="our-room-list owl-pagination">
+                        <div id="mycontainer" class="single-room-sapce">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--result start-->
+
+            <!--About Section Title start-->
+            <div class="about-section text-center ptb-80 white_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title mb-80">
+                                <h2>About <span>WoJu</span></h2>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="about-chondo">
+                                <div class="about-member">
+                                    <img src="~/Content/Room/images/about.jpg" alt="">
+                                    <h3>Mohin patwary</h3>
+                                    <h5 class="mb-0">hrd head</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--About Section end-->
+
+            <!--Our buildcase start-->
+            <div class="our-sevices text-center ptb-80 white_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title mb-80">
+                                <h2>窩居公寓 | <span>建案</span></h2>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="our-services-list">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            @foreach (var item in Model.buildcaseViewModels)
+                            {
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="single-services">
+                                        <div class="services-img">
+                                            @{
+                                                string filename = item.buildcasename + ".jpg";
+                                            }
+                                            <img src="~/Content/Room/images/services/@filename" alt="">
+                                            <div class="services-title">
+                                                <h2>@Html.DisplayFor(modelItem => item.buildcasename)</h2>
+                                            </div>
+                                            <div class="services-hover-desc">
+                                                <div class="services-hover-inner">
+                                                    <div class="services-hover-table">
+                                                        <div class="services-hover-table-cell">
+                                                            <h2>@Html.DisplayFor(modelItem => item.buildcasename)</h2>
+                                                            <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Our services end-->
+    
+        </div>
+
+
+        
+        <script>
+            $(function () {
+                $('#check').click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("PartialResult")",
+                        data: {
+                            buildcaseID: $("#buildcaseID").val(),
+                            roomstyleID: $("#roomstyleID").val(),
+                            peoplecount: $("#peoplecount").val(),
+                            amountrent: $("#amountrent").val()
+                        },
+                        success: function (data) {
+                            $("#mycontainer").html(data);
+                        }
+                    });
+                })
+
+            });
+
+        </script>
+
+    </body>
+
+
+}

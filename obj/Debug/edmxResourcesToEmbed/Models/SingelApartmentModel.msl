@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SingleApartmentModelStoreContainer" CdmEntityContainer="SingleApartmentEntities">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MeetingPoint" ColumnName="MeetingPoint" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Step" ColumnName="Step" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="PeopleCount" ColumnName="PeopleCount" />
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="SubCategoryDetailID" ColumnName="SubCategoryDetailID" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityMainCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ActivityMainCategory">
+        <MappingFragment StoreEntitySet="ActivityMainCategory">
+          <ScalarProperty Name="ActivityMainCategoryName" ColumnName="ActivityMainCategoryName" />
+          <ScalarProperty Name="ActivityMainCategoryID" ColumnName="ActivityMainCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivitySubCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ActivitySubCategory">
+        <MappingFragment StoreEntitySet="ActivitySubCategory">
+          <ScalarProperty Name="ActivityMainCategoryID" ColumnName="ActivityMainCategoryID" />
+          <ScalarProperty Name="ActivitySubCategoryName" ColumnName="ActivitySubCategoryName" />
+          <ScalarProperty Name="ActivitySubCategoryID" ColumnName="ActivitySubCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivitySubCategoryDetail">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ActivitySubCategoryDetail">
+        <MappingFragment StoreEntitySet="ActivitySubCategoryDetail">
+          <ScalarProperty Name="ActivitySubCategoryID" ColumnName="ActivitySubCategoryID" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="SubCategoryDetailID" ColumnName="SubCategoryDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildCase">
+      <EntityTypeMapping TypeName="SingleApartmentModel.BuildCase">
+        <MappingFragment StoreEntitySet="BuildCase">
+          <ScalarProperty Name="BuildTimes" ColumnName="BuildTimes" />
+          <ScalarProperty Name="RoomCounts" ColumnName="RoomCounts" />
+          <ScalarProperty Name="TotalFloor" ColumnName="TotalFloor" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BuildCaseName" ColumnName="BuildCaseName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discount">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Discount">
+        <MappingFragment StoreEntitySet="Discount">
+          <ScalarProperty Name="Discount1" ColumnName="Discount" />
+          <ScalarProperty Name="DicountName" ColumnName="DicountName" />
+          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facility">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Facility">
+        <MappingFragment StoreEntitySet="Facility">
+          <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriteList">
+      <EntityTypeMapping TypeName="SingleApartmentModel.FavoriteList">
+        <MappingFragment StoreEntitySet="FavoriteList">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="FavoriteListID" ColumnName="FavoriteListID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Information">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Information">
+        <MappingFragment StoreEntitySet="Information">
+          <ScalarProperty Name="MemberCategoryID" ColumnName="MemberCategoryID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Read_YN" ColumnName="Read_YN" />
+          <ScalarProperty Name="InformationContent" ColumnName="InformationContent" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="InformationSource" ColumnName="InformationSource" />
+          <ScalarProperty Name="InformationCategoryID" ColumnName="InformationCategoryID" />
+          <ScalarProperty Name="InformationDate" ColumnName="InformationDate" />
+          <ScalarProperty Name="InformationID" ColumnName="InformationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformationCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.InformationCategory">
+        <MappingFragment StoreEntitySet="InformationCategory">
+          <ScalarProperty Name="InformationCategoryName" ColumnName="InformationCategoryName" />
+          <ScalarProperty Name="InformationCategoryID" ColumnName="InformationCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformationContent">
+      <EntityTypeMapping TypeName="SingleApartmentModel.InformationContent">
+        <MappingFragment StoreEntitySet="InformationContent">
+          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+          <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+          <ScalarProperty Name="ContentID" ColumnName="ContentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lease">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Lease">
+        <MappingFragment StoreEntitySet="Lease">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="PersonalRent" ColumnName="PersonalRent" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberInformationCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.MemberInformationCategory">
+        <MappingFragment StoreEntitySet="MemberInformationCategory">
+          <ScalarProperty Name="MemberCategoryName" ColumnName="MemberCategoryName" />
+          <ScalarProperty Name="MemberCategoryID" ColumnName="MemberCategoryID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+          <ScalarProperty Name="SendingStatus" ColumnName="SendingStatus" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="SingleApartmentModel.OrderDetails">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderdetailID" ColumnName="OrderdetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatus">
+      <EntityTypeMapping TypeName="SingleApartmentModel.OrderStatus">
+        <MappingFragment StoreEntitySet="OrderStatus">
+          <ScalarProperty Name="OrderStatusName" ColumnName="OrderStatusName" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participant">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Participant">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Picture">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Picture">
+        <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="RoomStylePicture" ColumnName="RoomStylePicture" />
+          <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Sales" ColumnName="Sales" />
+          <ScalarProperty Name="Discontinued" ColumnName="Discontinued" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductSubCategoryID" ColumnName="ProductSubCategoryID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductMainCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ProductMainCategory">
+        <MappingFragment StoreEntitySet="ProductMainCategory">
+          <ScalarProperty Name="ProductMainCategoryName" ColumnName="ProductMainCategoryName" />
+          <ScalarProperty Name="ProductMainCategoryID" ColumnName="ProductMainCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductPictures">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ProductPictures">
+        <MappingFragment StoreEntitySet="ProductPictures">
+          <ScalarProperty Name="ProductPicture" ColumnName="ProductPicture" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductPictureID" ColumnName="ProductPictureID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSubCategory">
+      <EntityTypeMapping TypeName="SingleApartmentModel.ProductSubCategory">
+        <MappingFragment StoreEntitySet="ProductSubCategory">
+          <ScalarProperty Name="ProductMainCategoryID" ColumnName="ProductMainCategoryID" />
+          <ScalarProperty Name="ProductSubCategoryName" ColumnName="ProductSubCategoryName" />
+          <ScalarProperty Name="ProductSubCategoryID" ColumnName="ProductSubCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="SingleApartmentModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="BuildCaseID" ColumnName="BuildCaseID" />
+          <ScalarProperty Name="LeaseID" ColumnName="LeaseID" />
+          <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomFacilities">
+      <EntityTypeMapping TypeName="SingleApartmentModel.RoomFacilities">
+        <MappingFragment StoreEntitySet="RoomFacilities">
+          <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+          <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomFavorite">
+      <EntityTypeMapping TypeName="SingleApartmentModel.RoomFavorite">
+        <MappingFragment StoreEntitySet="RoomFavorite">
+          <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomStyle">
+      <EntityTypeMapping TypeName="SingleApartmentModel.RoomStyle">
+        <MappingFragment StoreEntitySet="RoomStyle">
+          <ScalarProperty Name="SquareFootage" ColumnName="SquareFootage" />
+          <ScalarProperty Name="Oic" ColumnName="Oic" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="MaxNumberOfPeople" ColumnName="MaxNumberOfPeople" />
+          <ScalarProperty Name="RoomStyleName" ColumnName="RoomStyleName" />
+          <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tMember">
+      <EntityTypeMapping TypeName="SingleApartmentModel.tMember">
+        <MappingFragment StoreEntitySet="tMember">
+          <ScalarProperty Name="fActivityMessage" ColumnName="fActivityMessage" />
+          <ScalarProperty Name="fRole" ColumnName="fRole" />
+          <ScalarProperty Name="fLeave" ColumnName="fLeave" />
+          <ScalarProperty Name="fRoomId" ColumnName="fRoomId" />
+          <ScalarProperty Name="fImage" ColumnName="fImage" />
+          <ScalarProperty Name="fCareer" ColumnName="fCareer" />
+          <ScalarProperty Name="fSalary" ColumnName="fSalary" />
+          <ScalarProperty Name="fBirthDate" ColumnName="fBirthDate" />
+          <ScalarProperty Name="fSex" ColumnName="fSex" />
+          <ScalarProperty Name="fAge" ColumnName="fAge" />
+          <ScalarProperty Name="fPhone" ColumnName="fPhone" />
+          <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+          <ScalarProperty Name="fPassword" ColumnName="fPassword" />
+          <ScalarProperty Name="fAccount" ColumnName="fAccount" />
+          <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+          <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tActivityCart">
+      <EntityTypeMapping TypeName="SingleApartmentModel.tActivityCart">
+        <MappingFragment StoreEntitySet="tActivityCart">
+          <ScalarProperty Name="fNote" ColumnName="fNote" />
+          <ScalarProperty Name="fStatus" ColumnName="fStatus" />
+          <ScalarProperty Name="fPeopleCount" ColumnName="fPeopleCount" />
+          <ScalarProperty Name="fLocation" ColumnName="fLocation" />
+          <ScalarProperty Name="fEndTime" ColumnName="fEndTime" />
+          <ScalarProperty Name="fStartTime" ColumnName="fStartTime" />
+          <ScalarProperty Name="fAvtivityName" ColumnName="fAvtivityName" />
+          <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+          <ScalarProperty Name="fJoinedId" ColumnName="fJoinedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

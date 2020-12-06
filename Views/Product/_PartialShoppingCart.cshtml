@@ -1,0 +1,29 @@
+﻿@model List<sln_SingleApartment.ViewModels.COrderDetailsViewModel>
+@{
+    if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <li>
+            <a href="cart.html"><img src="~/Content/Product/img/cart/1.png" alt="" /></a>
+            <div class="add-cart-text">
+                <p><a href="#">@item.ProductName x @item.Quantity</a></p>
+                <p>單價 : @item.ProductPrice</p>
+                <p>小計 : @item.TotalPrice</p>
+
+            </div>
+            <div class="pro-close">
+                <i class="pe-7s-close"></i>
+            </div>
+        </li>
+        }
+    }
+    <li>
+        <div class="goto text-center">
+            <a href="cart.html"><strong>go to cart &nbsp;<i class="pe-7s-angle-right"></i></strong></a>
+        </div>
+    </li>
+    <li class="checkout-btn text-center">
+         <a href="checkout.html">Check out</a>
+     </li>
+}

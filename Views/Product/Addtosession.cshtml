@@ -1,0 +1,51 @@
+﻿@model sln_SingleApartment.Models.Product
+
+    <section class="contact-img-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="con-text">
+                        <h2 class="page-title">Shopping Cart</h2>
+                        <p><a href="#">Home</a> | Shopping Cart</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" align="center">
+        <h5>輸入購買數量</h5>
+        <hr />
+        <div class="form-group">
+
+            <div class="col-md-10">
+
+                @Model.ProductName
+
+            </div>
+
+        </div>
+        <div class="form-group" >
+
+            <input type="hidden" value="@Model.ProductID" name="txtProductID" class="btn btn-default" />
+            <div class="col-md-10">
+                @Html.TextBox("txtQuantity")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確認" class="btn btn-default" onclick="alert('請確認商品數量確定沒問題請按確認繼續')" />
+            </div>
+
+        </div>
+        <div >
+            @*@Html.ActionLink("繼續購買", "Index", "Product")*@
+            <a href="/Product/Home">回去繼續購物</a>
+        </div>
+    </div>
+}
+

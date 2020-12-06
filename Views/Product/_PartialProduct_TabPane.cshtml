@@ -1,0 +1,52 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModels.CProductViewModel>
+<h1>this is PartialView</h1>
+<input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
+<div role="tabpanel" class="tab-pane active" id="home">
+    <div class="row">
+        <div class="shop-tab" id="zone_product">
+            <!-- single-product start -->
+            @foreach (var item in Model)
+            {
+                string pic = item.ProductID.ToString() + ".jpg";
+                <div class="col-md-4 col-lg-4 col-sm-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            @*<div class="pro-type">
+                                    <span>new</span>
+                                </div>*@
+                            <a href="#">
+                                <img src="~/Content/Product/img/products/@pic" alt="Product Title" />
+                                <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/@pic">
+                            </a>
+                        </div>
+                        <div class="product-dsc">
+                            <h3><a href="#">@item.ProductName</a></h3>
+                            <div class="star-price">
+                                <span class="price-left">$ @item.UnitPrice</span>
+                            </div>
+                        </div>
+                        <div class="actions-btn">
+                            <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
+                            <a name="@item.ProductID" onclick="AddToFavoriteList(@ViewBag.MemberID)" data-placement="top" data-toggle="tooltip" href="#" data-original-title="加到最愛"><i class="fa fa-heart"></i></a>
+                            <a name="@item.ProductID" onclick="AddToCart()" href="#" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- single-product end -->
+
+        </div>
+    </div>
+</div>
+
+<h1>this is PartialView</h1>
+@Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+{
+    HttpMethod = "Get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "ProductTab"
+}))

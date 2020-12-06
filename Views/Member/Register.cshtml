@@ -1,0 +1,196 @@
+﻿@{ Layout = @"~/Views/Shared/HomePage/_Layout_HomePage.cshtml";}
+@model sln_SingleApartment.ViewModels.CMember
+@{
+    ViewBag.Title = "Register";
+
+}
+
+@using (Html.BeginForm("Register", "Member", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+
+        <div class="login-right">
+            <div class="container">
+                <h3 style="color:#f6755e">REGISTER</h3>
+                <div class="login-top">
+                    <div class="form-info">
+                        <form>
+                            
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <!--姓名-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fMemberName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fMemberName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fMemberName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--帳號-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fAccount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--密碼-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--信箱-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fEmail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--生日-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fBirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fBirthDate, new { htmlAttributes = new { @class = "form-control", type = "date", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.fBirthDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--電話-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fPhone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--年齡-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fAge, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.fAge, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fAge, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!--性別-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fSex, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select id="fSex" name="fSex" class="form-control">
+                                        <option value="0" style="display:none">請選擇性別...</option>
+                                        <option value="男性">男性</option>
+                                        <option value="女性">女性</option>
+                                        <option value="第三性">第三性</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <!--職業-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fCareer, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select id="fCareer" name="fCareer" class="form-control">
+                                        <option value="0" style="display:none">請選擇職業...</option>
+                                        <option value="1">經營/人資類</option>
+                                        <option value="2">行政/總務/法務類</option>
+                                        <option value="3">行銷/企劃/專案管理類</option>
+                                        <option value="4">客服/門市/業務/貿易類</option>
+                                        <option value="5">餐飲/旅遊/美容美髮類</option>
+                                        <option value="6">資訊軟體系統類</option>
+                                        <option value="7">操作/技術/維修類</option>
+                                        <option value="8">資材/物流/運輸類</option>
+                                        <option value="9">營建/製圖類</option>
+                                        <option value="10">傳播藝術/設計類</option>
+                                        <option value="11">文字/傳媒工作類</option>
+                                        <option value="12">醫療/保健服務類</option>
+                                        <option value="13">學術/教育/輔導類</option>
+                                        <option value="14">研發相關類</option>
+                                        <option value="15">生產製造/品管/環衛類</option>
+                                        <option value="16">軍警消/保全類</option>
+                                        <option value="17">財會/金融專業類</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <!--薪水-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fSalary, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <label><input type="checkbox" name="1" value="1" />小於(等於)50萬</label>
+                                    <label><input type="checkbox" name="2" value="2" />50-100萬</label>
+                                    <label><input type="checkbox" name="3" value="3" />大於50萬</label>
+
+                                </div>
+                            </div>
+
+                            <!--活動訊息-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fActivityMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <label><input type="checkbox" name="1" value="1" /> 娛樂類</label>
+                                    <label><input type="checkbox" name="2" value="2" />知識類</label>
+                                    <label><input type="checkbox" name="3" value="3" />技藝類</label>
+                                    <label><input type="checkbox" name="4" value="4" />健身類</label>
+                                    <label><input type="checkbox" name="5" value="5" />休憩類</label>
+                                    <label><input type="checkbox" name="6" value="6" />社會類</label>
+                                </div>
+                            </div>
+
+                            <!--照片-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input type="file" name="myImage" />
+                                </div>
+                            </div>
+                            <br />
+
+                            <!--第三方按鈕(尚未有功能)-->
+                            <ul class="login-icons">
+                                <li>
+                                    <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
+                                </li>
+                            </ul>
+
+                            <!--註冊-->
+                            <label class="hvr-sweep-to-right">
+                                <input type="submit" value="會員註冊">
+                                @ViewBag.Message
+                            </label>
+
+                            <script src="~/Content/LogIn/assests/js/jquery.min.js"></script>
+                            <script src="~/Content/LogIn/assests/js/scripts.js"></script>
+                            <link href="~/Content/LogIn/assests/css/styles.css" rel="stylesheet" />
+
+                            <link href="~/Content/LogIn/assests/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+                            <link href="~/Content/LogIn/assests/css/style.css" rel="stylesheet" type="text/css" media="all">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

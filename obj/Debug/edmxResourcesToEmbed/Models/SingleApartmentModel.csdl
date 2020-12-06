@@ -1,0 +1,837 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SingleApartmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="ActivityID" />
+    </Key>
+    <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubCategoryDetailID" Type="Int32" Nullable="false" />
+    <Property Name="ActivityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PeopleCount" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Step" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MeetingPoint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivitySubCategory" Relationship="Self.FK_Activity_ActivitySubCategory" FromRole="Activity" ToRole="ActivitySubCategory" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_Activity_tMember" FromRole="Activity" ToRole="tMember" />
+    <NavigationProperty Name="Participant" Relationship="Self.FK_Participant_Activity" FromRole="Activity" ToRole="Participant" />
+  </EntityType>
+  <EntityType Name="ActivityMainCategory">
+    <Key>
+      <PropertyRef Name="ActivityMainCategoryID" />
+    </Key>
+    <Property Name="ActivityMainCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityMainCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ActivitySubCategory" Relationship="Self.FK_ActivitySubCategory_ActivityCategory" FromRole="ActivityMainCategory" ToRole="ActivitySubCategory" />
+  </EntityType>
+  <EntityType Name="ActivitySubCategory">
+    <Key>
+      <PropertyRef Name="ActivitySubCategoryID" />
+    </Key>
+    <Property Name="ActivitySubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivitySubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActivityMainCategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_ActivitySubCategory" FromRole="ActivitySubCategory" ToRole="Activity" />
+    <NavigationProperty Name="ActivityMainCategory" Relationship="Self.FK_ActivitySubCategory_ActivityCategory" FromRole="ActivitySubCategory" ToRole="ActivityMainCategory" />
+    <NavigationProperty Name="ActivitySubCategoryDetail" Relationship="Self.FK_ActivitySubCategoryDetail_ActivitySubCategory" FromRole="ActivitySubCategory" ToRole="ActivitySubCategoryDetail" />
+  </EntityType>
+  <EntityType Name="ActivitySubCategoryDetail">
+    <Key>
+      <PropertyRef Name="SubCategoryDetailID" />
+    </Key>
+    <Property Name="SubCategoryDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityID" Type="Int32" Nullable="false" />
+    <Property Name="ActivitySubCategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ActivitySubCategory" Relationship="Self.FK_ActivitySubCategoryDetail_ActivitySubCategory" FromRole="ActivitySubCategoryDetail" ToRole="ActivitySubCategory" />
+  </EntityType>
+  <EntityType Name="BuildCase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BuildCaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalFloor" Type="Int32" />
+    <Property Name="RoomCounts" Type="Int32" />
+    <Property Name="BuildTimes" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Room_BuildCase" FromRole="BuildCase" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="DiscountID" />
+    </Key>
+    <Property Name="DiscountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DicountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Discount1" Type="Decimal" Precision="3" Scale="3" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Discount" FromRole="Discount" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoomFacilities" Relationship="Self.FK_RoomFacilities_Facility1" FromRole="Facility" ToRole="RoomFacilities" />
+  </EntityType>
+  <EntityType Name="FavoriteList">
+    <Key>
+      <PropertyRef Name="FavoriteListID" />
+    </Key>
+    <Property Name="FavoriteListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_FavoriteList_Product" FromRole="FavoriteList" ToRole="Product" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_FavoriteList_tMember" FromRole="FavoriteList" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="Information">
+    <Key>
+      <PropertyRef Name="InformationID" />
+    </Key>
+    <Property Name="InformationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InformationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InformationCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="InformationSource" Type="Int32" />
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="InformationContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Read_YN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberCategoryID" Type="Int32" />
+    <NavigationProperty Name="InformationCategory" Relationship="Self.FK_Information_InformationCategory" FromRole="Information" ToRole="InformationCategory" />
+    <NavigationProperty Name="MemberInformationCategory" Relationship="Self.FK_Information_MemberInformationCategory" FromRole="Information" ToRole="MemberInformationCategory" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_Information_tMember" FromRole="Information" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="InformationCategory">
+    <Key>
+      <PropertyRef Name="InformationCategoryID" />
+    </Key>
+    <Property Name="InformationCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="InformationCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Information" Relationship="Self.FK_Information_InformationCategory" FromRole="InformationCategory" ToRole="Information" />
+  </EntityType>
+  <EntityType Name="InformationContent">
+    <Key>
+      <PropertyRef Name="ContentID" />
+    </Key>
+    <Property Name="ContentID" Type="Int32" Nullable="false" />
+    <Property Name="ContentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContentText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lease">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <Property Name="PersonalRent" Type="Int32" />
+    <Property Name="MemberID" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Lease_Room1" FromRole="Lease" ToRole="Room" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_Lease_tMember" FromRole="Lease" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="MemberInformationCategory">
+    <Key>
+      <PropertyRef Name="MemberID" />
+      <PropertyRef Name="MemberCategoryID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="MemberCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Information" Relationship="Self.FK_Information_MemberInformationCategory" FromRole="MemberInformationCategory" ToRole="Information" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_MemberInformationCategory_tMember" FromRole="MemberInformationCategory" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ArrivedDate" Type="DateTime" Precision="0" />
+    <Property Name="OrderStatusID" Type="Int32" />
+    <Property Name="SendingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalAmount" Type="Int32" />
+    <NavigationProperty Name="OrderStatus" Relationship="Self.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_Order_tMember" FromRole="Order" ToRole="tMember" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderdetailID" />
+    </Key>
+    <Property Name="OrderdetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DiscountID" Type="Int32" />
+    <Property Name="UnitPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Discount" Relationship="Self.FK_OrderDetails_Discount" FromRole="OrderDetails" ToRole="Discount" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Product" FromRole="OrderDetails" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderStatusID" />
+    </Key>
+    <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="ParticipantID" />
+    </Key>
+    <Property Name="ParticipantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="Self.FK_Participant_Activity" FromRole="Participant" ToRole="Activity" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_Participant_tMember" FromRole="Participant" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoomStyleID" Type="Int32" />
+    <Property Name="RoomStylePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="RoomStyle" Relationship="Self.FK_Picture_RoomStyle" FromRole="Picture" ToRole="RoomStyle" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductSubCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Int32" Nullable="false" />
+    <Property Name="Discontinued" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Sales" Type="Int32" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FavoriteList" Relationship="Self.FK_FavoriteList_Product" FromRole="Product" ToRole="FavoriteList" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetails" />
+    <NavigationProperty Name="ProductSubCategory" Relationship="Self.FK_Product_ProductSubClass" FromRole="Product" ToRole="ProductSubCategory" />
+    <NavigationProperty Name="ProductPictures" Relationship="Self.FK_ProductPictures_Product" FromRole="Product" ToRole="ProductPictures" />
+  </EntityType>
+  <EntityType Name="ProductMainCategory">
+    <Key>
+      <PropertyRef Name="ProductMainCategoryID" />
+    </Key>
+    <Property Name="ProductMainCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductMainCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProductSubCategory" Relationship="Self.FK_ProductSubCategory_ProductMainCategory" FromRole="ProductMainCategory" ToRole="ProductSubCategory" />
+  </EntityType>
+  <EntityType Name="ProductPictures">
+    <Key>
+      <PropertyRef Name="ProductPictureID" />
+    </Key>
+    <Property Name="ProductPictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProductPictures_Product" FromRole="ProductPictures" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductSubCategory">
+    <Key>
+      <PropertyRef Name="ProductSubCategoryID" />
+    </Key>
+    <Property Name="ProductSubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductSubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductMainCategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductSubClass" FromRole="ProductSubCategory" ToRole="Product" />
+    <NavigationProperty Name="ProductMainCategory" Relationship="Self.FK_ProductSubCategory_ProductMainCategory" FromRole="ProductSubCategory" ToRole="ProductMainCategory" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoomStyleID" Type="Int32" />
+    <Property Name="BuildCaseID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BuildCase" Relationship="Self.FK_Room_BuildCase" FromRole="Room" ToRole="BuildCase" />
+    <NavigationProperty Name="Lease" Relationship="Self.FK_Lease_Room1" FromRole="Room" ToRole="Lease" />
+    <NavigationProperty Name="RoomStyle" Relationship="Self.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
+  </EntityType>
+  <EntityType Name="RoomFacilities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoomStyleID" Type="Int32" />
+    <Property Name="FacilityID" Type="Int32" />
+    <NavigationProperty Name="Facility" Relationship="Self.FK_RoomFacilities_Facility1" FromRole="RoomFacilities" ToRole="Facility" />
+    <NavigationProperty Name="RoomStyle" Relationship="Self.FK_RoomFacilities_RoomStyle" FromRole="RoomFacilities" ToRole="RoomStyle" />
+  </EntityType>
+  <EntityType Name="RoomFavorite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" />
+    <Property Name="RoomStyleID" Type="Int32" />
+    <NavigationProperty Name="RoomStyle" Relationship="Self.FK_RoomFavorite_RoomStyle" FromRole="RoomFavorite" ToRole="RoomStyle" />
+    <NavigationProperty Name="tMember" Relationship="Self.FK_RoomFavorite_tMember" FromRole="RoomFavorite" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="RoomStyle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="PictureID" Type="Int32" />
+    <Property Name="RoomStyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxNumberOfPeople" Type="Int32" />
+    <Property Name="Rent" Type="Int32" />
+    <Property Name="Oic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SquareFootage" Type="Int32" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK_Picture_RoomStyle" FromRole="RoomStyle" ToRole="Picture" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Room_RoomStyle" FromRole="RoomStyle" ToRole="Room" />
+    <NavigationProperty Name="RoomFacilities" Relationship="Self.FK_RoomFacilities_RoomStyle" FromRole="RoomStyle" ToRole="RoomFacilities" />
+    <NavigationProperty Name="RoomFavorite" Relationship="Self.FK_RoomFavorite_RoomStyle" FromRole="RoomStyle" ToRole="RoomFavorite" />
+  </EntityType>
+  <EntityType Name="tActivityCart">
+    <Key>
+      <PropertyRef Name="fJoinedId" />
+    </Key>
+    <Property Name="fJoinedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fMemberId" Type="Int32" />
+    <Property Name="fAvtivityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fStartTime" Type="DateTime" Precision="0" />
+    <Property Name="fEndTime" Type="DateTime" Precision="0" />
+    <Property Name="fLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fPeopleCount" Type="Int32" />
+    <Property Name="fStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fNote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="fMemberId" />
+    </Key>
+    <Property Name="fMemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fMemberName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fAccount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fAge" Type="Int32" />
+    <Property Name="fSex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fBirthDate" Type="DateTime" Precision="0" />
+    <Property Name="fSalary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fCareer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fRoomId" Type="Int32" />
+    <Property Name="fLeave" Type="Boolean" />
+    <Property Name="fRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fActivityMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_tMember" FromRole="tMember" ToRole="Activity" />
+    <NavigationProperty Name="FavoriteList" Relationship="Self.FK_FavoriteList_tMember" FromRole="tMember" ToRole="FavoriteList" />
+    <NavigationProperty Name="Information" Relationship="Self.FK_Information_tMember" FromRole="tMember" ToRole="Information" />
+    <NavigationProperty Name="Lease" Relationship="Self.FK_Lease_tMember" FromRole="tMember" ToRole="Lease" />
+    <NavigationProperty Name="MemberInformationCategory" Relationship="Self.FK_MemberInformationCategory_tMember" FromRole="tMember" ToRole="MemberInformationCategory" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_tMember" FromRole="tMember" ToRole="Order" />
+    <NavigationProperty Name="Participant" Relationship="Self.FK_Participant_tMember" FromRole="tMember" ToRole="Participant" />
+    <NavigationProperty Name="RoomFavorite" Relationship="Self.FK_RoomFavorite_tMember" FromRole="tMember" ToRole="RoomFavorite" />
+  </EntityType>
+  <Association Name="FK_Activity_ActivitySubCategory">
+    <End Role="ActivitySubCategory" Type="Self.ActivitySubCategory" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivitySubCategory">
+        <PropertyRef Name="ActivitySubCategoryID" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="SubCategoryDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Participant_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="ActivityID" />
+      </Principal>
+      <Dependent Role="Participant">
+        <PropertyRef Name="ActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivitySubCategory_ActivityCategory">
+    <End Role="ActivityMainCategory" Type="Self.ActivityMainCategory" Multiplicity="1" />
+    <End Role="ActivitySubCategory" Type="Self.ActivitySubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityMainCategory">
+        <PropertyRef Name="ActivityMainCategoryID" />
+      </Principal>
+      <Dependent Role="ActivitySubCategory">
+        <PropertyRef Name="ActivityMainCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivitySubCategoryDetail_ActivitySubCategory">
+    <End Role="ActivitySubCategory" Type="Self.ActivitySubCategory" Multiplicity="1" />
+    <End Role="ActivitySubCategoryDetail" Type="Self.ActivitySubCategoryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivitySubCategory">
+        <PropertyRef Name="ActivitySubCategoryID" />
+      </Principal>
+      <Dependent Role="ActivitySubCategoryDetail">
+        <PropertyRef Name="ActivitySubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_BuildCase">
+    <End Role="BuildCase" Type="Self.BuildCase" Multiplicity="0..1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuildCase">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="BuildCaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Discount">
+    <End Role="Discount" Type="Self.Discount" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discount">
+        <PropertyRef Name="DiscountID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="DiscountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomFacilities_Facility1">
+    <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+    <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomFacilities">
+        <PropertyRef Name="FacilityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoriteList_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="FavoriteList" Type="Self.FavoriteList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="FavoriteList">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoriteList_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="FavoriteList" Type="Self.FavoriteList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="FavoriteList">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Information_InformationCategory">
+    <End Role="InformationCategory" Type="Self.InformationCategory" Multiplicity="1" />
+    <End Role="Information" Type="Self.Information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InformationCategory">
+        <PropertyRef Name="InformationCategoryID" />
+      </Principal>
+      <Dependent Role="Information">
+        <PropertyRef Name="InformationCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Information_MemberInformationCategory">
+    <End Role="MemberInformationCategory" Type="Self.MemberInformationCategory" Multiplicity="0..1" />
+    <End Role="Information" Type="Self.Information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformationCategory">
+        <PropertyRef Name="MemberID" />
+        <PropertyRef Name="MemberCategoryID" />
+      </Principal>
+      <Dependent Role="Information">
+        <PropertyRef Name="MemberID" />
+        <PropertyRef Name="MemberCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Information_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="Information" Type="Self.Information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="Information">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lease_Room1">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lease">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lease_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="Lease">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberInformationCategory_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="MemberInformationCategory" Type="Self.MemberInformationCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="MemberInformationCategory">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_OrderStatus">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="OrderStatusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Participant_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="1" />
+    <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="Participant">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Picture_RoomStyle">
+    <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+    <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomStyle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Picture">
+        <PropertyRef Name="RoomStyleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductSubClass">
+    <End Role="ProductSubCategory" Type="Self.ProductSubCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductSubCategory">
+        <PropertyRef Name="ProductSubCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductSubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPictures_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductPictures" Type="Self.ProductPictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductPictures">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductSubCategory_ProductMainCategory">
+    <End Role="ProductMainCategory" Type="Self.ProductMainCategory" Multiplicity="1" />
+    <End Role="ProductSubCategory" Type="Self.ProductSubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMainCategory">
+        <PropertyRef Name="ProductMainCategoryID" />
+      </Principal>
+      <Dependent Role="ProductSubCategory">
+        <PropertyRef Name="ProductMainCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_RoomStyle">
+    <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomStyle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="RoomStyleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomFacilities_RoomStyle">
+    <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+    <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomStyle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomFacilities">
+        <PropertyRef Name="RoomStyleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomFavorite_RoomStyle">
+    <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+    <End Role="RoomFavorite" Type="Self.RoomFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomStyle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomFavorite">
+        <PropertyRef Name="RoomStyleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomFavorite_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="RoomFavorite" Type="Self.RoomFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="fMemberId" />
+      </Principal>
+      <Dependent Role="RoomFavorite">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SingleApartmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activity" EntityType="Self.Activity" />
+    <EntitySet Name="ActivityMainCategory" EntityType="Self.ActivityMainCategory" />
+    <EntitySet Name="ActivitySubCategory" EntityType="Self.ActivitySubCategory" />
+    <EntitySet Name="ActivitySubCategoryDetail" EntityType="Self.ActivitySubCategoryDetail" />
+    <EntitySet Name="BuildCase" EntityType="Self.BuildCase" />
+    <EntitySet Name="Discount" EntityType="Self.Discount" />
+    <EntitySet Name="Facility" EntityType="Self.Facility" />
+    <EntitySet Name="FavoriteList" EntityType="Self.FavoriteList" />
+    <EntitySet Name="Information" EntityType="Self.Information" />
+    <EntitySet Name="InformationCategory" EntityType="Self.InformationCategory" />
+    <EntitySet Name="InformationContent" EntityType="Self.InformationContent" />
+    <EntitySet Name="Lease" EntityType="Self.Lease" />
+    <EntitySet Name="MemberInformationCategory" EntityType="Self.MemberInformationCategory" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" />
+    <EntitySet Name="Picture" EntityType="Self.Picture" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductMainCategory" EntityType="Self.ProductMainCategory" />
+    <EntitySet Name="ProductPictures" EntityType="Self.ProductPictures" />
+    <EntitySet Name="ProductSubCategory" EntityType="Self.ProductSubCategory" />
+    <EntitySet Name="Room" EntityType="Self.Room" />
+    <EntitySet Name="RoomFacilities" EntityType="Self.RoomFacilities" />
+    <EntitySet Name="RoomFavorite" EntityType="Self.RoomFavorite" />
+    <EntitySet Name="RoomStyle" EntityType="Self.RoomStyle" />
+    <EntitySet Name="tActivityCart" EntityType="Self.tActivityCart" />
+    <EntitySet Name="tMember" EntityType="Self.tMember" />
+    <AssociationSet Name="FK_Activity_ActivitySubCategory" Association="Self.FK_Activity_ActivitySubCategory">
+      <End Role="ActivitySubCategory" EntitySet="ActivitySubCategory" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_tMember" Association="Self.FK_Activity_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participant_Activity" Association="Self.FK_Participant_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="Participant" EntitySet="Participant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivitySubCategory_ActivityCategory" Association="Self.FK_ActivitySubCategory_ActivityCategory">
+      <End Role="ActivityMainCategory" EntitySet="ActivityMainCategory" />
+      <End Role="ActivitySubCategory" EntitySet="ActivitySubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivitySubCategoryDetail_ActivitySubCategory" Association="Self.FK_ActivitySubCategoryDetail_ActivitySubCategory">
+      <End Role="ActivitySubCategory" EntitySet="ActivitySubCategory" />
+      <End Role="ActivitySubCategoryDetail" EntitySet="ActivitySubCategoryDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_BuildCase" Association="Self.FK_Room_BuildCase">
+      <End Role="BuildCase" EntitySet="BuildCase" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Discount" Association="Self.FK_OrderDetails_Discount">
+      <End Role="Discount" EntitySet="Discount" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomFacilities_Facility1" Association="Self.FK_RoomFacilities_Facility1">
+      <End Role="Facility" EntitySet="Facility" />
+      <End Role="RoomFacilities" EntitySet="RoomFacilities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoriteList_Product" Association="Self.FK_FavoriteList_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="FavoriteList" EntitySet="FavoriteList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoriteList_tMember" Association="Self.FK_FavoriteList_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="FavoriteList" EntitySet="FavoriteList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Information_InformationCategory" Association="Self.FK_Information_InformationCategory">
+      <End Role="InformationCategory" EntitySet="InformationCategory" />
+      <End Role="Information" EntitySet="Information" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Information_MemberInformationCategory" Association="Self.FK_Information_MemberInformationCategory">
+      <End Role="MemberInformationCategory" EntitySet="MemberInformationCategory" />
+      <End Role="Information" EntitySet="Information" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Information_tMember" Association="Self.FK_Information_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="Information" EntitySet="Information" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lease_Room1" Association="Self.FK_Lease_Room1">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Lease" EntitySet="Lease" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lease_tMember" Association="Self.FK_Lease_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="Lease" EntitySet="Lease" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberInformationCategory_tMember" Association="Self.FK_MemberInformationCategory_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="MemberInformationCategory" EntitySet="MemberInformationCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_tMember" Association="Self.FK_Order_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Product" Association="Self.FK_OrderDetails_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participant_tMember" Association="Self.FK_Participant_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="Participant" EntitySet="Participant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Picture_RoomStyle" Association="Self.FK_Picture_RoomStyle">
+      <End Role="RoomStyle" EntitySet="RoomStyle" />
+      <End Role="Picture" EntitySet="Picture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductSubClass" Association="Self.FK_Product_ProductSubClass">
+      <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPictures_Product" Association="Self.FK_ProductPictures_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductPictures" EntitySet="ProductPictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductSubCategory_ProductMainCategory" Association="Self.FK_ProductSubCategory_ProductMainCategory">
+      <End Role="ProductMainCategory" EntitySet="ProductMainCategory" />
+      <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_RoomStyle" Association="Self.FK_Room_RoomStyle">
+      <End Role="RoomStyle" EntitySet="RoomStyle" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomFacilities_RoomStyle" Association="Self.FK_RoomFacilities_RoomStyle">
+      <End Role="RoomStyle" EntitySet="RoomStyle" />
+      <End Role="RoomFacilities" EntitySet="RoomFacilities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomFavorite_RoomStyle" Association="Self.FK_RoomFavorite_RoomStyle">
+      <End Role="RoomStyle" EntitySet="RoomStyle" />
+      <End Role="RoomFavorite" EntitySet="RoomFavorite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomFavorite_tMember" Association="Self.FK_RoomFavorite_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="RoomFavorite" EntitySet="RoomFavorite" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

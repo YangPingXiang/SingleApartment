@@ -1,0 +1,91 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+@{
+    ViewBag.Title = "PayInfo";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+<div class="room-booking ptb-80 white_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title mb-80 text-center">
+                    <h2>Booking <span>rooms</span></h2>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="booking-rooms-tab">
+                    <ul class="nav" role="tablist">
+                        <li class="active"><a href="#payment" data-toggle="tab"><span>payment Info</span></a></li>
+                    </ul>
+                </div>
+                <div class="service-tab-desc text-left mt-60">
+                    <div class="tab-content">                                                
+                        <div role="tabpanel" class="tab-pane active" id="payment">
+                            <div class="payment-info">
+                                <form action="#">
+                                    <div class="payment-form">
+                                        <div class="payment-form-list">
+                                            <div class="single_form">
+                                                <input type="text" placeholder="Card Holder Name">
+                                            </div>
+                                            <div class="single_form">
+                                                <input type="text" placeholder="Enter Creadit Card Number">
+                                            </div>
+                                            <div class="single_form">
+                                                <div class="select-date">
+                                                    <select>
+                                                        <option value="1" selected>Enter Month</option>
+                                                        <option value="1">January</option>
+                                                        <option value="1">February</option>
+                                                        <option value="1">March</option>
+                                                        <option value="1">April</option>
+                                                        <option value="1">May</option>
+                                                        <option value="1">June</option>
+                                                        <option value="1">July</option>
+                                                        <option value="1">August</option>
+                                                        <option value="1">September</option>
+                                                        <option value="1">October</option>
+                                                        <option value="1">NOvember</option>
+                                                        <option value="1">December</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="single_form">
+                                                <div class="select-date">
+                                                    <select>
+                                                        <option value="1" selected>Enter Year</option>
+                                                        <option value="1">2017</option>
+                                                        <option value="1">2018</option>
+                                                        <option value="1">2019</option>
+                                                        <option value="1">2020</option>
+                                                        <option value="1">2021</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pay-money-form mt-40">
+                                            <div class="payment-card">
+                                                <a href="#"><img src="images/logo/pay-card.png" alt=""></a>
+                                            </div>
+                                            <div class="pay-order">
+                                                @foreach (var a in Model.roomStyleViewModels)
+                                                {
+                                                    <a href="~/Room/BookingDone/@a.ID">確認付款</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Room booking end-->

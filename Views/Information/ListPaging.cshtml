@@ -1,0 +1,137 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<sln_SingleApartment.ViewModel.CInformation>
+
+@*<link href="~/Content/PagedList.css" rel="stylesheet" />*@
+
+@{
+    string strTR = null;
+    string strPriority = null;
+    //Layout = null;
+    //Layout = "~/Views/Shared/Information_Layout.cshtml";
+}
+
+@*存放暫存資料*@
+<input id="id_priority" type="hidden" value="@ViewBag.Priority" />
+<input id="id_read_yn" type="hidden" value="@ViewBag.Read_YN" />
+@*存放暫存資料*@
+
+<table class="alt table-hover">
+    <thead>
+        <tr>
+            <th style="font-size:unset">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().InformationID)
+            </th>
+            <th style="font-size:unset">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().InformationDate)
+            </th>
+            <th style="font-size:unset">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().InformationCategoryName)
+            </th>
+            <th style="font-size:unset">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().UserCategoryName)
+            </th>
+            <th style="font-size:unset">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DocumentID)
+            </th>
+            <th style="font-size:unset">
+                優先等級
+            </th>
+            <th style="font-size:unset">
+
+            </th>
+            <th style="font-size:unset"></th>
+        </tr>
+    </thead>
+    @*<tr hidden>
+            <td width="100"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td width="150"></td>
+        </tr>*@
+    @foreach (var item in Model)
+    {   if (item.Priority == "High") {
+            strPriority = "高";
+        }
+        else if (item.Priority == "Normal") {
+            strPriority = "中";
+        }
+        else if (item.Priority == "Low") {
+            strPriority = "低";
+        }
+        
+        //todo:ok 已讀則將此row的底色改為淺藍色
+        if (item.Read_YN == "Y")
+        {
+            strTR = "background-color:#EEF9FC";
+        }
+        else
+        {
+            strTR = "";
+        }
+    <tr style="@strTR">
+        <td width="80">
+            @Html.DisplayFor(modelItem => item.InformationID)
+        </td>
+        <td>
+            @item.InformationDate.ToString("yyyy/MM/dd")
+            @*@Html.DisplayFor(modelItem => item.InformationDate)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InformationCategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserCategoryName)  
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DocumentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => strPriority)
+        </td>
+        <td width="220">
+            @*;background-color:transparent;color:#428bca;*@
+            <button onclick="showTable(this,'@item.InformationCategoryName', @item.InformationID)" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
+            @*@Html.ActionLink("刪除", "Delete", new { id = item.InformationID }, new { @class = "btn btn-info", onclick = "updateDeleteMsg(" + item.InformationID + ");" })*@
+            <button onclick="updateDeleteMsg(@item.InformationID);" class="btn btn-info" style="height:unset;">刪除</button>
+
+            @Html.ActionLink("修改", "Edit", new { id = item.InformationID }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
+        @*<tr>
+                <td rowspan="2">
+                    訊息內容
+                </td>
+                <td colspan="4" rowspan="2">
+                    訊息內容
+                </td>
+                <td>1內容訊息</td>
+            </tr>
+            <tr>
+                <td>2內容訊息</td>
+            </tr>*@
+    }
+</table>
+
+@*@Html.PagedListPager(Model, page => Url.Action("DemoPaging", new { page }))*@
+
+@Html.PagedListPager(Model, page => Url.Action("ListPaging", new { pageNum = page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new AjaxOptions()
+        {
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "container",
+            HttpMethod = "post",
+            AllowCache = false
+        }
+         ))
+@*Microsoft.jQuery.Unobtrusive.Ajax這個套件要安裝才能ajax*@
+
+<script>
+    $(function () {
+        console.log("onload = " + $("#id_priority").val() + "---" + $('#id_read_yn').val());
+    })
+</script>

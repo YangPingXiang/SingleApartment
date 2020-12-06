@@ -1,0 +1,19 @@
+﻿@{
+    string ControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+    switch (ControllerName.ToUpper())
+    {
+        case "PRODUCT":
+            Layout = "~/Views/Shared/Product/_LayoutPageIndex.cshtml";
+            break;
+        case "MEMBER":
+        case "HOME":
+            Layout = "~/Views/Shared/HomePage/_Layout_HomePage.cshtml";
+            break;
+        case "INFORMATION":
+            Layout = "~/Views/Shared/Information_Layout.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+    }
+}

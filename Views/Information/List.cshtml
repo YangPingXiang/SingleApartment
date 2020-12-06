@@ -1,0 +1,337 @@
+﻿@model IEnumerable<sln_SingleApartment.ViewModel.CInformation>
+
+@{
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
+    ViewBag.Title = "User Information";
+    //string strTR = null;
+    //int count = 0;
+    //Layout = null;
+}
+
+@functions{
+
+    //int getCount(int num)
+    //{
+    //    num++;
+    //    return num;
+    //}
+}
+
+<!-- Header -->
+<!-- Menu -->
+<!-- Main -->
+<section id="main" class="wrapper" style="padding:3em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">訊息管理</h1>
+            @*<div id="timer"></div>*@
+        </header>
+        @*=================================================================*@
+        <p>
+
+        </p>
+        @*=================================================================*@
+        @*<h4>Alternate</h4>*@
+
+        <div class="row" style="margin-bottom:30px;margin-top:30px">
+            @*style="border: 2px green solid"*@
+            <div class="col">
+                <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">>
+                    <option value="999">選擇查詢方式</option>
+                    <option value="100">依系統分類</option>
+                    <option value="200">依個人分類</option>
+                    <option value="300">依關鍵字</option>
+                </select>
+            </div>
+            <div class="col">
+                <span style="font-weight:500">系統分類:</span>
+                @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
+                <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+            </div>
+            <div class="col">
+                <span style="font-weight:500">個人分類:</span>
+                <select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+                @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
+            </div>
+            <div class="col">
+                <span style="font-weight:500">關鍵字: </span>
+                @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
+                @*@Html.ActionLink("查詢", "ListPaging", new { read_yn = ViewBag.Read_YN, p_priority = "ALL" }, new { @class = "btn btn-info" })*@
+                <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>
+            </div>
+        </div>
+        <div class="row">
+            @*style="border:2px #46b8da solid;width:150px;border-radius:20px"*@
+            <div style="width:120px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">優先等級</div>
+                @*<div style="margin:2px">@Html.ActionLink("全部", "ListPaging", new { p_priority = "ALL" }, new { @class = "btn" })</div>*@
+                <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('ALL','N','999','N')">全部</button>
+                <div>
+                    <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('High','Null','999','N');">高</button>
+                </div>
+                <div>
+                    <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Normal','Null','999','N');">中</button>
+                </div>
+                <div>
+                    <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Low','Null','999','N');">次要</button>
+                    @*<div style="margin:2px">
+                            <a id="a_tag_low" class="btn" href="javascript:;" onclick="queryData('Low','Null','999','N');">次要(ok)</a>
+                        </div>*@
+                </div>
+                <div style="margin:2px;height:14px"></div>
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息分類</div>
+                <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','Y','999','N');">已讀</button>
+                <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','N','999','N');">未讀</button>
+            </div>
+            <div style="width:750px">
+                <div id="container" class="table-wrapper">
+                    @*要分頁的table*@
+                    @*要分頁的table*@
+                    @*要分頁的table*@
+                </div>
+            </div>
+        </div>
+        @*=================================================================*@
+        @*<p> Aenean iaculis, neque sed preti</p>*@
+    </div>
+</section>
+
+<!-- Footer -->
+
+<script>
+        //$(function () {
+        //    console.log("onload = "+$("#id_priority").val());
+        //})
+
+        //<option value="999">請選擇查詢項目</option>
+        //    <option value="100">系統分類</option>
+        //    <option value="200">個人分類</option>
+        //    <option value="300">關鍵字</option>
+        function multiQueryData() {
+            console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
+            console.log("txtKeyword=" + $("#txtKeyword").val());
+            var f_data;
+            console.log($('#txtQueryType'));
+            if ($('#txtQueryType').val() == "999") {
+                f_data = "N";
+            }
+            else if ($('#txtQueryType').val() == "100") {
+                //系統分類
+                f_data = $('#txtSystemCategory').val();
+            }
+            else if ($('#txtQueryType').val() == "200") {
+                //個人分類
+                f_data = $('#txtUserCategory').val();
+            }
+            else if ($('#txtQueryType').val() == "300") {
+                //關鍵字
+                f_data = $('#txtKeyword').val();
+            }
+
+            //重新查詢
+            queryData($('#id_priority').val(), $('#id_read_yn').val(), $('#txtQueryType').val(), f_data);
+            //queryData("Low", "Null", "999", "N");
+        }
+
+        //共用查詢
+        function queryData(f_priority, f_read_yn, f_query_type, f_data) {
+                //url: "/Information/ListPaging?pageNum=1&p_priority=" + p_priority + "&p_read_yn=" + p_read_yn,
+                $.ajax({
+                    url: "/Information/ListPaging?pageNum=1",
+                    type: "POST",
+                    data: {
+                        p_priority: f_priority,  //傳遞參數
+                        p_read_yn: f_read_yn,
+                        p_query_type: f_query_type,
+                        p_data: f_data
+                    },
+                    success: function (data) {
+                        //console.log(data); //可先測試程式有無載入
+                        //載入 partialview
+                        $("#container").html(data);
+                    }
+                });
+        }
+
+        //前一版
+        //function queryData(f_priority, f_read_yn) {
+        //    //url: "/Information/ListPaging?pageNum=1&p_priority=" + p_priority + "&p_read_yn=" + p_read_yn,
+        //    $.ajax({
+        //        url: "/Information/ListPaging?pageNum=1",
+        //        type: "POST",
+        //        data: {
+        //            p_priority: f_priority,  //傳遞參數
+        //            p_read_yn: f_read_yn
+        //        },
+        //        success: function (data) {
+        //            //console.log(data); //可先測試程式有無載入
+        //            $("#container").html(data);
+        //        }
+        //    });
+        //}
+
+        @*function select_change() {
+            //return confirm('確定要刪除嗎?');
+            //window.location.href = '@Url.Action("List")';
+            //window.location.href = "/Information/List?read_yn='Y'&info_category=100";
+        }*@
+
+        //$("#show_msg").click(function () {
+        //    //$("tr").after("<u>Hello</u>")   //ok的語法
+        //    var str_f = "<tr><td rowspan='2'>訊息內容</td><td colspan='4' rowspan='2'>訊息內容訊息內容</td>" +
+        //        "<td>1內容訊息</td></tr> <tr><td>2內容訊息</td></tr>"
+        //    //$(this).parents("tr").after("<u>Hello</u>")
+        //    $(this).parents("tr").after(str_f)
+        //    //$(this).hide();
+        //});
+
+        function updateDeleteMsg(p_id) {
+            var msg = "您真的確定要刪除嗎？";
+            if (confirm(msg) == true) {
+
+                //Status修改為N  //url: "/Information/NameCity?name=jony&city=taipei",
+                $.ajax({
+                    url: "/Information/update_status?id=" + p_id,
+                    type: "POST",
+                    success: function (data) {
+                        //$(".td_id").append(data);
+
+                        //重新查詢  $('#id_priority').val()  $('#id_read_yn').val() 存放暫存資料
+                        queryData($('#id_priority').val(), $('#id_read_yn').val(), "999","N");
+                    }
+                });
+
+                //不可以寫在此處, 要寫在 success:function(){}裡
+                //queryData($('#id_priority').val(), $('#id_read_yn').val());
+
+                //return true;
+            } else {
+                //window.event.preventDefault();  //取消事件
+                //return false;
+            }
+
+            //alert("How are you");
+            //return confirm('確定要刪除嗎?');
+        }
+        //$(".delete_btn").click(function () {
+        //});
+
+        //使用這按下[訊息]鈕, 預設flag="true"
+        function showTable(obj, p_message, p_id) {
+            //$("tr").after("<u>Hello</u>")   //ok的語法
+            //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
+
+            var str_f = "<tr><td rowspan='2'>訊息內容</td><td colspan='4' rowspan='2'>" + p_message + "</td>" +
+                "<td class='td_id'>已讀</td></tr> <tr><td>" +
+                "<button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
+                "</td ></tr >";
+
+            //$(obj).attr('disabled', true);    //失效
+            //console.log('修改前'+ $(obj).attr('flag'));
+            ////$(obj).attr('flag', 'false');
+            //console.log('修改後' + $(obj).attr('flag'));
+
+            if ($(obj).attr('flag') == 'true') {
+                $(obj).parents("tr").after(str_f); //動態加入 訊息資料tr
+                $(obj).text("收合");
+                //table tr 已讀則將此row的底色改為淺藍色
+                $(obj).parent().parent().css('background-color', '#EEF9FC'); // "#E6F5FA");
+                $(obj).attr('flag', 'false');  //改成 false
+
+                //修改為已讀訊息  //url: "/Information/NameCity?name=jony&city=taipei",
+                $.ajax({
+                    url: "/Information/update_read_yn?id=" + p_id ,
+                    type: "POST",
+                    success: function (data) {
+                        //$(".td_id").append(data);
+                        //console.log(data)
+                    }
+                });
+            }
+            else {
+                $(obj).parent().parent().next().remove(); //刪除下面第一個 tr
+                $(obj).parent().parent().next().remove(); //刪除下面第二個 tr
+
+                $(obj).text("訊息");
+                $(obj).attr('flag', 'true');  //改成 false
+
+                //$(obj).parent().parent().css('font-weight', 'bold')
+                //$(obj).parent().parent().css('color', '#46b8da')
+            }
+        }
+
+        //no use
+        function removeTr(obj) {
+            $(obj).parent().parent().prev().remove(); //動態刪除this的parent的前面tr
+            $(obj).parent().remove();                 //動態刪除this的這個tr
+            //$(obj).attr('disabled', false);    //有效
+        }
+
+        //一啟動馬上執行
+        $(function () {
+
+            //第一個 ajax 是List的分頁資料
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ListPaging", new { pageNum = 1})",
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    $("#container").html(data);
+                }
+            });
+
+            //傳Json字串給下拉式選單
+            $.ajax({
+                type: "POST",
+                url: "/Information/GetInformationCategory",
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    //$("#text1").html(data);
+                    var objJson = JSON.parse(data);
+                    //console.log(objJson);
+
+                    var selObj = $("#txtSystemCategory");
+                    selObj.append("<option value=999 selected>請選擇</option>");
+                    for (var i = 0; i < objJson.length; i++){
+                        console.log(objJson[i].ID);
+                        //todo:ok 注意 value有使用''包起來
+                        selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+                    }
+
+                    //var value = 100;
+                    //var text = "111";
+                    //selObj.append("<option value=" + value + ">" + text + "</option>");
+                    //selObj.append("<option value='200'>中文2</option>");
+                }
+            });
+
+            //傳Json字串給下拉式選單
+            $.ajax({
+                type: "POST",
+                url: "/Information/GetUserCategory",
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    //$("#text1").html(data);
+                    var objJson = JSON.parse(data);
+                    //console.log(objJson);
+
+                    var selObj = $("#txtUserCategory");
+                    selObj.append("<option value=999 selected>請選擇</option>");
+                    for (var i = 0; i < objJson.length; i++) {
+                        console.log(objJson[i].ID);
+                        //todo:ok 注意 value有使用''包起來
+                        selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+                    }
+                }
+            });
+
+            //setInterval(function () {
+            //    $("#timer").html(new Date().getSeconds());
+            //}, 1000)
+            //用秒數驗證
+        });
+
+</script>
+
+

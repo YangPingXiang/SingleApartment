@@ -1,0 +1,133 @@
+﻿@model sln_SingleApartment.ViewModel.CInformation
+
+@{
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<!-- Main -->
+<section id="main" class="wrapper" style="padding:3em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">訊息分類資料-修改</h1>
+            @*<div id="timer"></div>*@
+        </header>
+        @*=================================================================*@
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @*<h4>Information</h4>*@
+                <hr />
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.InformationID)*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InformationID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InformationID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.InformationID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.InformationCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.InformationCategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InformationCategoryID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @*style="font-weight:500"*@
+                    <span class="control-label col-md-2">個人分類</span>
+                    @*@Html.LabelFor(model => model.MemberCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.MemberCategoryID, (IEnumerable<SelectListItem>)ViewBag.MemberCategoryID, new { @class = "form-control", style = "display:inline;width:250px;line-height:3em;height:3em" })
+
+                        @*<select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Priority, new { htmlAttributes = new { @class = "form-control" } })*@                        
+                        <select name="Priority" value="@Model.Priority" style="display:inline;line-height:3em;height:3em">
+                            @{ string s_high = "", s_normal = "", s_low = "";
+                                if (Model.Priority == "High") { s_high = "selected"; }
+                                else if (Model.Priority == "Normal") { s_normal = "selected"; }
+                                else if (Model.Priority == "Low") { s_low = "selected"; }
+                                
+                                <option value="High" @s_high>高</option>
+                                <option value="Normal" @s_normal>中</option>
+                                <option value="Low" @s_low>低</option>
+                            }
+                        </select>
+
+                        @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.InformationSource, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.InformationSource, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InformationSource, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InformationContent, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InformationContent, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.InformationContent, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-info" style="background-color:#5bc0de;" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("回上一頁", "List")
+            @*<input type="button" onclick="history.back()" value="回上一頁" class="btn btn-info" style="height:unset;">*@
+        </div>
+    </div>
+</section>
+
+<script>
+
+    //一啟動馬上執行
+    $(function () {
+
+        //傳Json字串給下拉式選單
+        $.ajax({
+            type: "POST",
+            url: "/Information/GetUserCategory",
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //$("#text1").html(data);
+                var objJson = JSON.parse(data);
+                //console.log(objJson);
+
+                var selObj = $("#txtUserCategory");
+                selObj.append("<option value=999 selected>請選擇</option>");
+                for (var i = 0; i < objJson.length; i++) {
+                    //console.log(objJson[i].ID);
+                    //todo:ok 注意 value有使用''包起來
+                    selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+                }
+            }
+        });
+    });
+</script>
+

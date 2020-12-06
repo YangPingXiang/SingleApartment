@@ -1,0 +1,85 @@
+﻿@model IEnumerable<sln_SingleApartment.ViewModels.CActivityCart>
+
+@{
+    ViewBag.Title = "CartView";
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
+}
+
+<h2>您所選擇參加的活動</h2>
+
+<p>
+    @Html.ActionLink("返回活動列表", "List")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.SubCategoryDetailID)
+            </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.fAvtivityName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fStartTime)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fEndTime)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fPeopleCount)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fLocation)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fNote)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.SubCategoryDetailID)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fAvtivityName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fStartTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fEndTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fPeopleCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fLocation)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fStatus)
+            </td>
+
+            <td>
+                @Html.ActionLink("確定參加", "List", new { id = item.fJoinedId }) |
+
+                @Html.ActionLink("取消", "Delete", new { id = item.fJoinedId })
+            </td>
+        </tr>
+    }
+
+</table>

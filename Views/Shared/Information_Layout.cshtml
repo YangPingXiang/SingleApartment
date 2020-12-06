@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    @*<title>@ViewBag.Title - My ASP.NET Application</title>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+
+    <link rel="stylesheet" href="~/Content/Homepage/assets/css/main.css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>  @*分頁檔使用*@
+    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/Content/Homepage/js/jquery.min.js"></script>
+    <script src="~/Content/Homepage/js/jquery.scrolly.min.js"></script>
+    <script src="~/Content/Homepage/js/skel.min.js"></script>
+    <script src="~/Content/Homepage/js/util.js"></script>
+    <script src="~/Content/Homepage/js/main.js"></script>
+</head>
+
+<body class="subpage">
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="left">
+            <a href="#menu"><span>Menu</span></a>
+        </nav>
+        <a href="index.html" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+        <nav class="right">
+            <a href="#" class="button alt">Log in</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="generic.html">我的訂單</a>
+            </li>
+            <li>
+                <a href="elements.html">我的產品</a>
+            </li>
+            <li>
+                <a href="/Information/List">我的訊息</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer" style="height:150px">
+        <div class="inner">
+            <ul class="actions">
+                @*<li>
+                        <span class="icon fa-phone"></span>
+                        <a href="#">(000) 000-0000</a>
+                    </li>
+                    <li>
+                        <span class="icon fa-envelope"></span>
+                        <a href="#">information@untitled.tld</a>
+                    </li>
+                    <li>
+                            <span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000
+                        </li>*@
+            </ul>
+        </div>
+        <div class="copyright">
+            &copy; Untitled. Design
+            <a href="https://templated.co">TEMPLATED</a>. Images
+            <a href="https://unsplash.com">Unsplash</a>.
+        </div>
+    </footer>
+    @section Scripts {
+        @*@Scripts.Render("~/bundles/jqueryval")*@
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script>
+            $(function () {
+                $("#StartTime").datepicker();
+                $("#EndTime").datepicker();
+            })
+        </script>
+
+    }
+</body>
+
+</html>

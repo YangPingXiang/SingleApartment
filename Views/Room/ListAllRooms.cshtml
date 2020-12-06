@@ -1,0 +1,177 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+@{
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    ViewBag.Title = "ListAllRooms";
+    int num = 101;
+}
+
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Pre Loader
+    ============================================ -->
+    <div class="preloader">
+        <div class="loading-center">
+            <div class="loading-center-absolute">
+                <div class="object object_one"></div>
+                <div class="object object_two"></div>
+                <div class="object object_three"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <!--Header section start-->
+        <div class="header-section about-us">
+            <div class="bg-opacity"></div>
+            <div class="top-header sticky-header">
+                <div class="top-header-inner">
+                    <div class="container">
+                        <div class="mgea-full-width">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile menu start -->
+                <!--<div class="mobile-menu-area hidden-lg hidden-md">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <nav id="dropdown">
+                                <ul>
+                                    <li><a href="index.html">home</a></li>
+                                    <li><a href="about-us.html">About</a></li>
+                                    <li><a href="~/Room/ListAllRooms">Gallery</a></li>
+                                    <li>
+                                        <a href="#">pages</a>
+                                        <ul>
+                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="booking-information.html">Booking Information</a></li>
+                                            <li><a href="personal-information.html">Personal Information</a></li>
+                                            <li><a href="payment-information.html">Parment Information</a></li>
+                                            <li><a href="booking-done.html">Booking Done</a></li>
+                                            <li><a href="room-booking.html">Room booking</a></li>
+                                            <li><a href="news.html">News</a></li>
+                                            <li><a href="gallery.html">Gallery</a></li>
+                                            <li><a href="staff.html">Staff</a></li>
+                                            <li><a href="our-room.html">Room</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact-us.html">contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- Mobile menu end -->
+            </div>
+
+            <!--Welcome secton-->
+            <div class="welcome-section text-center ptb-110">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcurbs-inner">
+                                <div class="breadcrubs">
+                                    <h2>Rooms</h2>
+                                    <div class="breadcrubs-menu">
+                                        <ul>
+                                            <li><a href="#">Home<i class="mdi mdi-chevron-right"></i></a></li>
+                                            <li>Rooms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Header section end-->
+
+        <!-- search bar Start -->
+        <div class="search-bar animated slideOutUp">
+            <div class="table">
+                <div class="table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <div class="search-form-wrap">
+                                    <button class="close-search"><i class="mdi mdi-close"></i></button>
+                                    <form action="#">
+                                        <input type="text" placeholder="Search here..." value="Search here..." />
+                                        <button class="search-button" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- search bar End -->
+
+        <!--Room Section Title start-->
+        <div class="room-section text-center ptb-80 white_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title mb-75">
+                            <h2>Our <span>room</span></h2>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="our-room-show">
+                    <div class="row">
+                        <div class="our-room-list owl-pagination">
+                            <div class="single-room-sapce">
+
+                                @foreach (var item in Model.roomStyleViewModels)
+                                {
+
+
+                                    string picname = "房型" + num + ".jpg";
+                                    num++;
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="single-room mb-80">
+                                            <div class="room-img">
+                                                <a href="#"><img src="~/Content/Room/images/room/@picname" alt=""></a>
+                                            </div>
+                                            <div class="room-desc">
+                                                <div class="room-name">
+                                                    <h3><a href="~/Room/ListRoomDetail/@item.ID">@Html.DisplayFor(modelItem => item.roomStyleName) </a></h3>
+                                                </div>
+                                                <div class="room-rent">
+                                                    <h5>坪數：@Html.DisplayFor(modelItem => item.squarefootage)</h5><br>
+                                                    <h5>@Html.DisplayFor(modelItem => item.rent) / <span>月</span></h5>
+                                                </div>
+                                                <div class="room-book">
+                                                    <a href="~/Room/ListRoomDetail/@item.ID">More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Room Section end-->
+
+    </div>
+
+</body>
+

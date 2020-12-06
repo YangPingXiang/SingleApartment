@@ -1,0 +1,119 @@
+﻿@model IEnumerable<sln_SingleApartment.ViewModels.CMemberRegister>
+
+@{
+    ViewBag.Title = "List";
+
+}
+
+<h2>後臺管理-住戶列表</h2>
+
+<p>
+    @Html.ActionLink("新增住戶", "Register")
+</p>
+<select id="show" onchange="myselect()">
+    <option value="0">全顯示</option>
+    <option value="1">已退租</option>
+</select>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fMemberId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fMemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fSex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fBirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fCareer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fRoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fLeave)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fMemberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fBirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fCareer)
+            </td>
+            <td>
+
+                <p>
+                    <img src="@item.fImage" width="120" height="100" />
+                </p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fRoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fLeave)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.fMemberId })
+            </td>
+        </tr>
+    }
+</table>

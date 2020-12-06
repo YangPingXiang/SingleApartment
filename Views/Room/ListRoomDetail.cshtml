@@ -1,0 +1,297 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+@{
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    ViewBag.Title = "ListRoomDetail";
+}
+
+
+
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Pre Loader
+    ============================================ -->
+    <div class="preloader">
+        <div class="loading-center">
+            <div class="loading-center-absolute">
+                <div class="object object_one"></div>
+                <div class="object object_two"></div>
+                <div class="object object_three"></div>
+            </div>
+        </div>
+    </div>
+
+ 
+    @using (Html.BeginForm())
+    {
+
+    
+
+        <div class="wrapper">
+            <!--Header section start-->
+            <!--<div class="header-section about-us">
+            <div class="bg-opacity"></div>
+            <div class="top-header sticky-header">
+                <div class="top-header-inner">
+                    <div class="container">
+                        <div class="mgea-full-width">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            <!-- Mobile menu start -->
+            <!--<div class="mobile-menu-area hidden-lg hidden-md">
+                <div class="container">
+                    <div class="col-md-12">
+                        <nav id="dropdown">
+                            <ul>
+                                <li>
+                                    <a href="index.html">home</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html">About</a>
+                                </li>
+                                <li>
+                                    <a href="~/Room/ListAllRooms">Gallery</a>
+                                </li>
+                                <li>
+                                    <a href="#">pages</a>
+                                    <ul>
+                                        <li>
+                                            <a href="404.html">404</a>
+                                        </li>
+                                        <li>
+                                            <a href="booking-information.html">Booking Information</a>
+                                        </li>
+                                        <li>
+                                            <a href="personal-information.html">Personal Information</a>
+                                        </li>
+                                        <li>
+                                            <a href="payment-information.html">Parment Information</a>
+                                        </li>
+                                        <li>
+                                            <a href="booking-done.html">Booking Done</a>
+                                        </li>
+                                        <li>
+                                            <a href="room-booking.html">Room booking</a>
+                                        </li>
+                                        <li>
+                                            <a href="news.html">News</a>
+                                        </li>
+                                        <li>
+                                            <a href="gallery.html">Gallery</a>
+                                        </li>
+                                        <li>
+                                            <a href="staff.html">Staff</a>
+                                        </li>
+                                        <li>
+                                            <a href="our-room.html">Room</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="contact-us.html">contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>-->
+            <!-- Mobile menu end -->
+            <!--</div>-->
+            <!--Welcome secton-->
+            <!--<div class="welcome-section text-center ptb-110">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcurbs-inner">
+                                    <div class="breadcrubs">
+                                        <h2>About us</h2>
+                                        <div class="breadcrubs-menu">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Home<i class="mdi mdi-chevron-right"></i></a>
+                                                </li>
+                                                <li>About us</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>-->
+            <!--Header section end-->
+            <!-- search bar Start -->
+            <!--<div class="search-bar animated slideOutUp">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="search-form-wrap">
+                                        <button class="close-search"><i class="mdi mdi-close"></i></button>
+                                        <form action="#">
+                                            <input type="text" placeholder="Search here..." value="Search here..." />
+                                            <button class="search-button" type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- search bar End -->
+            <!--Room Detail start-->
+            <div class="hotel-feature pt-80 white_bg">
+                <div class="container">
+                    @foreach (var item in Model.roomViewModels)
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="feature-desc text-left">
+                                    <form method="post">
+                                        <div class="section-title mb-30">
+                                            <h2 id="roomstylename">
+                                                @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
+                                                 <input class="submit-form" type="button" id="book" value="查詢空房" />
+                                                
+                                                <input id="roomstyleId" type="hidden" value="@item.roomstyleID" name="roomstyleid" />
+                                                <input id="buildcaseId" type="hidden" value="@item.buildcaseID" name="buildcaseid" />
+                                                <input id="Rent" type="hidden" value="@item.entity_room.RoomStyle.Rent" name="rent" />
+                                                <input id="peopleCount" type="hidden" value="@item.entity_room.RoomStyle.MaxNumberOfPeople" name="peoplecount" />
+
+                                            </h2>
+
+                                            <p>房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。</p>
+                                        </div>
+
+                                        <div class="feature-item">
+                                            <ul>
+                                                <li>
+                                                    <span>1.</span> 坪數：@Html.DisplayFor(modelItem => item.entity_room.RoomStyle.SquareFootage)
+                                                </li>
+                                                <li>
+                                                    <span>2.</span> 建案：@Html.DisplayFor(modelItem => item.entity_room.BuildCase.BuildCaseName)
+                                                </li>
+                                                <li>
+                                                    <span>3.</span> 地址：@Html.DisplayFor(modelItem => item.entity_room.BuildCase.Address)
+                                                </li>
+
+                                                <li>
+                                                    <span>4.</span>可容納人數： @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.MaxNumberOfPeople)
+                                                </li>
+                                                <li>
+                                                    <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.Rent)
+                                                </li>
+                                                <li>
+                                                    <span>6.</span> 設備：
+                                                </li>
+                                                @foreach (var i in Model.facilityViewModels)
+                                                {
+                                                    <li style="margin-left:50px">
+                                                        @i.facilityName
+                                                    </li>
+
+
+                                                }
+
+                                            </ul>
+                                        </div>
+                                        <div class="">
+
+                                            <div id="mycontainer" style="border: 2px solid lightblue">
+
+                                            </div>
+
+                                            <hr>
+
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="feature-img-tab">
+                                <div class="feature-tab-desc">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="feature1">
+                                            <div class="feature-tab-inner">
+                                                <img src="~/Content/Room/images/room/房間101-1.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="feature2">
+                                            <div class="feature-tab-inner">
+                                                <img src="~/Content/Room/images/room/房間101-2.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-tab-item">
+                                    <ul class="nav" role="tablist">
+                                        <li class="active">
+                                            <a href="#feature1" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-3.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-4.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-5.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+
+                        }
+
+                </div>
+            </div>
+            <!--Room Detail end-->
+
+
+        </div>
+
+    }
+
+    <script>
+            $(function () {
+                $('#book').click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("PartialCheckRoom")",
+                        data: {
+                            roomstyleID: $("#roomstyleId").val(),
+                            buildcaseID: $("#buildcaseId").val(),
+                            peoplecount: $("#peopleCount").val(),
+                            rent: $("#Rent").val()
+                        },
+                        success: function (data) {
+                            console.log("infunction");
+                            console.log(data);
+                            $("#mycontainer").html(data);
+                        }
+                    });
+                })
+
+            });
+
+    </script>
+
+</body>
+

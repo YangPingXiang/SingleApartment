@@ -1,0 +1,1056 @@
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\sln_SingleApartment.dll.config
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csc.exe
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csc.exe.config
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csc.rsp
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csi.exe
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csi.exe.config
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\csi.rsp
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.AppContext.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Console.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.IO.Compression.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Net.Http.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.ValueTuple.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\vbc.exe
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\vbc.exe.config
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\vbc.rsp
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Antlr3.Runtime.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\EntityFramework.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\EntityFramework.SqlServer.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Helpers.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Mvc.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Optimization.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Razor.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\WebGrease.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\EntityFramework.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\EntityFramework.SqlServer.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Helpers.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Mvc.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.Razor.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Antlr3.Runtime.pdb
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\obj\Debug\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\obj\Debug\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\PagedList.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\PagedList.Mvc.dll
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\PagedList.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\PagedList.Mvc.xml
+C:\Users\Lenovo\Desktop\專題\sln_SingleApartment\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\sln_SingleApartment.dll.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csc.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csc.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csc.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csi.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csi.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\csi.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.AppContext.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Console.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.IO.Compression.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Net.Http.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.ValueTuple.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\vbc.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\vbc.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\vbc.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Antlr3.Runtime.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\EntityFramework.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\EntityFramework.SqlServer.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\PagedList.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\PagedList.Mvc.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Helpers.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Mvc.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Optimization.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Razor.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\WebGrease.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\EntityFramework.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\EntityFramework.SqlServer.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\PagedList.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\PagedList.Mvc.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Helpers.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Mvc.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.Razor.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Antlr3.Runtime.pdb
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\obj\Debug\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment\obj\Debug\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\EntityFramework.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\PagedList.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\WebGrease.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\EntityFramework.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\PagedList.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\專題 - 複製\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\EntityFramework.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\PagedList.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\WebGrease.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\EntityFramework.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\PagedList.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+C:\Users\JonyNB\Downloads\20201130\20201130\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\WebGrease.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+C:\Users\JonyNB\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\WebGrease.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+C:\Users\于晏\Downloads\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\WebGrease.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+D:\~~~資料們~~~\MSIT128_資策會\期末專題\20201201合併版\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll.config
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\sln_SingleApartment.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\sln_SingleApartment.pdb
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csc.exe
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csc.exe.config
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csc.rsp
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csi.exe
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csi.exe.config
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\csi.rsp
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.AppContext.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Console.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Net.Http.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.ValueTuple.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\vbc.exe
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\vbc.exe.config
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\vbc.rsp
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Antlr3.Runtime.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\EntityFramework.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Newtonsoft.Json.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\PagedList.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\PagedList.Mvc.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Helpers.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Mvc.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Optimization.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Razor.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\WebGrease.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\EntityFramework.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\EntityFramework.SqlServer.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\PagedList.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\PagedList.Mvc.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Helpers.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Mvc.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Optimization.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.Razor.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\System.Web.WebPages.Razor.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Newtonsoft.Json.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Antlr3.Runtime.pdb
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.dll
+C:\Users\Louis\Downloads\20201202_SingleApartMent\sln_SingleApartment - 複製\obj\Debug\sln_SingleApartment.pdb
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.dll.config
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.pdb
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.exe
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.exe.config
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.rsp
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.exe
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.exe.config
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.rsp
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.AppContext.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Console.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.Compression.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Net.Http.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Net.Sockets.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.ValueTuple.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XPath.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.exe
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.exe.config
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.rsp
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\VBCSCompiler.exe
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Antlr3.Runtime.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.SqlServer.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Newtonsoft.Json.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.Mvc.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Helpers.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Mvc.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Optimization.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Razor.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Deployment.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Razor.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\WebGrease.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.SqlServer.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.Mvc.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Helpers.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Mvc.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Optimization.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Razor.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Deployment.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Razor.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Newtonsoft.Json.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Antlr3.Runtime.pdb
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.dll
+C:\Users\eveya\OneDrive\桌面\期末專題\整合ver\1202_Ver\20201202_SingleApartMent\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.pdb
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.dll.config
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\sln_SingleApartment.pdb
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.exe
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.exe.config
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csc.rsp
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.exe
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.exe.config
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\csi.rsp
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Managed.Core.targets
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.AppContext.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Collections.Immutable.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Console.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Globalization.Calendars.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.Compression.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.FileSystem.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Net.Http.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Net.Sockets.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Reflection.Metadata.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.ValueTuple.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XmlDocument.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XPath.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.exe
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.exe.config
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\vbc.rsp
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\VBCSCompiler.exe
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\roslyn\VBCSCompiler.exe.config
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Antlr3.Runtime.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.SqlServer.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.Web.Infrastructure.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Newtonsoft.Json.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.Mvc.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Helpers.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Mvc.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Optimization.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Razor.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Deployment.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Razor.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\WebGrease.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\EntityFramework.SqlServer.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\PagedList.Mvc.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Helpers.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Mvc.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Optimization.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.Razor.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Deployment.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\System.Web.WebPages.Razor.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Newtonsoft.Json.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Antlr3.Runtime.pdb
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\EntityFramework.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Helpers.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Mvc.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Optimization.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.Razor.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.dll
+E:\資策會期末\final version\整合\+(20201203)悅\sln_SingleApartment - 複製 - 複製 (2)\obj\Debug\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\sln_SingleApartment.dll.config
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\sln_SingleApartment.pdb
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csc.exe
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csc.exe.config
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csc.rsp
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csi.exe
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csi.exe.config
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\csi.rsp
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.AppContext.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Console.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.IO.Compression.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Net.Http.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.ValueTuple.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\vbc.exe
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\vbc.exe.config
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\vbc.rsp
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Antlr3.Runtime.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\EntityFramework.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\EntityFramework.SqlServer.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\PagedList.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\PagedList.Mvc.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Helpers.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Mvc.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Optimization.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Razor.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\WebGrease.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\EntityFramework.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\EntityFramework.SqlServer.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\PagedList.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\PagedList.Mvc.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Helpers.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Mvc.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.Razor.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Antlr3.Runtime.pdb
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\obj\Debug\sln_SingleApartment.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\obj\Debug\sln_SingleApartment.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\obj\Debug\sln_SingleApartment.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\obj\Debug\sln_SingleApartment.dll
+C:\Users\Lenovo\Desktop\1206\20201202_SingleApartMent\sln_SingleApartment_1204Ver\obj\Debug\sln_SingleApartment.pdb

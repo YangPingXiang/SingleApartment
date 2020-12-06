@@ -1,0 +1,69 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
+@{
+    ViewBag.Title = "BookingDone";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+<!--Room booking start-->
+<div class="room-booking ptb-80 white_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title mb-80 text-center">
+                    <h2>Booking <span>rooms</span></h2>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="booking-rooms-tab">
+                    <ul class="nav" role="tablist">
+                        <li class="active"><a href="#done" data-toggle="tab"><span>Booking Done</span></a></li>
+                    </ul>
+                </div>
+                <div class="service-tab-desc text-left mt-60">
+                    <div class="tab-content">                                               
+                        <div role="tabpanel" class="tab-pane active" id="done">
+                            <div class="booking-done">
+                                <div class="booking-done-table table-responsive text-center">
+                                    <table class="table">
+                                        @foreach (var items in Model.roomStyleViewModels)
+                                        {
+                                            <tr class="row3">
+                                                <td><p> 房間名稱 </p></td>
+                                                <td></td>
+                                                <td></td>                                               
+                                                <td><p>@Html.DisplayFor(modelitem => items.roomStyleName)</p></td>
+                                            </tr>
+                                            <tr class="row3">
+                                                <td><p> 房間租金 </p></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><p>@Html.DisplayFor(modelitem => items.rent)</p></td>
+                                            </tr>
+                                            <tr class="row3">
+                                                <td><p> 房間坪數 </p></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><p>@Html.DisplayFor(modelitem => items.squarefootage)</p></td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                                <div class="booking-done-description">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                                    <div class="succesfully">
+                                        <strong>Your reservation was succefully submited!!</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Room booking end-->

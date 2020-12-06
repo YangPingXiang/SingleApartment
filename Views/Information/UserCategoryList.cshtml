@@ -1,0 +1,250 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<sln_SingleApartment.ViewModel.CMemberInformationCategory>
+
+@{
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
+    ViewBag.Title = "UserCategoryList";
+}
+
+    <!-- Main -->
+    <section id="main" class="wrapper" style="padding:3em">
+        <!--style="border:solid 1px;border-color:black"-->
+        <div class="inner">
+            <header class="align-center">
+                <h1 style="font-size:2em;font-weight:700;line-height:1.3">個人訊息-類別</h1>
+                @*<div id="timer"></div>*@
+            </header>
+            @*=================================================================*@
+
+            <p>
+                @*<button onclick="showEditForm(@item.InformationCategoryID, '@item.InformationCategoryName')" class="btn" style="height:unset" flag="true">修改</button>*@
+                @*@Html.ActionLink("新增", "Create")*@
+                <button onclick="showCreateForm()" class="btn btn-info" style="height:unset" flag="true">新增</button>
+            </p>
+            <table class="alt table-hover" style="width:800px;margin-left:0px">
+                <thead>
+                    <tr>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().MemberCategoryID)
+                        </th>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().MemberCategoryName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberCategoryID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberCategoryName)
+                        </td>
+                        <td>
+                            @functions{
+                                //傳送表單資料
+                                string getJsonString(sln_SingleApartment.ViewModel.CMemberInformationCategory category)
+                                {
+                                    string str = "";
+                                    str = "{" + $"'InformationCategoryID':'{category.MemberCategoryID}','InformationCategoryName':'{category.MemberCategoryName}'" + "}";
+
+                                    return str;
+                                }
+                            }
+                            <button onclick="showEditForm(@getJsonString(item));" class="btn btn-info" style="height:unset" flag="true">修改</button> |
+                            @Html.ActionLink("刪除", "CategoryDelete", new { member_id = item.MemberID, category_id = item.MemberCategoryID }, new { @class = "deletebtn btn btn-info" })
+                            @*<button onclick="deleteCategory(@item.InformationCategoryID);" class="btn btn-info" style="height:unset" flag="true">刪除</button> |*@
+                        </td>
+                    </tr>
+                }
+            </table>
+            @Html.PagedListPager(Model, Page => Url.Action("UserCategoryList", new { Page }))
+            <br />
+
+            @*action="~/BackStage/Edit"*@
+            <form method="post" id="editForm">
+                <div class="form-horizontal">
+                    <div>
+                        <h4 style="font-weight:bold;color:#46b8da" id="idCreateorEdit">修改</h4>
+                    </div>
+                    <hr />
+                    @*<p>
+                            訊息類別編號
+                            <br />
+                            <input type="text" name="InformationCategoryID" id="e_InformationCategoryID" />
+                        </p>*@
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="font-size:unset">訊息類別編號</label>
+                        <div class="col-md-10">
+                            <input type="text" name="MemberCategoryID" id="e_InformationCategoryID" class="form-control" style="width:400px" onblur="checkEmpty();" />
+                            <span id="idsp1"></span>
+                        </div>
+                    </div>
+                    @*<p>   訊息類別名稱
+                            <br />
+                            <input type="text" name="InformationCategoryName" id="e2_InformationCategoryName" />
+                        </p>*@
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="font-size:unset">訊息類別名稱</label>
+                        <div class="col-md-10">
+                            <input type="text" name="MemberCategoryName" id="e_InformationCategoryName" required="required" class="form-control" style="width:400px" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @*<input type="submit" value="修改" class="btn btn-default" />*@
+                            <input type="submit" value="新增" id="idCreate" onclick='this.form.action="@Url.Action("CategoryCreate")"' class="btn btn-info" style="background-color:#5bc0de;" />
+                            <input type="submit" value="修改" id="idEdit" onclick='this.form.action="@Url.Action("CategoryEdit")"' class="btn btn-info" style="background-color:#5bc0de;" />
+                            @*<button id="btnEdit" class="btn btn-info" style="height:unset;">修改</button>*@
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            @*=================================================================*@
+            @*<p> Aenean iaculis, neque sed preti</p>*@
+        </div>
+    </section>
+
+    <script>
+        $("#idEdit").submit(function () {
+            $("#editForm").hide();    //將 form 隱藏
+        });
+        $("#idCreate").submit(function () {
+            $("#editForm").hide();    //將 form 隱藏
+        });
+
+        //no use
+        $("#btnEdit").click(function () {
+            //var obj = $("#e_InformationCategoryID");
+            //console.log(obj);
+            //console.log(obj.val());
+            var id = $("#e_InformationCategoryID").val();
+            var name = $("#e_InformationCategoryName").val();
+            //console.log(id);
+            //console.log(name);
+
+            $.ajax({
+                url: "/Information/CategoryEdit_JS",
+                type: "POST",
+                data: {
+                    //傳遞參數
+                    category_id: id,
+                    category_name: name
+                },
+                success: function (data) {
+                    //$(".td_id").append(data);
+                    //$("#btnEdit").val("okkokoko");
+                    //重新查詢
+                    queryData();
+                }
+            });
+        });
+
+        //no use
+        function queryData() {
+            console.log("dddd");
+
+            //第一個 ajax 是List的分頁資料
+            $.ajax({
+                type: "POST",
+                url: "/Information/UserCategoryList",
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    //$("#container").html(data);
+                    console.log("ffff");
+                }
+            });
+        }
+
+        $(".deletebtn.btn.btn-info").click(function () {
+            //return confirm('確定要刪除嗎?');
+            var msg = "您真的確定要刪除嗎？";
+            if (confirm(msg) == true) {
+                console.log('update_status=Y');
+                return true;
+            }
+            else {
+                console.log('update_status=N');
+                return false;
+                //window.event.preventDefault();  //取消事件  //一樣有效的語法
+            }
+        });
+
+        //必要欄位不可空白檢查
+        function checkEmpty() {
+            //console.log($("#e_InformationCategoryID").val());
+            let dataVal = $("#e_InformationCategoryID").val();
+
+            //第一重檢查 不可空白檢查
+            if (dataVal == "") {
+                $("#idsp1").text("欄位不可空白!");
+                $("#e_InformationCategoryID").focus();
+            }
+            else {
+                //第二重檢查 檢查必須是數字
+                let numFlag = isNotANumber(dataVal)
+                console.log(numFlag);
+                if (numFlag == false) {
+                    $("#idsp1").text("欄位必需為數字!");
+                    $("#e_InformationCategoryID").focus();
+                }
+                else
+                    $("#idsp1").text("");
+            }
+        }
+
+        function isNotANumber(inputData) {
+            //isNaN(inputData)不能判斷空串或一個空格
+            //如果是一個空串或是一個空格，而isNaN是做為數字0進行處理的，而parseInt與parseFloat是返回一個錯誤訊息，這個isNaN檢查不嚴密而導致的。
+            if (parseInt(inputData).toString() == "NaN") {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //這段程式不能寫在 $(function () {} 這裡面, 否則無效
+        function showCreateForm() {
+            $("#idCreateorEdit").text("訊息類別-新增");
+            //$("#createForm").show();
+            $("#editForm").show();
+            $("#e_InformationCategoryID").attr('readonly', false);
+            $("#e_InformationCategoryID").val("");
+            $("#e_InformationCategoryName").val("");
+            $("#e_InformationCategoryID").focus();
+            $("#idCreate").show();
+            $("#idEdit").hide();
+        }
+
+        //function showCreateForm() {
+        //    $("#createForm").show();
+        //    $("#editForm").hide();
+        //    $("#c_InformationCategoryID").focus();
+        //}
+        function showEditForm(obj) {
+            $("#idCreateorEdit").text("訊息類別-修改");
+            //$("#createForm").hide();
+            $("#editForm").show();
+            //console.log(obj);
+            $("#e_InformationCategoryID").attr('readonly', true);
+            $("#e_InformationCategoryID").val(obj.InformationCategoryID);
+            $("#e_InformationCategoryName").val(obj.InformationCategoryName);
+            $("#e_InformationCategoryName").focus();
+            $("#idCreate").hide();
+            $("#idEdit").show();
+        }
+
+        //一啟動馬上執行
+        $(function () {
+            //$("#createForm").hide();  //將 form 新增功能隱藏
+            $("#editForm").hide();    //將 form 修改功能隱藏
+
+        });
+    </script>
+

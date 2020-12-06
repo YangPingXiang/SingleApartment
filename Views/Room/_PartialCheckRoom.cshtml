@@ -1,0 +1,22 @@
+﻿
+@model List<sln_SingelApartment.ViewModels.CRoomViewModel>
+
+@foreach (var item in Model)
+{ 
+    <div class="news-desc" style="background-color:dea">
+        <h3 class="news-title">
+            <a href="#">
+                @Html.DisplayFor(modelItem => item.roomname)
+            </a>
+        </h3>
+        <div class="news-action">
+            <div class="read-more">
+                <a href="~/Room/BookingInfo/@item.roomID">Book Now</a>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
