@@ -1,0 +1,96 @@
+﻿@model IEnumerable<sln_SingleApartment.Models.Product>
+
+    @{
+        ViewBag.Title = "ProductList";
+        Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    }
+
+    @functions
+   {
+        public string DisplayImage(byte[] imageData)
+        {
+            string imageSrc = null;
+            if (imageData != null)
+            {
+                string base64Str = Convert.ToBase64String(imageData);
+                imageSrc = "data:img/jpg;base64," + base64Str;
+            }
+            return imageSrc;
+        }
+    }
+
+    <h2>後臺管理商品列表</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div class="col-md-offset-0 col-md-10">
+
+                @Html.TextBox("txtKeyword")
+                <input type="submit" value="查詢" class="btn btn-default" />
+
+
+            </div>
+
+        </div>
+
+    }
+    <p>
+        @Html.ActionLink("新增上架商品", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductSubCategoryID)
+            </th>
+            <th>
+                商品名稱
+            </th>
+            <th>
+                商品單價
+            </th>
+            <th>
+                停止販售
+            </th>
+            <th>
+                販售數量
+            </th>
+            <th>
+                庫存
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSubCategoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+
+                    <img src="@DisplayImage(item.ProductPictures.FirstOrDefault().ProductPicture)" width="100px" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discontinued)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sales)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { onclick = "return confirm('確定修改商品嗎?')" }) |
+
+                    @*@Html.ActionLink("刪除", "Delete", new { id = item.ProductID}, new { onclick = "return confirm('確定刪除商品?')" })*@
+                </td>
+            </tr>
+        }
+
+    </table>

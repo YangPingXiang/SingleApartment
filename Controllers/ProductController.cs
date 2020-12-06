@@ -446,6 +446,42 @@ namespace sln_SingleApartment.Controllers
 
         //#endregion
 
+        //結帳畫面{12.6)
+        public ActionResult CheckOut(int ID)
+        {
+            using (SingleApartmentEntities db = new SingleApartmentEntities())
+            {
+                var table = (from p in db.OrderDetails
+                             where p.OrderID == ID
+                             select p).ToList();
+
+
+                //CUser theUser = new CUser();
+                ////===================================================================
+                //var user = Session[CDictionary.welcome] as CMember;
+                ////必須先登入會員 
+                //if (user != null)
+                //{
+                //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
+                //    user.fPhone= Request.Form["TXTPHONE"];
+                //    user.fEmail = Request.Form["TXTEMAIL"];
+                //    //user.fBirthDate =Request.Form[""];
+                //}
+                //===================================================================
+
+
+                if (table.Count == 0)
+                {
+                    return RedirectToAction("Home");
+                }
+                else
+                {
+
+                    return View(table);
+                }
+
+            }
+        }
 
     }
 }
