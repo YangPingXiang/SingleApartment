@@ -59,7 +59,9 @@ ehthumbs.db
 Icon?
 Thumbs.db
 [Bb]in
+[Bb]in\
 [Oo]bj
+[Oo]bj\
 [Tt]est[Rr]esults
 *.suo
 *.user
