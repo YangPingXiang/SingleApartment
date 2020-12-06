@@ -956,6 +956,12 @@
     <Content Include="Views\Room\_PartialCheckRoom.cshtml" />
     <Content Include="Views\Product\_PartialProduct_TabPane.cshtml" />
     <Content Include="Views\Product\_PartialShoppingCart.cshtml" />
+    <Content Include="Views\Product\CheckOut.cshtml" />
+    <Content Include="Views\ProductBack\BackupList.cshtml" />
+    <Content Include="Views\ProductBack\BackupOrderList.cshtml" />
+    <Content Include="Views\ProductBack\Create.cshtml" />
+    <Content Include="Views\ProductBack\Edit.cshtml" />
+    <Content Include="Views\ProductBack\ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
