@@ -291,6 +291,20 @@ namespace sln_SingelApartment.Controllers
             return PartialView("_PartialCheckRoom");
         }
 
+        public ActionResult ListAllRoomStyle()
+        {
+            List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
+            var all = from rs in dbSA.RoomStyle
+                      select rs;
+
+            foreach (var item in all)
+            {
+                roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
+
+            }
+
+            return View(roomstyle_VM_lt);
+        }
 
         // RoomBooking
         public ActionResult BookingInfo(int id, string MemberName)

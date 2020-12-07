@@ -965,6 +965,7 @@
     <Content Include="Views\ProductBack\Edit.cshtml" />
     <Content Include="Views\ProductBack\ProductList.cshtml" />
     <Content Include="Views\Room\MyRoom.cshtml" />
+    <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

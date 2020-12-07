@@ -1,0 +1,76 @@
+﻿@model List<sln_SingelApartment.ViewModels.CRoomStyleViewModel>
+@{
+    ViewBag.Title = "ListAllRoomStyle";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+<body>
+
+
+    <div class="our-news text-center ptb-80 white_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-80">
+                        <h2>our <span>RoomStyles</span></h2>
+                        <p>窩居奸商在在每一個建案都有以下5種房型</p>
+                    </div>
+                </div>
+            </div>
+            <div class="news-list">
+                <div class="row">
+                    <div class="our-news-list owl-pagination">
+                        <div class="single-view_post">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-12 pb-80">
+                                    <div class="news-inner">
+                                        @{
+                                            var fiilename = "房型_" + item.roomStyleName + ".jpg";
+                                        }
+                                        <div class="news-img">
+                                            <img src="~/Content/Room/images/room/@fiilename" alt="@item.roomStyleName
+                                                 ">
+                                            <div class="news-post">
+                                                @*評價*@
+                                                <a href="#" class="comment"><span><i class="mdi mdi-comment-processing-outline"></i></span> 20</a>
+                                                <div class="news-views">
+                                                    <a href="#"><span><i class="mdi mdi-heart"></i></span>40</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-desc">
+                                            <h3 class="news-title">
+                                                <a href="#">
+                                                    @item.roomStyleName
+                                                </a>
+                                            </h3>
+                                            <p class="news_desc"> @item.squarefootage </p>
+                                            <div class="news-action">
+                                                <div class="read-more">
+                                                    <a href="@Url.Action("ListRoomDetail","Room",new { id = item.ID })">more</a>
+                                                </div>
+                                                <div class="news-share">
+                                                    <p>Share:</p>
+                                                    <a href="#"><i class="mdi mdi-facebook"></i></a>
+                                                    <a href="#"><i class="mdi mdi-rss"></i></a>
+                                                    <a href="#"><i class="mdi mdi-google-plus"></i></a>
+                                                    <a href="#"><i class="mdi mdi-instagram"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+
+
