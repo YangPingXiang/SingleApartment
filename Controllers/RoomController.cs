@@ -306,6 +306,20 @@ namespace sln_SingelApartment.Controllers
             return View(roomstyle_VM_lt);
         }
 
+        public ActionResult BuildcaseInfo(string buildcaseID)
+        {
+            List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
+            var getabuildcase = from b in dbSA.BuildCase
+                                where (b.ID == buildcaseID)
+                                select new { b = b };
+            var test = getabuildcase.ToList();
+            foreach (var item in getabuildcase)
+            {
+                buildcase_VM_lt.Add(new CBuildCaseViewModel() { entity_buildcase = item.b });
+            }
+            return View(buildcase_VM_lt);
+        }
+
         // RoomBooking
         public ActionResult BookingInfo(int id, string MemberName)
         {

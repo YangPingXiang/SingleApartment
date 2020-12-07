@@ -1,0 +1,77 @@
+﻿@model List<sln_SingelApartment.ViewModels.CBuildCaseViewModel>
+
+@{
+    ViewBag.Title = "BuildcaseInfo";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+
+<body>
+
+    @{
+        int num = 1;
+        num++;
+
+    }
+
+    <div class="hotel-feature pt-80 white_bg" style="margin-top: 20px; margin-bottom:30px; ">
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <div class="row" style="margin-top:20px; ">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="feature-desc text-left">
+                            <div class="section-title mb-30" style="text-align:center;">
+                                <h2>
+                                    <span>
+                                        @item.buildcasename
+
+                                    </span>
+                                </h2>
+
+                            </div>
+
+                            <div class="feature-item" style=" margin-top:30px; padding-top:20px;  font-size:20px;">
+
+                                <ol style="list-style-type:none; color:saddlebrown">
+                                    <li style="margin:10px;">
+                                        <span>地址:</span>  @item.address
+                                    </li>
+                                    <li style="margin:10px;">
+                                        <span>建造時間:</span>  @item.buildtime
+                                    </li>
+                                    <li style="margin:10px;">
+                                        <span>總樓層:</span> @item.totalfloor
+                                    </li>
+
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="feature-img-tab">
+                            <div class="feature-tab-desc">
+                                <div class="tab-content">
+                                    @{
+                                        var filename = item.buildcasename + ".jpg";
+                                    }
+                                    <div role="tabpanel" class="tab-pane active" id="feature1">
+                                        <div class="feature-tab-inner">
+                                            <img src="~/Content/Room/images/services/@filename" alt="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+
+</body>
+

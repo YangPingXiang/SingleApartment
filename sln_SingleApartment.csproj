@@ -766,11 +766,11 @@
     <Content Include="Content\Room\images\room\room2.jpg" />
     <Content Include="Content\Room\images\room\room3.jpg" />
     <Content Include="Content\Room\images\room\small-room.jpg" />
-    <Content Include="Content\Room\images\room\房型1.jpg" />
-    <Content Include="Content\Room\images\room\房型2.jpg" />
-    <Content Include="Content\Room\images\room\房型3.jpg" />
-    <Content Include="Content\Room\images\room\房型4.jpg" />
-    <Content Include="Content\Room\images\room\房型5.jpg" />
+    <Content Include="Content\Room\images\room\房型_北歐風雙人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_單身套房.jpg" />
+    <Content Include="Content\Room\images\room\房型_工業風三人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨家庭房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨甜蜜套房.jpg" />
     <Content Include="Content\Room\images\room\房間101-1.jpg" />
     <Content Include="Content\Room\images\room\房間101-2.jpg" />
     <Content Include="Content\Room\images\room\房間101-3.jpg" />
@@ -966,6 +966,7 @@
     <Content Include="Views\ProductBack\ProductList.cshtml" />
     <Content Include="Views\Room\MyRoom.cshtml" />
     <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
+    <Content Include="Views\Room\BuildcaseInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
