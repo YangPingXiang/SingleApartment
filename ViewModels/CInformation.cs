@@ -41,6 +41,15 @@ namespace sln_SingleApartment.ViewModel
         [DisplayName("已讀否")]
         public string Read_YN { get { return this.information_entity.Read_YN; } }
 
+        [DisplayName("使用者ID")]
+        public int MemberID { get { return this.information_entity.MemberID; } }
+
+        [DisplayName("服務ID")]
+        public int? JobID { get { return this.information_entity.JobID; } }
+
+        [DisplayName("已執行期間")]
+        public string JobPeriod { get { return this.information_entity.JobPeriod; } }
+
         [DisplayName("系統分類")]
         public string InformationCategoryName { get; set; }
 

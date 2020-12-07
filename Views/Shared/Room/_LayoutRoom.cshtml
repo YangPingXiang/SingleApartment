@@ -77,10 +77,16 @@
                                     <div class="header-top ptb-10">
                                         <div class="adresses">
                                             <div class="phone">
-                                                <p>call <span>+012 345 678 102 </span></p>
+                                                <p>
+                                                    電話
+                                                    <span>(02)6631-8168 </span>
+                                                </p>
                                             </div>
                                             <div class="email">
-                                                <p>Email: <span>info@example.com</span></p>
+                                                <p>
+                                                    Email:
+                                                    <span>singleapart@gmail.com</span>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="social-links">
@@ -95,25 +101,31 @@
                                         <div class="menu-list hidden-sm hidden-xs">
                                             <nav>
                                                 <ul>
-                                                    <li><a href="index.html">home</a></li>
-                                                    <li><a href="about-us.html">About</a></li>
-                                                    <li><a href="gallery.html">Gallery</a></li>
                                                     <li>
-                                                        <a href="#">pages<i class="fa fa-angle-down"></i></a>
-                                                        <ul class="dropdown_menu">
-                                                            <li><a href="404.html">404</a></li>
-                                                            <li><a href="booking-information.html">Booking Information</a></li>
-                                                            <li><a href="personal-information.html">Personal Information</a></li>
-                                                            <li><a href="payment-information.html">Parment Information</a></li>
-                                                            <li><a href="booking-done.html">Booking Done</a></li>
-                                                            <li><a href="room-booking.html">Room booking</a></li>
-                                                            <li><a href="news.html">News</a></li>
-                                                            <li><a href="gallery.html">Gallery</a></li>
-                                                            <li><a href="staff.html">Staff</a></li>
-                                                            <li><a href="our-room.html">Room</a></li>
-                                                        </ul>
+                                                        <a href="@Url.Action("Searching","Room")">查詢</a>
                                                     </li>
-                                                    <li><a href="contact-us.html">Contact</a></li>
+                                                    <li>
+                                                        <a href="#buildcases">我們的建案</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("ListAllRoomStyle","Room")">所有房型</a>
+                                                    </li>
+                                                    @*<li>
+                                                            <a href="#">pages<i class="fa fa-angle-down"></i></a>
+                                                            <ul class="dropdown_menu">
+                                                                <li><a href="404.html">404</a></li>
+                                                                <li><a href="booking-information.html">Booking Information</a></li>
+                                                                <li><a href="personal-information.html">Personal Information</a></li>
+                                                                <li><a href="payment-information.html">Parment Information</a></li>
+                                                                <li><a href="booking-done.html">Booking Done</a></li>
+                                                                <li><a href="room-booking.html">Room booking</a></li>
+                                                                <li><a href="news.html">News</a></li>
+                                                                <li><a href="gallery.html">Gallery</a></li>
+                                                                <li><a href="staff.html">Staff</a></li>
+                                                                <li><a href="our-room.html">Room</a></li>
+                                                            </ul>
+                                                        </li>*@
+                                                    @*<li><a href="contact-us.html"></a></li>*@
                                                 </ul>
                                             </nav>
                                         </div>
@@ -132,25 +144,31 @@
                         <div class="col-md-12">
                             <nav id="dropdown">
                                 <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li><a href="about-us.html">About</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
                                     <li>
-                                        <a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="booking-information.html">Booking Information</a></li>
-                                            <li><a href="personal-information.html">Personal Information</a></li>
-                                            <li><a href="payment-information.html">Parment Information</a></li>
-                                            <li><a href="booking-done.html">Booking Done</a></li>
-                                            <li><a href="room-booking.html">Room booking</a></li>
-                                            <li><a href="news.html">News</a></li>
-                                            <li><a href="gallery.html">Gallery</a></li>
-                                            <li><a href="staff.html">Staff</a></li>
-                                            <li><a href="our-room.html">Room</a></li>
-                                        </ul>
+                                        <a href="@Url.Action("Searching","Room")">查詢</a>
                                     </li>
-                                    <li><a href="contact-us.html">contact</a></li>
+                                    <li>
+                                        <a href="#buildcases">我們的建案</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("ListAllRoomStyle","Room")">所有房型</a>
+                                    </li>
+                                    @*<li>
+                                            <a href="#">pages</a>
+                                            <ul>
+                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="booking-information.html">Booking Information</a></li>
+                                                <li><a href="personal-information.html">Personal Information</a></li>
+                                                <li><a href="payment-information.html">Parment Information</a></li>
+                                                <li><a href="booking-done.html">Booking Done</a></li>
+                                                <li><a href="room-booking.html">Room booking</a></li>
+                                                <li><a href="news.html">News</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                                <li><a href="staff.html">Staff</a></li>
+                                                <li><a href="our-room.html">Room</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact-us.html">contact</a></li>*@
                                 </ul>
                             </nav>
                         </div>
@@ -158,7 +176,7 @@
                 </div>
                 <!-- Mobile menu end -->
             </div>
-           
+
         </div>
         <!--Header section end-->
         <!-- search bar Start -->
@@ -171,7 +189,7 @@
                                 <div class="search-form-wrap">
                                     <button class="close-search"><i class="mdi mdi-close"></i></button>
                                     <form action="#">
-                                        <input type="text" placeholder="Search here..." value="Search here..." />
+                                        <input type="text" placeholder="搜尋關鍵字..." value="搜尋關鍵字..." />
                                         <button class="search-button" type="submit">
                                             <i class="fa fa-search"></i>
                                         </button>
@@ -187,101 +205,88 @@
 
         @RenderBody();
 
-       
+
         <!--Footer start -->
         <div class="footer ptb-100">
             <div class="footer-bg-opacity"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="single-footer mt-0">
-                            <div class="logo">
-                                <img src="images/logo/logo.png" alt="">
-                            </div>
-                            <div class="f-adress">
-                                <p><span>Address:</span> ur address goes here,street Crossroad123.</p>
-                            </div>
-                            <div class="hotel-contact">
-                                <p><span>phone:</span> 99 55 88586 5478.</p>
-                                <p><span>Email:</span>info@example.com</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-3 hidden-sm col-xs-6">
                         <div class="single-footer">
                             <h3>Quick Links</h3>
                             <div class="quick-item">
                                 <ul>
-                                    <li><a href="#">Rooms</a></li>
-                                    <li><a href="#">Food & Drinks</a></li>
-                                    <li><a href="#">Manifesto</a></li>
-                                    <li><a href="#">Beach Venues</a></li>
-                                    <li><a href="#">Wellness</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li>
+                                        <a href="#buildcases">我們的建案</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("ListAllRoomStyle","Room")">所有房型</a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="single-footer">
-                            <h3>Get in touch</h3>
-                            <div class="get-touch">
-                                <p>There are many varins of passages of Lorem Ipsum available, but</p>
-                                <div class="get-conatct">
-                                    <form action="#">
-                                        <input type="text" value="Your name">
-                                        <input type="text" value="Your email">
-                                        <button type="submit">Send</button>
-                                    </form>
-                                </div>
+                    <div class="col-md-5 " style="margin-top:50px">
+                        <div class="single-footer mt-0">
+
+                            <div class="hotel-contact">
+                                <p>地址:06台北市大安區復興南路一段390號2樓</p>
+                                <p>
+                                    <span>電話:</span>(02)6631-8168
+                                </p>
+                                <p>
+                                    <span>Email:</span>singleapart@gmail.com
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="single-footer">
-                            <h3>instagram</h3>
-                            <div class="instagram-post">
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/ins-1.jpg" alt=""></a>
-                                </div>
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/ins-2.jpg" alt=""></a>
-                                </div>
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/ins-3.jpg" alt=""></a>
-                                </div>
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/ins-4.jpg" alt=""></a>
-                                </div>
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/ins-5.jpg" alt=""></a>
-                                </div>
-                                <div class="single-post">
-                                    <a href="#"><img src="images/instagram/img-6.jpg" alt=""></a>
+
+
+                    @*<div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="single-footer">
+                                <h3>Get in touch</h3>
+                                <div class="get-touch">
+                                    <p>There are many varins of passages of Lorem Ipsum available, but</p>
+                                    <div class="get-conatct">
+                                        <form action="#">
+                                            <input type="text" value="Your name">
+                                            <input type="text" value="Your email">
+                                            <button type="submit">Send</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="single-footer">
+                                <h3>instagram</h3>
+                                <div class="instagram-post">
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/ins-1.jpg" alt=""></a>
+                                    </div>
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/ins-2.jpg" alt=""></a>
+                                    </div>
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/ins-3.jpg" alt=""></a>
+                                    </div>
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/ins-4.jpg" alt=""></a>
+                                    </div>
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/ins-5.jpg" alt=""></a>
+                                    </div>
+                                    <div class="single-post">
+                                        <a href="#"><img src="images/instagram/img-6.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
                 </div>
             </div>
         </div>
-        <div class="copyright ptb-20 white_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-8 col-xs-12">
-                        <p>Copyright© CHONDO 2018.All right reserved.Created by <a href="https://freethemescloud.com/"> Free themes Cloud</a></p>
-                    </div>
-                    <div class="col-md-6 col-sm-4 col-xs-12">
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="#">Privacy policy</a></li>
-                                <li><a href="#">Term of use</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- Footer end -->
     </div>
 
@@ -313,7 +318,7 @@
     <!--isotope js-->
     <script src="~/Content/Room/js/isotope.pkgd.min.js"></script>
     <script src="~/Content/Room/js/packery-mode.pkgd.min.js"></script>
-   
+
     <!-- Owl carousel Js -->
     <script src="~/Content/Room/js/owl.carousel.min.js"></script>
     <!--Magnificant js-->

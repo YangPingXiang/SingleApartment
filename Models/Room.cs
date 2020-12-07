@@ -18,16 +18,32 @@ namespace sln_SingleApartment.Models
         public Room()
         {
             this.Lease = new HashSet<Lease>();
+            this.Picture = new HashSet<Picture>();
+            this.RoomFacilities = new HashSet<RoomFacilities>();
+            this.RoomFavorite = new HashSet<RoomFavorite>();
         }
     
         public int ID { get; set; }
         public string RoomName { get; set; }
         public Nullable<int> RoomStyleID { get; set; }
+        public string RoomType { get; set; }
         public string BuildCaseID { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> Rent { get; set; }
+        public Nullable<int> SquareFootage { get; set; }
+        public Nullable<int> RoomPictureID { get; set; }
+        public Nullable<int> RoomFacilityID { get; set; }
+        public Nullable<int> Floor { get; set; }
     
         public virtual BuildCase BuildCase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lease> Lease { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Picture> Picture { get; set; }
         public virtual RoomStyle RoomStyle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomFacilities> RoomFacilities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomFavorite> RoomFavorite { get; set; }
     }
 }

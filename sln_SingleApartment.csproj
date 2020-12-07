@@ -136,10 +136,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
-    <Compile Include="Controllers\BackController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BackInformationController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\ProductBackController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
+    <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CUser.cs" />
     <Compile Include="Models\Discount.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
@@ -180,6 +181,9 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InformationContent.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobService.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lease.cs">
@@ -242,6 +246,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SingleApartmentModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubActivity.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tActivityCart.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -259,6 +266,7 @@
     <Compile Include="ViewModels\CFavoriteList.cs" />
     <Compile Include="ViewModels\CInformation.cs" />
     <Compile Include="ViewModels\CInformationCategory.cs" />
+    <Compile Include="ViewModels\CJobService.cs" />
     <Compile Include="ViewModels\CLeaseViewModel.cs" />
     <Compile Include="ViewModels\CLogIn.cs" />
     <Compile Include="ViewModels\CMember.cs" />
@@ -283,6 +291,7 @@
     <Content Include="Content\38fe7226-8e08-4658-ac3d-7263e54a25af.jpg" />
     <Content Include="Content\455f933a-af9d-4812-a783-6f7ac2e83ee6.jpg" />
     <Content Include="Content\54d40b0f-8afd-47da-a492-64c53505c002.jpg" />
+    <Content Include="Content\57a0021b-b6d9-477a-aea1-a553e58e68fa.jpg" />
     <Content Include="Content\85f8bed3-210c-468e-b66e-e123b093dad9.jpg" />
     <Content Include="Content\9322173d-e728-46a6-aadb-d0770e1ac84f.jpg" />
     <Content Include="Content\9e575cd1-38e6-40d2-b2d9-e23bf24b1459.jpg" />
@@ -292,10 +301,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\assets\css\font-awesome.min.css" />
     <Content Include="Content\HomePage\assets\css\main.css" />
-    <Content Include="Content\HomePage\assets\elements.html" />
     <Content Include="Content\HomePage\assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\HomePage\assets\generic.html" />
-    <Content Include="Content\HomePage\assets\index.html" />
     <Content Include="Content\HomePage\images\banner.jpg" />
     <Content Include="Content\HomePage\images\banner2.png" />
     <Content Include="Content\HomePage\images\pic01.jpg" />
@@ -309,12 +315,17 @@
     <Content Include="Content\HomePage\js\main.js" />
     <Content Include="Content\HomePage\js\skel.min.js" />
     <Content Include="Content\HomePage\js\util.js" />
+    <Content Include="Content\img\窩居字體設計.png" />
+    <Content Include="Content\img\窩居字體設計3.png" />
+    <Content Include="Content\img\窩居字體設計6.png" />
+    <Content Include="Content\img\窩居字體設計7.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
     <Content Include="Content\LogIn\assests\css\popuo-box.css" />
     <Content Include="Content\LogIn\assests\css\style.css" />
     <Content Include="Content\LogIn\assests\css\styles.css" />
+    <Content Include="Content\LogIn\assests\images\02.png" />
     <Content Include="Content\LogIn\assests\images\11.png" />
     <Content Include="Content\LogIn\assests\images\2.jpg" />
     <Content Include="Content\LogIn\assests\images\4.jpg" />
@@ -764,11 +775,11 @@
     <Content Include="Content\Room\images\room\room2.jpg" />
     <Content Include="Content\Room\images\room\room3.jpg" />
     <Content Include="Content\Room\images\room\small-room.jpg" />
-    <Content Include="Content\Room\images\room\房型1.jpg" />
-    <Content Include="Content\Room\images\room\房型2.jpg" />
-    <Content Include="Content\Room\images\room\房型3.jpg" />
-    <Content Include="Content\Room\images\room\房型4.jpg" />
-    <Content Include="Content\Room\images\room\房型5.jpg" />
+    <Content Include="Content\Room\images\room\房型_北歐風雙人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_單身套房.jpg" />
+    <Content Include="Content\Room\images\room\房型_工業風三人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨家庭房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨甜蜜套房.jpg" />
     <Content Include="Content\Room\images\room\房間101-1.jpg" />
     <Content Include="Content\Room\images\room\房間101-2.jpg" />
     <Content Include="Content\Room\images\room\房間101-3.jpg" />
@@ -890,10 +901,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="style_product.css" />
-    <Content Include="Views\Shared\Product\index.html" />
-    <Content Include="Views\Shared\Product\shop.html" />
-    <Content Include="Views\Shared\Product\shopping-cart.html" />
-    <Content Include="Views\Shared\Product\wishlist.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -905,45 +912,28 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Product\_LayoutPageIndex.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Product\Home.cshtml" />
     <Content Include="Views\Product\test.cshtml" />
     <Content Include="Views\Product\shop.cshtml" />
-    <Content Include="Views\Product\shoppingcart.cshtml" />
     <Content Include="Views\Product\Favoritelist.cshtml" />
     <Content Include="Views\Product\_PartialFavorite.cshtml" />
-    <Content Include="Views\Product\Addtosession.cshtml" />
-    <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Product\OrderList.cshtml" />
     <Content Include="Views\Product\ShowProductInCart.cshtml" />
-    <Content Include="Views\Member\Edit.cshtml" />
     <Content Include="Views\Member\Home.cshtml" />
     <Content Include="Views\Member\HomePage.cshtml" />
-    <Content Include="Views\Member\List.cshtml" />
-    <Content Include="Views\Member\LogIn.cshtml" />
-    <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Information\Edit.cshtml" />
     <Content Include="Views\Information\List.cshtml" />
     <Content Include="Views\Information\ListPaging.cshtml" />
     <Content Include="Views\Information\UserCategoryList.cshtml" />
     <Content Include="Views\Shared\Information_Layout.cshtml" />
-    <Content Include="Views\Room\About.cshtml" />
-    <Content Include="Views\Room\BookingDone.cshtml" />
     <Content Include="Views\Room\BookingInfo.cshtml" />
-    <Content Include="Views\Room\Contact.cshtml" />
-    <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\Room\ListAllRooms.cshtml" />
     <Content Include="Views\Room\ListRoomDetail.cshtml" />
     <Content Include="Views\Room\PayInfo.cshtml" />
     <Content Include="Views\Room\Searching.cshtml" />
     <Content Include="Views\Room\_PartialSearchResult.cshtml" />
     <Content Include="Views\Shared\Room\_LayoutRoom.cshtml" />
-    <Content Include="Views\Shopping\List.cshtml" />
-    <Content Include="Views\Activity\AddToCart_Session.cshtml" />
     <Content Include="Views\Activity\CartView.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
     <Content Include="Views\Activity\Edit.cshtml" />
@@ -951,7 +941,6 @@
     <Content Include="Views\Activity\List.cshtml" />
     <Content Include="Views\Back\Index.cshtml" />
     <Content Include="Views\Shared\Back_Layout.cshtml" />
-    <Content Include="Views\Member\會員中心.cshtml" />
     <Content Include="Views\Shared\HomePage\_Layout_HomePage.cshtml" />
     <Content Include="Views\Room\_PartialCheckRoom.cshtml" />
     <Content Include="Views\Product\_PartialProduct_TabPane.cshtml" />
@@ -962,6 +951,23 @@
     <Content Include="Views\ProductBack\Create.cshtml" />
     <Content Include="Views\ProductBack\Edit.cshtml" />
     <Content Include="Views\ProductBack\ProductList.cshtml" />
+    <Content Include="Views\Room\MyRoom.cshtml" />
+    <Content Include="Views\Shared\HomePage\_LayoutHomeMember.cshtml" />
+    <Content Include="Views\Shared\HomePage\_LayoutLogin.cshtml" />
+    <Content Include="Views\Member\MemberCenter.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Member\List.cshtml" />
+    <Content Include="Views\Member\LogIn.cshtml" />
+    <Content Include="Views\Member\Register.cshtml" />
+    <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
+    <Content Include="Views\Room\BuildcaseInfo.cshtml" />
+    <Content Include="Views\BackInformation\BackList.cshtml" />
+    <Content Include="Views\BackInformation\BackListPaging.cshtml" />
+    <Content Include="Views\BackInformation\InfoCategoryList.cshtml" />
+    <Content Include="Views\BackInformation\JobCreate.cshtml" />
+    <Content Include="Views\BackInformation\JobEdit.cshtml" />
+    <Content Include="Views\BackInformation\JobList.cshtml" />
+    <Content Include="Views\Shopping\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

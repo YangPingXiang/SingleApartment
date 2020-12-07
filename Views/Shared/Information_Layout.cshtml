@@ -1,70 +1,75 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+﻿@using sln_SingleApartment.ViewModels
 
-    @*<title>@ViewBag.Title - My ASP.NET Application</title>
+@{
+    //Layout = null;
+    CMember db = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+    if (db != null)
+    {
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+            @*<title>@ViewBag.Title - My ASP.NET Application</title>
         <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
 
-    <link rel="stylesheet" href="~/Content/Homepage/assets/css/main.css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
+            <link rel="stylesheet" href="~/Content/Homepage/assets/css/main.css" />
+            <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="~/Content/PagedList.css" rel="stylesheet" />
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>  @*分頁檔使用*@
-    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>  @*分頁檔使用*@
+            @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
 
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-    <script src="~/Content/Homepage/js/jquery.min.js"></script>
-    <script src="~/Content/Homepage/js/jquery.scrolly.min.js"></script>
-    <script src="~/Content/Homepage/js/skel.min.js"></script>
-    <script src="~/Content/Homepage/js/util.js"></script>
-    <script src="~/Content/Homepage/js/main.js"></script>
-</head>
+            <script src="~/Content/Homepage/js/jquery.min.js"></script>
+            <script src="~/Content/Homepage/js/jquery.scrolly.min.js"></script>
+            <script src="~/Content/Homepage/js/skel.min.js"></script>
+            <script src="~/Content/Homepage/js/util.js"></script>
+            <script src="~/Content/Homepage/js/main.js"></script>
+        </head>
 
-<body class="subpage">
+        <body class="subpage">
 
-    <!-- Header -->
-    <header id="header">
-        <nav class="left">
-            <a href="#menu"><span>Menu</span></a>
-        </nav>
-        <a href="index.html" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
-        <nav class="right">
-            <a href="#" class="button alt">Log in</a>
-        </nav>
-    </header>
+            <!-- Header -->
+            <header id="header">
+                <nav class="left">
+                    <a href="#menu"><span>Menu</span></a>
+                </nav>
+                <a href="#" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+                <nav class="right"  style="margin-top:20px">
+                    <a href="@Url.Action("LogOut","Member")" class="button alt">Log Out</a>
+                </nav>
+            </header>
+            <!-- Menu -->
+            <nav id="menu">
+                <ul class="links" id="isAdmin">
+                    <li><a href="../Member/Home">首頁</a></li>
+                    <li>@Html.ActionLink("尋找窩們的愛屋", "Searching", "Room")</li>
+                    <li>@Html.ActionLink("窩居商城", "Home", "Product")</li>
+                    <li>@Html.ActionLink("窩的訂單", "OrderList", "Product")</li>
+                    <li id="id_infoNotify">@Html.ActionLink("窩的訊息", "List", "Information")</li>
+                    <li>@Html.ActionLink("當窩們同在一起", "List", "Activity")</li>
+                    <li>@Html.ActionLink("會員中心", "MemberCenter", "Member")</li>
+                    
+                </ul>
+                <ul class="actions vertical">
+                    <li><a href="#" class="button fit">Login</a></li>
+                </ul>
+            </nav>
 
-    <!-- Menu -->
-    <nav id="menu">
-        <ul class="links">
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-            <li>
-                <a href="generic.html">我的訂單</a>
-            </li>
-            <li>
-                <a href="elements.html">我的產品</a>
-            </li>
-            <li>
-                <a href="/Information/List">我的訊息</a>
-            </li>
-        </ul>
+            @RenderBody()
 
-    </nav>
-
-    @RenderBody()
-
-    <!-- Footer -->
-    <footer id="footer" style="height:150px">
-        <div class="inner">
-            <ul class="actions">
-                @*<li>
+            <!-- Footer -->
+            <footer id="footer" style="height:180px">
+                <div class="inner">
+                    <ul class="actions">
+                        @*<li>
                         <span class="icon fa-phone"></span>
                         <a href="#">(000) 000-0000</a>
                     </li>
@@ -75,26 +80,55 @@
                     <li>
                             <span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000
                         </li>*@
-            </ul>
-        </div>
-        <div class="copyright">
-            &copy; Untitled. Design
-            <a href="https://templated.co">TEMPLATED</a>. Images
-            <a href="https://unsplash.com">Unsplash</a>.
-        </div>
-    </footer>
-    @section Scripts {
-        @*@Scripts.Render("~/bundles/jqueryval")*@
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    &copy; Untitled. Design
+                    <a href="https://templated.co">TEMPLATED</a>. Images
+                    <a href="https://unsplash.com">Unsplash</a>.
+                </div>
+            </footer>
+
+            <script>
+                $(function () {
+                    var role = '@db.fRole';
+                    console.log("In this function");
+                    console.log(role);
+                    var el = document.getElementById("isAdmin");
+                    if (role == "Admin") {
+                        el.innerHTML =
+                            '<li><a href="#">首頁</a></li>' +
+                            '<li><a href="#">房間管理</a></li>' +
+                            '<li>@Html.ActionLink("商品管理", "待改", "待改")</li>' +
+                            '<li>@Html.ActionLink("訂單管理", "待改", "待改")</li>' +
+                            '<li>@Html.ActionLink("訊息管理", "BackList", "BackInformation")</li>' +
+                            '<li>@Html.ActionLink("活動管理", "List", "Activity")</li>' +
+                            '<li>@Html.ActionLink("會員管理", "MemberCenter", "Member")</li >';
+                    }
+                });
+            </script>
+        </body>
+
+        </html>
+        }
+
+
+}
+
         <script>
             $(function () {
-                $("#StartTime").datepicker();
-                $("#EndTime").datepicker();
-            })
+                //顯示當日的新活動訊息筆數
+                $.ajax({
+                    type: "POST",
+                    url: "/Information/GetNewActivityNotify",
+                    success: function (data) {
+                        //console.log(data); //可先測試程式有無載入
+                        console.log("info_layout:" + data);
+                        let f_data;
+                        f_data = "窩的訊息(" + data + ")";
+                        $("#id_infoNotify").html("<a href='/Information/List'>" + f_data + "</a>");
+                    }
+                });
+            });
+
         </script>
-
-    }
-</body>
-
-</html>

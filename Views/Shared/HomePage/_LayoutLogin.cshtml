@@ -1,0 +1,54 @@
+﻿
+<head>
+    <title>登入窩居公寓</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
+    <link href="~/Content/LogIn/assests/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="left">
+
+        </nav>
+        <a href="../Member/HomePage" class=""><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+
+        <nav style="margin-top:20px" class="right">
+            <a href="../Member/LogIn" class="button alt">Log in</a>
+
+        </nav>
+    </header>
+
+
+    <div>
+        @RenderBody()
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <h2>聯絡我們</h2>
+            <ul class="actions">
+                <li><span class="icon fa-phone"></span> <a>(02)6631-8168</a></li>
+                <li><span class="icon fa-envelope"></span> <a>singleapart@gmail.com</a></li>
+                <li><span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓</li>
+            </ul>
+        </div>
+
+    </footer>
+    @RenderSection("scripts", required: false)
+
+    <!-- Scripts -->
+
+
+    <link href="~/Content/LogIn/assests/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <script src="~/Content/LogIn/assests/js/jquery.min.js"></script>
+    <script src="~/Content/LogIn/assests/js/scripts.js"></script>
+    <link href="~/Content/LogIn/assests/css/styles.css" rel="stylesheet">
+    <link href="~/Content/LogIn/assests/css/style.css" rel="stylesheet" type="text/css" media="all">
+
+</body>
+

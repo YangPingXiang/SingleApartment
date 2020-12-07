@@ -12,18 +12,12 @@ namespace sln_SingleApartment.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RoomStyle
+    public partial class SubActivity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RoomStyle()
-        {
-            this.Room = new HashSet<Room>();
-        }
+        public int SubActivityID { get; set; }
+        public Nullable<int> ActivityID { get; set; }
+        public Nullable<int> MemberID { get; set; }
     
-        public int ID { get; set; }
-        public string RoomStyleName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Room { get; set; }
+        public virtual Activity Activity { get; set; }
     }
 }

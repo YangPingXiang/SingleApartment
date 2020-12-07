@@ -9,9 +9,10 @@
 }
 
     <!-- Main -->
-    <section id="main" class="wrapper" style="padding:3em">
+    <section id="main" class="wrapper" style="padding:2em;">
         <!--style="border:solid 1px;border-color:black"-->
         <div class="inner">
+            @Html.ActionLink("我的訊息中心", "List", "Information", null, new { style = "font-size:1.3em;font-weight:700;line-height:1.3" } )
             <header class="align-center">
                 <h1 style="font-size:2em;font-weight:700;line-height:1.3">個人訊息-類別</h1>
                 @*<div id="timer"></div>*@
@@ -20,8 +21,8 @@
 
             <p>
                 @*<button onclick="showEditForm(@item.InformationCategoryID, '@item.InformationCategoryName')" class="btn" style="height:unset" flag="true">修改</button>*@
-                @*@Html.ActionLink("新增", "Create")*@
                 <button onclick="showCreateForm()" class="btn btn-info" style="height:unset" flag="true">新增</button>
+
             </p>
             <table class="alt table-hover" style="width:800px;margin-left:0px">
                 <thead>
@@ -73,10 +74,10 @@
                     </div>
                     <hr />
                     @*<p>
-                            訊息類別編號
-                            <br />
-                            <input type="text" name="InformationCategoryID" id="e_InformationCategoryID" />
-                        </p>*@
+                    訊息類別編號
+                    <br />
+                    <input type="text" name="InformationCategoryID" id="e_InformationCategoryID" />
+                </p>*@
                     <div class="form-group">
                         <label class="control-label col-md-2" style="font-size:unset">訊息類別編號</label>
                         <div class="col-md-10">
@@ -85,9 +86,9 @@
                         </div>
                     </div>
                     @*<p>   訊息類別名稱
-                            <br />
-                            <input type="text" name="InformationCategoryName" id="e2_InformationCategoryName" />
-                        </p>*@
+                    <br />
+                    <input type="text" name="InformationCategoryName" id="e2_InformationCategoryName" />
+                </p>*@
                     <div class="form-group">
                         <label class="control-label col-md-2" style="font-size:unset">訊息類別名稱</label>
                         <div class="col-md-10">

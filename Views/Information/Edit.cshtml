@@ -5,6 +5,14 @@
     ViewBag.Title = "Edit";
 }
 
+<script>
+    $(function () {
+        let memberCategoryId = @Model.MemberCategoryID;
+        $(`option[value=${memberCategoryId}]`).prop("selected", true);
+        //$("#MemberCategoryID").val() = @Model.MemberCategoryID;
+    });
+</script>
+
 <!-- Main -->
 <section id="main" class="wrapper" style="padding:3em">
     <!--style="border:solid 1px;border-color:black"-->

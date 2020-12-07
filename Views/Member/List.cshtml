@@ -2,118 +2,180 @@
 
 @{
     ViewBag.Title = "List";
-
+    //Layout = null;
 }
 
-<h2>後臺管理-住戶列表</h2>
-
-<p>
-    @Html.ActionLink("新增住戶", "Register")
-</p>
-<select id="show" onchange="myselect()">
-    <option value="0">全顯示</option>
-    <option value="1">已退租</option>
-</select>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fMemberId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fMemberName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fPassword)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fSex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fBirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fSalary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fCareer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fImage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fRoomId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fLeave)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.fMemberId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fMemberName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fAccount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fPassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fAge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fSex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fBirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fSalary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fCareer)
-            </td>
-            <td>
-
-                <p>
-                    <img src="@item.fImage" width="120" height="100" />
-                </p>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fRoomId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fLeave)
-            </td>
-            <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.fMemberId })
-            </td>
-        </tr>
+<style>
+    a:link {
+        text-align: center;
+        color: #db8b74;
+        text-decoration-line:none;
     }
-</table>
+    body {
+        line-height: 2;
+        margin:4px;
+        -ms-overflow-style: scrollbar;
+        min-width: 320px;
+        font-size: 13pt;
+        font-weight:400;
+        background-color:aliceblue;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    button{
+
+    }
+    p {
+        margin: 0 0 2em 0;
+    }
+   
+
+</style>
+<head>
+    <title>窩居公寓後臺管理</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+<body>
+    <header id="header" style="text-align:center">
+        <nav class="left">
+            @*<a href="#menu"><span>Menu</span></a>*@
+        </nav>
+        <a href="../Member/HomePage" class=""><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+
+        <nav style="margin-top:20px" class="right">
+            @*<a href="../Member/LogIn" class="button alt">Log in</a>*@
+
+        </nav>
+    </header>
+
+    <div class="wrapper" style="width:105em;margin:auto">
+
+        <h1 style="color:#a2c4c9;text-align:center;">管理住戶列表</h1>
+        <div class="nav" style="margin-bottom:20px">
+            <ul>
+                <li>
+                    <button style="background-color:steelblue;float:right">
+                        @Html.ActionLink("新增住戶", "Register")
+                    </button>
+                    <select id="show" onchange="myselect()" style="width:10em ;height:50px;">
+                        <option value="0">全顯示</option>
+                        <option value="1">已退租</option>
+                    </select>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <table class="table" style="border:2px #97CBFF solid;padding:5px;" rules="all">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.fMemberId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.fMemberName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fAccount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fPassword)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fSex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fBirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fSalary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fCareer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fRoomId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fLeave)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fMemberId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fMemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fAccount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fPassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fSex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fBirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fSalary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fCareer)
+                    </td>
+                    <td>
+
+                        <p>
+                            <img src="@item.fImage" width="120" height="100" />
+                        </p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fRoomId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fLeave)
+                    </td>
+                    <td>
+                        @Html.ActionLink("修改", "Edit", new { id = item.fMemberId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</body>

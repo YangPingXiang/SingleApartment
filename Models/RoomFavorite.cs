@@ -16,9 +16,9 @@ namespace sln_SingleApartment.Models
     {
         public int ID { get; set; }
         public Nullable<int> MemberID { get; set; }
-        public Nullable<int> RoomStyleID { get; set; }
+        public Nullable<int> RoomID { get; set; }
     
-        public virtual RoomStyle RoomStyle { get; set; }
+        public virtual Room Room { get; set; }
         public virtual tMember tMember { get; set; }
     }
 }

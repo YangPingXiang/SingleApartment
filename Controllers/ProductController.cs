@@ -42,7 +42,6 @@ namespace sln_SingleApartment.Controllers
             var mymodel = theUser.SearchProduct();
             return View(mymodel);
         }
-
         public JsonResult GetProductShowing(string condition, string id)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -76,11 +75,19 @@ namespace sln_SingleApartment.Controllers
             }
             return Json(ArrayList);
         }
-        public ActionResult PartialProductTabPane(string MemberID, int page = 1, int pageSize = 6)
+        public ActionResult PartialProductTabPane(string MemberID, int page = 1, int pageSize = 6, string MainCategory = null, string SubCategory = null, string KeyWord = "")
         {
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
-            var lt = user.SearchProductsBy();
+            List<CProductViewModel> lt;
+            if (KeyWord != "")
+                lt = user.SearchProductsBy(null, null, KeyWord);
+            else if (SubCategory != null)
+                lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+            else if (MainCategory != null)
+                lt = user.SearchProductsBy(int.Parse(MainCategory));
+            else
+                lt = user.SearchProductsBy();
             var result = lt.ToPagedList(currentPage, pageSize);
             ViewData.Model = result;
             ViewBag.MemberID = MemberID;
@@ -175,7 +182,7 @@ namespace sln_SingleApartment.Controllers
             }
             return PartialView("_PartialShoppingCart");
         }
-        //todo: 幹怎麼辦
+        //顯示購物車內容
         public ActionResult ShowProductInCart()
         {
             var user = Session[CDictionary.welcome] as CMember;
@@ -185,127 +192,49 @@ namespace sln_SingleApartment.Controllers
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
-            if (list != null)
+            if (list != null &&list.Count != 0)
                 return View(theUser.SearchProductInCart(list));
             else
                 return View();
         }
+        //刪除購物車商品(一鍵清除)
+        public ActionResult RemoveProductsInCart()
+        {
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list != null)
+            {
+                list = new List<CAddtoSessionView>();
+                Session[CDictionary.PRODUCTS_IN_CART] = list;
+            }
+            return RedirectToAction("ShowProductInCart");
+        }
+        //刪除單一商品
+        public JsonResult RemoveONEProductInCart(string ProductID)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            Product prod = db.Product.FirstOrDefault(p => p.ProductID.ToString() == ProductID);
+
+            if (prod != null)
+            {
+                List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+                if (list != null && list.Count != 0)
+                {
+                    for (int i = 0; i < list.Count; i++)     //foreach沒有辦法去修改自己本身的陣列
+                    {
+                        if (list[i].txtProductID.ToString() == ProductID)
+                        {
+                            list.Remove(list[i]);
+                            return Json("成功");
+                        }
+                    }
+                }
+            }
+            return Json("沒有此商品");
+        }
         #endregion
 
         //#region 秉庠
-
-
-
-        ////Session
-        //public ActionResult Addtosession(int ID)
-        //{
-        //    Product prod = (new SingleApartmentEntities().Product).Where(r => r.ProductID == ID).FirstOrDefault();
-
-        //    if (prod == null) { return RedirectToAction("Index"); }
-
-        //    return View(prod);
-        //}
-        //[HttpPost]
-        //public ActionResult Addtosession(CAddtoSessionView input)//第二步
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-
-        //    Product prod = db.Product.FirstOrDefault(p => p.ProductID == input.txtProductID);
-
-        //    if (prod != null)
-        //    {
-        //        COrderDetailsViewModel codv = new COrderDetailsViewModel();
-
-        //        codv.entity = new OrderDetails();
-        //        codv.entity.Order = new Order();
-        //        codv.entity.ProductID = prod.ProductID;
-        //        codv.ProductName = prod.ProductName;
-        //        codv.ProductPrice = prod.UnitPrice;
-        //        codv.entity.Quantity = input.txtQuantity;
-        //        codv.entity.Order.OrderDate = DateTime.Now;
-
-
-        //        List<COrderDetailsViewModel> list = Session[CDictionary.PRODUCTS_IN_CART] as List<COrderDetailsViewModel>;
-
-        //        if (list == null)
-        //        {
-        //            list = new List<COrderDetailsViewModel>();
-        //            Session[CDictionary.PRODUCTS_IN_CART] = list;
-        //        }
-        //        list.Add(codv);
-        //    }
-        //    return RedirectToAction("ShowProductInCart");
-
-        //}
-        ////刪除購物車商品(一鍵清除)11/27新增
-        //public ActionResult RemoveShowProductInCart(CAddtoSessionView input)
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-
-        //    Product prod = db.Product.FirstOrDefault(p => p.ProductID == input.txtProductID);
-
-
-        //    COrderDetailsViewModel codv = new COrderDetailsViewModel();
-
-
-        //    List<COrderDetailsViewModel> list = Session[CDictionary.PRODUCTS_IN_CART] as List<COrderDetailsViewModel>;
-
-        //    if (list != null)
-        //    {
-        //        list = new List<COrderDetailsViewModel>();
-        //        Session[CDictionary.PRODUCTS_IN_CART] = list;
-        //    }
-        //    list.Remove(codv);
-
-        //    return RedirectToAction("ShowProductInCart");
-
-        //}
-        ////刪除單一商品(11/27新增)
-        //public ActionResult RemoveONEShowProductInCart(int input)
-        //{
-
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-
-        //    var a = Session["txtProductID"];
-
-        //    a = input;
-
-        //    Product prod = db.Product.FirstOrDefault(p => p.ProductID == input);
-
-        //    if (prod != null)
-        //    {
-        //        COrderDetailsViewModel codv = new COrderDetailsViewModel();
-
-
-        //        List<COrderDetailsViewModel> list = Session[CDictionary.PRODUCTS_IN_CART] as List<COrderDetailsViewModel>;
-
-        //        if (list != null)
-        //        {
-        //            for (int i = 0; i < list.Count; i++)     //foreach沒有辦法去修改自己本身的陣列
-        //            {
-        //                if (list[i].ProductID == input)
-        //                {
-        //                    list.Remove(list[i]);
-        //                }
-        //            }
-
-        //        }
-
-        //    }
-        //    return RedirectToAction("ShowProductInCart");
-        //}
-
-
-        ////查看購物車
-        //public ActionResult ShowProductInCart()//第三步
-        //{
-        //    List<COrderDetailsViewModel> list = Session[CDictionary.PRODUCTS_IN_CART] as List<COrderDetailsViewModel>;
-        //    if (list == null)
-        //    {
-        //        return RedirectToAction("Home");
-        //    }
-        //    return View(list);
-        //}
+        
 
         ////===========================================================================
         ////傳回資料庫
@@ -476,7 +405,6 @@ namespace sln_SingleApartment.Controllers
                 }
                 else
                 {
-
                     return View(table);
                 }
 

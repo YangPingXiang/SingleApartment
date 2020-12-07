@@ -30,7 +30,7 @@
                 @Html.DisplayNameFor(model => model.FirstOrDefault().InformationCategoryName)
             </th>
             <th style="font-size:unset">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().UserCategoryName)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MemberID)
             </th>
             <th style="font-size:unset">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().DocumentID)
@@ -39,8 +39,6 @@
                 優先等級
             </th>
             <th style="font-size:unset;text-align:right">
-                @Html.ActionLink("新活動通知", "List", "Activity", null, new { @class = "btn btn-info", style = "height:unset;background-color:transparent;color:#428bca", id="id_newNotify" })
-                @*<a href="/Activity/List" id="id_newActivity" style="text-align:right"><h4>新活動通知</h4></a>*@
             </th>
             <th style="font-size:unset"></th>
         </tr>
@@ -54,54 +52,51 @@
             <td width="150"></td>
         </tr>*@
     @foreach (var item in Model)
-    {   if (item.Priority == "High") {
+    {
+        if (item.Priority == "High")
+        {
             strPriority = "高";
         }
-        else if (item.Priority == "Normal") {
+        else if (item.Priority == "Normal")
+        {
             strPriority = "中";
         }
-        else if (item.Priority == "Low") {
+        else if (item.Priority == "Low")
+        {
             strPriority = "低";
         }
-        
-        //todo:ok 已讀則將此row的底色改為淺藍色
-        if (item.Read_YN == "Y")
-        {
-            strTR = "background-color:#EEF9FC";
-        }
-        else
-        {
-            strTR = "";
-        }
-    <tr style="@strTR">
-        <td width="80">
-            @Html.DisplayFor(modelItem => item.InformationID)
-        </td>
-        <td>
-            @item.InformationDate.ToString("yyyy/MM/dd")
-            @*@Html.DisplayFor(modelItem => item.InformationDate)*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InformationCategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserCategoryName)  
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocumentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => strPriority)
-        </td>
-        <td width="220">
-            @*;background-color:transparent;color:#428bca;*@
-            <button onclick="showTable(this,'@item.InformationContent', @item.InformationID)" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
-            @*@Html.ActionLink("刪除", "Delete", new { id = item.InformationID }, new { @class = "btn btn-info", onclick = "updateDeleteMsg(" + item.InformationID + ");" })*@
-            <button onclick="updateDeleteMsg(@item.InformationID);" class="btn btn-info" style="height:unset;">刪除</button>
 
-            @Html.ActionLink("修改", "Edit", new { id = item.InformationID }, new { @class = "btn btn-info" })
-        </td>
-    </tr>
+        //todo:ok 已讀則將此row的底色改為淺藍色
+
+        <tr>
+            <td width="80">
+                @Html.DisplayFor(modelItem => item.InformationID)
+            </td>
+            <td>
+                @item.InformationDate.ToString("yyyy/MM/dd")
+                @*@Html.DisplayFor(modelItem => item.InformationDate)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InformationCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => strPriority)
+            </td>
+            <td width="220">
+                @*;background-color:transparent;color:#428bca;*@
+                <button onclick="showTable(this,'@item.InformationContent', @item.InformationID)" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.InformationID }, new { @class = "btn btn-info", onclick = "updateDeleteMsg(" + item.InformationID + ");" })*@
+                <button onclick="updateDeleteMsg(@item.InformationID);" class="btn btn-info" style="height:unset;">刪除</button>
+
+                @*@Html.ActionLink("修改", "Edit", new { id = item.InformationID }, new { @class = "btn btn-info" })*@
+            </td>
+        </tr>
         @*<tr>
                 <td rowspan="2">
                     訊息內容
@@ -119,7 +114,7 @@
 
 @*@Html.PagedListPager(Model, page => Url.Action("DemoPaging", new { page }))*@
 
-@Html.PagedListPager(Model, page => Url.Action("ListPaging", new { pageNum = page }),
+@Html.PagedListPager(Model, page => Url.Action("BackListPaging", new { pageNum = page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new AjaxOptions()
         {

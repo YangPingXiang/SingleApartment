@@ -1,84 +1,47 @@
 ﻿@using sln_SingleApartment.ViewModels
-
+@{ Layout = @"~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";}
 @{
     ViewBag.Title = "Home";
-    Layout = null;
     CMember db = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
     if (db != null)
     {
 
-<head>
-    <title>窩居公寓</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
-
-</head>
 <body>
-
-    <!-- Header -->
-    <header id="header">
-        <nav class="left">
-            <a href="#menu"><span>Menu</span></a>
-        </nav>
-        <a href="index.html" class="logo"><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
-        <nav class="right">
-         
-            @Html.ActionLink("登出", "LogOut", "Member", new { @class = "btn btn-light" })
-        </nav>
-    </header>
-
-    <!-- Menu -->
-    <nav id="menu">
-        <ul class="links">
-            <li><a href="../Member/Home">首頁</a></li>
-            <li>@Html.ActionLink("尋找窩們的愛屋", "Searching", "Room")</li>
-            <li>@Html.ActionLink("窩居商城", "Home", "Product")</li>
-            <li>@Html.ActionLink("窩的訊息", "List", "Information")</li>
-            <li>@Html.ActionLink("窩的訂單", "OrderList", "Product")</li>
-            <li>@Html.ActionLink("當窩們同在一起", "List", "Activity")</li>
-            <li id="isAdmin"><a href="../Member/List">後臺管理</a></li>
-        </ul>
-        <ul class="actions vertical">
-            <li><a href="#" class="button fit">Login</a></li>
-        </ul>
-    </nav>
-
     <!-- Banner -->
     <section id="banner">
         <div class="content">
-            <h1>@db.fMemberName，歡迎來到窩居Woju社區</h1>
-            <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br />sed arcu cras consecuat lorem ipsum dolor sit amet.</p>
+            <h1>@db.fMemberName，歡迎來到窩居</h1>
+            <p>我們希望這裡成為所有人心目中的理想國</p>
             <ul class="actions">
-                <li><a href="#one" class="button scrolly">開始導覽</a></li>
+                <li><a href="#one" class="button scrolly">我們的服務</a></li>
             </ul>
         </div>
     </section>
-
     <!-- One -->
     <section id="one" class="wrapper">
         <div class="inner flex flex-3">
             <div class="flex-item left">
                 <div>
-                    <h3>Magna ultricies</h3>
-                    <p>Morbi in sem quis dui plalorem ipsum<br /> euismod in, pharetra sed ultricies.</p>
+                    <h3>窩租房</h3>
+                    <p>明亮寬敞、簡潔便利、配合捷運生活圈<br />享受窩居各式便利服務</p>
                 </div>
                 <div>
-                    <h3>Ipsum adipiscing lorem</h3>
-                    <p>Tristique yonve cursus jam nulla quam<br /> loreipsu gravida adipiscing lorem</p>
+                    <h3>窩商城</h3>
+                    <p>為您代購各式生活用品、直送到房門<br />還有各種團購活動等你發起</p>
                 </div>
             </div>
             <div class="flex-item image fit round">
                 <img src="~/Content/HomePage/images/pic01.jpg" alt="" />
+
             </div>
             <div class="flex-item right">
                 <div>
-                    <h3>Tempus nullam</h3>
-                    <p>Sed adipiscing ornare risus. Morbi estes<br /> blandit sit et amet, sagittis magna.</p>
+                    <h3>窩活動</h3>
+                    <p>孤單寂寞覺得冷？<br />來邀請住戶一起參加你的活動吧！</p>
                 </div>
                 <div>
-                    <h3>Suscipit nibh dolore</h3>
-                    <p>Pellentesque egestas sem. Suspendisse<br /> modo ullamcorper feugiat lorem.</p>
+                    <h3>窩通知</h3>
+                    <p>常常忘東忘西？<br />窩通知讓您不錯過任何資訊！</p>
                 </div>
             </div>
         </div>
@@ -88,14 +51,14 @@
     <!-- Two -->
     <section id="two" class="wrapper style1 special">
         <div class="inner">
-            <h2>Feugiat lorem</h2>
+            <h2>窩居理念</h2>
             <figure>
                 <blockquote>
-                    "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra<br /> magna etiam lorem ultricies in diam. Sed arcu cras consequat."
+                    "希望每個找不到歸屬感、迷失自我的人<br />都能在窩居找到家的感覺"
                 </blockquote>
                 <footer>
-                    <cite class="author">Jane Anderson</cite>
-                    <cite class="company">CEO, Untitled</cite>
+                    <cite class="author">吳哥哭</cite>
+                    <cite class="company">CEO, 窩居</cite>
                 </footer>
             </figure>
         </div>
@@ -106,70 +69,63 @@
         <div class="inner flex flex-3">
             <div class="flex-item box">
                 <div class="image fit">
-                    <img src="~/Content/HomePage/images/pic02.jpg" alt="" />
+                    <img src="~/Content/Room/images/room/房型_溫馨家庭房.jpg" />
+
                 </div>
                 <div class="content">
-                    <h3>Consequat</h3>
-                    <p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
+                    <h3>溫馨家庭房</h3>
+                    <p>適合小家庭<br />豐富收納空間供您使用</p>
                 </div>
             </div>
             <div class="flex-item box">
                 <div class="image fit">
-                    <img src="~/Content/HomePage/images/pic03.jpg" alt="" />
+                    <img src="~/Content/Room/images/room/房型_單身套房.jpg" />
+
                 </div>
                 <div class="content">
-                    <h3>Adipiscing</h3>
-                    <p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
+                    <h3>單身套房</h3>
+                    <p>適合單獨打拚奮戰的你<br />永遠不會感到寂寞</p>
                 </div>
             </div>
             <div class="flex-item box">
                 <div class="image fit">
-                    <img src="~/Content/HomePage/images/pic04.jpg" alt="" />
+                    <img src="~/Content/Room/images/room/房型_溫馨甜蜜套房.jpg" />
+
                 </div>
                 <div class="content">
-                    <h3>Malesuada</h3>
-                    <p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
+                    <h3>溫馨甜蜜套房</h3>
+                    <p>給想沉浸在最甜蜜兩人世界的你<br />享受不被打擾的空間</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="inner">
-            <h2>Get In Touch</h2>
-            <ul class="actions">
-                <li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-                <li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-                <li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
-            </ul>
-        </div>
-      
-    </footer>
 
     <!-- Scripts -->
-    <script src="~/Content/HomePage/js/jquery.min.js"></script>
-    <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
-    <script src="~/Content/HomePage/js/skel.min.js"></script>
-    <script src="~/Content/HomePage/js/util.js"></script>
-    <script src="~/Content/HomePage/js/main.js"></script>
 
-    <script type="text/javascript">
-        
+
+    <script>
         $(function () {
-          var role = '@db.fRole';
+            var role = '@db.fRole';
+            console.log("In this function");
+            console.log(role);
             var el = document.getElementById("isAdmin");
-            if (role== "User") {
-                el.style.display = 'none';
-            }            
+            if (role == "Admin") {
+                el.innerHTML =
+                    '<li><a href="#">首頁</a></li>' +
+                    '<li><a href="#">房間管理</a></li>' +
+                    '<li>@Html.ActionLink("商品管理", "待改", "待改")</li>' +
+                    '<li>@Html.ActionLink("訂單管理", "待改", "待改")</li>' +
+                    '<li>@Html.ActionLink("訊息管理", "BackList", "BackInformation")</li>' +
+                    '<li>@Html.ActionLink("活動管理", "List", "Activity")</li>' +
+                    '<li>@Html.ActionLink("會員管理", "MemberCenter", "Member")</li >';
+            }
         });
     </script>
+
+
 </body>
 
     }
 
-    }
-
-
-
-
+}
