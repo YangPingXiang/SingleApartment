@@ -402,7 +402,6 @@
             url: "@Url.Action("PartialProductTabPane")",
             data: {
                 MemberID : @ViewBag.MemberID,
-                page:1
             },
             success: function (data) {
                 $("#ProductTab").html(data);
@@ -411,58 +410,25 @@
     });
 
     @* 條件搜索 *@
-    function SearchProductsBy(condition, id){
+    function SearchProductsByMainC(id){
         $.ajax({
-                    url: '@Url.Action("GetProductShowing", "Product")',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        condition: condition,
-                        id : id
-                        }),
-                    contentType: 'application/json',
-                    type: 'POST',
-                success: function (data) {
-                    //方塊商品區
-                    $('#zone_product').empty();
-                    $('#zone_product_detail').empty();
-                    for (let i = 0; i < data.length; i++) {
-                        $('#zone_product').append(
-                            '<div class="col-md-4 col-lg-4 col-sm-6"><div class= "single-product"><div class="product-img">'
-                            + '<a href="#"><img src="../Content/Product/img/products/' + (JSON.parse(data[i])).ProductID + '.jpg" alt="Product Title"/>'
-                            + '<img class="secondary-image" alt="Product Title" src="../Content/Product/img/products/' +(JSON.parse(data[i])).ProductID +'.jpg" />'
-                            + '</a></div ><div class="product-dsc"><h3><a href="#">' + (JSON.parse(data[i])).ProductName + '</a></h3>'
-                            + '<div class="star-price"> <span class="price-left">$ ' + (JSON.parse(data[i])).UnitPrice + '</span >'
-                            + '</div></div ><div class="actions-btn"><a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>'
-                            + '<a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>'
-                            + '<a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Compare"><i class="fa fa-retweet"></i></a>'
-                            + '<a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>'
-                            + '</div></div ></div >');
-                        $('#zone_product_detail').append(
-                            '<div class="li-item"><div class="col-md-4 col-sm-4"><div class="tb-product-item-inner tb2 pct-last">'
-                            + '<div class="re-img"><a href="#"><img alt="" src="../Content/Product/img/products/' + (JSON.parse(data[i])).ProductID + '.jpg" />'
-                            + '</a ></div><div class="actions-btn"><a data-original-title="Quick View" data-toggle="modal" data-trigger="hover" data-target="#quick-view" data-placement="top" href="#">'
-                            + '<i class="fa fa-eye"></i></a></div></div></div>'
-                            + '<div class="col-md-8 col-sm-8"><div class="f-fix"><div class="tb-beg"><a href="#">'
-                            + (JSON.parse(data[i])).ProductName + '</a ></div>'
-                            + '<div class="tb-product-wrap-price-rating"><div class="tb-product-price font-noraure-3">'
-                            + '<span class="amount2 ana">$ ' + (JSON.parse(data[i])).UnitPrice + ' </span>'
-                            + '</div></div><p class="desc" style="height:80px">' + (JSON.parse(data[i])).Description + '</p>'
-                            + '<div class="last-cart l-mrgn ns"><a class="las4" href="#">Add To Cart</a></div>'
-                            + '<div class="tb-product-btn"><a href="#"><i class="fa fa-eye"></i></a>'
-                            + '<a href="#"><i class="fa fa-heart"></i></a><a href="#">'
-                            + '<i class="fa fa-retweet"></i></a></div></div></div></div>');
-                    }
-                    //條狀商品區
-
-                }
-            })
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                MainCategory: id
+            },
+            success: function (data) {
+                $("#ProductTab").html(data);
+            }
+        });
     }
     $(function () {
         $('#allpd').click(function () { SearchProductsBy("all") });
 
         $('.myMainCate').click(function () {
             console.log("Main = " + $(this).prop("name"));
-            SearchProductsBy("MainCategory", $(this).prop("name"));
+            SearchProductsByMainC($(this).prop("name"));
         });
         $('.mySubCate').click(function () {
             SearchProductsBy("SubCategory", $(this).prop("name"));

@@ -26,6 +26,7 @@ namespace sln_SingleApartment.Models
         public Nullable<int> TotalFloor { get; set; }
         public Nullable<int> RoomCounts { get; set; }
         public Nullable<System.DateTime> BuildTimes { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Room { get; set; }

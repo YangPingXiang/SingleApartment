@@ -12,81 +12,139 @@ namespace sln_SingleApartment.Controllers
 {
     public class InformationController : Controller
     {
+        public string GetNewActivityNotify()
+        {
+            //todo:
+            //int memberID = 1;
+
+            CMember member = Session[CDictionary.welcome] as CMember;
+           
+            string result = "0";
+            try
+            {
+                if (member != null)
+                {
+                    int memberID = member.fMemberId;
+                    SingleApartmentEntities db = new SingleApartmentEntities();
+                    IEnumerable<Information> ac = db.Information.AsEnumerable()
+                     .Where(p=>p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd"));
+                    result= ac.Count().ToString();
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+
+        }
+
         public string GetInformationCategory()
         {
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            IEnumerable<InformationCategory> info = from p in db.InformationCategory select p;
-
-            string result = "";
-            if (info != null)
+            try
             {
-                result = "[";
-               
-                foreach (var c in info)
-                {
-                    if (result != "[") result += ",";  //務必加 ,
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                IEnumerable<InformationCategory> info = from p in db.InformationCategory select p;
 
-                    //組JSON字串
-                    result = result + "{" + $"\"ID\":{c.InformationCategoryID},\"NAME\":\"{c.InformationCategoryName}\"" + "}";
+                string result = "";
+                if (info != null)
+                {
+                    result = "[";
+
+                    foreach (var c in info)
+                    {
+                        if (result != "[") result += ",";  //務必加 ,
+
+                        //組JSON字串
+                        result = result + "{" + $"\"ID\":{c.InformationCategoryID},\"NAME\":\"{c.InformationCategoryName}\"" + "}";
+                    }
+                    result += "]";
                 }
-                result += "]";
+                return result;
             }
-            return result;
+            catch
+            {
+                return "";
+            }
         }
 
         public string GetUserCategory()
         {
-            //todo:
-            int memberID = 1;
-
-            //CMember member = Session[CDictionary.welcome] as CMember;
-            //int memberID = member.fMemberId;         
-
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            IEnumerable<MemberInformationCategory> info = from p in db.MemberInformationCategory
-                                                          where p.MemberID == memberID
-                                                          select p;
-
-            string result = "";
-            if (info != null)
+            try
             {
-                result = "[";
+                //todo:
+                //int memberID = 1;
 
-                foreach (var c in info)
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;
+
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                IEnumerable<MemberInformationCategory> info = from p in db.MemberInformationCategory
+                                                              where p.MemberID == memberID
+                                                              select p;
+
+                string result = "";
+                if (info != null)
                 {
-                    if (result != "[") result += ",";  //務必加 ,
+                    result = "[";
 
-                    //組JSON字串
-                    result = result + "{" + $"\"ID\":{c.MemberCategoryID},\"NAME\":\"{c.MemberCategoryName}\"" + "}";
+                    foreach (var c in info)
+                    {
+                        if (result != "[") result += ",";  //務必加 ,
+
+                        //組JSON字串
+                        result = result + "{" + $"\"ID\":{c.MemberCategoryID},\"NAME\":\"{c.MemberCategoryName}\"" + "}";
+                    }
+                    result += "]";
                 }
-                result += "]";
+                return result;
             }
-            return result;
+            catch
+            {
+                return "";
+            }
         }
 
         public void update_read_yn(int id)
         {
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            Information information = db.Information.FirstOrDefault(p => p.InformationID == id);
-
-            if (information != null)
+            try
             {
-                information.Read_YN = "Y";
-                db.SaveChanges();
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Information information = db.Information.FirstOrDefault(p => p.InformationID == id);
+
+                if (information != null)
+                {
+                    information.Read_YN = "Y";
+                    db.SaveChanges();
+                }
+            }
+            catch
+            {
+
             }
         }
+        //return RedirectToAction("List");
+
         public void update_status(int id)
         {
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            Information information = db.Information.FirstOrDefault(p => p.InformationID == id);
-
-            if (information != null)
+            try
             {
-                information.Status = "User_Deleted";
-                db.SaveChanges();
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Information information = db.Information.FirstOrDefault(p => p.InformationID == id);
+
+                if (information != null)
+                {
+                    information.Status = "User_Deleted";
+                    db.SaveChanges();
+                }
             }
-            //return RedirectToAction("List");
+            catch
+            {
+
+            }
+            
         }
+        //return RedirectToAction("List");
 
         public ActionResult List()
         {
@@ -96,99 +154,107 @@ namespace sln_SingleApartment.Controllers
         // GET: Information
         public ActionResult ListPaging(int pageNum = 1, string p_priority = "ALL", string p_read_yn = "N", string p_query_type = "999", string p_data = "N")
         {
-            int pageSize = 5;
-            int currentPage = pageNum < 1 ? 1 : pageNum;
-
-            ViewBag.Read_YN = p_read_yn;  //將partialview資料傳給 主要view
-            ViewBag.Priority = p_priority;
-
-            int memberID = 1;
-            //CMember member = Session[CDictionary.welcome] as CMember;
-            //int memberID = member.fMemberId;  //(int)Session["MemberID"];
-            
-            Func<Information, bool> myWhere = null;
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            
-            IEnumerable <Information> table = null;
-            //myWhere = p => p.Status != "User_Deleted";   //todo:ok  Linq多重where
-
-            //if (string.IsNullOrEmpty(read_yn))
-
-            //p_priority == "ALL" 顯示全部資料
-            if (p_query_type == "999" && p_priority == "ALL") {
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted";
-            }
-            else if (p_query_type == "999" &&  p_priority == "Null")
-            {   //p_priority == "Null" 顯示已讀或未讀資料
-                //移除 p.Priority == p_priority
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Read_YN == p_read_yn;
-            }
-            else if (p_query_type == "999" && p_read_yn == "Null")
-            {   //p_read_yn == "Null" 顯示優先等級資料
-                //移除 p.Read_YN == p_read_yn
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Priority == p_priority;
-            }
-            //<option value="999">請選擇查詢項目</option>
-            //    <option value="100">系統分類</option>
-            //    <option value="200">個人分類</option>
-            //    <option value="300">關鍵字</option>
-            else if (p_query_type == "100")
-            {//100 = 系統分類
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.InformationCategoryID == Convert.ToInt32(p_data);
-            }
-            else if (p_query_type == "200")
-            {//200 = 個人分類
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.MemberCategoryID == Convert.ToInt32(p_data);
-            }
-            else if (p_query_type == "300")
-            {//300 = 關鍵字
-                myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.InformationContent.Contains(p_data);
-            }
-            else
-            {   //no use
-                //myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Read_YN == p_read_yn && p.Priority == p_priority;                
-            }
-            table = db.Information.Where(myWhere);
-
-            //    myWhere = p => p.InformationContent.Contains(keyword) && p.Status != "User_Deleted";
-            //    table = db.Information.Where(myWhere);
-            //    //table = from p in db.Information
-            //    //        where p.InformationContent.Contains(keyword) && p.Status != "User_Deleted"
-            //    //        select p;
-            //}
-                        
-            
-            List<CInformation> list = new List<CInformation>();
-            foreach (Information item in table)
+            try
             {
-                list.Add(new CInformation()
+                int pageSize = 5;
+                int currentPage = pageNum < 1 ? 1 : pageNum;
+
+                ViewBag.Read_YN = p_read_yn;  //將partialview資料傳給 主要view
+                ViewBag.Priority = p_priority;
+
+                //int memberID = 1;
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
+
+                Func<Information, bool> myWhere = null;
+                SingleApartmentEntities db = new SingleApartmentEntities();
+
+                IEnumerable<Information> table = null;
+                //myWhere = p => p.Status != "User_Deleted";   //todo:ok  Linq多重where
+
+                //if (string.IsNullOrEmpty(read_yn))
+
+                //p_priority == "ALL" 顯示全部資料
+                if (p_query_type == "999" && p_priority == "ALL")
                 {
-                    information_entity = item,
-                    InformationCategoryName = item.InformationCategory.InformationCategoryName,
-                    //三元運算子
-                    UserCategoryName = item.MemberCategoryID == null ? "未分類" : item.MemberInformationCategory.MemberCategoryName,
-                    //UserCategoryName = item.MemberInformationCategory.MemberCategoryName == null ? "未分類": item.MemberInformationCategory.MemberCategoryName
-                });
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted";
+                }
+                else if (p_query_type == "999" && p_priority == "Null")
+                {   //p_priority == "Null" 顯示已讀或未讀資料
+                    //移除 p.Priority == p_priority
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.Read_YN == p_read_yn;
+                }
+                else if (p_query_type == "999" && p_read_yn == "Null")
+                {   //p_read_yn == "Null" 顯示優先等級資料
+                    //移除 p.Read_YN == p_read_yn
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.Priority == p_priority;
+                }
+                //<option value="999">請選擇查詢項目</option>
+                //    <option value="100">系統分類</option>
+                //    <option value="200">個人分類</option>
+                //    <option value="300">關鍵字</option>
+                else if (p_query_type == "100")
+                {//100 = 系統分類
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationCategoryID == Convert.ToInt32(p_data);
+                }
+                else if (p_query_type == "200")
+                {//200 = 個人分類
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.MemberCategoryID == Convert.ToInt32(p_data);
+                }
+                else if (p_query_type == "300")
+                {//300 = 關鍵字
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationContent.Contains(p_data);
+                }
+                else
+                {   //no use
+                    //myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.Read_YN == p_read_yn && p.Priority == p_priority;                
+                }
+                table = db.Information.Where(myWhere);
 
-                //CInformation x = new CInformation();
-                //x.information_entity = item;
-                //x.InformationCategoryName = item.InformationCategory.InformationCategoryName;
-                //if (x.MemberCategoryID != null)
-                //{
-                //    MemberInformationCategory c = db.MemberInformationCategory.Where(p => p.MemberCategoryID == item.MemberCategoryID).FirstOrDefault();
-
-                //    //沒設關聯, 為了取得 UserCategoryName = MemberInformationCategory.MemberCategoryName
-                //    if (c != null)
-                //        x.UserCategoryName = c.MemberCategoryName;
+                //    myWhere = p => p.InformationContent.Contains(keyword) && p.Status != "User_Deleted" && p.Status != "Admin_Deleted";
+                //    table = db.Information.Where(myWhere);
+                //    //table = from p in db.Information
+                //    //        where p.InformationContent.Contains(keyword) && p.Status != "User_Deleted" && p.Status != "Admin_Deleted"
+                //    //        select p;
                 //}
-                //list.Add(x);
+
+
+                List<CInformation> list = new List<CInformation>();
+                foreach (Information item in table)
+                {
+                    list.Add(new CInformation()
+                    {
+                        information_entity = item,
+                        InformationCategoryName = item.InformationCategory.InformationCategoryName,
+                        //三元運算子
+                        UserCategoryName = item.MemberCategoryID == null ? "未分類" : item.MemberInformationCategory.MemberCategoryName,
+                        //UserCategoryName = item.MemberInformationCategory.MemberCategoryName == null ? "未分類": item.MemberInformationCategory.MemberCategoryName
+                    });
+
+                    //CInformation x = new CInformation();
+                    //x.information_entity = item;
+                    //x.InformationCategoryName = item.InformationCategory.InformationCategoryName;
+                    //if (x.MemberCategoryID != null)
+                    //{
+                    //    MemberInformationCategory c = db.MemberInformationCategory.Where(p => p.MemberCategoryID == item.MemberCategoryID).FirstOrDefault();
+
+                    //    //沒設關聯, 為了取得 UserCategoryName = MemberInformationCategory.MemberCategoryName
+                    //    if (c != null)
+                    //        x.UserCategoryName = c.MemberCategoryName;
+                    //}
+                    //list.Add(x);
+                }
+
+                //return View(list);
+                var pagedlist = list.ToPagedList(currentPage, pageSize);
+
+                //return View(pagedlist);  //Page_原始ok 此cshtml使用
+                return PartialView(pagedlist);//使用部分顯示                
             }
-
-            //return View(list);
-            var pagedlist = list.ToPagedList(currentPage, pageSize);
-
-            //return View(pagedlist);  //Page_原始ok 此cshtml使用
-            return PartialView(pagedlist);//使用部分顯示
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult Edit(int id)
@@ -196,9 +262,9 @@ namespace sln_SingleApartment.Controllers
             try
             {
                 //todo:
-                int memberID = 1;
-                //CMember member = Session[CDictionary.welcome] as CMember;
-                //int memberID = member.fMemberId;  //(int)Session["MemberID"];
+                //int memberID = 1;
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 SingleApartmentEntities db = new SingleApartmentEntities();
                 var row = db.Information.Where(p => p.InformationID == id).FirstOrDefault();
@@ -208,7 +274,7 @@ namespace sln_SingleApartment.Controllers
                                                             where o.MemberID == memberID
                                                             select o;
                 List<SelectListItem> item = new List<SelectListItem>();
-                item.Add(new SelectListItem { Value = "999", Text = "請選擇" });
+                item.Add(new SelectListItem { Value = "999", Text = "請選擇",Selected=false });
                 foreach (MemberInformationCategory m in ic)
                 {
                     if (row.MemberCategoryID != null)
@@ -309,10 +375,10 @@ namespace sln_SingleApartment.Controllers
         {
             try
             {
-                int memberID = 1;
+                //int memberID = 1;
                 //todo:
-                //CMember member = Session[CDictionary.welcome] as CMember;
-                //int memberID = member.fMemberId;  //(int)Session["MemberID"];
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 int pageSize = 4;
                 SingleApartmentEntities db = new SingleApartmentEntities();
@@ -347,10 +413,10 @@ namespace sln_SingleApartment.Controllers
             {
                 SingleApartmentEntities db = new SingleApartmentEntities();
 
-                int memberID = 1;
+                //int memberID = 1;
                 //todo:
-                //CMember member = Session[CDictionary.welcome] as CMember;
-                //int memberID = member.fMemberId;  //(int)Session["MemberID"];
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 p_info.MemberID = memberID;
                 db.MemberInformationCategory.Add(p_info);
@@ -376,10 +442,10 @@ namespace sln_SingleApartment.Controllers
             try
             {
                 //todo:
-                int memberID = 1;
+                //int memberID = 1;
                 //todo:
-                //CMember member = Session[CDictionary.welcome] as CMember;
-                //int memberID = member.fMemberId;  //(int)Session["MemberID"];
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 SingleApartmentEntities db = new SingleApartmentEntities();
                 MemberInformationCategory info = db.MemberInformationCategory.FirstOrDefault(p => p.MemberCategoryID == p_info.MemberCategoryID && p.MemberID == memberID);
@@ -402,10 +468,10 @@ namespace sln_SingleApartment.Controllers
         { //TODO: FormCollection collection==>不要用
             try
             {   //todo:
-                int memberID = 1;
+                //int memberID = 1;
                 //todo:
-                //CMember member = Session[CDictionary.welcome] as CMember;
-                //int memberID = member.fMemberId;  //(int)Session["MemberID"];
+                CMember member = Session[CDictionary.welcome] as CMember;
+                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 SingleApartmentEntities db = new SingleApartmentEntities();
                 MemberInformationCategory info = db.MemberInformationCategory.FirstOrDefault(p => p.MemberCategoryID == category_id && p.MemberID == memberID);

@@ -35,37 +35,7 @@
                         </div>
                     </div>
 
-                    <!-- Mobile menu start -->
-                    <div class="mobile-menu-area hidden-lg hidden-md">
-                        <div class="container">
-                            <div class="col-md-12">
-                                <nav id="dropdown">
-                                    <ul>
-                                        <li><a href="index.html">home</a></li>
-                                        <li><a href="about-us.html">About</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li>
-                                            <a href="#">pages</a>
-                                            <ul>
-                                                <li><a href="404.html">404</a></li>
-                                                <li><a href="booking-information.html">Booking Information</a></li>
-                                                <li><a href="personal-information.html">Personal Information</a></li>
-                                                <li><a href="payment-information.html">Parment Information</a></li>
-                                                <li><a href="booking-done.html">Booking Done</a></li>
-                                                <li><a href="room-booking.html">Room booking</a></li>
-                                                <li><a href="news.html">News</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
-                                                <li><a href="staff.html">Staff</a></li>
-                                                <li><a href="our-room.html">Room</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact-us.html">contact</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Mobile menu end -->
+                   
                 </div>
 
                 <!--Welcome secton-->
@@ -75,7 +45,7 @@
                             <div class="col-md-4 col-sm-5">
                                 <div class="booking-box">
                                     <div class="booking-title">
-                                        <h3>Book A Room</h3>
+                                        <h3>尋找你要的房間</h3>
                               
                                     </div>
                                     <div class="booking-form">
@@ -124,7 +94,7 @@
                                             </div>
                                             <!---Search button -->
                                             <div class="submit-form">
-                                                <input type="button" id="check" value="Search" />
+                                                <input type="button" id="check" value="查詢" />
 
                                             </div>
                                         </form>
@@ -163,7 +133,7 @@
                                     <div class="search-form-wrap">
                                         <button class="close-search"><i class="mdi mdi-close"></i></button>
                                         <form action="#">
-                                            <input type="text" placeholder="Search here..." value="Search here..." />
+                                            <input type="text" placeholder="查詢" value="查詢" />
                                             <button class="search-button" type="submit">
                                                 <i class="fa fa-search"></i>
                                             </button>
@@ -189,38 +159,15 @@
             </div>
             <!--result start-->
 
-            <!--About Section Title start-->
-            <div class="about-section text-center ptb-80 white_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title mb-80">
-                                <h2>About <span>WoJu</span></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="about-chondo">
-                                <div class="about-member">
-                                    <img src="~/Content/Room/images/about.jpg" alt="">
-                                    <h3>Mohin patwary</h3>
-                                    <h5 class="mb-0">hrd head</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--About Section end-->
 
             <!--Our buildcase start-->
-            <div class="our-sevices text-center ptb-80 white_bg">
+            <div id="buildcases" class="our-sevices text-center ptb-80 white_bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-title mb-80">
                                 <h2>窩居公寓 | <span>建案</span></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -246,8 +193,11 @@
                                                 <div class="services-hover-inner">
                                                     <div class="services-hover-table">
                                                         <div class="services-hover-table-cell">
-                                                            <h2>@Html.DisplayFor(modelItem => item.buildcasename)</h2>
-                                                            <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                                                            <a href="@Url.Action("BuildcaseInfo","Room",new { buildcaseID = item.ID })">
+                                                                <h2>@Html.DisplayFor(modelItem => item.buildcasename)</h2>
+                                                                <p>告別老公寓！窩居建設在 @item.buildtime 蓋好此建案。位在精華地段，捷運，商圈，一巷靜。</p>
+                                                            </a>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<sln_SingleApartment.ViewModels.CJobService>
+
+@{
+    Layout = "~/Views/Shared/Back_Layout.cshtml";
+
+    ViewBag.Title = "JobList";
+}
+
+@*<h2>JobList</h2>*@
+
+<!-- Main -->
+<section id="main" class="wrapper" style="padding:3em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">服務工作清單</h1>
+            @*<div id="timer"></div>*@
+        </header>
+        @*=================================================================*@
+
+        <div style="width:800px;margin:0 auto">
+            @Html.ActionLink("新增", "JobCreate", null, new { @class = "btn btn-info" })           
+        </div>
+        <br />
+        <div class="table-wrapper">
+            <table id="id_table" class="alt table-hover" style="width:800px;margin:0 auto">
+                <thead>
+                    <tr>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.JobID)
+                        </th>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.JobName)
+                        </th>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.JobDescription)
+                        </th>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.JobCycle)
+                        </th>
+                        <th style="font-size:unset">
+                            @Html.DisplayNameFor(model => model.BeforeDays)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr style="line-height:2">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobCycle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BeforeDays)
+                        </td>
+                        <td>
+                            @Html.ActionLink("修改", "JobEdit", new { id = item.JobID }, new { @class = "btn btn-info" })
+                            @*@Html.ActionLink("刪除", "JobDelete", new { id = item.JobID })*@
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <br />
+        @*=================================================================*@
+    </div>
+</section>
+
+<script>
+    //一啟動馬上執行
+    $(function () {
+        //let window_with = window.screenLeft;
+        //let table_with = $("#id_table").width();
+        //console.log(window_with);
+        //console.log($("#id_table").width());
+        ////console.log($("#id_table").screenLeft());
+        //let m_margin = (window_with - table_with) / 2;
+        //console.log(m_margin);
+        //$("#id_table").css("left", m_margin);
+
+    });
+</script>

@@ -36,6 +36,7 @@ namespace sln_SingleApartment.Models
         public virtual DbSet<Information> Information { get; set; }
         public virtual DbSet<InformationCategory> InformationCategory { get; set; }
         public virtual DbSet<InformationContent> InformationContent { get; set; }
+        public virtual DbSet<JobService> JobService { get; set; }
         public virtual DbSet<Lease> Lease { get; set; }
         public virtual DbSet<MemberInformationCategory> MemberInformationCategory { get; set; }
         public virtual DbSet<Order> Order { get; set; }
@@ -51,6 +52,7 @@ namespace sln_SingleApartment.Models
         public virtual DbSet<RoomFacilities> RoomFacilities { get; set; }
         public virtual DbSet<RoomFavorite> RoomFavorite { get; set; }
         public virtual DbSet<RoomStyle> RoomStyle { get; set; }
+        public virtual DbSet<SubActivity> SubActivity { get; set; }
         public virtual DbSet<tActivityCart> tActivityCart { get; set; }
         public virtual DbSet<tMember> tMember { get; set; }
     }

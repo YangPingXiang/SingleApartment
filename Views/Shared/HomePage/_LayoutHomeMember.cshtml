@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
 </head>
+
 <body>
     <script src="~/Content/HomePage/js/jquery.min.js"></script>
     <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
@@ -12,20 +13,22 @@
         <nav class="left">
             <a href="#menu"><span>Menu</span></a>
         </nav>
-        <a href="#" class=""><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
-
-        <nav style="margin-top:20px" class="right">
-            <a href="../Member/LogIn" class="button alt">Log in</a>
-
+        <a href="#" class="logo"><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+        <nav class="right " style="margin-top:20px">
+            @Html.ActionLink("Log Out", "LogOut", "Member", new { @class = "button alt" })
         </nav>
     </header>
 
     <!-- Menu -->
     <nav id="menu">
-        <ul class="links">
-            <li><a href="../Member/HomePage">首頁</a></li>
+        <ul class="links" id="isAdmin">
+            <li><a href="../Member/Home">首頁</a></li>
             <li>@Html.ActionLink("尋找窩們的愛屋", "Searching", "Room")</li>
-            <li><a href="../Member/LogIn">會員中心</a></li>
+            <li>@Html.ActionLink("窩居商城", "Home", "Product")</li>
+            <li>@Html.ActionLink("窩的訂單", "OrderList", "Product")</li>
+            <li id="id_infoNotify">@Html.ActionLink("窩的訊息", "List", "Information")</li>
+            <li>@Html.ActionLink("當窩們同在一起", "List", "Activity")</li>
+            <li>@Html.ActionLink("會員中心", "MemberCenter", "Member")</li>
         </ul>
         <ul class="actions vertical">
             <li><a href="#" class="button fit">Login</a></li>
@@ -33,9 +36,9 @@
     </nav>
 
 
+
     <div>
         @RenderBody()
-
     </div>
 
     <!-- Footer -->
@@ -48,23 +51,32 @@
                 <li><span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓</li>
             </ul>
         </div>
-        <!--<div class="copyright">
-            &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
-        </div>-->
+
     </footer>
     @RenderSection("scripts", required: false)
 
-    <div id="ball" onclick="change()" style="width:50px; height:50px;border:5px solid red; border-radius:25px;background-color:pink;position: fixed;bottom:20px;right:20px">
-            
-    </div>
-
     <!-- Scripts -->
-    <script>
-        function change() {
-            $("#ball").html("<div style='position:relative; top:-480px; left:-390px; border:3px solid red; width: 410px;height: 508px;'><iframe src='https://webchat.botframework.com/embed/mist128qnaservice-bot?s=VJIA2rtFlc4.LhjcD3UvEd63h5i6-VPaeUQo_tWVts5PUQ879xCs-F0' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe></div>");
-        }
-    </script>
+
+
     <script src="~/Content/HomePage/js/util.js"></script>
     <script src="~/Content/HomePage/js/skel.min.js"></script>
     <script src="~/Content/HomePage/js/main.js"></script>
 </body>
+
+<script>
+    $(function () {
+        //顯示當日的新活動訊息筆數
+        $.ajax({
+            type: "POST",
+            url: "/Information/GetNewActivityNotify",
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                console.log("info_layout:" + data);
+                let f_data;
+                f_data = "窩的訊息(" + data + ")";
+                $("#id_infoNotify").html("<a href='/Information/List'>" + f_data + "</a>");
+            }
+        });
+    });
+
+</script>

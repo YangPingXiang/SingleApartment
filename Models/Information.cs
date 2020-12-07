@@ -25,6 +25,8 @@ namespace sln_SingleApartment.Models
         public string Status { get; set; }
         public int MemberID { get; set; }
         public Nullable<int> MemberCategoryID { get; set; }
+        public Nullable<int> JobID { get; set; }
+        public string JobPeriod { get; set; }
     
         public virtual InformationCategory InformationCategory { get; set; }
         public virtual MemberInformationCategory MemberInformationCategory { get; set; }

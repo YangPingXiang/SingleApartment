@@ -18,6 +18,8 @@ namespace sln_SingleApartment.Models
         public Activity()
         {
             this.Participant = new HashSet<Participant>();
+            this.Product = new HashSet<Product>();
+            this.SubActivity = new HashSet<SubActivity>();
         }
     
         public int ActivityID { get; set; }
@@ -31,10 +33,15 @@ namespace sln_SingleApartment.Models
         public string Note { get; set; }
         public string MeetingPoint { get; set; }
         public string Status { get; set; }
+        public string ActivityImage { get; set; }
     
         public virtual ActivitySubCategory ActivitySubCategory { get; set; }
         public virtual tMember tMember { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Participant> Participant { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubActivity> SubActivity { get; set; }
     }
 }

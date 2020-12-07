@@ -23,21 +23,22 @@
     if (@Model == null)
     {
 
-        <br />
-        <div class="row" style="margin: 0 auto;">
-            <div class="second-all-class">
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <div class="sub-total">
-                        <table>
-                            <tbody>
-                                <tr class="cart-subtotal">
-                                    <th>你的購物車是空的</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="wc-proceed-to-checkout">
-                        <a class="wc-forward" href="#">繼續購物</a>
+        <div class="shopping-cart-area s-cart-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="s-cart-all">
+                            <div class="cart-form table-responsive">
+                                <table id="shopping-cart-table" class="data-table cart-table">
+                                    <tr>
+                                        <th class="low1">你的購物車是空的  (இдஇ; )</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="wc-proceed-to-checkout">
+                                <a class="wc-forward" href="#">繼續購物</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,7 @@
                                             <td class="sop-cart an-sh">
                                                 <div class="quantity ray">
                                                     <input class="input-text qty text" type="number" size="4" title="Qty" value="@item.Quantity" min="0" step="1">
-                                                    <a class="remove" href="#">
+                                                    <a class="remove" onclick="deleteOneProduct(@item.ProductID)" >
                                                         <span>x</span>
                                                     </a>
                                                 </div>
@@ -94,6 +95,7 @@
                             </div>
                             <div class="last-check1">
                                 <div class="yith-wcwl-share yit">
+
                                     <p class="checkout-coupon an-cop">
                                         <input type="submit" value="Update Cart">
                                     </p>
@@ -133,8 +135,9 @@
                             <div class="wc-proceed-to-checkout">
                                 <p class="return-to-shop">
                                     <a class="button wc-backward" href="#">繼續購物</a>
-                                </p>
-                                <a class="wc-forward" href="#">確認下單</a>
+                                    <a class="button wc-backward" href="RemoveProductsInCart">清空購物車</a>
+
+                                </p><a class="wc-forward" href="#">確認下單</a>
                             </div>
                         </div>
                     </div>
@@ -405,3 +408,18 @@
     </div>
 *@
 <!-- #endregion quick view end -->
+<script>
+    function deleteOneProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("RemoveONEProductInCart")",
+            data: {
+                ProductID : id
+            },
+            success: function (data) {
+                console.log(data);
+                window.location.reload();
+            }
+        })
+    }
+</script>
