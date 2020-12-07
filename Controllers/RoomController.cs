@@ -322,7 +322,7 @@ namespace sln_SingelApartment.Controllers
 
             dbSA.Lease.Add(roomBooking);
             dbSA.SaveChanges();
-            return Json(data: new { message = "Booking is successfully", success = true }, JsonRequestBehavior.AllowGet);
+            return Json(data: new { message = "Booking is successfully", success = true }, behavior: JsonRequestBehavior.AllowGet);
 
             //return Json(new { data = model });
 
