@@ -15,9 +15,9 @@ namespace sln_SingleApartment.Models
     public partial class Picture
     {
         public int ID { get; set; }
-        public Nullable<int> RoomStyleID { get; set; }
+        public Nullable<int> RoomID { get; set; }
         public byte[] RoomStylePicture { get; set; }
     
-        public virtual RoomStyle RoomStyle { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

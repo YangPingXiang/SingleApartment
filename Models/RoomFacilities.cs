@@ -15,10 +15,10 @@ namespace sln_SingleApartment.Models
     public partial class RoomFacilities
     {
         public int ID { get; set; }
-        public Nullable<int> RoomStyleID { get; set; }
+        public Nullable<int> RoomID { get; set; }
         public Nullable<int> FacilityID { get; set; }
     
         public virtual Facility Facility { get; set; }
-        public virtual RoomStyle RoomStyle { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

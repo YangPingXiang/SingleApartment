@@ -17,27 +17,13 @@ namespace sln_SingleApartment.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RoomStyle()
         {
-            this.Picture = new HashSet<Picture>();
             this.Room = new HashSet<Room>();
-            this.RoomFacilities = new HashSet<RoomFacilities>();
-            this.RoomFavorite = new HashSet<RoomFavorite>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> PictureID { get; set; }
         public string RoomStyleName { get; set; }
-        public Nullable<int> MaxNumberOfPeople { get; set; }
-        public Nullable<int> Rent { get; set; }
-        public string Oic { get; set; }
-        public Nullable<int> SquareFootage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Picture> Picture { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Room { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoomFacilities> RoomFacilities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoomFavorite> RoomFavorite { get; set; }
     }
 }

@@ -188,7 +188,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="RoomStyleID" Type="int" />
+          <Property Name="RoomID" Type="int" />
           <Property Name="RoomStylePicture" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Product">
@@ -235,15 +235,21 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
           <Property Name="RoomStyleID" Type="int" />
+          <Property Name="RoomType" Type="nvarchar(max)" />
           <Property Name="BuildCaseID" Type="nvarchar" MaxLength="16" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Rent" Type="int" />
+          <Property Name="SquareFootage" Type="int" />
+          <Property Name="RoomPictureID" Type="int" />
+          <Property Name="RoomFacilityID" Type="int" />
+          <Property Name="Floor" Type="int" />
         </EntityType>
         <EntityType Name="RoomFacilities">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="RoomStyleID" Type="int" />
+          <Property Name="RoomID" Type="int" />
           <Property Name="FacilityID" Type="int" />
         </EntityType>
         <EntityType Name="RoomFavorite">
@@ -252,19 +258,14 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="MemberID" Type="int" />
-          <Property Name="RoomStyleID" Type="int" />
+          <Property Name="RoomID" Type="int" />
         </EntityType>
         <EntityType Name="RoomStyle">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="PictureID" Type="int" />
           <Property Name="RoomStyleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaxNumberOfPeople" Type="int" />
-          <Property Name="Rent" Type="int" />
-          <Property Name="Oic" Type="nchar" MaxLength="10" />
-          <Property Name="SquareFootage" Type="int" />
         </EntityType>
         <EntityType Name="SubActivity">
           <Key>
@@ -419,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lease_Room1">
+        <Association Name="FK_Lease_Room">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
           <ReferentialConstraint>
@@ -539,15 +540,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Picture_RoomStyle">
-          <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_Picture_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Picture">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -623,7 +624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFacilities_Facility1">
+        <Association Name="FK_RoomFacilities_Facility">
           <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
           <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="*" />
           <ReferentialConstraint>
@@ -635,27 +636,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFacilities_RoomStyle">
-          <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_RoomFacilities_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RoomFacilities">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFavorite_RoomStyle">
-          <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_RoomFavorite_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="RoomFavorite" Type="Self.RoomFavorite" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RoomFavorite">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -750,7 +751,7 @@
             <End Role="tMember" EntitySet="tMember" />
             <End Role="Information" EntitySet="Information" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lease_Room1" Association="Self.FK_Lease_Room1">
+          <AssociationSet Name="FK_Lease_Room" Association="Self.FK_Lease_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Lease" EntitySet="Lease" />
           </AssociationSet>
@@ -790,8 +791,8 @@
             <End Role="tMember" EntitySet="tMember" />
             <End Role="Participant" EntitySet="Participant" />
           </AssociationSet>
-          <AssociationSet Name="FK_Picture_RoomStyle" Association="Self.FK_Picture_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_Picture_Room" Association="Self.FK_Picture_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="Picture" EntitySet="Picture" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Activity" Association="Self.FK_Product_Activity">
@@ -818,16 +819,16 @@
             <End Role="RoomStyle" EntitySet="RoomStyle" />
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFacilities_Facility1" Association="Self.FK_RoomFacilities_Facility1">
+          <AssociationSet Name="FK_RoomFacilities_Facility" Association="Self.FK_RoomFacilities_Facility">
             <End Role="Facility" EntitySet="Facility" />
             <End Role="RoomFacilities" EntitySet="RoomFacilities" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFacilities_RoomStyle" Association="Self.FK_RoomFacilities_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_RoomFacilities_Room" Association="Self.FK_RoomFacilities_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="RoomFacilities" EntitySet="RoomFacilities" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFavorite_RoomStyle" Association="Self.FK_RoomFavorite_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_RoomFavorite_Room" Association="Self.FK_RoomFavorite_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="RoomFavorite" EntitySet="RoomFavorite" />
           </AssociationSet>
           <AssociationSet Name="FK_RoomFavorite_tMember" Association="Self.FK_RoomFavorite_tMember">
@@ -910,7 +911,7 @@
             <End Role="Discount" EntitySet="Discount" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFacilities_Facility1" Association="SingleApartmentModel.FK_RoomFacilities_Facility1">
+          <AssociationSet Name="FK_RoomFacilities_Facility" Association="SingleApartmentModel.FK_RoomFacilities_Facility">
             <End Role="Facility" EntitySet="Facility" />
             <End Role="RoomFacilities" EntitySet="RoomFacilities" />
           </AssociationSet>
@@ -934,7 +935,7 @@
             <End Role="tMember" EntitySet="tMember" />
             <End Role="Information" EntitySet="Information" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lease_Room1" Association="SingleApartmentModel.FK_Lease_Room1">
+          <AssociationSet Name="FK_Lease_Room" Association="SingleApartmentModel.FK_Lease_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Lease" EntitySet="Lease" />
           </AssociationSet>
@@ -966,8 +967,8 @@
             <End Role="tMember" EntitySet="tMember" />
             <End Role="Participant" EntitySet="Participant" />
           </AssociationSet>
-          <AssociationSet Name="FK_Picture_RoomStyle" Association="SingleApartmentModel.FK_Picture_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_Picture_Room" Association="SingleApartmentModel.FK_Picture_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="Picture" EntitySet="Picture" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_ProductSubClass" Association="SingleApartmentModel.FK_Product_ProductSubClass">
@@ -986,12 +987,12 @@
             <End Role="RoomStyle" EntitySet="RoomStyle" />
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFacilities_RoomStyle" Association="SingleApartmentModel.FK_RoomFacilities_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_RoomFacilities_Room" Association="SingleApartmentModel.FK_RoomFacilities_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="RoomFacilities" EntitySet="RoomFacilities" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoomFavorite_RoomStyle" Association="SingleApartmentModel.FK_RoomFavorite_RoomStyle">
-            <End Role="RoomStyle" EntitySet="RoomStyle" />
+          <AssociationSet Name="FK_RoomFavorite_Room" Association="SingleApartmentModel.FK_RoomFavorite_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="RoomFavorite" EntitySet="RoomFavorite" />
           </AssociationSet>
           <AssociationSet Name="FK_RoomFavorite_tMember" Association="SingleApartmentModel.FK_RoomFavorite_tMember">
@@ -1077,7 +1078,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Facility1" FromRole="Facility" ToRole="RoomFacilities" />
+          <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Facility" FromRole="Facility" ToRole="RoomFacilities" />
         </EntityType>
         <EntityType Name="FavoriteList">
           <Key>
@@ -1146,7 +1147,7 @@
           <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
           <Property Name="PersonalRent" Type="Int32" />
           <Property Name="MemberID" Type="Int32" />
-          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_Lease_Room1" FromRole="Lease" ToRole="Room" />
+          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_Lease_Room" FromRole="Lease" ToRole="Room" />
           <NavigationProperty Name="tMember" Relationship="SingleApartmentModel.FK_Lease_tMember" FromRole="Lease" ToRole="tMember" />
         </EntityType>
         <EntityType Name="MemberInformationCategory">
@@ -1214,9 +1215,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="RoomStyleID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" />
           <Property Name="RoomStylePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_Picture_RoomStyle" FromRole="Picture" ToRole="RoomStyle" />
+          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_Picture_Room" FromRole="Picture" ToRole="Room" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -1271,21 +1272,30 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoomStyleID" Type="Int32" />
+          <Property Name="RoomType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BuildCaseID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rent" Type="Int32" />
+          <Property Name="SquareFootage" Type="Int32" />
+          <Property Name="RoomPictureID" Type="Int32" />
+          <Property Name="RoomFacilityID" Type="Int32" />
+          <Property Name="Floor" Type="Int32" />
           <NavigationProperty Name="BuildCase" Relationship="SingleApartmentModel.FK_Room_BuildCase" FromRole="Room" ToRole="BuildCase" />
-          <NavigationProperty Name="Lease" Relationship="SingleApartmentModel.FK_Lease_Room1" FromRole="Room" ToRole="Lease" />
+          <NavigationProperty Name="Lease" Relationship="SingleApartmentModel.FK_Lease_Room" FromRole="Room" ToRole="Lease" />
+          <NavigationProperty Name="Picture" Relationship="SingleApartmentModel.FK_Picture_Room" FromRole="Room" ToRole="Picture" />
           <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
+          <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Room" FromRole="Room" ToRole="RoomFacilities" />
+          <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="Room" ToRole="RoomFavorite" />
         </EntityType>
         <EntityType Name="RoomFacilities">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="RoomStyleID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" />
           <Property Name="FacilityID" Type="Int32" />
-          <NavigationProperty Name="Facility" Relationship="SingleApartmentModel.FK_RoomFacilities_Facility1" FromRole="RoomFacilities" ToRole="Facility" />
-          <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_RoomFacilities_RoomStyle" FromRole="RoomFacilities" ToRole="RoomStyle" />
+          <NavigationProperty Name="Facility" Relationship="SingleApartmentModel.FK_RoomFacilities_Facility" FromRole="RoomFacilities" ToRole="Facility" />
+          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_RoomFacilities_Room" FromRole="RoomFacilities" ToRole="Room" />
         </EntityType>
         <EntityType Name="RoomFavorite">
           <Key>
@@ -1293,8 +1303,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="MemberID" Type="Int32" />
-          <Property Name="RoomStyleID" Type="Int32" />
-          <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_RoomFavorite_RoomStyle" FromRole="RoomFavorite" ToRole="RoomStyle" />
+          <Property Name="RoomID" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="RoomFavorite" ToRole="Room" />
           <NavigationProperty Name="tMember" Relationship="SingleApartmentModel.FK_RoomFavorite_tMember" FromRole="RoomFavorite" ToRole="tMember" />
         </EntityType>
         <EntityType Name="RoomStyle">
@@ -1302,16 +1312,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="PictureID" Type="Int32" />
           <Property Name="RoomStyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaxNumberOfPeople" Type="Int32" />
-          <Property Name="Rent" Type="Int32" />
-          <Property Name="Oic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="SquareFootage" Type="Int32" />
-          <NavigationProperty Name="Picture" Relationship="SingleApartmentModel.FK_Picture_RoomStyle" FromRole="RoomStyle" ToRole="Picture" />
           <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_Room_RoomStyle" FromRole="RoomStyle" ToRole="Room" />
-          <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_RoomStyle" FromRole="RoomStyle" ToRole="RoomFacilities" />
-          <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_RoomStyle" FromRole="RoomStyle" ToRole="RoomFavorite" />
         </EntityType>
         <EntityType Name="SubActivity">
           <Key>
@@ -1473,7 +1475,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFacilities_Facility1">
+        <Association Name="FK_RoomFacilities_Facility">
           <End Type="SingleApartmentModel.Facility" Role="Facility" Multiplicity="0..1" />
           <End Type="SingleApartmentModel.RoomFacilities" Role="RoomFacilities" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1547,7 +1549,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lease_Room1">
+        <Association Name="FK_Lease_Room">
           <End Type="SingleApartmentModel.Room" Role="Room" Multiplicity="0..1" />
           <End Type="SingleApartmentModel.Lease" Role="Lease" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1643,15 +1645,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Picture_RoomStyle">
-          <End Type="SingleApartmentModel.RoomStyle" Role="RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_Picture_Room">
+          <End Type="SingleApartmentModel.Room" Role="Room" Multiplicity="0..1" />
           <End Type="SingleApartmentModel.Picture" Role="Picture" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Picture">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1703,27 +1705,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFacilities_RoomStyle">
-          <End Type="SingleApartmentModel.RoomStyle" Role="RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_RoomFacilities_Room">
+          <End Type="SingleApartmentModel.Room" Role="Room" Multiplicity="0..1" />
           <End Type="SingleApartmentModel.RoomFacilities" Role="RoomFacilities" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RoomFacilities">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoomFavorite_RoomStyle">
-          <End Type="SingleApartmentModel.RoomStyle" Role="RoomStyle" Multiplicity="0..1" />
+        <Association Name="FK_RoomFavorite_Room">
+          <End Type="SingleApartmentModel.Room" Role="Room" Multiplicity="0..1" />
           <End Type="SingleApartmentModel.RoomFavorite" Role="RoomFavorite" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoomStyle">
+            <Principal Role="Room">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RoomFavorite">
-              <PropertyRef Name="RoomStyleID" />
+              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1739,7 +1741,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1944,7 +1946,7 @@
             <EntityTypeMapping TypeName="SingleApartmentModel.Picture">
               <MappingFragment StoreEntitySet="Picture">
                 <ScalarProperty Name="RoomStylePicture" ColumnName="RoomStylePicture" />
-                <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1993,8 +1995,14 @@
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="SingleApartmentModel.Room">
               <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="RoomFacilityID" ColumnName="RoomFacilityID" />
+                <ScalarProperty Name="RoomPictureID" ColumnName="RoomPictureID" />
+                <ScalarProperty Name="SquareFootage" ColumnName="SquareFootage" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="BuildCaseID" ColumnName="BuildCaseID" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
                 <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2005,7 +2013,7 @@
             <EntityTypeMapping TypeName="SingleApartmentModel.RoomFacilities">
               <MappingFragment StoreEntitySet="RoomFacilities">
                 <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
-                <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2013,7 +2021,7 @@
           <EntitySetMapping Name="RoomFavorite">
             <EntityTypeMapping TypeName="SingleApartmentModel.RoomFavorite">
               <MappingFragment StoreEntitySet="RoomFavorite">
-                <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -2022,12 +2030,7 @@
           <EntitySetMapping Name="RoomStyle">
             <EntityTypeMapping TypeName="SingleApartmentModel.RoomStyle">
               <MappingFragment StoreEntitySet="RoomStyle">
-                <ScalarProperty Name="SquareFootage" ColumnName="SquareFootage" />
-                <ScalarProperty Name="Oic" ColumnName="Oic" />
-                <ScalarProperty Name="Rent" ColumnName="Rent" />
-                <ScalarProperty Name="MaxNumberOfPeople" ColumnName="MaxNumberOfPeople" />
                 <ScalarProperty Name="RoomStyleName" ColumnName="RoomStyleName" />
-                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
