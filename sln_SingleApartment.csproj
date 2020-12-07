@@ -140,6 +140,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\ProductBackController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
@@ -163,6 +164,7 @@
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
+    <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CUser.cs" />
     <Compile Include="Models\Discount.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
@@ -962,6 +964,7 @@
     <Content Include="Views\ProductBack\Create.cshtml" />
     <Content Include="Views\ProductBack\Edit.cshtml" />
     <Content Include="Views\ProductBack\ProductList.cshtml" />
+    <Content Include="Views\Room\MyRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
