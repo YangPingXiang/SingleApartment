@@ -68,7 +68,7 @@ namespace sln_SingleApartment.Models
                         //InformationSource此欄位可以是null
                         info.InformationSource = p_content_id;              //訊息ContentID
 
-                        if (string.IsNullOrEmpty(p_message))
+                        if (!string.IsNullOrEmpty(p_message))
                         {
                             info.InformationContent = rowContent.ContentText + p_message;
                         }
@@ -97,6 +97,58 @@ namespace sln_SingleApartment.Models
             }
         }
 
+        //public bool insertInformation(int p_member_id,int p_categoryid, int p_source_id, string p_message)
+        //{
+        //    try
+        //    {
+        //        SingleApartmentEntities db = new SingleApartmentEntities();
+        //        Information info = new Information();
 
+        //        info.InformationDate = DateTime.Now;
+        //        info.InformationCategoryID = p_categoryid;  //訊息分類來源
+        //        info.DocumentID = p_source_id;              //可能是訂單號碼, 房號 ......
+        //        info.InformationContent = p_message;        //訊息內容
+        //        info.MemberID = p_member_id;
+        //        info.Priority = "Normal";
+        //        info.Read_YN = "N";
+        //        info.Status = "Open";
+        //        db.Information.Add(info);
+        //        db.SaveChanges();
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //public bool insertInformation(int p_categoryid, int p_source_id, string p_message)
+        //{
+        //    try
+        //    {
+        //        //從登入頁取得 member_id
+        //        Session["MemberID"] = 123;
+        //        int memberID = (int)Session["MemberID"];
+
+        //        SingleApartmentEntities db = new SingleApartmentEntities();
+        //        Information info = new Information();
+
+        //        info.InformationDate = DateTime.Now;
+        //        info.InformationCategoryID = p_categoryid;  //訊息分類來源
+        //        info.DocumentID = p_source_id;              //可能是訂單號碼, 房號 ......
+        //        info.InformationContent = p_message;        //訊息內容
+        //        info.MemberID = memberID;
+        //        info.Priority = "Normal";
+        //        info.Read_YN = "N";
+        //        info.Status = "Open";
+        //        db.Information.Add(info);
+        //        db.SaveChanges();
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

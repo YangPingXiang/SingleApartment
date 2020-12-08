@@ -39,6 +39,35 @@ namespace sln_SingleApartment.Controllers
 
         }
 
+        public string GetInfoContent()
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                IEnumerable<InformationContent> info = from p in db.InformationContent select p;
+
+                string result = "";
+                if (info != null)
+                {
+                    result = "[";
+
+                    foreach (var c in info)
+                    {
+                        if (result != "[") result += ",";  //務必加 ,
+
+                        //組JSON字串
+                        result = result + "{" + $"\"ID\":{c.ContentID},\"NAME\":\"{c.ContentName}\"" + "}";
+                    }
+                    result += "]";
+                }
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         public string GetInformationCategory()
         {
             try
@@ -161,6 +190,8 @@ namespace sln_SingleApartment.Controllers
 
                 ViewBag.Read_YN = p_read_yn;  //將partialview資料傳給 主要view
                 ViewBag.Priority = p_priority;
+                ViewBag.Query_Type = p_query_type;
+                ViewBag.Query_Data = p_data;
 
                 //int memberID = 1;
                 CMember member = Session[CDictionary.welcome] as CMember;
@@ -205,11 +236,20 @@ namespace sln_SingleApartment.Controllers
                 {//300 = 關鍵字
                     myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationContent.Contains(p_data);
                 }
+                else if (p_query_type == "400")
+                {//400 = 依訊息內容分類
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationSource == Convert.ToInt32(p_data);
+                }
+                else if (p_query_type == "500")
+                {//500 = 依當日新訊息
+                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd");
+                }
                 else
                 {   //no use
                     //myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.Read_YN == p_read_yn && p.Priority == p_priority;                
                 }
-                table = db.Information.Where(myWhere);
+                //modify by Jony 1091208 增加 .OrderBy(a=>a.InformationID)
+                table = db.Information.Where(myWhere).OrderBy(a=>a.InformationID);
 
                 //    myWhere = p => p.InformationContent.Contains(keyword) && p.Status != "User_Deleted" && p.Status != "Admin_Deleted";
                 //    table = db.Information.Where(myWhere);
@@ -222,27 +262,28 @@ namespace sln_SingleApartment.Controllers
                 List<CInformation> list = new List<CInformation>();
                 foreach (Information item in table)
                 {
-                    list.Add(new CInformation()
-                    {
-                        information_entity = item,
-                        InformationCategoryName = item.InformationCategory.InformationCategoryName,
-                        //三元運算子
-                        UserCategoryName = item.MemberCategoryID == null ? "未分類" : item.MemberInformationCategory.MemberCategoryName,
-                        //UserCategoryName = item.MemberInformationCategory.MemberCategoryName == null ? "未分類": item.MemberInformationCategory.MemberCategoryName
-                    });
-
-                    //CInformation x = new CInformation();
-                    //x.information_entity = item;
-                    //x.InformationCategoryName = item.InformationCategory.InformationCategoryName;
-                    //if (x.MemberCategoryID != null)
+                    //list.Add(new CInformation()
                     //{
-                    //    MemberInformationCategory c = db.MemberInformationCategory.Where(p => p.MemberCategoryID == item.MemberCategoryID).FirstOrDefault();
+                    //    information_entity = item,
+                    //    InformationCategoryName = item.InformationCategory.InformationCategoryName,
+                    //    //三元運算子
+                    //    UserCategoryName = item.MemberCategoryID == null ? "未分類" : item.MemberInformationCategory.MemberCategoryName,
+                    //});
 
-                    //    //沒設關聯, 為了取得 UserCategoryName = MemberInformationCategory.MemberCategoryName
-                    //    if (c != null)
-                    //        x.UserCategoryName = c.MemberCategoryName;
-                    //}
-                    //list.Add(x);
+                    CInformation x = new CInformation();
+                    x.information_entity = item;
+                    x.InformationCategoryName = item.InformationCategory.InformationCategoryName;
+                    x.UserCategoryName = item.MemberCategoryID == null ? "未分類" : item.MemberInformationCategory.MemberCategoryName;
+
+                    x.InformationSourceName = "";
+                    if (x.InformationSource != null)
+                    {
+                        InformationContent c = db.InformationContent.Where(p => p.ContentID == item.InformationSource).FirstOrDefault();
+                        //沒設關聯, 為了取得 UserCategoryName = MemberInformationCategory.MemberCategoryName
+                        if (c != null)
+                            x.InformationSourceName = c.ContentName;  //取得 訊息來源名稱
+                    }
+                    list.Add(x);
                 }
 
                 //return View(list);
