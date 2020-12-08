@@ -17,15 +17,38 @@ namespace sln_SingleApartment.Controllers
         #region index.html
         public ActionResult Home()
         {
+            var user = Session[CDictionary.welcome] as CMember;
+
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
             SingleApartmentEntities db = new SingleApartmentEntities();
-            List<CProductViewModel> list = new List<CProductViewModel>();
-            foreach(var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0))
-            {
-                list.Add(new CProductViewModel(){ entity = item });
-            }
             
+            List<CProductViewModel> list = new List<CProductViewModel>();
+
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            //如果活動ID有東西將商品加入到HOME 此為團購商品(12/7)
+            //===================================================================
+
+            Activity AV = new Activity();
+
+            Product PID = db.Product.FirstOrDefault(P => P.ActivityID >= 0);
+
+            if (PID != null)
+            {
+                foreach (var item in db.Product.Where(q => q.ActivityID != null && q.Discontinued == "N"))
+                {
+
+                    list.Add(new CProductViewModel() { entity = item });
+
+                }
+
+            }
             return View(list);
         }
+
+          
+            //=======================================================================
+           
         #endregion
         public ActionResult test()
         {

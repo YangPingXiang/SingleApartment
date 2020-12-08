@@ -82,7 +82,7 @@ namespace sln_SingleApartment.Controllers
 
             Product prod = new Product();
 
-            
+            prod.ActivityID = p.ActivityID;
 
             prod.ProductSubCategoryID = p.ProductSubCategoryID;
 
