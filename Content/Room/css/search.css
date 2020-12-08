@@ -1,0 +1,39 @@
+﻿.list {
+    background-color: #e8e8e8;
+    overflow: auto;
+}
+
+    .list li {
+        list-style-type: none;
+        float: left;
+        width: 8em;
+        /*em比較有彈性 因爲可以根據子的大小去做改變*/
+        /*border-bottom: 2px solid #065c6f;*/
+        margin-bottom:15px;
+    }
+
+        .list li a {
+            display: block;
+            line-height: 3em;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            .list li a:hover {
+                background-color: #e76f51;
+                color: white;
+            }
+
+.input-check {
+    background: #eceff8;
+    border: 2px solid #eceff8;
+    height: 20px;
+    box-shadow: none;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #626262;
+    width: 100%;
+}
+#order option {
+    background-color: #eceff8;
+}

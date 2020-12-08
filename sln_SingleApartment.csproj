@@ -625,6 +625,7 @@
     <Content Include="Content\Room\css\plugins\owl.transitions.css" />
     <Content Include="Content\Room\css\popuo-box.css" />
     <Content Include="Content\Room\css\responsive.css" />
+    <Content Include="Content\Room\css\search.css" />
     <Content Include="Content\Room\css\shortcode\alert.css" />
     <Content Include="Content\Room\css\shortcode\button.css" />
     <Content Include="Content\Room\css\shortcode\default.css" />
@@ -770,6 +771,13 @@
     <Content Include="Content\Room\images\news\n-1.jpg" />
     <Content Include="Content\Room\images\news\n-2.jpg" />
     <Content Include="Content\Room\images\news\n-3.jpg" />
+    <Content Include="Content\Room\images\roomstyle\北歐風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
@@ -969,6 +977,7 @@
     <Content Include="Views\BackInformation\JobList.cshtml" />
     <Content Include="Views\Shopping\List.cshtml" />
     <Content Include="Views\Product\_PartialProduct_Profile.cshtml" />
+    <Content Include="Views\Room\SearchPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
