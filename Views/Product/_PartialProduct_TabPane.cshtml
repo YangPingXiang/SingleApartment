@@ -1,15 +1,28 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
 @model IPagedList<sln_SingleApartment.ViewModels.CProductViewModel>
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
+
 <h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="row">
         <div class="shop-tab" id="zone_product">
             <!-- single-product start -->
-            @foreach (var item in Model)
+           @foreach (var item in Model)
             {
-                string pic = item.ProductID.ToString() + ".jpg";
                 <div class="col-md-4 col-lg-4 col-sm-6">
                     <div class="single-product">
                         <div class="product-img">
@@ -17,8 +30,8 @@
                                     <span>new</span>
                                 </div>*@
                             <a href="#">
-                                <img src="~/Content/Product/img/products/@pic" alt="Product Title" />
-                                <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/@pic">
+                                <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="Product Title" />
+                                <img class="secondary-image" alt="Product Title" src="@DisplayImage(item.prodpic.ProductPicture)">
                             </a>
                         </div>
                         <div class="product-dsc">

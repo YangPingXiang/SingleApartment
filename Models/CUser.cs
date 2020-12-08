@@ -93,7 +93,7 @@ namespace sln_SingleApartment.Models
                 list_main.Add(new CProductMainCategoryViewModel()
                 {
                     entity_MainCategory = item,
-                    ProductCount = db.Product.Where(r => r.ProductSubCategory.ProductMainCategoryID == item.ProductMainCategoryID).Count()
+                    ProductCount = list_product.Where(r => r.MainCategoryID == item.ProductMainCategoryID).Count()
                 });
             }
             List<CProductSubCategoryViewModel> list_sub = new List<CProductSubCategoryViewModel>();
@@ -102,10 +102,10 @@ namespace sln_SingleApartment.Models
                 list_sub.Add(new CProductSubCategoryViewModel()
                 {
                     entity_SubCategory = item,
-                    ProductCount = db.Product.Where(r => r.ProductSubCategoryID == item.ProductSubCategoryID).Count()
+                    ProductCount = list_product.Where(r => r.SubCategoryID == item.ProductSubCategoryID).Count()
                 });
             }
-
+            
             ShopViewModel result = new ShopViewModel() { product = list_product, MainCategory = list_main, SubCategory = list_sub };
             return result;
         }
