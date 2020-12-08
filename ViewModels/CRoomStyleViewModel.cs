@@ -17,12 +17,7 @@ namespace sln_SingelApartment.ViewModels
         public int ID { get { return this.entity_roomstyle.ID; } }
         [DisplayName("房型名稱")]
         public string roomStyleName { get { return this.entity_roomstyle.RoomStyleName; } }
-        [DisplayName("可容納人數")]
-        public int? maxnumberofpeople { get { return this.entity_roomstyle.MaxNumberOfPeople; } }
-        [DisplayName("租金")]
-        public int? rent { get { return this.entity_roomstyle.Rent; } }
-        [DisplayName("坪數")]
-        public int? squarefootage { get { return this.entity_roomstyle.SquareFootage; } }
+       
 
        
 
