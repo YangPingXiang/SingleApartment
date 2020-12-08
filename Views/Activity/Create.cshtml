@@ -1,158 +1,175 @@
-﻿@model sln_SingleApartment.ViewModel.CActivity
+﻿@model sln_SingleApartment.ViewModels.CActivityNew
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/Information_Layout.cshtml";
 }
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+<link href="~/datetimepicker.css" rel="stylesheet" />
+<script src="~/datetimepicker.js"></script>
+
+@using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section id="main" class="wrapper" style="padding:3em">
+        <!--style="border:solid 1px;border-color:black"-->
+        <div class="inner">
+            <header class="align-center">
+                <h1 style="font-size:2em;font-weight:700;line-height:1.3">新增活動</h1>
+            </header>
+            @*<h2></h2>*@
 
 
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-<section id="main" class="wrapper" style="padding:3em">
-    <!--style="border:solid 1px;border-color:black"-->
-    <div class="inner">
-        <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">新增活動</h1>
-        </header>
-        @*<h2></h2>*@
+                <div class="form-horizontal">
+                    @*<h4>Activity</h4>*@
+                    <hr />
+                    <!--活動子類別編號-->
+                    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SubCategoryDetailID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="control-label col-md-offset-0">
+                                    <option value="select">請選擇該活動類別</option>
+                                    <option value="select">團      購</option>
+                                    <option value="select">休閒娛樂類</option>
+                                    <option value="select">抱團取暖類</option>
 
+                                </select>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                @*<h4>Activity</h4>*@
-                <hr />
-                <!--活動子類別編號-->
-                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
                     <div class="form-group">
                         @Html.LabelFor(model => model.SubCategoryDetailID, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <select class="control-label col-md-offset-0">
-                                <option value="select">請選擇該活動類別</option>
-                                <option value="select">團      購</option>
-                                <option value="select">休閒娛樂類</option>
-                                <option value="select">抱團取暖類</option>
-
-                            </select>
-
+                            @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName" })
                             @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SubCategoryDetailID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName" })
-                        @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
                     </div>
-                </div>
 
-                <div class="form-group">
+                    @*<div class="form-group">*@
                     @*@Html.LabelFor(model => model.SubCategoryDetailID, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.SubCategoryDetailID, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
                         </div>*@
-                </div>
+                    @*</div>*@
 
-                <!--活動名稱-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ActivityName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ActivityName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ActivityName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <!--活動人數-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PeopleCount, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PeopleCount, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <!--會員ID-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.MemberID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.MemberID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MemberID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <!--開始時間-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-contro" } })
-                        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <!--結束時間-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <!--活動週期-->
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.Step, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <!--活動名稱-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ActivityName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Step, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Step, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ActivityName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ActivityName, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
-
-                <!--活動地點-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.MeetingPoint, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.MeetingPoint, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MeetingPoint, "", new { @class = "text-danger" })
                     </div>
-                </div>
 
-                <!--備註-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-
-                <!--活動狀態-->
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <!--活動人數-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PeopleCount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.PeopleCount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
+                    </div>
 
-                <!--Button鍵-->
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="送出" class="btn btn-default" />
+
+
+
+                    <!--開始時間-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                                        @*<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />*@
+                                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--結束時間-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                                        @*<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />*@
+                                        <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--活動地點-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MeetingPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MeetingPoint, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MeetingPoint, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--備註-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <!--照片-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ActivityImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="myImage" />
+                        </div>
+                    </div>
+
+
+                    <!--Button鍵-->
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="送出" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
+            }
+
+            <div>
+                @Html.ActionLink("返回活動列表", "List")
             </div>
-        }
-
-        <div>
-            @Html.ActionLink("返回活動列表", "List")
         </div>
-    </div>
-</section>
+    </section>
+}
 
 
+<script type="text/javascript">
+    $(function () {
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker();
+    });
+</script>
 <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />
 <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />

@@ -25,6 +25,7 @@ namespace sln_SingleApartment.Controllers
             
             List<CProductViewModel> list = new List<CProductViewModel>();
 
+
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             //如果活動ID有東西將商品加入到HOME 此為團購商品(12/7)
             //===================================================================
@@ -43,6 +44,7 @@ namespace sln_SingleApartment.Controllers
                 }
 
             }
+
             return View(list);
         }
 
@@ -98,7 +100,7 @@ namespace sln_SingleApartment.Controllers
             }
             return Json(ArrayList);
         }
-        public ActionResult PartialProductTabPane(string MemberID, int page = 1, int pageSize = 6, string MainCategory = null, string SubCategory = null, string KeyWord = "")
+        public ActionResult PartialProductTabPane(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "")
         {
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
@@ -111,10 +113,30 @@ namespace sln_SingleApartment.Controllers
                 lt = user.SearchProductsBy(int.Parse(MainCategory));
             else
                 lt = user.SearchProductsBy();
-            var result = lt.ToPagedList(currentPage, pageSize);
+            var result = lt.ToPagedList(currentPage, int.Parse(pageSize));
             ViewData.Model = result;
             ViewBag.MemberID = MemberID;
+            ViewBag.pageSize = pageSize;
             return PartialView("_PartialProduct_TabPane");
+        }
+        public ActionResult PartialProductProfile(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "")
+        {
+            int currentPage = page < 1 ? 1 : page;
+            CUser user = new CUser();
+            List<CProductViewModel> lt;
+            if (KeyWord != "")
+                lt = user.SearchProductsBy(null, null, KeyWord);
+            else if (SubCategory != null)
+                lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+            else if (MainCategory != null)
+                lt = user.SearchProductsBy(int.Parse(MainCategory));
+            else
+                lt = user.SearchProductsBy();
+            var result = lt.ToPagedList(currentPage, int.Parse(pageSize));
+            ViewData.Model = result;
+            ViewBag.MemberID = MemberID;
+            ViewBag.pageSize = pageSize;
+            return PartialView("_PartialProduct_Profile");
         }
 
 

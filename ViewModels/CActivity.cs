@@ -47,7 +47,13 @@ namespace sln_SingleApartment.ViewModel
         [DisplayName("活動狀態")]
         public string Status { get { return this.entity.Status; } }
 
+        public HttpPostedFileBase myImage { get; set; }
 
-        
+        [DisplayName("活動照片")]
+        public string ActivityImage
+        {
+            get { return this.entity.ActivityImage; }
+
+        }
     }
 }

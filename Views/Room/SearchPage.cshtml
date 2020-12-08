@@ -1,0 +1,257 @@
+﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+@{
+    ViewBag.Title = "SearchPage";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+
+<body>
+
+    <div style="background-color:#edf2fb; width:800px; margin:50px auto; text-align:center;">
+
+        <form method="post">
+
+            <ul class="list">
+                <li style="font-weight:800; float:left; ">
+                    建案：
+                </li>
+                <li>
+                    <a>綠意大安森活窩</a>
+                </li>
+                <li>
+                    <a>城市西門快捷窩</a>
+                </li>
+                <li>
+                    <a>慢活文山雲景窩</a>
+                </li>
+                <li>
+                    <a>心醉信義忘憂窩</a>
+                </li>
+            </ul>
+            <ul class="list">
+                <li style="font-weight:800; float:left;">
+                    類型：
+                </li>
+                <li>
+                    <a>1人房</a>
+                </li>
+                <li>
+                    <a>2人房</a>
+                </li>
+                <li>
+                    <a>3人房</a>
+                </li>
+                <li>
+                    <a>4人房</a>
+                </li>
+            </ul>
+
+            <ul class="list">
+                <li style="font-weight:800; float:left;">
+                    租金：
+                </li>
+                <li>
+                    <a>10000元以下</a>
+                </li>
+                <li>
+                    <a>10000-20000元</a>
+                </li>
+                <li>
+                    <a>20000-30000元</a>
+                </li>
+                <li>
+                    <a>30000-40000元</a>
+                </li>
+                <li>
+                    <a>40000元以上</a>
+                </li>
+
+            </ul>
+
+
+
+            <ul class="list">
+                <li style="font-weight:800; float:left;">
+                    風格：
+                </li>
+
+                <li>
+                    <a>北歐風</a>
+                </li>
+                <li>
+                    <a>工業風</a>
+                </li>
+                <li>
+                    <a>夢幻風</a>
+                </li>
+                <li>
+                    <a>地中海風</a>
+                </li>
+                <li>
+                    <a>日式風</a>
+                </li>
+                <li>
+                    <a>美式潮流風</a>
+                </li>
+
+            </ul>
+
+
+        </form>
+
+
+
+    </div>
+
+
+    <!--trending  start-->
+    <div class="our-room text-center ptb-80 white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-75">
+                        <h2>
+                            窩居
+                            <span>熱門推薦</span>
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="our-room-show">
+                <div class="row">
+                    <div class="carousel-list">
+                        @foreach (var item in Model.roomViewModels)
+                        {
+                            <div class="col-md-4">
+                                <div class="single-room">
+                                    <div class="room-img">
+                                        <a href="#"><img src="~/Content/Room/images/room/room1.jpg" alt=""></a>
+                                    </div>
+                                    <div class="room-desc">
+                                        <div class="room-name">
+                                            <h3>
+                                                <a href="#">@item.roomname</a>
+                                            </h3>
+                                        </div>
+                                        <div class="room-rent">
+                                            <h5>
+                                                NT @item.rent /
+                                                <span>晚</span>
+                                            </h5>
+                                        </div>
+                                        <div class="room-book">
+                                            <a href="#">更多...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--trending end-->
+    <!--start browse-->
+    <div class="our-news text-center ptb-80 white_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-80">
+                        <h2 style="margin-left:200px;">
+                            搜尋
+                            <span>結果</span>
+                        </h2>
+                        <select style="width:100px; float:right; margin-right:120px;">
+                            <option style="background-color:#eceff8;">排序</option>
+                            <option style="background-color:#eceff8;">坪數大->小</option>
+                            <option style="background-color:#eceff8;">坪數小->大</option>
+                            <option style="background-color:#eceff8;">租金小->大</optionstyle="background-color:#eceff8;">
+                            <option style="background-color:#eceff8;">租金大->小</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="news-list">
+                <div class="row">
+                    <div class="our-news-list owl-pagination">
+                        <div class="single-view_post" ">
+                            @foreach (var item in Model.roomViewModels)
+                            {
+                                <div class="col-md-12 pb-80">
+                                    <div class="news-inner">
+                                        @*@{
+                                                var fiilename = "房型_" + item.roomStyleName + ".jpg";
+                                            }*@
+                                        <div class="news-img">
+                                            <img src="~/Content/Room/images/roomstyle/工業風-1.jpg" alt="@item.roomname">
+                                            <div class="news-post">
+                                                @*評價*@
+                                                <div class="n-date">@item.entity_room.BuildCase.BuildTimes</div>
+                                                <a href="#" class="comment"><span><i class="mdi mdi-comment-processing-outline"></i></span> 20</a>
+                                                <div class="news-views">
+                                                    <a href="#"><span><i class="mdi mdi-heart"></i></span>40</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-desc">
+                                            <h3 class="news-title">
+                                                <a href="#">
+                                                    @item.roomname
+                                                </a>
+                                            </h3>
+                                            <p class="news_desc">建案： @item.entity_room.BuildCase.BuildCaseName  /  坪數：  @item.squarefootage   </p>
+                                            <div class="news-action">
+                                                <div class="read-more">
+                                                    <a href="#">更多...</a>
+                                                </div>
+                                                <div class="news-share">
+                                                    <p>Share:</p>
+                                                    <a href="https://www.facebook.com/"><i class="mdi mdi-facebook"></i></a>
+                                                    <a href="#"><i class="mdi mdi-rss"></i></a>
+                                                    <a href="#"><i class="mdi mdi-google-plus"></i></a>
+                                                    <a href="https://www.instagram.com/accounts/login/"><i class="mdi mdi-instagram"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--start browse-->
+
+    <script>
+        $(function () {
+            $('li').click(function () {
+                $(this).css("background-color", "#e76f51")
+                    .siblings().css("background-color", "#e8e8e8")
+                $(this.firstElementChild).css("color", "white")
+                $(this).find("a:first-child").css("color", "white")
+                $(this).siblings().find("a:first-child").css("color","#4FC1F0");
+                console.log(this);
+            });
+
+
+
+        });
+
+
+
+    </script>
+</body>
+
+

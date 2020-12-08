@@ -2,20 +2,20 @@
 
 @{
     ViewBag.Title = "List";
-    int count = 0;
+    //int count = 0;
     Layout = "~/Views/Shared/Information_Layout.cshtml";
 }
 
 
-    @*<h2>活動列表</h2>*@
-    <section id="main" class="wrapper" style="padding:3em">
-        <!--style="border:solid 1px;border-color:black"-->
-        <div class="inner">
-            <header class="align-center">
-                <h1 style="font-size:2em;font-weight:700;line-height:1.3">活動列表</h1>
-            </header>
-            @using (Html.BeginForm())
-            {
+@*<h2>活動列表</h2>*@
+<section id="main" class="wrapper" style="padding:3em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">活動列表</h1>
+        </header>
+        @using (Html.BeginForm())
+        {
             <label class="form-group">
 
                 @Html.TextBox("txtKey")
@@ -24,121 +24,77 @@
                 @*@Html.DropDownList("subName")*@
 
                 @*<input type="" name="Namelist" />*@
-                
+
             </label>
 
+        }
+
+        <label>
+            @*@Html.ActionLink("新增活動", "Create")*@
+            <a href="~/Activity/Create" class="btn btn-primary">新增活動</a>
+        </label>
+        <label>
+            <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
+            @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
+        </label>
+        <br />
+        <br />
+        <table class="table">
+
+            <h2>可參加活動</h2>
+            @foreach (var item in Model)
+            {
+                <div class="card" style="width: 20rem; border:solid 2px lightgray; float: left; margin:10px;">
+                    @*<img src="..." class="card-img-top" alt="..." style="border:solid 1px darkgray;">*@
+                    <div class="card-body">
+                        <p>開始時間: @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName) </p>
+                        <p>活動名稱: @Html.DisplayFor(modelItem => item.ActivityName)</p>
+                        @*<p class="card-title">@Html.DisplayFor(modelItem => item.ActivityName)</p>*@
+                        <p class="card-text">
+
+                            <br />開始時間: @Html.DisplayFor(modelItem => item.StartTime)
+                            <br />
+                            <br />結束時間: @Html.DisplayFor(modelItem => item.EndTime)
+                            <br />
+                            <br />活動人數: @Html.DisplayFor(modelItem => item.PeopleCount) 位
+                            <br />
+                            <br />發起人: @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
+                            <br />
+                            <br />地點: @Html.DisplayFor(modelItem => item.MeetingPoint)
+                            <br />
+                            <br />備註: @Html.DisplayFor(modelItem => item.Note)
+                            <br />
+                            <br />狀態: @Html.DisplayFor(modelItem => item.Status)
+                            <br />
+                            <br />圖片:
+                        <p>
+                            <img src="@item.ActivityImage" width="120" height="100" />
+                        </p>
+                        <br />
+                        <p>
+                            @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })|
+                            @{
+                                if (item.Status == "可參加")
+                                {
+                                    @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
+                                }
+                                else if (item.Status == "人員已滿")
+                                {
+                                    @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
+                                }
+                                else
+                                {
+                                    @("加入")
+                                }
+                            }
+                            |
+                            @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
+                            <a href="~/Product/Home">編輯商品</a>
+                    </div>
+                </div>
+                <tr></tr>
             }
 
-            <label>
-                @*@Html.ActionLink("新增活動", "Create")*@
-                <a href="~/Activity/Create" class="btn btn-primary">新增活動</a>
-            </label>
-            <label>
-                <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
-                @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
-            </label>
-            <br />
-            <br />
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ActivityID)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.SubCategoryDetailID)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.ActivityName)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.StartTime)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.EndTime)
-                    </th>
-
-                    <th>
-                        @*@Html.DisplayNameFor(model => model.MemberID)*@
-                        活動發起人
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.MeetingPoint)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.PeopleCount)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Note)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Status)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
-                    count++;
-                    <tr>
-                        <td>
-                            @count
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ActivityName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndTime)
-                        </td>
-                        <td>
-                            @*@Html.DisplayFor(modelItem => item.MemberID)*@
-                            @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MeetingPoint)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PeopleCount)
-                        </td>
-                        
-
-                        @*<td>
-                    @Html.DisplayFor(modelItem => item.MemberID)
-                </td>*@
-
-                        @*<td>
-                    @Html.DisplayFor(modelItem => item.Step)
-                </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Note)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                        <td>
-
-                            @Html.ActionLink("修改", "Edit", new { id = item.ActivityID }) |
-                            @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })|
-                            @Html.ActionLink("刪除", "Delete", new { id = item.ActivityID })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-    </section>
-   
+        </table>
+    </div>
+</section>

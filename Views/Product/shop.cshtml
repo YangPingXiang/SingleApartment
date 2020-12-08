@@ -168,10 +168,10 @@
                                     </div>
                                     <div class="shop5">
                                         <label>Show :</label>
-                                        <select>
-                                            <option value="">12</option>
-                                            <option value="">24</option>
-                                            <option value="">36</option>
+                                        <select id="pageSize" onchange="SearchProductForNumbers()">
+                                            <option value="6">6</option>
+                                            <option value="12">12</option>
+                                            <option value="20">20</option>
                                         </select>
                                     </div>
                                 </div>
@@ -183,76 +183,12 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <div class="row" id="zone_product_detail">
-                                        @{
-                                            foreach (var item in Model.product)
-                                            {
-                                                string pic = item.ProductID.ToString() + ".jpg";
-                                                <div class="li-item">
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="tb-product-item-inner tb2 pct-last">
-                                                            @*<div class="pro-type">
-                                                                    <span>sale</span>
-                                                                </div>*@
-                                                            <div class="re-img">
-                                                                <a href="#"><img alt="" src="~/Content/Product/img/products/@pic"></a>
-                                                            </div>
-                                                            <div class="actions-btn">
-                                                                <a data-original-title="Quick View" data-toggle="modal" data-trigger="hover" data-target="#quick-view" data-placement="top" href="#">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8 col-sm-8">
-                                                        <div class="f-fix" @*style="height:320px"*@>
-                                                            <div class="tb-beg">
-                                                                <a href="#">@item.ProductName</a>
-                                                            </div>
-                                                            <div class="tb-product-wrap-price-rating">
-                                                                <div class="tb-product-price font-noraure-3">
-                                                                    <span class="amount2 ana">$ @item.UnitPrice </span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="desc" style="height:80px">@item.Description</p>
-                                                            <div class="last-cart l-mrgn ns">
-                                                                <a class="las4" href="#">Add To Cart</a>
-                                                            </div>
-                                                            <div class="tb-product-btn">
-                                                                <a href="#">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </a>
-                                                                <a href="#" name="@item.ProductID" onclick="AddToFavoriteList(@ViewBag.MemberID)">
-                                                                    <i class="fa fa-heart"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="fa fa-retweet"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-                                        }
+                                        <!--PartialView的部分：_PartialProduct_Profile-->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="shop-all-tab-cr shop-bottom">
-                            <div class="two-part">
-                                <div class="shop5 page">
-                                    <ul>
-                                        <li>
-                                            <a class="active" href="#">1</a>
-                                            <a href="#">2</a>
-                                            <a href="#">3</a>
-                                            <a href="#">4</a>
-                                            <a href="#">5</a>
-                                            <a href="#"><i class="fa fa-arrow-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -398,62 +334,102 @@
 <script>
     $(function () {
         SearchProduct();
+        $('#allpd').click(function () { SearchProduct() });
+
+        $('.myMainCate').click(function () {
+            SearchProductsByMainC($(this).prop("name"));
+        });
+        $('.mySubCate').click(function () {
+            SearchProductsBySubC($(this).prop("name"));
+        });
+
     });
 
     @* 條件搜索 *@
     function SearchProduct() {
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("PartialProductTabPane")",
-            data: {
-                MemberID : @ViewBag.MemberID,
-            },
-            success: function (data) {
-                $("#ProductTab").html(data);
-            }
-        });
-    }
-
-    function SearchProductsByMainC(id){
+        pagesize = $("#pageSize").val();
         $.ajax({
             type: "POST",
             url: "@Url.Action("PartialProductTabPane")",
             data: {
                 MemberID: @ViewBag.MemberID,
-                MainCategory: id
+                pageSize : pagesize
             },
             success: function (data) {
-                $("#ProductTab").html(data);
+                $("#home").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
             }
         });
     }
-     function SearchProductsBySubC(id){
+
+    function SearchProductsByMainC(id) {
+        pagesize = $("#pageSize").val();
         $.ajax({
             type: "POST",
             url: "@Url.Action("PartialProductTabPane")",
             data: {
                 MemberID: @ViewBag.MemberID,
-                SubCategory: id
+                MainCategory: id,
+                pageSize: pagesize
             },
             success: function (data) {
-                $("#ProductTab").html(data);
+                $("#home").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                MainCategory: id,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
             }
         });
     }
-    $(function () {
-        $('#allpd').click(function () { SearchProductsBy() });
-
-        $('.myMainCate').click(function () {
-            console.log("Main = " + $(this).prop("name"));
-            SearchProductsByMainC($(this).prop("name"));
+    function SearchProductsBySubC(id) {
+        let pagesize = $("#pageSize").val();
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                SubCategory: id,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#home").html(data);
+            }
         });
-        $('.mySubCate').click(function () {
-            console.log("Main = " + $(this).prop("name"));
-            SearchProductsBySubC($(this).prop("name"));
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                SubCategory: id,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
+            }
         });
-        
-    })
-
+    }
+    @* 一頁幾筆搜尋 *@
+    function SearchProductForNumbers() {
+        SearchProduct();
+    }
     @* 加到最愛 *@
     function AddToFavoriteList(MemberID) {
 

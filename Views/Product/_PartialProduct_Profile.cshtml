@@ -1,0 +1,82 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModels.CProductViewModel>
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
+
+<input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
+@foreach (var item in Model)
+{
+    <div class="li-item">
+        <div class="col-md-4 col-sm-4">
+            <div class="tb-product-item-inner tb2 pct-last">
+                @*<div class="pro-type">
+                        <span>sale</span>
+                    </div>*@
+                <div class="re-img">
+                    <a href="#"><img alt="" src="@DisplayImage(item.prodpic.ProductPicture)"></a>
+                </div>
+                <div class="actions-btn">
+                    <a data-original-title="Quick View" data-toggle="modal" data-trigger="hover" data-target="#quick-view" data-placement="top" href="#">
+                        <i class="fa fa-eye"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <div class="f-fix">
+                <div class="tb-beg">
+                    <a href="#">@item.ProductName</a>
+                </div>
+                <div class="tb-product-wrap-price-rating">
+                    <div class="tb-product-price font-noraure-3">
+                        <span class="amount2 ana">$ @item.UnitPrice </span>
+                    </div>
+                </div>
+                <p class="desc" style="height:80px">@item.Description</p>
+                <div class="last-cart l-mrgn ns">
+                    <a class="las4" href="#">Add To Cart</a>
+                </div>
+                <div class="tb-product-btn">
+                    <a href="#">
+                        <i class="fa fa-eye"></i>
+                    </a>
+                    <a href="#" name="@item.ProductID" onclick="AddToFavoriteList(@ViewBag.MemberID)">
+                        <i class="fa fa-heart"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-retweet"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<br/>
+    <div class="shop-all-tab-cr shop-bottom">
+        <div class="two-part">
+
+        </div>
+    </div>
+
+@Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID, pageSize = ViewBag.pageSize }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+    new AjaxOptions()
+    {
+        HttpMethod = "Get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "zone_product_detail",
+    }
+    )
+)

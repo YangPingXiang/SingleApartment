@@ -1,0 +1,48 @@
+﻿@model IEnumerable<sln_SingleApartment.Models.Participant>
+
+@{
+    ViewBag.Title = "ParticipantStatus";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ParticipantStatus</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity.ActivityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tMember.fMemberName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activity.ActivityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tMember.fMemberName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ParticipantID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ParticipantID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ParticipantID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
