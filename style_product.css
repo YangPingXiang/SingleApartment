@@ -2244,12 +2244,23 @@ a.clear-all {
 .shop-one.re-shop-one {
   overflow: inherit;
 }
+.pagination-container ul li.active {
+    color: #fff;
+    border : none;
+    font-size: 14px;
+    font-weight: 700;
+
+}
+    .pagination-container ul li.active a {
+        background: #ef6644 none repeat scroll 0 0;
+        border: none;
+    }
 .shop-all-tab-cr .two-part .page ul li a.active {
-  background: #e84c3d none repeat scroll 0 0;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 0 7px 2px;
+    background: #e84c3d none repeat scroll 0 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 7px 2px;
 }
 .shop-all-tab-cr .two-part .page ul li a {
   color: #2f5271;

@@ -17,7 +17,6 @@
 
 <h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
-<div role="tabpanel" class="tab-pane active" id="home">
     <div class="row">
         <div class="shop-tab" id="zone_product">
             <!-- single-product start -->
@@ -53,13 +52,16 @@
 
         </div>
     </div>
-</div>
+
 
 <h1>this is PartialView</h1>
-@Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID }),
-PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
-{
-    HttpMethod = "Get",
-    InsertionMode = InsertionMode.Replace,
-    UpdateTargetId = "ProductTab"
-}))
+@Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID, pageSize= ViewBag.pageSize }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new AjaxOptions()
+        {
+            HttpMethod = "Get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "home"
+        }
+    )
+)
