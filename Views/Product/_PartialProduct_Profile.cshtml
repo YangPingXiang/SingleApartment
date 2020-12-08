@@ -15,7 +15,6 @@
     }
 }
 
-<h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
 @foreach (var item in Model)
 {
@@ -64,7 +63,13 @@
         </div>
     </div>
 }
-<h1>this is PartialView</h1>
+<br/>
+    <div class="shop-all-tab-cr shop-bottom">
+        <div class="two-part">
+
+        </div>
+    </div>
+
 @Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID, pageSize = ViewBag.pageSize }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
     new AjaxOptions()
