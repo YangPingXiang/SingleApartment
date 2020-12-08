@@ -12,6 +12,35 @@ namespace sln_SingelApartment.Controllers
     public class RoomController : Controller
     {
         SingleApartmentEntities dbSA = new SingleApartmentEntities();
+
+        //new search Page
+        public ActionResult SearchPage()
+        {
+            CAboutRoomViewModel abt_VM = new CAboutRoomViewModel();
+
+            //buildcase
+            List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
+            var b = dbSA.BuildCase;
+            foreach (var item in b)
+            {
+                buildcase_VM_lt.Add(new CBuildCaseViewModel() { entity_buildcase = item });
+            }
+            abt_VM.buildcaseViewModels = buildcase_VM_lt;
+
+            //roomtype
+            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
+            var r = dbSA.Room;
+            foreach (var item in r)
+            {
+                room_VM_lt.Add(new CRoomViewModel() { entity_room = item });
+            }
+            abt_VM.roomViewModels = room_VM_lt;
+
+
+
+            return View(abt_VM);
+        }
+
         public ActionResult Searching()
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
