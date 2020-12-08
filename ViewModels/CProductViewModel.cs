@@ -40,6 +40,12 @@ namespace sln_SingleApartment.ViewModels
         [DisplayName("產品敘述")]
         [Required(ErrorMessage = "請輸入產品敘述")]
         public string Description { get { return entity.Description; } }
+
+
+        [DisplayName("活動ID")]
+        
+        public int? ActivityID { get { return entity.ActivityID; } }
+
         //我需要的
         [DisplayName("商品子類別編號")]
         public int SubCategoryID { get { return entity.ProductSubCategory.ProductSubCategoryID; } }
