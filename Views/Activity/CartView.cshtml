@@ -1,4 +1,5 @@
-﻿@model IEnumerable<sln_SingleApartment.ViewModels.CActivityCart>
+﻿
+@model IEnumerable<sln_SingleApartment.ViewModels.CActivityCart>
 
 @{
     ViewBag.Title = "CartView";
@@ -10,6 +11,11 @@
 <p>
     @Html.ActionLink("返回活動列表", "List")
 </p>
+
+<div>
+    <a href="~/Activity/DeleteAll" class="btn btn-default">全部清除</a>
+</div>
+
 <table class="table">
     <tr>
         @*<th>
@@ -37,6 +43,10 @@
         </th>
 
         <th>
+            @Html.DisplayNameFor(model => model.fMemberId)
+        </th>
+
+        <th>
             @Html.DisplayNameFor(model => model.fNote)
         </th>
 
@@ -46,9 +56,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.SubCategoryDetailID)
-                </td>*@
+            <td>
+                @Html.Hidden("txtfJoinedID", item.fJoinedId)
+            </td>
 
             <td>
                 @Html.DisplayFor(modelItem => item.fAvtivityName)
@@ -71,11 +81,15 @@
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.fStatus)
+                @Html.DisplayFor(modelItem => item.fMemberId)
             </td>
 
             <td>
-                @Html.ActionLink("確定參加", "List", new { id = item.fJoinedId }) |
+                @Html.DisplayFor(modelItem => item.fNote)
+            </td>
+
+            <td>
+                @Html.ActionLink("確定參加", "AddToDB", new { id = item.fJoinedId }) |
 
                 @Html.ActionLink("取消", "Delete", new { id = item.fJoinedId })
             </td>
