@@ -13,23 +13,23 @@ namespace sln_SingleApartment.ViewModels
     {
         public tActivityCart entity { get; set; }
 
-        public int fJoinedId { get { return this.entity.fJoinedId; } }
+        public int fJoinedId { get; set; }
         [DisplayName("發起人")]
-        public Nullable<int> fMemberId { get { return this.entity.fMemberId; } }
+        public Nullable<int> fMemberId { get; set; }
         [DisplayName("活動名稱")]
-        public string fAvtivityName { get { return this.entity.fAvtivityName; } }
+        public string fAvtivityName { get; set; }
         [DisplayName("開始時間")]
-        public Nullable<System.DateTime> fStartTime { get { return this.entity.fStartTime; } }
+        public Nullable<System.DateTime> fStartTime { get; set; }
         [DisplayName("結束時間")]
-        public Nullable<System.DateTime> fEndTime { get { return this.entity.fEndTime; } }
+        public Nullable<System.DateTime> fEndTime { get; set; }
         [DisplayName("地點")]
-        public string fLocation { get { return this.entity.fLocation; } }
+        public string fLocation { get; set; }
         [DisplayName("人數")]
-        public Nullable<int> fPeopleCount { get { return this.entity.fPeopleCount; } }
+        public Nullable<int> fPeopleCount { get; set; }
 
-        public string fStatus { get { return this.entity.fStatus; } }
+        public string fStatus { get; set; }
         [DisplayName("備註")]
-        public string fNote { get { return this.entity.fNote; } }
+        public string fNote { get; set; }
 
 
     }
