@@ -276,7 +276,40 @@ namespace sln_SingleApartment.Controllers
             return Json("沒有此商品");
         }
         #endregion
+        #region Checkout
 
+        //結帳畫面{12.6)
+        public ActionResult CheckOut()
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list == null || list.Count == 0)
+            {
+                return RedirectToAction("ShowProductInCart");
+            }
+            List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
+
+                //CUser theUser = new CUser();
+                ////===================================================================
+                //var user = Session[CDictionary.welcome] as CMember;
+                ////必須先登入會員 
+                //if (user != null)
+                //{
+                //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
+                //    user.fPhone= Request.Form["TXTPHONE"];
+                //    user.fEmail = Request.Form["TXTEMAIL"];
+                //    //user.fBirthDate =Request.Form[""];
+                //}
+                //===================================================================
+                
+             return View(orderlist);
+        }
+        #endregion 
         //#region 秉庠
 
 
@@ -419,41 +452,6 @@ namespace sln_SingleApartment.Controllers
 
         //#endregion
 
-        //結帳畫面{12.6)
-        public ActionResult CheckOut(int ID)
-        {
-            using (SingleApartmentEntities db = new SingleApartmentEntities())
-            {
-                var table = (from p in db.OrderDetails
-                             where p.OrderID == ID
-                             select p).ToList();
-
-
-                //CUser theUser = new CUser();
-                ////===================================================================
-                //var user = Session[CDictionary.welcome] as CMember;
-                ////必須先登入會員 
-                //if (user != null)
-                //{
-                //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
-                //    user.fPhone= Request.Form["TXTPHONE"];
-                //    user.fEmail = Request.Form["TXTEMAIL"];
-                //    //user.fBirthDate =Request.Form[""];
-                //}
-                //===================================================================
-
-
-                if (table.Count == 0)
-                {
-                    return RedirectToAction("Home");
-                }
-                else
-                {
-                    return View(table);
-                }
-
-            }
-        }
 
     }
 }

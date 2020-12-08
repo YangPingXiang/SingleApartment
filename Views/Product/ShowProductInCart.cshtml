@@ -2,7 +2,19 @@
     ViewBag.Title = "ShowProductInCart";
     Layout = "~/Views/Shared/Product/_LayoutPageIndex.cshtml";
 }
-
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
 @model List<sln_SingleApartment.ViewModels.COrderDetailsViewModel>
 <!-- pages-title-start -->
 <section class="contact-img-area">
@@ -67,13 +79,13 @@
                                     {
                                         <tr>
                                             <td class="sop-cart an-shop-cart">
-                                                <a href="#"><img class="primary-image" alt="" src="img/products/1.jpg"></a>
+                                                <a href="#"><img class="primary-image" alt="" src="@DisplayImage(item.prodpic.ProductPicture)"></a>
                                                 <a href="#">@item.ProductName</a>
                                             </td>
                                             <td class="sop-cart an-sh">
                                                 <div class="quantity ray">
                                                     <input class="input-text qty text" type="number" size="4" title="Qty" value="@item.Quantity" min="0" step="1">
-                                                    <a class="remove" onclick="deleteOneProduct(@item.ProductID)" >
+                                                    <a class="remove" onclick="deleteOneProduct(@item.ProductID)">
                                                         <span>x</span>
                                                     </a>
                                                 </div>
