@@ -397,6 +397,11 @@
 <!-- #region 顯示產品的功能Ajax-->
 <script>
     $(function () {
+        SearchProduct();
+    });
+
+    @* 條件搜索 *@
+    function SearchProduct() {
         $.ajax({
             type: "POST",
             url: "@Url.Action("PartialProductTabPane")",
@@ -407,9 +412,8 @@
                 $("#ProductTab").html(data);
             }
         });
-    });
+    }
 
-    @* 條件搜索 *@
     function SearchProductsByMainC(id){
         $.ajax({
             type: "POST",
@@ -423,15 +427,29 @@
             }
         });
     }
+     function SearchProductsBySubC(id){
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                SubCategory: id
+            },
+            success: function (data) {
+                $("#ProductTab").html(data);
+            }
+        });
+    }
     $(function () {
-        $('#allpd').click(function () { SearchProductsBy("all") });
+        $('#allpd').click(function () { SearchProductsBy() });
 
         $('.myMainCate').click(function () {
             console.log("Main = " + $(this).prop("name"));
             SearchProductsByMainC($(this).prop("name"));
         });
         $('.mySubCate').click(function () {
-            SearchProductsBy("SubCategory", $(this).prop("name"));
+            console.log("Main = " + $(this).prop("name"));
+            SearchProductsBySubC($(this).prop("name"));
         });
         
     })
