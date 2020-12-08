@@ -114,7 +114,7 @@
 
 @*@Html.PagedListPager(Model, page => Url.Action("DemoPaging", new { page }))*@
 
-@Html.PagedListPager(Model, page => Url.Action("BackListPaging", new { pageNum = page }),
+@Html.PagedListPager(Model, page => Url.Action("BackListPaging", new { pageNum = page, p_read_yn = ViewBag.Read_YN, p_priority = ViewBag.Priority, p_query_type = ViewBag.Query_Type, p_data = ViewBag.Query_Data }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new AjaxOptions()
         {

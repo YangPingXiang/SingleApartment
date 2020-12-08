@@ -13,5 +13,6 @@ namespace sln_SingleApartment.ViewModels
         public int MemberID { get { return entity.MemberID; } }
         public int ProductID { get { return entity.ProductID;  } }
         public Product Product { get { return db.Product.Where(r => r.ProductID == this.ProductID).FirstOrDefault(); } }
+        public CProductViewModel pro { get { return new CProductViewModel() { entity = this.Product }; } }
     }
 }

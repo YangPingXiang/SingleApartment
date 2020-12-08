@@ -70,8 +70,6 @@ namespace sln_SingleApartment.Models
             {
                 COrderDetailsViewModel odd = new COrderDetailsViewModel();
                 odd.entity = new OrderDetails() { ProductID = item.txtProductID, Quantity = item.txtQuantity };
-                odd.ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName;
-                odd.ProductPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice;
                 orderDetails.Add(odd);
             }
             return orderDetails;

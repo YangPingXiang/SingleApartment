@@ -3,8 +3,8 @@
 
 @{
     ViewBag.Title = "MyRoom";
-    //Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
-    Layout = "~/Views/Shared/Back_Layout.cshtml";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+    //Layout = "~/Views/Shared/Back_Layout.cshtml";
 
 }
 
@@ -48,7 +48,7 @@
                             @item.entity_lease.ExpiryDate
                         </td>
                         <td>
-                            @item.entity_lease.Room.RoomStyle.Rent / 月
+                            @item.entity_lease.Room.Rent / 月
                         </td>
                         <td>
                             <a href="~/Room/PayInfo">前往繳費</a>

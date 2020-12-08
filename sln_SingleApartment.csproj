@@ -839,6 +839,8 @@
     <Content Include="Content\Room\js\video-player.js" />
     <Content Include="Content\Room\js\waypoints.min.js" />
     <Content Include="Content\Room\Site.css" />
+    <Content Include="datetimepicker.css" />
+    <Content Include="datetimepicker.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

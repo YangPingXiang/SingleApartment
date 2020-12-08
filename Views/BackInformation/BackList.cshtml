@@ -34,25 +34,20 @@
         @*=================================================================*@
         @*<h4>Alternate</h4>*@
 
-        <div class="row" style="margin-top:30px">
+        <div class="row" style="margin-bottom:10px;margin-top:30px">
             @*style="border: 2px green solid"*@
-            <div class="col">
+            <div class="col" style="width:160px">
                 <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
                     >
                     <option value="999">選擇查詢方式</option>
-                    <option value="100">1.依系統分類</option>
-                    <option value="200">2.依使用者ID</option>
+                    <option value="200">1.依使用者ID</option>
+                    <option value="100">2.依系統分類</option>
                     <option value="300">3.依關鍵字</option>
                     <option value="400">4.全部資料</option>
                 </select>
             </div>
             <div class="col">
-                <span style="font-weight:500">1.系統分類</span>
-                @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
-                <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
-            </div>
-            <div class="col">
-                <span style="font-weight:500">2.使用者帳號</span>
+                <span style="font-weight:500">1.使用者帳號</span>
                 @Html.TextBox("txtUserAccount", null, new { style = "display:inline;width:150px;line-height:3em;height:3em" })
                 <button onclick="checkAccount();" class="btn btn-info" style="height:unset;">查詢使用者ID</button>
                 <span style="font-weight:500">使用者ID</span>
@@ -61,7 +56,12 @@
 
         </div>
         <div class="row" style="margin-top:10px;margin-bottom:15px;">
-            <div class="col" style="margin-left:136px">
+            <div class="col" style="margin-left:160px">
+                <span style="font-weight:500">2.系統分類</span>
+                @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
+                <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+            </div>
+            <div class="col">
                 <span style="font-weight:500">3.關鍵字</span>
                 @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:150px;line-height:3em;height:3em" })
                 @*@Html.ActionLink("查詢", "BackListPaging", new { read_yn = ViewBag.Read_YN, p_priority = "ALL" }, new { @class = "btn btn-info" })*@
@@ -110,7 +110,7 @@
                 f_data = $('#txtMemberID').val();
 
                 let numFlag = isNotANumber(f_data)
-                console.log(numFlag);
+                //console.log(numFlag);
                 if (numFlag == false) {
                     $('#txtMemberID').val("");
                     f_data = "0";

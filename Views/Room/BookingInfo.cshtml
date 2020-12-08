@@ -9,10 +9,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnSave").click(function () {
+            alert("Booking is successful!")
             if (!$("#formBoking").valid()) {
                 return;
             }
-
+            
             AddBookingInfo();
 
         });
@@ -138,7 +139,9 @@
                                             <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
                                         }*@
 
-                                    <button id="btnSave" type="submit">提交</button>
+                                   @* <button id="btnSave" type="submit" >>提交</button>*@
+                                   <input type="button" id="btnSave" value="提交" onclick="location.href='http://localhost:44332/Room/MyRoom'">
+
                                 </div>
                             </form>
                         </div>
