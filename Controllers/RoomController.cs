@@ -265,7 +265,7 @@ namespace sln_SingelApartment.Controllers
 
         //    ViewData.Model = abtRoom_VM;
 
-        //    return View(abtRoom_VM);
+        //    return View(abtRoom_VM);123
 
         //}
 

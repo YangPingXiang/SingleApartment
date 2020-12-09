@@ -182,7 +182,47 @@ namespace sln_SingleApartment.Controllers
         //  會員中心
         public ActionResult MemberCenter()
         {
-            return View();
+            CMember me = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+            var tm = db.tMember.Where(m => m.fMemberId == me.fMemberId).FirstOrDefault();
+
+            CMultiple cm = new CMultiple();
+            cm.t = tm;
+
+            //Room
+            var tr = db.Lease.Where(l => l.MemberID == me.fMemberId).FirstOrDefault();
+            if (tr != null)
+            {
+                cm.r = tr.Room;
+                cm.rs = tr.Room.RoomStyle;
+            }
+
+            //Activity
+            var ta = db.Activity.Where(a => a.MemberID == me.fMemberId).ToList();
+            //var z = db.Activity.Where(a => a.MemberID == me.fMemberId).FirstOrDefault();
+            
+
+            List<Activity> activities = new List<Activity>();
+            foreach(var ac in ta)
+            {
+                activities.Add(ac);
+                
+            }
+            cm.atv = activities;
+
+            List<Product> products = new List<Product>();
+            foreach (var i  in ta)
+            {
+                var p = db.Product.Where(s => s.ActivityID == i.ActivityID).ToList();
+                if (p != null)
+                {
+                    foreach(var v in p)
+                    {
+                        products.Add(v);
+                    }
+                } 
+            }
+            cm.prod = products;
+            return View(cm);
         }
     }
 }
