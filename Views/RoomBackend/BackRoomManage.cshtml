@@ -1,15 +1,18 @@
-﻿@model IEnumerable<sln_SingelApartment.ViewModels.CRoomViewModel>
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IEnumerable<sln_SingelApartment.ViewModels.CRoomViewModel>
 
 @{
     ViewBag.Title = "BackRoomManage";
     Layout = "~/Views/Shared/Back_Layout.cshtml";
 }
+
 <body>
 
     <div style="border:2px solid black; margin:50px 80px 50px 80px; padding:40px;">
 
-        <button type="button" class="btn btn-info">
-            @Html.ActionLink("新增房間", "BackCreateRoom", "RoomBackend")
+        <button id="btnAdd" type="button" class="btn btn-info">
+            新增房間
         </button>
 
         <div style="margin-left:200px; margin-bottom:50px;">
@@ -40,7 +43,7 @@
         @*<p style="background-color:lightblue; width:150px;">
                 @Html.ActionLink("Create New", "Create")
             </p>*@
-        <table class="table" style="width:900px; margin:10px auto; ">
+        <table id="abtroomtable" style="width:900px; margin:10px auto; ">
             <tr style="background-color:lightblue; text-align:center;">
 
                 <th>
@@ -89,14 +92,34 @@
                     <td>
                         @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("詳細資料", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn - danger" })
                     </td>
                 </tr>
             }
 
         </table>
+        <div style="float:inherit; margin-left:480px;">
+            @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </div>
+
+
     </div>
 
-  
+    <script>
+
+        $(document).ready(function () {
+
+            $('#abtroomtable').on("click", ".btn-danger", function () {
+                $(this).parents("tr").remove();
+            });
+
+            $('#btnAdd').click(function () {
+                $('table').append("<tr><td>new</td><td>new</td><td>new</td><td>new</td><td>new</td><td><a href='#' class='btn btn-danger'>刪除</a></td></tr>");
+            });
+
+        });
+
+
+    </script>
 
 </body>
