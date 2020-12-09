@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using sln_SingelApartment.ViewModels;
 using sln_SingleApartment.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace tryTemplete_Room.Controllers
 {
@@ -172,10 +174,9 @@ namespace tryTemplete_Room.Controllers
         //}
 
 
-        public ActionResult BackRoomManage(int pageNum = 1)
+        public ActionResult BackRoomManage(int page = 1, int pageSize = 10)
         {
-            int pagesize = 10;
-            int currentPage = pageNum < 1 ? 1 : pageNum;
+           
 
             List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
 
@@ -187,8 +188,8 @@ namespace tryTemplete_Room.Controllers
             {
                 room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
             }
-            
-            return View(room_VM_lt);
+            IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
+            return View(query);
         }
 
         public ActionResult BackCreateRoom()
