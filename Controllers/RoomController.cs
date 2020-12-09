@@ -545,8 +545,7 @@ namespace sln_SingelApartment.Controllers
             return Content(userName);
         }
 
-
-
+      
 
     }
 }
