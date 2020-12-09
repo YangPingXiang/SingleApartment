@@ -8,8 +8,7 @@
 <script>
     $(function () {
         let memberCategoryId = @Model.MemberCategoryID;
-        $(`option[value=${memberCategoryId}]`).prop("selected", true);
-        //$("#MemberCategoryID").val() = @Model.MemberCategoryID;
+        $(`option[value=${memberCategoryId}]`).prop("selected", true);       
     });
 </script>
 
@@ -27,82 +26,69 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                @*<h4>Information</h4>*@
-                <hr />
-                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.InformationID)*@
+        <div class="form-horizontal">
+            @*<h4>Information</h4>*@
+            <hr />
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.InformationID)*@
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.InformationID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.InformationID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.InformationID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.InformationCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InformationCategoryID, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InformationCategoryID, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-
-                <div class="form-group">
-                    @*style="font-weight:500"*@
-                    <span class="control-label col-md-2">個人分類</span>
-                    @*@Html.LabelFor(model => model.MemberCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })*@
-
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.MemberCategoryID, (IEnumerable<SelectListItem>)ViewBag.MemberCategoryID, new { @class = "form-control", style = "display:inline;width:250px;line-height:3em;height:3em" })
-
-                        @*<select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>*@
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @*@Html.EditorFor(model => model.Priority, new { htmlAttributes = new { @class = "form-control" } })*@                        
-                        <select name="Priority" value="@Model.Priority" style="display:inline;line-height:3em;height:3em">
-                            @{ string s_high = "", s_normal = "", s_low = "";
-                                if (Model.Priority == "High") { s_high = "selected"; }
-                                else if (Model.Priority == "Normal") { s_normal = "selected"; }
-                                else if (Model.Priority == "Low") { s_low = "selected"; }
-                                
-                                <option value="High" @s_high>高</option>
-                                <option value="Normal" @s_normal>中</option>
-                                <option value="Low" @s_low>低</option>
-                            }
-                        </select>
-
-                        @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.InformationSource, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InformationSource, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InformationSource, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.InformationContent, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.InformationContent, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.InformationContent, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-info" style="background-color:#5bc0de;" />
-                    </div>
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.InformationID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <span class="control-label col-md-2">訊息編號</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformationID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", style = "display:inline;width:250px;line-height:3em;height:3em" } })
+                    @Html.ValidationMessageFor(model => model.InformationID, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @*style="font-weight:500"*@
+                <span class="control-label col-md-2">個人分類</span>
+                @*@Html.LabelFor(model => model.MemberCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.MemberCategoryID, (IEnumerable<SelectListItem>)ViewBag.MemberCategoryID, new { @class = "form-control", style = "display:inline;width:250px;line-height:3em;height:3em" })
+
+                    @*<select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <span class="control-label col-md-2">優先等級</span>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Priority, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <select name="Priority" value="@Model.Priority" style="display:inline;width:250px;line-height:3em;height:3em;background-color:white">
+                        @{ string s_high = "", s_normal = "", s_low = "";
+                            if (Model.Priority == "High") { s_high = "selected"; }
+                            else if (Model.Priority == "Normal") { s_normal = "selected"; }
+                            else if (Model.Priority == "Low") { s_low = "selected"; }
+
+                            <option value="High" @s_high>高</option>
+                            <option value="Normal" @s_normal>中</option>
+                            <option value="Low" @s_low>低</option>
+                        }
+                    </select>
+
+                    @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.InformationContent, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <span class="control-label col-md-2">訊息內容</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformationContent, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", style= "width:500px" } })
+                    @Html.ValidationMessageFor(model => model.InformationContent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-info" style="background-color:#5bc0de;" />
+                </div>
+            </div>
+        </div>
         }
 
         <div>

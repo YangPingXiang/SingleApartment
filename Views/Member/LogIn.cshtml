@@ -37,6 +37,10 @@
                             <label class="label-info">
                                 <input type="submit" value="會員登入">
                             </label>
+                            <div style="display:inline; margin-left:360px" >
+                                <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px;  height:45px; padding:0; line-height:45px">
+                                <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px">
+                                </div>
                         </form>
                     </div>
                     <div class="create">
@@ -51,3 +55,13 @@
     </body>
 
 }
+<script>
+    function FastLogin() {
+        $("#account").val("paul123");
+        $("#pwd").val("paul123");
+    }
+    function AdminLogin() {
+        $("#account").val("admin");
+        $("#pwd").val("adminadmin");
+    }
+</script>

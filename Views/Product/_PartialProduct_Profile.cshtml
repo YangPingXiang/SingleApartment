@@ -28,16 +28,16 @@
                     <a href="#"><img alt="" src="@DisplayImage(item.prodpic.ProductPicture)"></a>
                 </div>
                 <div class="actions-btn">
-                    <a data-original-title="Quick View" data-toggle="modal" data-trigger="hover" data-target="#quick-view" data-placement="top" href="#">
+                    @*<a data-original-title="Quick View" data-toggle="modal" data-trigger="hover" data-target="#quick-view" data-placement="top" href="#">
                         <i class="fa fa-eye"></i>
-                    </a>
+                    </a>*@
                 </div>
             </div>
         </div>
         <div class="col-md-8 col-sm-8">
             <div class="f-fix">
                 <div class="tb-beg">
-                    <a href="#">@item.ProductName</a>
+                    <a>@item.ProductName</a>
                 </div>
                 <div class="tb-product-wrap-price-rating">
                     <div class="tb-product-price font-noraure-3">
@@ -46,17 +46,11 @@
                 </div>
                 <p class="desc" style="height:80px">@item.Description</p>
                 <div class="last-cart l-mrgn ns">
-                    <a class="las4" href="#">Add To Cart</a>
+                    <a class="las4" name="@item.ProductID" onclick="AddToCart()">加入購物車</a>
                 </div>
                 <div class="tb-product-btn">
-                    <a href="#">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                    <a href="#" name="@item.ProductID" onclick="AddToFavoriteList(@ViewBag.MemberID)">
+                    <a name="@item.ProductID" onclick="AddToFavoriteList(@ViewBag.MemberID)">
                         <i class="fa fa-heart"></i>
-                    </a>
-                    <a href="#">
-                        <i class="fa fa-retweet"></i>
                     </a>
                 </div>
             </div>

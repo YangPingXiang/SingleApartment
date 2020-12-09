@@ -8,7 +8,7 @@
     <!--style="border:solid 1px;border-color:black"-->
     <div class="inner">
         <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">訊息服務清單-修改</h1>
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">服務工作清單-修改</h1>
             @*<div id="timer"></div>*@
         </header>
         @*=================================================================*@
@@ -17,54 +17,55 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                @*<h4>JobService</h4>*@
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.JobID)
+        <div class="form-horizontal">
+            @*<h4>JobService</h4>*@
+            @*<hr />*@
+            <br />
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.JobID)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobCycle, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.JobCycle, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.JobCycle, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.BeforeDays, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.BeforeDays, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.BeforeDays, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:unset" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control", style = "width:500px" } })
+                    @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:unset" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control", style = "width:500px" } })
+                    @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobCycle, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:unset" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobCycle, new { htmlAttributes = new { @class = "form-control", style = "width:250px" } })
+                    @Html.ValidationMessageFor(model => model.JobCycle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BeforeDays, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:unset" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BeforeDays, new { htmlAttributes = new { @class = "form-control", style = "display:inline;width:250px;line-height:3.5em;height:3.5em;background-color:rgba(144, 144, 144, 0.075)" } })
+                    @Html.ValidationMessageFor(model => model.BeforeDays, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" style="background-color:#5bc0de;" />
+                </div>
+            </div>
+        </div>
         }
 
         <div>
-            @Html.ActionLink("Back to List", "JobList")
+            @Html.ActionLink("回上一頁", "JobList")
         </div>
 
         @*=================================================================*@

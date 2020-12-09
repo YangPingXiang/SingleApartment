@@ -39,7 +39,8 @@
                 優先等級
             </th>
             <th style="font-size:unset;text-align:right">
-                @Html.ActionLink("新活動通知", "List", "Activity", null, new { @class = "btn btn-info", style = "height:unset;background-color:transparent;color:#428bca", id="id_newNotify" })
+                @*@Html.ActionLink("新活動通知", "List", "Information", null, new { @class = "btn btn-info", style = "height:unset;background-color:transparent;color:#428bca", id = "id_infoNotify" })*@
+                
                 @*<a href="/Activity/List" id="id_newActivity" style="text-align:right"><h4>新活動通知</h4></a>*@
             </th>
             <th style="font-size:unset"></th>
@@ -95,7 +96,7 @@
         </td>
         <td width="220">
             @*;background-color:transparent;color:#428bca;*@
-            <button onclick="showTable(this,'@item.InformationContent', @item.InformationID)" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
+            <button onclick="showTable(this,'@item.InformationContent', @item.InformationID, '@item.InformationSourceName')" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
             @*@Html.ActionLink("刪除", "Delete", new { id = item.InformationID }, new { @class = "btn btn-info", onclick = "updateDeleteMsg(" + item.InformationID + ");" })*@
             <button onclick="updateDeleteMsg(@item.InformationID);" class="btn btn-info" style="height:unset;">刪除</button>
 
@@ -119,7 +120,7 @@
 
 @*@Html.PagedListPager(Model, page => Url.Action("DemoPaging", new { page }))*@
 
-@Html.PagedListPager(Model, page => Url.Action("ListPaging", new { pageNum = page }),
+@Html.PagedListPager(Model, page => Url.Action("ListPaging", new { pageNum = page, p_read_yn = ViewBag.Read_YN, p_priority = ViewBag.Priority, p_query_type = ViewBag.Query_Type, p_data = ViewBag.Query_Data }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new AjaxOptions()
         {
@@ -133,6 +134,6 @@
 
 <script>
     $(function () {
-        console.log("onload = " + $("#id_priority").val() + "---" + $('#id_read_yn').val());
+        //console.log("onload = " + $("#id_priority").val() + "---" + $('#id_read_yn').val());
     })
 </script>

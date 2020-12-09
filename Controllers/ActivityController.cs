@@ -22,7 +22,7 @@ namespace sln_SingleApartment.Controllers
             #region 登入者名稱
             CMember member = Session[CDictionary.welcome] as CMember;
             int memberID = member.fMemberId;
-           
+            ViewBag.memberID = memberID;
             #endregion
 
 
@@ -113,8 +113,8 @@ namespace sln_SingleApartment.Controllers
             {
                 ParticipantID.Add(x.Key);
                 ActivityIDCount.Add(x.AcIDcount);
-                ViewBag.subParticipantID = "ParticipantID";
-                ViewBag.subActivityIDCount= "ActivityIDCount";
+                ViewBag.subParticipantID = ParticipantID;
+                ViewBag.subActivityIDCount= ActivityIDCount;
             }
 
             for (int j = 0; j < ActivityIDCount.Count; j++)

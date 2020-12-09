@@ -1,29 +1,68 @@
 ﻿@model List<sln_SingleApartment.ViewModels.COrderDetailsViewModel>
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
 @{
     if (Model != null)
     {
         foreach (var item in Model)
         {
-        <li>
-            <a href="cart.html"><img src="~/Content/Product/img/cart/1.png" alt="" /></a>
-            <div class="add-cart-text">
-                <p><a href="#">@item.ProductName x @item.Quantity</a></p>
-                <p>單價 : @item.ProductPrice</p>
-                <p>小計 : @item.TotalPrice</p>
+            <li>
+                <a href="cart.html"><img width="52" height="74" src="@DisplayImage(item.prodpic.ProductPicture)" alt="" /></a>
+                <div class="add-cart-text">
+                    <p><a href="#">@item.ProductName x @item.Quantity</a></p>
+                    <p>單價 : @item.ProductPrice</p>
+                    <p>小計 : @item.TotalPrice</p>
 
-            </div>
-            <div class="pro-close">
-                <i class="pe-7s-close"></i>
-            </div>
-        </li>
+                </div>
+                <div class="pro-close">
+                    <i class="pe-7s-close" onclick="deleteOneProduct(@item.ProductID)"></i>
+                </div>
+            </li>
         }
     }
     <li>
         <div class="goto text-center">
-            <a href="cart.html"><strong>go to cart &nbsp;<i class="pe-7s-angle-right"></i></strong></a>
+            <a href="ShowProductInCart"><strong>前往購物車 &nbsp;<i class="pe-7s-angle-right"></i></strong></a>
         </div>
     </li>
     <li class="checkout-btn text-center">
-         <a href="checkout.html">Check out</a>
-     </li>
+        <a href="CheckOut">前往結帳</a>
+    </li>
 }
+<script>
+    function deleteOneProduct(id) {
+        console.log("Delect Clicked");
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("RemoveONEProductInCart")",
+            data: {
+                ProductID : id
+            },
+            success: function () {
+                reload();
+            }
+        })
+         
+    }
+    function reload() {
+        $.ajax({
+            url: '@Url.Action("AddToCart", "Product")',
+            dataType: 'html',
+            type: 'POST',
+            success: function (data) {
+                $(".drop-cart").html(data);
+            }
+        })
+    }
+</script>

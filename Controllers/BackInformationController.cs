@@ -206,6 +206,8 @@ namespace sln_SingleApartment.Controllers
 
                 ViewBag.Read_YN = p_read_yn;  //將partialview資料傳給 主要view
                 ViewBag.Priority = p_priority;
+                ViewBag.Query_Type = p_query_type;
+                ViewBag.Query_Data = p_data;
 
                 //int memberID = 1;
                 //CMember member = Session[CDictionary.welcome] as CMember;
