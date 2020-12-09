@@ -34,6 +34,7 @@ namespace sln_SingleApartment.Models
         public Nullable<int> RoomPictureID { get; set; }
         public Nullable<int> RoomFacilityID { get; set; }
         public Nullable<int> Floor { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual BuildCase BuildCase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

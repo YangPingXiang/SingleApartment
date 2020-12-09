@@ -280,6 +280,7 @@
     <Compile Include="ViewModels\CMemberRegister.cs" />
     <Compile Include="ViewModels\CMemberViewModel.cs" />
     <Compile Include="ViewModels\CMember_Factory.cs" />
+    <Compile Include="ViewModels\CMultiple.cs" />
     <Compile Include="ViewModels\COrder.cs" />
     <Compile Include="ViewModels\COrderDetails.cs" />
     <Compile Include="ViewModels\COrderDetailsViewModel.cs" />
@@ -325,6 +326,8 @@
     <Content Include="Content\img\窩居字體設計3.png" />
     <Content Include="Content\img\窩居字體設計6.png" />
     <Content Include="Content\img\窩居字體設計7.png" />
+    <Content Include="Content\img\頭 %281%29.png" />
+    <Content Include="Content\img\頭.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
