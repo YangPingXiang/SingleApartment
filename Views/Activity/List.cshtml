@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<sln_SingleApartment.ViewModel.CActivity>
 
 @{
-    ViewBag.Title = "List";
-    //int count = 0;
-    Layout = "~/Views/Shared/Information_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "List";
+                //int count = 0;
+                Layout = "~/Views/Shared/Information_Layout.cshtml";
 
 }
 
@@ -13,7 +15,7 @@
     <!--style="border:solid 1px;border-color:black"-->
     <div class="inner">
         <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">活動列表</h1>
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">當窩們同在一起</h1>
         </header>
         @using (Html.BeginForm())
         {
@@ -58,17 +60,17 @@
                             <br />結束時間: @Html.DisplayFor(modelItem => item.EndTime)
                             <br />
                             <br />活動人數: @{
-                                int aaa = 0;
-
-                                foreach (var subid in @ViewBag.subActivityIDCount)
+                                int nowPeopleCount = 0;
+                                for (int i=0;i< ViewBag.subActivityIDCount.Count;i++)
                                 {
-                                    aaa = subid;
-
+                                    if(item.ActivityID== ViewBag.subParticipantID[i])
                                     {
-                                        @aaa;
+                                        nowPeopleCount = ViewBag.subActivityIDCount[i];
                                     }
 
-                                }}
+                                }
+                                @nowPeopleCount;                                
+                                }
                             /
                             @Html.DisplayFor(modelItem => item.PeopleCount) 位
                             <br />
@@ -126,7 +128,7 @@
                                 }
                             }
 
-</div>
+                    </div>
                 </div>
                 <tr></tr>
             }
