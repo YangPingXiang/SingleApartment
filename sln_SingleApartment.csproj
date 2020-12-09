@@ -280,6 +280,7 @@
     <Compile Include="ViewModels\CMemberRegister.cs" />
     <Compile Include="ViewModels\CMemberViewModel.cs" />
     <Compile Include="ViewModels\CMember_Factory.cs" />
+    <Compile Include="ViewModels\CMultiple.cs" />
     <Compile Include="ViewModels\COrder.cs" />
     <Compile Include="ViewModels\COrderDetails.cs" />
     <Compile Include="ViewModels\COrderDetailsViewModel.cs" />
