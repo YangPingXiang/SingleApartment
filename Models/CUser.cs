@@ -80,7 +80,7 @@ namespace sln_SingleApartment.Models
         public ShopViewModel SearchProduct()
         {
             List<CProductViewModel> list_product = new List<CProductViewModel>();
-            foreach (var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0))
+            foreach (var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID==null))
             {
                 list_product.Add(new CProductViewModel() { entity = item });
             }
@@ -110,18 +110,18 @@ namespace sln_SingleApartment.Models
         public List<CProductViewModel> SearchProductsBy(int? MainCategory=null, int? SubCategory=null, string KeyWord="")
         {
             List<CProductViewModel> result = new List<CProductViewModel>();
-            var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0);
+            var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             if (!String.IsNullOrEmpty(KeyWord))
             {
-                pd = db.Product.Where(r => r.ProductName.Contains(KeyWord) && r.Discontinued == "N" && r.Stock >= 0);
+                pd = db.Product.Where(r => r.ProductName.Contains(KeyWord) && r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             }
             else if (SubCategory!= null)
             {
-                pd = db.Product.Where(r => r.ProductSubCategoryID == SubCategory && r.Discontinued == "N" && r.Stock >= 0);
+                pd = db.Product.Where(r => r.ProductSubCategoryID == SubCategory && r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             }
             else if (MainCategory!= null)
             {
-                pd = db.Product.Where(r => r.ProductSubCategory.ProductMainCategoryID == MainCategory && r.Discontinued == "N" && r.Stock >= 0);
+                pd = db.Product.Where(r => r.ProductSubCategory.ProductMainCategoryID == MainCategory && r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             }
             foreach(var item in pd)
             {
