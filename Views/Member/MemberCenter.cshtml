@@ -1,120 +1,147 @@
-﻿@{ Layout = @"~/Views/Shared/HomePage/_Layout_HomePage.cshtml";}
+﻿@using sln_SingleApartment.ViewModels
+@model CMultiple
+@{ Layout = @"~/Views/Shared/HomePage/_Layout_HomePage.cshtml";}
 @{
     ViewBag.Title = "MemberCenter";
     //Layout = null;
-}
+    //CMember db = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+    var s = "";
+
+    foreach(var a in Model.atv)
+    {
+        s += a.ActivityName+" ";
+    }
+
+
+    var z = "";
+    foreach(var x in Model.prod)
+    {
+        z += x.ProductName+" ";
+    }
+
+        <body class="subpage">
+            <!-- Main -->
+            <section id="main" class="wrapper">
+                <div class="inner">
+                    <header class="align-center">
+                        <h1> 窩的資訊 </h1>
+                        <br />
+                        <p>個人資料|聯絡資料|租房|活動|訊息</p>
+                    </header>
+                    <div class="image fit">
+
+                        <img src="~/Content/HomePage/images/pic05.jpg" alt="窩的相片" />
+
+                    </div>
+
+                    <h3 style="font-size:2em"> 個人資料 </h3>
+
+
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
+
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">帳號</td>
+                            <td>@Model.t.fAccount</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">姓名</td>
+                            <td>@Model.t.fMemberName</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">生日</td>
+                            <td>@Model.t.fBirthDate</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">年齡</td>
+                            <td>@Model.t.fAge</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">性別</td>
+                            <td>@Model.t.fSex</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">年收入</td>
+                            <td>@Model.t.fSalary</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">密碼</td>
+                            <td>@Model.t.fPassword</td>
+                        </tr>
+
+                        @*@foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@db.fAccount</td>
+
+                                </tr>
+                            }*@
+                    </table>
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'></table>
+                </div>
+                <div class="inner">
+                    <h3 style="font-size:2em"> 聯絡資料 </h3>
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">手機</td>
+                            <td>@Model.t.fPhone</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">信箱</td>
+                            <td>@Model.t.fEmail</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="inner">
+                    <h3 style="font-size:2em"> 租房資訊 </h3>
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">房號</td>
+                            <td>@if (Model.r != null) {@Model.r.RoomName}</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">房型</td>
+                            <td>@if (Model.r != null) {@Model.rs.RoomStyleName}</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">租金/每期</td>
+                            <td>@if (Model.r != null) {@Model.r.Rent}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="inner">
+                    <h3 style="font-size:2em"> 參加的活動 </h3>
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
+                        <tr>
+                            <td rowspan="1" style="font-size:20px;font-weight:700">活動</td>
+                            
+                            <td>@s</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="inner">
+                    <h3 style="font-size:2em"> 團購紀錄 </h3>
+                    <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
+                        <tr>
+                            <td style="font-size:20px;font-weight:700">團購紀錄</td>
+                            <td>@z</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </section>
+            }
+
+
+            <!-- Scripts -->
+            <script src="~/Content/HomePage/js/util.js"></script>
+            <script src="~/Content/HomePage/js/skel.min.js"></script>
+            <script src="~/Content/HomePage/js/main.js"></script>
+            <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
+            <script src="~/Content/HomePage/js/jquery.min.js"></script>
+        </body>
+
+    }
 
 
 
-<body class="subpage">
-    <!-- Main -->
-    <section id="main" class="wrapper">
-        <div class="inner">
-            <header class="align-center">
-                <h1> 窩的資訊 </h1>
-                <br />
-                <p>個人資料|聯絡資料|租房|活動|訊息</p>
-            </header>
-            <div class="image fit">
-
-                <img src="~/Content/HomePage/images/pic05.jpg" alt="窩的相片" />
-
-            </div>
-
-            <h3 style="font-size:2em"> 個人資料 </h3>
-
-
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
-
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">帳號</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">姓名</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">生日</td>
-                    <td>這裡是第二個欄位第二行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">年齡</td>
-                    <td>這裡是第二個欄位第二行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">性別</td>
-                    <td>這裡是第二個欄位第二行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">年收入</td>
-                    <td>這裡是第二個欄位第二行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">密碼</td>
-                    <td>這裡是第二個欄位第二行</td>
-                </tr>
-
-            </table>
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'></table>
-        </div>
-        <div class="inner">
-            <h3 style="font-size:2em"> 聯絡資料 </h3>
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">手機</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">信箱</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-            </table>
-        </div>
-        <div class="inner">
-            <h3 style="font-size:2em"> 租房資訊 </h3>
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">房號</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">房型</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">租金/每期</td>
-                    <td>這裡是第二個欄位第一行</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="inner">
-            <h3 style="font-size:2em"> 活動紀錄 </h3>
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
-                <tr>
-                    <td rowspan="1" style="font-size:20px;font-weight:700">活動</td>
-                    <td>哪些團購活動</td>
-                </tr>
-            </table>
-        </div>
-        <div class="inner">
-            <h3 style="font-size:2em"> 訊息 </h3>
-            <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
-                <tr>
-                    <td style="font-size:20px;font-weight:700">訊息內容</td>
-                </tr>
-            </table>
-        </div>
-
-    </section>
-
-
-
-    <!-- Scripts -->
-    <script src="~/Content/HomePage/js/util.js"></script>
-    <script src="~/Content/HomePage/js/skel.min.js"></script>
-    <script src="~/Content/HomePage/js/main.js"></script>
-    <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
-    <script src="~/Content/HomePage/js/jquery.min.js"></script>
-</body>
