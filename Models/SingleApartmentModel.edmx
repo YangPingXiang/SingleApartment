@@ -234,6 +234,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
           <Property Name="RoomStyleID" Type="int" />
           <Property Name="RoomType" Type="nvarchar(max)" />
           <Property Name="BuildCaseID" Type="nvarchar" MaxLength="16" />
@@ -1286,6 +1287,7 @@
           <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
           <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Room" FromRole="Room" ToRole="RoomFacilities" />
           <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="Room" ToRole="RoomFavorite" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="RoomFacilities">
           <Key>
@@ -1995,6 +1997,7 @@
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="SingleApartmentModel.Room">
               <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="RoomFacilityID" ColumnName="RoomFacilityID" />
                 <ScalarProperty Name="RoomPictureID" ColumnName="RoomPictureID" />
