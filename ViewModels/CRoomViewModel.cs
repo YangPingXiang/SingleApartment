@@ -44,5 +44,8 @@ namespace sln_SingelApartment.ViewModels
 
         [DisplayName("樓層")]
         public int? floor { get { return this.entity_room.Floor; } }
+
+        [DisplayName("描述")]
+        public string description { get { return this.entity_room.Description; } }
     }
 }
