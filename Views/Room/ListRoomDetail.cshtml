@@ -153,7 +153,7 @@
             <!-- search bar End -->
             <!--Room Detail start-->
             <div class="hotel-feature pt-80 white_bg">
-                <div class="container">
+                <div class="container">                    
                     @foreach (var item in Model.roomViewModels)
                     {
                         <div class="row">
@@ -162,15 +162,21 @@
                                     <form method="post">
                                         <div class="section-title mb-30">
                                             <h2 id="roomstylename">
-                                                @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
-                                                 <input class="submit-form" type="button" id="book" value="查詢空房" />
+                                                
+                                                @item.entity_room.RoomName                                                                                                                                                                                                                                         
                                                 
                                                 <input id="roomstyleId" type="hidden" value="@item.roomstyleID" name="roomstyleid" />
                                                 <input id="buildcaseId" type="hidden" value="@item.buildcaseID" name="buildcaseid" />
-                                                <input id="Rent" type="hidden" value="@item.entity_room.RoomStyle.Rent" name="rent" />
-                                                <input id="peopleCount" type="hidden" value="@item.entity_room.RoomStyle.MaxNumberOfPeople" name="peoplecount" />
+                                                <input id="Rent" type="hidden" value="@item.entity_room.Rent" name="rent" />
+                                                <input id="peopleCount" type="hidden" value="@item.entity_room.RoomType" name="peoplecount" />
 
                                             </h2>
+
+                                            <div>
+                                                @*<input  src="~/Views/Room/BookingInfo" class="btn btn-success" type="button" id="book" value="前往訂房" />*@
+                                                @Html.ActionLink("前往訂房","BookingInfo","Room",new { id=1})
+                                                
+                                            </div>
 
                                             <p>房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。</p>
                                         </div>
@@ -178,7 +184,7 @@
                                         <div class="feature-item">
                                             <ul>
                                                 <li>
-                                                    <span>1.</span> 坪數：@Html.DisplayFor(modelItem => item.entity_room.RoomStyle.SquareFootage)
+                                                    <span>1.</span> 坪數：@Html.DisplayFor(modelItem => item.entity_room.SquareFootage)
                                                 </li>
                                                 <li>
                                                     <span>2.</span> 建案：@Html.DisplayFor(modelItem => item.entity_room.BuildCase.BuildCaseName)
@@ -188,22 +194,22 @@
                                                 </li>
 
                                                 <li>
-                                                    <span>4.</span>可容納人數： @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.MaxNumberOfPeople)
+                                                    <span>4.</span>可容納人數： @Html.DisplayFor(modelItem => item.entity_room.RoomType)
                                                 </li>
                                                 <li>
-                                                    <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.Rent)
+                                                    <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_room.Rent)
                                                 </li>
                                                 <li>
                                                     <span>6.</span> 設備：
                                                 </li>
-                                                @foreach (var i in Model.facilityViewModels)
+                                                @*@foreach (var i in Model.facilityViewModels)
                                                 {
                                                     <li style="margin-left:50px">
                                                         @i.facilityName
                                                     </li>
 
 
-                                                }
+                                                }*@
 
                                             </ul>
                                         </div>

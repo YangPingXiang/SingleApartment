@@ -225,7 +225,6 @@ namespace sln_SingleApartment.Controllers
             return PartialView("_PartialFavorite");
         }
         #endregion
-
         #region 購物車
         //加到購物車，同步更新右上角的購物車區塊
         public ActionResult AddToCart(string ProductID = null, string Quantity = "1")
@@ -307,9 +306,42 @@ namespace sln_SingleApartment.Controllers
             return Json("沒有此商品");
         }
         #endregion
+        #region Checkout
 
+        //結帳畫面{12.6)
+        public ActionResult CheckOut()
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list == null || list.Count == 0)
+            {
+                return RedirectToAction("ShowProductInCart");
+            }
+            List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
+
+                //CUser theUser = new CUser();
+                ////===================================================================
+                //var user = Session[CDictionary.welcome] as CMember;
+                ////必須先登入會員 
+                //if (user != null)
+                //{
+                //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
+                //    user.fPhone= Request.Form["TXTPHONE"];
+                //    user.fEmail = Request.Form["TXTEMAIL"];
+                //    //user.fBirthDate =Request.Form[""];
+                //}
+                //===================================================================
+                
+             return View(orderlist);
+        }
+        #endregion 
         //#region 秉庠
-        
+
 
         ////===========================================================================
         ////傳回資料庫
@@ -364,104 +396,51 @@ namespace sln_SingleApartment.Controllers
         //    return RedirectToAction("Home");
 
         //}
-        ////訂單
-        //public ActionResult OrderList(int order_id = 0)
-        //{
+        //訂單
+        public ActionResult OrderList(int order_id = 0)
+        {
 
-        //    bool l_flag = false;  //顯示訂單明細
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
+            bool l_flag = false;  //顯示訂單明細
+            SingleApartmentEntities db = new SingleApartmentEntities();
 
-        //    int member_id = db.Order.FirstOrDefault().MemberID;
-
-
-        //    IEnumerable<Order> l_order = from x in db.Order
-        //                                 where x.MemberID > 0   //之後要改成memberID  先抓全部
-        //                                 select x;
+            int member_id = db.Order.FirstOrDefault().MemberID;
 
 
-        //    List<COrder> list = new List<COrder>();
-        //    foreach (Order o in l_order)
-        //    {
-        //        list.Add(new COrder() { order_entity = o });
-        //    }
+            IEnumerable<Order> l_order = from x in db.Order
+                                         where x.MemberID > 0   //之後要改成memberID  先抓全部
+                                         select x;
 
-        //    IEnumerable<OrderDetails> l_orderdetail = from p in db.OrderDetails
-        //                                              where p.OrderID == order_id
-        //                                              select p;
-        //    List<COrderDetails> odlist = new List<COrderDetails>();
-        //    foreach (OrderDetails od in l_orderdetail)
-        //    {
-        //        var prod = db.Product.FirstOrDefault(x => x.ProductID == od.ProductID);
-        //        odlist.Add(new COrderDetails() { entity = od, product_entity = prod });
-        //    }
 
-        //    COrderMasterDetail a = new COrderMasterDetail() { display_flag = l_flag, t_order = list, t_orderDetail = odlist };
+            List<COrder> list = new List<COrder>();
+            foreach (Order o in l_order)
+            {
+                list.Add(new COrder() { order_entity = o });
+            }
 
-        //    return View(a);
+            IEnumerable<OrderDetails> l_orderdetail = from p in db.OrderDetails
+                                                      where p.OrderID == order_id
+                                                      select p;
+            List<COrderDetails> odlist = new List<COrderDetails>();
+            foreach (OrderDetails od in l_orderdetail)
+            {
+                var prod = db.Product.FirstOrDefault(x => x.ProductID == od.ProductID);
+                odlist.Add(new COrderDetails() { entity = od, product_entity = prod });
+            }
 
-        //}
-        ////訂單明細
-        //public ActionResult List(int ID)
-        //{
-        //    using (SingleApartmentEntities db = new SingleApartmentEntities())
-        //    {
-        //        var table = (from p in db.OrderDetails
-        //                     where p.OrderID == ID
-        //                     select p).ToList();
+            COrderMasterDetail a = new COrderMasterDetail() { display_flag = l_flag, t_order = list, t_orderDetail = odlist };
 
-        //        if (table.Count == 0)
-        //        {
-        //            return RedirectToAction("Home");
-        //        }
-        //        else
-        //        {
-        //            return View(table);
-        //        }
+            return View(a);
 
-        //    }
-
-        //}
-        ////取消訂單
-        //public ActionResult Delete(int id)
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-
-        //    Order od = db.Order.FirstOrDefault(p => p.OrderID == id);
-
-        //    var odd = db.OrderDetails.Where(q => q.OrderID == id);
-
-        //    if (odd != null)
-        //    {
-
-        //        foreach (var ITEM in odd)
-        //        {
-        //            db.OrderDetails.Remove(ITEM);
-
-        //        }
-        //        if (od != null)
-        //        {
-        //            db.Order.Remove(od);
-        //        }
-        //        db.SaveChanges();
-        //    }
-
-        //    return RedirectToAction("Home");
-        //}
-
-        //#endregion
-
-        //結帳畫面{12.6)
-        public ActionResult CheckOut(int ID)
+        }
+        //訂單明細
+        public ActionResult List(int ID)
         {
             using (SingleApartmentEntities db = new SingleApartmentEntities())
             {
                 var table = (from p in db.OrderDetails
                              where p.OrderID == ID
                              select p).ToList();
-
                 
-
-
                 //===================================================================
                 //歐付寶頁面
                 //=======================================
@@ -528,17 +507,37 @@ namespace sln_SingleApartment.Controllers
 
 
 
-                if (table.Count == 0)
-                {
-                    return RedirectToAction("Home");
-                }
-                else
-                {
-                    return View(table);
-                }
 
-            }
         }
+        //取消訂單
+        public ActionResult Delete(int id)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+
+            Order od = db.Order.FirstOrDefault(p => p.OrderID == id);
+
+            var odd = db.OrderDetails.Where(q => q.OrderID == id);
+
+            if (odd != null)
+            {
+
+                foreach (var ITEM in odd)
+                {
+                    db.OrderDetails.Remove(ITEM);
+
+                }
+                if (od != null)
+                {
+                    db.Order.Remove(od);
+                }
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Home");
+        }
+
+        //#endregion
+
 
     }
 }

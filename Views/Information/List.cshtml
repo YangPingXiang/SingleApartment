@@ -2,10 +2,9 @@
 
 @{
     Layout = "~/Views/Shared/Information_Layout.cshtml";
-    ViewBag.Title = "User Information";
+    ViewBag.Title = "窩的訊息";
     //string strTR = null;
     //int count = 0;
-    //Layout = null;
 }
 
 @functions{
@@ -20,7 +19,7 @@
 <!-- Header -->
 <!-- Menu -->
 <!-- Main -->
-<section id="main" class="wrapper" style="padding:3em">
+<section id="main" class="wrapper" style="padding:2em">
     <!--style="border:solid 1px;border-color:black"-->
     <div class="inner">
         <header class="align-center">
@@ -34,32 +33,41 @@
         @*=================================================================*@
         @*<h4>Alternate</h4>*@
 
-        <div class="row" style="margin-bottom:30px;margin-top:30px">
+        <div class="row" style="margin-bottom:10px;margin-top:30px">
             @*style="border: 2px green solid"*@
-            <div class="col">
+            <div class="col" style="width:160px">
                 <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
                     >
                     <option value="999">選擇查詢方式</option>
-                    <option value="100">依系統分類</option>
-                    <option value="200">依個人分類</option>
-                    <option value="300">依關鍵字</option>
+                    <option value="100">1.依系統分類</option>
+                    <option value="200">2.依個人分類</option>
+                    <option value="400">3.依訊息內容分類</option>
+                    <option value="300">4.依關鍵字</option>
+                    <option value="500">5.依當日新訊息</option>
                 </select>
             </div>
             <div class="col">
-                <span style="font-weight:500">系統分類:</span>
+                <span style="font-weight:500">1.系統分類:</span>
                 @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
                 <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
             </div>
             <div class="col">
-                <span style="font-weight:500">個人分類:</span>
+                <span style="font-weight:500">2.個人分類:</span>
                 <select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
                 @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
             </div>
+
+        </div>
+        <div class="row" style="margin-bottom:15px;margin-top:10px">
+            <div class="col" style="margin-left:160px">
+                <span style="font-weight:500">3.訊息內容分類:</span>
+                <select id="txtInfoContent" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+            </div>
             <div class="col">
-                <span style="font-weight:500">關鍵字: </span>
+                <span style="font-weight:500">4.關鍵字: </span>
                 @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
-                @*@Html.ActionLink("查詢", "ListPaging", new { read_yn = ViewBag.Read_YN, p_priority = "ALL" }, new { @class = "btn btn-info" })*@
                 <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>
+                <button id="id_thisNotify" onclick="queryData('ALL','N','500','N');" class="btn btn-info" style="height:unset;background-color:transparent;color:#428bca">新活動通知</button>
             </div>
         </div>
         <div class="row">
@@ -110,10 +118,10 @@
         //    <option value="200">個人分類</option>
         //    <option value="300">關鍵字</option>
         function multiQueryData() {
-            console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
-            console.log("txtKeyword=" + $("#txtKeyword").val());
+            //console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
+            //console.log("txtKeyword=" + $("#txtKeyword").val());
             var f_data;
-            console.log($('#txtQueryType'));
+            //console.log($('#txtQueryType'));
             if ($('#txtQueryType').val() == "999") {
                 f_data = "N";
             }
@@ -128,6 +136,14 @@
             else if ($('#txtQueryType').val() == "300") {
                 //關鍵字
                 f_data = $('#txtKeyword').val();
+            }
+            else if ($('#txtQueryType').val() == "400") {
+                //依訊息內容分類
+                f_data = $('#txtInfoContent').val();
+            }
+            else if ($('#txtQueryType').val() == "500") {
+                //5.依當日新訊息
+                f_data = "OK";
             }
 
             //重新查詢
@@ -219,15 +235,15 @@
         //});
 
         //使用這按下[訊息]鈕, 預設flag="true"
-        function showTable(obj, p_message, p_id) {
+        function showTable(obj, p_message, p_id, p_source) {
             //$("tr").after("<u>Hello</u>")   //ok的語法
             //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
 
             var str_f = "<tr><td rowspan='2'>訊息內容</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
-                "<td class='td_id'></td></tr>" +
-                "<tr><td> <button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
+                "<td class='td_id'>訊息內容分類</td></tr>" +
+                "<tr><td>" + p_source + "<button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
                 "</td ></tr >";
-
+            console.log(str_f);
             //$(obj).attr('disabled', true);    //失效
             //console.log('修改前'+ $(obj).attr('flag'));
             ////$(obj).attr('flag', 'false');
@@ -295,7 +311,7 @@
                     var selObj = $("#txtSystemCategory");
                     selObj.append("<option value=999 selected>請選擇</option>");
                     for (var i = 0; i < objJson.length; i++){
-                        console.log(objJson[i].ID);
+                        //console.log(objJson[i].ID);
                         //todo:ok 注意 value有使用''包起來
                         selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
                     }
@@ -320,7 +336,27 @@
                     var selObj = $("#txtUserCategory");
                     selObj.append("<option value=999 selected>請選擇</option>");
                     for (var i = 0; i < objJson.length; i++) {
-                        console.log(objJson[i].ID);
+                        //console.log(objJson[i].ID);
+                        //todo:ok 注意 value有使用''包起來
+                        selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+                    }
+                }
+            });
+
+            //傳Json字串給下拉式選單 訊息內容分類
+            $.ajax({
+                type: "POST",
+                url: "/Information/GetInfoContent",
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    //$("#text1").html(data);
+                    var objJson = JSON.parse(data);
+                    //console.log(objJson);
+
+                    var selObj = $("#txtInfoContent");
+                    selObj.append("<option value=999 selected>請選擇</option>");
+                    for (var i = 0; i < objJson.length; i++) {
+                        //console.log(objJson[i].ID);
                         //todo:ok 注意 value有使用''包起來
                         selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
                     }
@@ -337,10 +373,10 @@
                     let f_data;
                     //f_data = "新活動通知(" + data + ")";
                     if (data=="0")
-                        f_data = "活動通知:目前沒有新活動!";
+                        f_data = "新活動通知";  //訊息通知:目前沒有新訊息!
                     else
-                        f_data = "活動通知:您有 " + data + " 筆新活動!";
-                    $("#id_newNotify").text(f_data);
+                        f_data = "您有 " + data + " 筆新訊息!";
+                    $("#id_thisNotify").text(f_data);
                 }
             });
 

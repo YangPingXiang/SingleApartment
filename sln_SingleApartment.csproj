@@ -144,6 +144,7 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\ProductBackController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RoomBackendController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -975,7 +976,6 @@
     <Content Include="Views\Member\LogIn.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
-    <Content Include="Views\Room\BuildcaseInfo.cshtml" />
     <Content Include="Views\BackInformation\BackList.cshtml" />
     <Content Include="Views\BackInformation\BackListPaging.cshtml" />
     <Content Include="Views\BackInformation\InfoCategoryList.cshtml" />
@@ -985,9 +985,10 @@
     <Content Include="Views\Shopping\List.cshtml" />
     <Content Include="Views\Product\_PartialProduct_Profile.cshtml" />
     <Content Include="Views\Room\SearchPage.cshtml" />
-    <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
     <Content Include="Views\Room\BuildcaseInfo.cshtml" />
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
+    <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
+    <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

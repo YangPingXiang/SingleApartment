@@ -1,6 +1,8 @@
 ﻿.list {
     background-color: #e8e8e8;
     overflow: auto;
+    padding:15px;
+    
 }
 
     .list li {
@@ -9,7 +11,8 @@
         width: 8em;
         /*em比較有彈性 因爲可以根據子的大小去做改變*/
         /*border-bottom: 2px solid #065c6f;*/
-        margin-bottom:15px;
+        margin-bottom: 15px;
+        align-items: center;
     }
 
         .list li a {
@@ -17,12 +20,17 @@
             line-height: 3em;
             text-align: center;
             text-decoration: none;
+            
         }
 
             .list li a:hover {
                 background-color: #e76f51;
                 color: white;
             }
+
+.conditiontitle{
+    align-items:center;
+}
 
 .input-check {
     background: #eceff8;
@@ -34,6 +42,7 @@
     color: #626262;
     width: 100%;
 }
-#order option {
-    background-color: #eceff8;
+
+.is-hover {
+    background-color: #e9ecef;
 }

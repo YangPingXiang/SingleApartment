@@ -4,6 +4,7 @@
     ViewBag.Title = "List";
     //int count = 0;
     Layout = "~/Views/Shared/Information_Layout.cshtml";
+
 }
 
 
@@ -56,7 +57,20 @@
                             <br />
                             <br />結束時間: @Html.DisplayFor(modelItem => item.EndTime)
                             <br />
-                            <br />活動人數: @Html.DisplayFor(modelItem => item.PeopleCount) 位
+                            <br />活動人數: @{
+                                int aaa = 0;
+
+                                foreach (var subid in @ViewBag.subActivityIDCount)
+                                {
+                                    aaa = subid;
+
+                                    {
+                                        @aaa;
+                                    }
+
+                                }}
+                            /
+                            @Html.DisplayFor(modelItem => item.PeopleCount) 位
                             <br />
                             <br />發起人: @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
                             <br />
@@ -72,7 +86,18 @@
                         </p>
                         <br />
                         <p>
-                            @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })|
+                            @{
+
+                                if (19 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
+                                {
+                                    @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
+                                }
+                                else
+                                {
+                                    @("修改")
+                                }
+                            }
+                            |
                             @{
                                 if (item.Status == "可參加")
                                 {
@@ -89,8 +114,19 @@
                             }
                             |
                             @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
-                            <a href="~/Product/Home">編輯商品</a>
-                    </div>
+                            @*<a href="~/Product/Create">編輯商品</a>*@
+                            @{
+                                if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
+                                {
+                                    @Html.ActionLink("編輯商品", "Create", "ProductBack", null, new { id = item.ActivityID })
+                                }
+                                else
+                                {
+                                    @("");
+                                }
+                            }
+
+</div>
                 </div>
                 <tr></tr>
             }

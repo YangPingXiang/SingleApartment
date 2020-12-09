@@ -55,5 +55,8 @@ namespace sln_SingleApartment.ViewModel
 
         [DisplayName("個人分類")]
         public string UserCategoryName { get; set; }
+
+        [DisplayName("訊息內容分類")]
+        public string InformationSourceName { get; set; }
     }
 }
