@@ -22,13 +22,12 @@ namespace sln_SingleApartment.Controllers
         {
 
             SingleApartmentEntities db = new SingleApartmentEntities();
-
             //關鍵字查詢
             //============================================
-            string KeyWord = Request.Form["TXTkeyword"];
+            string KeyWord = Request.Form["TXTKEYWORD"];
 
             IEnumerable<Product> table = null;
-
+            
             if (string.IsNullOrEmpty(KeyWord))
             {
                 table = from p in db.Product
@@ -40,44 +39,59 @@ namespace sln_SingleApartment.Controllers
                         where p.ProductName.Contains(KeyWord)
                         select p;
             }
-        
+
+            
+
+            //登入
             //============================================
             var user = Session[CDictionary.welcome] as CMember;
 
             if (user == null) { return RedirectToAction("Login", "Member"); }
-
-           
             
-            List<CProductViewModel> list = new List<CProductViewModel>();
-
-
-            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             //如果活動ID有東西將商品加入到HOME 此為團購商品(12/7)
             //===================================================================
 
-            DateTime time = DateTime.Now;
+            Product pod = new Product();
 
-            Activity AV = new Activity();
+            ShopViewModel shopv = new ShopViewModel();
 
-            Product PID = db.Product.FirstOrDefault(P => P.ActivityID >= 0);
+            List<CProductViewModel> list = new List<CProductViewModel>();
 
-            if (AV.EndTime >= time && PID != null)
+            List<CProductMainCategoryViewModel> cmcv = new List<CProductMainCategoryViewModel>();
+
+            List<CProductSubCategoryViewModel> cscv = new List<CProductSubCategoryViewModel>();
+
+            //List<CActivity> Activity = new List<CActivity>();
+            //=====================================================================
+            //取得團購商品(活動尚未結束)
+            var ActivityProduct = from g in db.Activity.AsEnumerable()
+                                  join p in db.Product.AsEnumerable()
+                                  on g.ActivityID equals p.ActivityID
+                                  where g.EndTime >= DateTime.Now  || g.EndTime <= DateTime.Now 
+                                  select p;
+        
+            foreach (var item in ActivityProduct)
             {
-                foreach (var item in db.Product.Where(q => q.ActivityID != null && q.Discontinued == "N"))
-                {
-
-                    list.Add(new CProductViewModel() { entity = item });
-
-                }
               
-            }
-            else
-            {
-                PID.Discontinued = "Y";
-                db.SaveChanges();
+               list.Add(new CProductViewModel() { entity = item });
 
             }
-            return View(list);
+            //=====================================================================
+            //分類商品
+            var mainCategory = from k in db.ProductMainCategory select k;
+
+            foreach (var m in mainCategory)
+            {
+                cmcv.Add(new CProductMainCategoryViewModel { entity_MainCategory = m });
+            }
+            //=====================================================================
+          
+            shopv.MainCategory = cmcv;
+
+            shopv.product = list;
+            
+            return View(shopv);
+            
         }
         //=======================================================================
            
@@ -433,84 +447,84 @@ namespace sln_SingleApartment.Controllers
 
         }
         //訂單明細
-        public ActionResult List(int ID)
-        {
-            using (SingleApartmentEntities db = new SingleApartmentEntities())
-            {
-                var table = (from p in db.OrderDetails
-                             where p.OrderID == ID
-                             select p).ToList();
+        //public ActionResult List(int ID)
+        //{
+        //    using (SingleApartmentEntities db = new SingleApartmentEntities())
+        //    {
+        //        var table = (from p in db.OrderDetails
+        //                     where p.OrderID == ID
+        //                     select p).ToList();
                 
-                //===================================================================
-                //歐付寶頁面
-                //=======================================
-                List<string> enErrors = new List<string>();
-                try
-                {
-                    using (AllInOne oPayment = new AllInOne())
-                    {
-                        /* 服務參數 */
-                        oPayment.ServiceMethod = AllPay.Payment.Integration.HttpMethod.HttpPOST;
-                        oPayment.ServiceURL = "Http://payment-stage.opay.tw/Cashier/AioCheckOut/V5";
-                        oPayment.HashKey = "5294y06JbISpM5x9";
-                        oPayment.HashIV = "v77hoKGq4kWxNNIS";
-                        oPayment.MerchantID = "	2000132";
-                        /* 基本參數 */
-                        oPayment.Send.ReturnURL = "http://localhost:44332/Product/CheckOut";
-                        oPayment.Send.ClientBackURL = "http://localhost:44332/Product/CheckOut";
-                        oPayment.Send.MerchantTradeNo = string.Format("{0:00000}", (new Random()).Next(100000));//亂數
-                        oPayment.Send.MerchantTradeDate = DateTime.Now;
-                        oPayment.Send.TotalAmount = Decimal.Parse("<<您此筆訂單的交易總金額>>");
-                        oPayment.Send.TradeDesc = "買起來!!!!!!";
-                        oPayment.Send.DeviceSource = DeviceType.PC;
+        //        //===================================================================
+        //        //歐付寶頁面
+        //        //=======================================
+        //        List<string> enErrors = new List<string>();
+        //        try
+        //        {
+        //            using (AllInOne oPayment = new AllInOne())
+        //            {
+        //                /* 服務參數 */
+        //                oPayment.ServiceMethod = AllPay.Payment.Integration.HttpMethod.HttpPOST;
+        //                oPayment.ServiceURL = "Http://payment-stage.opay.tw/Cashier/AioCheckOut/V5";
+        //                oPayment.HashKey = "5294y06JbISpM5x9";
+        //                oPayment.HashIV = "v77hoKGq4kWxNNIS";
+        //                oPayment.MerchantID = "	2000132";
+        //                /* 基本參數 */
+        //                oPayment.Send.ReturnURL = "http://localhost:44332/Product/CheckOut";
+        //                oPayment.Send.ClientBackURL = "http://localhost:44332/Product/CheckOut";
+        //                oPayment.Send.MerchantTradeNo = string.Format("{0:00000}", (new Random()).Next(100000));//亂數
+        //                oPayment.Send.MerchantTradeDate = DateTime.Now;
+        //                oPayment.Send.TotalAmount = Decimal.Parse("<<您此筆訂單的交易總金額>>");
+        //                oPayment.Send.TradeDesc = "買起來!!!!!!";
+        //                oPayment.Send.DeviceSource = DeviceType.PC;
 
 
-                        //加入選購商品資料。
-                        //foreach (var AA in list)
-                        //{
-                        //    oPayment.Send.Items.Add(new Item()
-                        //    {
-                        //        Name =li,
-                        //        Price =,
-                        //        Currency = "元",
-                        //        Quantity =
+                //                //加入選購商品資料。
+                //                //foreach (var AA in list)
+                //                //{
+                //                //    oPayment.Send.Items.Add(new Item()
+                //                //    {
+                //                //        Name =li,
+                //                //        Price =,
+                //                //        Currency = "元",
+                //                //        Quantity =
 
-                        //     });
-                        //}
-
-
-                        // 當付款方式為 ALL 時，建議增加的參數。
-                        // oPayment.SendExtend.PaymentInfoURL = "<<您要接收回傳自動櫃員機/超商/條碼付款相關資訊的網
-                        //址。>> ";
-                        /* 產生訂單 */
-
-                        enErrors.AddRange(oPayment.CheckOut());
-                        /* 產生產生訂單 Html Code 的方法 */
-                        string szHtml = String.Empty;
-                        enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // 例外錯誤處理。
-                    enErrors.Add(ex.Message);
-                }
-                finally
-                {
-                    // 顯示錯誤訊息。
-                    if (enErrors.Count() > 0)
-                    {
-                        string szErrorMessage = String.Join("\\r\\n", enErrors);
-                    }
-                }
-                //==============================================================================
+                //                //     });
+                //                //}
 
 
+                //                // 當付款方式為 ALL 時，建議增加的參數。
+                //                // oPayment.SendExtend.PaymentInfoURL = "<<您要接收回傳自動櫃員機/超商/條碼付款相關資訊的網
+                //                //址。>> ";
+                //                /* 產生訂單 */
+
+                //                enErrors.AddRange(oPayment.CheckOut());
+                //                /* 產生產生訂單 Html Code 的方法 */
+                //                string szHtml = String.Empty;
+                //                enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
+                //            }
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            // 例外錯誤處理。
+                //            enErrors.Add(ex.Message);
+                //        }
+                //        finally
+                //        {
+                //            // 顯示錯誤訊息。
+                //            if (enErrors.Count() > 0)
+                //            {
+                //                string szErrorMessage = String.Join("\\r\\n", enErrors);
+                //            }
+                //        }
+                //        //==============================================================================
 
 
-        }
-        //取消訂單
-        public ActionResult Delete(int id)
+
+
+                //}
+                //取消訂單
+                public ActionResult Delete(int id)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
 
