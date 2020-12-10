@@ -8,12 +8,15 @@
 }
 
 <body>
-
-    <div style="border:2px solid black; margin:50px 80px 50px 80px; padding:40px;">
-
+    <div>
         <button id="btnAdd" type="button" class="btn btn-info">
             新增房間
         </button>
+    </div>
+  
+    <div style="border:2px solid black; margin:50px 80px 50px 80px; padding:40px;">
+
+
 
         <div style="margin-left:200px; margin-bottom:50px;">
             <span style="font-weight:500;"> 房號</span>
@@ -71,34 +74,34 @@
 
             @foreach (var item in Model)
             {
-            <tr>
+                <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.roomname)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roomname)
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.roomtype)
-                </td>
-                <td>
-                   住： @Html.DisplayFor(modelItem => item.status)  人
-                </td>
-                <td>
-                    NT @Html.DisplayFor(modelItem => item.rent)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roomtype)
+                    </td>
+                    <td>
+                        住： @Html.DisplayFor(modelItem => item.status)  人
+                    </td>
+                    <td>
+                        NT @Html.DisplayFor(modelItem => item.rent)
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.squarefootage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.floor)
-                </td>
-                <td>
-                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("詳細資料", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn - danger" })
-                </td>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.squarefootage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.floor)
+                    </td>
+                    <td>
+                        @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("詳細資料", "BackRoomDetail", new {  id=item.roomID }) |
+                        @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn - danger" })
+                    </td>
+                </tr>
             }
 
         </table>

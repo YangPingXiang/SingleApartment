@@ -26,18 +26,30 @@ namespace sln_SingleApartment.Controllers
             #endregion
 
 
-            string search = Request.Form["txtKey"];
-            
+            string search = Request.Form["acName"];
+            string searchac = Request.Form["subName"];
             IEnumerable<Activity> table = null;
-            if (string.IsNullOrEmpty(search))
+            if (string.IsNullOrEmpty(search)&&string.IsNullOrEmpty(searchac))
             {
                 table = from p in db.Activity
                      select p;
             }
-            else
+            else if(searchac!="")
+            {
+                table = from p in db.Activity
+                        where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                        select p;
+            }
+            else if(search!="")
             {
                 table = from p in db.Activity
                         where p.ActivityName.Contains(search)
+                        select p;
+            }
+            else
+            {
+                table = from p in db.Activity
+                        where p.ActivityName.Contains(search)&&p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
                         select p;
             }
             //下拉式選單
@@ -53,7 +65,14 @@ namespace sln_SingleApartment.Controllers
                 ViewBag.subName = Namelist;
             }
             #endregion
-       
+            #region 活動名稱下拉式選單
+
+            var acNamelist = (from p in db.Activity
+                    select p.ActivityName).Distinct().ToList();
+                       
+                SelectList ActivityNamelist = new SelectList(acNamelist, "Name");
+                ViewBag.acName = ActivityNamelist;
+            #endregion
             #region 活動啟動更新狀態
             List<DateTime?> acEndtime = new List<DateTime?>();
             List<int> lnacid = new List<int>();
@@ -187,23 +206,40 @@ namespace sln_SingleApartment.Controllers
             //}
             #endregion
             #region 活動時間已過下架活動
-            for (int me = 0; me < MemberIDList.Count; me++)
-            {
-                if (MemberfActivityMessageList[me] == "TRUE")
-                {
-                    var statusendtime = (from u in db.Activity
-                                         where u.Status == "活動時間已過"
-                                         select u.ActivityID).ToList();
-                    for (int sst = 0; sst < statusendtime.Count; sst++)
-                    {
-                        bool flag;
-                        CInformationFactory infactory = new CInformationFactory();
+            //for (int me = 0; me < MemberIDList.Count; me++)
+            //{
+            //    if (MemberfActivityMessageList[me] == "TRUE")
+            //    {
+            //        var statusendtime = (from u in db.Activity
+            //                             where u.Status == "活動時間已過"
+            //                             select u.ActivityID).ToList();
 
-                        int p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
-                        flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
-                    }
-                }
-            }
+            //        var dbInformationSource = (from dbin in db.Information
+            //                            select dbin.InformationSource).ToList();
+            //        var dbDocumentID = (from dbin in db.Information
+            //                             select dbin.DocumentID).ToList();
+            //        //foreach(var informationoverlap in dbinformation)
+            //        //{
+            //        //    int? aaa=informationoverlap.InformationSource;
+            //        //    int bbb = informationoverlap.DocumentID;
+            //        //}
+
+            //        int p_source_id = 0;
+            //        for (int sst = 0; sst < statusendtime.Count; sst++)
+            //        {
+            //             p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
+            //            bool flag;
+            //            CInformationFactory infactory = new CInformationFactory();
+
+            //            flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
+
+
+            //        }
+                    
+                           
+                      
+            //    }
+            //}
             #endregion
            
             List< CActivity > list = new List<CActivity>();
