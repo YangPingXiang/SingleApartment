@@ -68,5 +68,8 @@ namespace sln_SingleApartment.ViewModels
 
         [DisplayName("欲接收活動種類的訊息")]
         public string fActivityMessage { get; set; }
+
+        //public string RoomName { get; set; }
+        //public string InformationContent { get; set; }
     }
 }

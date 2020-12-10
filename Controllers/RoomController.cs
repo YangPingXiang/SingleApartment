@@ -220,9 +220,58 @@ namespace sln_SingelApartment.Controllers
 
             return View(abtRoom_VM);
         }
-        
-        //GET
-        public ActionResult ListRoomDetail()
+        //GET 
+        //public ActionResult ListRoomDetail(int id)
+        //{
+        //    CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
+
+        //    var result = from r in dbSA.Room
+        //                 join b in dbSA.BuildCase
+        //                  on r.BuildCaseID equals b.ID
+        //                 join rs in dbSA.RoomStyle
+        //                 on r.RoomStyleID equals rs.ID
+        //                 join rf in dbSA.RoomFacilities
+        //                 on rs.ID equals rf.RoomStyleID
+        //                 join f in dbSA.Facility
+        //                 on rf.FacilityID equals f.ID
+        //                 where r.ID == id
+        //                 select new { r = r, b = b, rs = rs, rf = rf, f = f };
+
+        //    List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
+        //    List<CRoomViewModel> rooom_VM_lt = new List<CRoomViewModel>();
+        //    List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
+        //    List<CRoomFacilityViewModel> roomfacility_VM_lt = new List<CRoomFacilityViewModel>();
+        //    List<CFacilityViewModel> facility_VM_lt = new List<CFacilityViewModel>();
+
+        //    var test = result.ToList();   //有4個
+        //    foreach (var item in result)
+        //    {
+        //        CBuildCaseViewModel buildcase_VM = new CBuildCaseViewModel() { entity_buildcase = item.b };
+        //        buildcase_VM_lt.Add(buildcase_VM);
+        //        CRoomStyleViewModel roomstyle_VM = new CRoomStyleViewModel() { entity_roomstyle = item.rs };
+        //        roomstyle_VM_lt.Add(roomstyle_VM);
+        //        CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+        //        rooom_VM_lt.Add(room_VM);
+        //        CRoomFacilityViewModel roomfacility_VM = new CRoomFacilityViewModel() { entity_roomfacilities = item.rf };
+        //        roomfacility_VM_lt.Add(roomfacility_VM);
+        //        CFacilityViewModel facility_VM = new CFacilityViewModel() { entity_Facility = item.f };
+        //        facility_VM_lt.Add(facility_VM);
+        //    }
+        //    abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
+        //    abtRoom_VM.roomfacilityViewModel = roomfacility_VM_lt;
+        //    abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
+        //    abtRoom_VM.roomViewModels = rooom_VM_lt;
+        //    abtRoom_VM.facilityViewModels = facility_VM_lt;
+
+        //    ViewData.Model = abtRoom_VM;
+
+        //    return View(abtRoom_VM);123
+
+        //}
+
+        [HttpPost]
+        public ActionResult ListRoomDetail(string roomstyleID)
+
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
@@ -496,8 +545,7 @@ namespace sln_SingelApartment.Controllers
             return Content(userName);
         }
 
-
-
+      
 
     }
 }

@@ -187,23 +187,40 @@ namespace sln_SingleApartment.Controllers
             //}
             #endregion
             #region 活動時間已過下架活動
-            for (int me = 0; me < MemberIDList.Count; me++)
-            {
-                if (MemberfActivityMessageList[me] == "TRUE")
-                {
-                    var statusendtime = (from u in db.Activity
-                                         where u.Status == "活動時間已過"
-                                         select u.ActivityID).ToList();
-                    for (int sst = 0; sst < statusendtime.Count; sst++)
-                    {
-                        bool flag;
-                        CInformationFactory infactory = new CInformationFactory();
+            //for (int me = 0; me < MemberIDList.Count; me++)
+            //{
+            //    if (MemberfActivityMessageList[me] == "TRUE")
+            //    {
+            //        var statusendtime = (from u in db.Activity
+            //                             where u.Status == "活動時間已過"
+            //                             select u.ActivityID).ToList();
 
-                        int p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
-                        flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
-                    }
-                }
-            }
+            //        var dbInformationSource = (from dbin in db.Information
+            //                            select dbin.InformationSource).ToList();
+            //        var dbDocumentID = (from dbin in db.Information
+            //                             select dbin.DocumentID).ToList();
+            //        //foreach(var informationoverlap in dbinformation)
+            //        //{
+            //        //    int? aaa=informationoverlap.InformationSource;
+            //        //    int bbb = informationoverlap.DocumentID;
+            //        //}
+
+            //        int p_source_id = 0;
+            //        for (int sst = 0; sst < statusendtime.Count; sst++)
+            //        {
+            //             p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
+            //            bool flag;
+            //            CInformationFactory infactory = new CInformationFactory();
+
+            //            flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
+
+
+            //        }
+                    
+                           
+                      
+            //    }
+            //}
             #endregion
            
             List< CActivity > list = new List<CActivity>();
@@ -239,10 +256,6 @@ namespace sln_SingleApartment.Controllers
 
         }
 
-
-
-
-
         //暫存到購物車
         public ActionResult AddToCart_Session(int id)
         {
@@ -272,39 +285,6 @@ namespace sln_SingleApartment.Controllers
             
             return RedirectToAction("List");
         }
-
-        //[HttpPost]
-        //public ActionResult AddToCart_Session(CShoppingCart ac)
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-        //    Activity table = db.Activity.FirstOrDefault(p => p.ActivityID == ac.txtfId);
-        //    if (table != null)
-        //    {
-        //        CActivityCart tb = new CActivityCart();
-        //        tb.fJoinedId = table.ActivityID;
-        //        //tb.SubCategoryDetailID = table.SubCategoryDetailID;
-        //        tb.fAvtivityName = table.ActivityName;
-        //        tb.fStartTime = table.StartTime;
-        //        tb.fEndTime = table.EndTime;
-        //        tb.fLocation = table.MeetingPoint;
-        //        tb.fPeopleCount = table.PeopleCount;
-        //        tb.fMemberId = table.MemberID;
-        //        //tb.Note = table.Note;
-        //        tb.fNote = table.Note;
-        //        List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
-        //        if (list == null)
-        //        {
-        //            list = new List<CActivityCart>();
-        //            Session[CDictionary.Cart_Key] = list;
-        //        }
-        //        list.Add(tb);
-        //    }
-        //    //CActivity CA = new CActivity() { entity = table };
-        //    //return View(CA);
-        //    return RedirectToAction("List");
-        //}
-
-
 
         // GET: Create
         public ActionResult Create()
