@@ -29,14 +29,16 @@ namespace sln_SingleApartment.ViewModels
 
         [Required(ErrorMessage = "此處欄位必填!")]
         [DisplayName("開始時間")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
+        //[DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:g}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
         public System.DateTime StartTime { get; set; }
 
         [Required(ErrorMessage = "此處欄位必填!")]
         [DisplayName("結束時間")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
+        //[DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:g}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
         public System.DateTime EndTime { get; set; }
 
         public string Step { get; set; }

@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AllPay.Payment.Integration">
-      <HintPath>..\..\..\Desktop\æœ€æ–°ç‰ˆæœ¬å°ˆé¡Œ(12.6)\AllPay.Payment.Integration.dll</HintPath>
+      <HintPath>..\..\..\Desktop\³Ì·sª©¥»±MÃD(12.6)\AllPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -316,18 +316,18 @@
     <Content Include="Content\HomePage\images\pic03.jpg" />
     <Content Include="Content\HomePage\images\pic04.jpg" />
     <Content Include="Content\HomePage\images\pic05.jpg" />
-    <Content Include="Content\HomePage\images\çª©å±…å­—é«”è¨­è¨ˆ7.png" />
+    <Content Include="Content\HomePage\images\ºÛ©~¦rÅé³]­p7.png" />
     <Content Include="Content\HomePage\js\jquery.min.js" />
     <Content Include="Content\HomePage\js\jquery.scrolly.min.js" />
     <Content Include="Content\HomePage\js\main.js" />
     <Content Include="Content\HomePage\js\skel.min.js" />
     <Content Include="Content\HomePage\js\util.js" />
-    <Content Include="Content\img\çª©å±…å­—é«”è¨­è¨ˆ.png" />
-    <Content Include="Content\img\çª©å±…å­—é«”è¨­è¨ˆ3.png" />
-    <Content Include="Content\img\çª©å±…å­—é«”è¨­è¨ˆ6.png" />
-    <Content Include="Content\img\çª©å±…å­—é«”è¨­è¨ˆ7.png" />
-    <Content Include="Content\img\é ­ %281%29.png" />
-    <Content Include="Content\img\é ­.png" />
+    <Content Include="Content\img\ºÛ©~¦rÅé³]­p.png" />
+    <Content Include="Content\img\ºÛ©~¦rÅé³]­p3.png" />
+    <Content Include="Content\img\ºÛ©~¦rÅé³]­p6.png" />
+    <Content Include="Content\img\ºÛ©~¦rÅé³]­p7.png" />
+    <Content Include="Content\img\ÀY %281%29.png" />
+    <Content Include="Content\img\ÀY.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
@@ -766,7 +766,7 @@
     <Content Include="Content\Room\images\instagram\ins-5.jpg" />
     <Content Include="Content\Room\images\logo\logo.png" />
     <Content Include="Content\Room\images\logo\pay-card.png" />
-    <Content Include="Content\Room\images\logo\çª©å±…å­—é«”è¨­è¨ˆ7.png" />
+    <Content Include="Content\Room\images\logo\ºÛ©~¦rÅé³]­p7.png" />
     <Content Include="Content\Room\images\map-marker.png" />
     <Content Include="Content\Room\images\news\item2\n-10.jpg" />
     <Content Include="Content\Room\images\news\item2\n-11.jpg" />
@@ -780,34 +780,34 @@
     <Content Include="Content\Room\images\news\n-1.jpg" />
     <Content Include="Content\Room\images\news\n-2.jpg" />
     <Content Include="Content\Room\images\news\n-3.jpg" />
-    <Content Include="Content\Room\images\roomstyle\åŒ—æ­é¢¨-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\åœ°ä¸­æµ·é¢¨-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\åœ°ä¸­æµ·é¢¨-2.jpg" />
-    <Content Include="Content\Room\images\roomstyle\å¤¢å¹»é¢¨-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\å¤¢å¹»é¢¨-2.jpg" />
-    <Content Include="Content\Room\images\roomstyle\å·¥æ¥­é¢¨-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\å·¥æ¥­é¢¨-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¥_¼Ú­·-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¦a¤¤®ü­·-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¦a¤¤®ü­·-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¹Ú¤Û­·-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¹Ú¤Û­·-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¤u·~­·-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\¤u·~­·-2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
     <Content Include="Content\Room\images\room\room3.jpg" />
     <Content Include="Content\Room\images\room\small-room.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿å‹_åŒ—æ­é¢¨é›™äººæˆ¿.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿å‹_å–®èº«å¥—æˆ¿.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿å‹_å·¥æ¥­é¢¨ä¸‰äººæˆ¿.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿å‹_æº«é¦¨å®¶åº­æˆ¿.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿å‹_æº«é¦¨ç”œèœœå¥—æˆ¿.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101-1.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101-2.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101-3.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101-4.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101-5.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“101.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“102-1.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“102-2.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“102-3.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“102.jpg" />
-    <Content Include="Content\Room\images\room\æˆ¿é–“103.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ«¬_¥_¼Ú­·Âù¤H©Ğ.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ«¬_³æ¨­®M©Ğ.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ«¬_¤u·~­·¤T¤H©Ğ.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ«¬_·ÅÄÉ®a®x©Ğ.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ«¬_·ÅÄÉ²¢»e®M©Ğ.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101-1.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101-2.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101-3.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101-4.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101-5.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡101.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡102-1.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡102-2.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡102-3.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡102.jpg" />
+    <Content Include="Content\Room\images\room\©Ğ¶¡103.jpg" />
     <Content Include="Content\Room\images\services\services1.jpg" />
     <Content Include="Content\Room\images\services\services2.jpg" />
     <Content Include="Content\Room\images\services\services3.jpg" />
@@ -817,10 +817,10 @@
     <Content Include="Content\Room\images\services\services7.jpg" />
     <Content Include="Content\Room\images\services\tab-1.jpg" />
     <Content Include="Content\Room\images\services\tab-2.jpg" />
-    <Content Include="Content\Room\images\services\åŸå¸‚è¥¿é–€å¿«æ·çª©.jpg" />
-    <Content Include="Content\Room\images\services\å¿ƒé†‰ä¿¡ç¾©å¿˜æ†‚çª©.jpg" />
-    <Content Include="Content\Room\images\services\æ…¢æ´»æ–‡å±±é›²æ™¯çª©.jpg" />
-    <Content Include="Content\Room\images\services\ç¶ æ„å¤§å®‰æ£®æ´»çª©.jpg" />
+    <Content Include="Content\Room\images\services\«°¥«¦èªù§Ö±¶ºÛ.jpg" />
+    <Content Include="Content\Room\images\services\¤ß¾K«H¸q§Ñ¼~ºÛ.jpg" />
+    <Content Include="Content\Room\images\services\ºC¬¡¤å¤s¶³´ººÛ.jpg" />
+    <Content Include="Content\Room\images\services\ºñ·N¤j¦w´Ë¬¡ºÛ.jpg" />
     <Content Include="Content\Room\images\staff\about.jpg" />
     <Content Include="Content\Room\images\staff\client1.jpg" />
     <Content Include="Content\Room\images\staff\staff1.jpg" />
@@ -992,8 +992,10 @@
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
     <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
+    <Content Include="Views\Activity\Back_List.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomDetail.cshtml" />
     <Content Include="Views\RoomBackend\BackEditTheRoomDetail.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1040,7 +1042,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>æ­¤å°ˆæ¡ˆåƒè€ƒé€™éƒ¨é›»è…¦ä¸Šæ‰€ç¼ºå°‘çš„ NuGet å¥—ä»¶ã€‚è«‹å•Ÿç”¨ NuGet å¥—ä»¶é‚„åŸï¼Œä»¥ä¸‹è¼‰è©²å¥—ä»¶ã€‚å¦‚éœ€è©³ç´°è³‡è¨Šï¼Œè«‹åƒé–± http://go.microsoft.com/fwlink/?LinkID=322105ã€‚ç¼ºå°‘çš„æª”æ¡ˆæ˜¯ {0}ã€‚</ErrorText>
+      <ErrorText>¦¹±M®×°Ñ¦Ò³o³¡¹q¸£¤W©Ò¯Ê¤Öªº NuGet ®M¥ó¡C½Ğ±Ò¥Î NuGet ®M¥óÁÙ­ì¡A¥H¤U¸ü¸Ó®M¥ó¡C¦p»İ¸Ô²Ó¸ê°T¡A½Ğ°Ñ¾\ http://go.microsoft.com/fwlink/?LinkID=322105¡C¯Ê¤ÖªºÀÉ®×¬O {0}¡C</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

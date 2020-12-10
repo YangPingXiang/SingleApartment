@@ -11,6 +11,7 @@ namespace sln_SingleApartment.Controllers
 {
     public class MemberController : Controller
     {
+      
         SingleApartmentEntities db = new SingleApartmentEntities();
         //後台會員列表   12月2號-修改將參考型別改為CMemberRister
         public ActionResult List()
@@ -56,7 +57,12 @@ namespace sln_SingleApartment.Controllers
 
                 return RedirectToAction("Home");
             }
-            return View();
+            else
+            {
+                ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
+                
+            }
+           return View();
         }
 
         //註冊
@@ -73,7 +79,7 @@ namespace sln_SingleApartment.Controllers
             {
                 return View();
             }
-            var member = db.tMember.Where(p => p.fMemberId == input.fMemberId).FirstOrDefault();
+            var member = db.tMember.Where(p => p.fAccount == input.fAccount).FirstOrDefault();
 
             if (member == null)
             {
@@ -110,6 +116,16 @@ namespace sln_SingleApartment.Controllers
             ViewBag.Message = "此帳號已有人使用，請輸入新的帳號";
             return View();
         }
+
+        //public string Check()
+        //{
+        //    string val1 = Request["val1"].ToString();
+        //    string result="0";
+        //    var member = db.tMember.Where(p => p.fMemberName == val1).FirstOrDefault();
+        //    if (member != null)
+        //        result = "1";
+        //    return result;
+        //}
 
         //登出
         public ActionResult LogOut()
@@ -223,6 +239,67 @@ namespace sln_SingleApartment.Controllers
             }
             cm.prod = products;
             return View(cm);
+        }
+
+
+
+
+
+
+        public JsonResult CheckName(string cn)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fMemberName == cn).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+        }
+        public JsonResult CheckAccount(string ca)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fAccount == ca).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
+        }
+        public JsonResult CheckEmail(string ce)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fEmail == ce).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
+        }
+        public JsonResult CheckPhone(string cp)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fPhone == cp).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
         }
     }
 }

@@ -19,7 +19,7 @@
                     <div class="form-info">
                         <form method="post" id="frm" name="frm" onclick="return false">
                             <label style="margin-bottom:10px;font-size:20px">帳號</label>
-                            <input type="text" class="text" id="account" placeholder="請輸入帳號 or Email 或 手機號碼" required name="txtaccount">
+                            <input type="text" class="text" id="account" placeholder="請輸入帳號 or Email 或 手機號碼" required name="txtaccount" autocomplete="off">
 
                             <label style="margin-bottom:10px;font-size:20px">密碼</label>
 
@@ -37,10 +37,11 @@
                             <label class="label-info">
                                 <input type="submit" value="會員登入">
                             </label>
-                            <div style="display:inline; margin-left:360px" >
+                            @ViewBag.msg
+                            <div style="display:inline; margin-left:360px">
                                 <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px;  height:45px; padding:0; line-height:45px">
                                 <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px">
-                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="create">
@@ -64,4 +65,6 @@
         $("#account").val("admin");
         $("#pwd").val("adminadmin");
     }
+
+   
 </script>
