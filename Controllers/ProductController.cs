@@ -11,6 +11,10 @@ using sln_SingleApartment.ViewModel;
 using System.Net.Http;
 
 using HttpMethod = System.Net.Http.HttpMethod;
+using System.Threading.Tasks;
+using System.IO;
+using System.Net.Http.Headers;
+using static sln_SingleApartment.Models.CUser;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -97,6 +101,74 @@ namespace sln_SingleApartment.Controllers
             var mymodel = theUser.SearchProduct();
             return View(mymodel);
         }
+        #region 以圖搜關鍵字
+        [HttpPost]
+        public async Task<ActionResult> shop(HttpPostedFileBase imgPhoto)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            
+            var result = theUser.SearchProduct();
+            
+            if (imgPhoto != null)
+            {
+                imgPhoto.SaveAs("c:\\temp\\111.jpg");
+                FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
+                int length = (int)fs.Length;
+                byte[] image = new byte[length];
+                fs.Read(image, 0, length);
+                fs.Close();
+                List<string> strs = await MakePredictionRequest(image);
+                var list_product = theUser.SearchProductsBy(null, null, strs[0]); result.product = list_product;
+                ViewBag.ByPhoto = "true";
+                string Keyword = "";
+                foreach (var str in strs)
+                {
+                    Keyword += (str + " ");
+                }
+                ViewBag.Keyword = Keyword;
+            }
+            return View(result);
+        }
+        public static async Task<List<string>> MakePredictionRequest(byte[] byteData)
+        {
+            var client = new HttpClient();
+            // Request headers - replace this example key with your valid Prediction-Key.
+            client.DefaultRequestHeaders.Add("Prediction-Key", "55f6001a7163417b95ab02f37900cf76");
+
+            // Prediction URL - replace this example URL with your valid Prediction URL.
+            string url = "https://sgapart-customvision.cognitiveservices.azure.com/customvision/v3.0/Prediction/fafe23de-ddc4-483c-acdc-ec5567cb35aa/classify/iterations/ProductModel/image";
+
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            // Request body. Try this sample with a locally stored image.
+            //byte[] byteData = GetImageAsByteArray(imageFilePath);
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+
+                var test = JsonConvert.DeserializeObject<Answer>(answer);
+                List<string> Myreturn = new List<string>(); ;
+                foreach (var item in test.predictions)
+                {
+                    var ans = JsonConvert.SerializeObject(item);
+
+                    var anstest = JsonConvert.DeserializeObject<MyObject>(ans);
+                    if (anstest.probability > 0.9)
+                        Myreturn.Add(anstest.tagName);
+                }
+                return Myreturn;
+            }
+
+        }
+        #endregion
+
         public JsonResult GetProductShowing(string condition, string id)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -136,7 +208,10 @@ namespace sln_SingleApartment.Controllers
             CUser user = new CUser();
             List<CProductViewModel> lt;
             if (KeyWord != "")
+            {
                 lt = user.SearchProductsBy(null, null, KeyWord);
+            }
+
             else if (SubCategory != null)
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
             else if (MainCategory != null)
