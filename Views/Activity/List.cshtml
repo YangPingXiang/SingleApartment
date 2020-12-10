@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<sln_SingleApartment.ViewModel.CActivity>
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "List";
-                //int count = 0;
-                Layout = "~/Views/Shared/Information_Layout.cshtml";
+    ViewBag.Title = "List";
+    //int count = 0;
+    Layout = "~/Views/Shared/Information_Layout.cshtml";
 
 }
 
@@ -20,15 +20,27 @@
         @using (Html.BeginForm())
         {
             <label class="form-group">
-
-                @Html.TextBox("txtKey")
-
-                <input type="submit" value="查詢" class="btn btn-default" />
-                @*@Html.DropDownList("subName")*@
-
-                @*<input type="" name="Namelist" />*@
+                <span style="font-weight:500">活動類別:</span>
 
             </label>
+            <label>
+                @Html.DropDownList("subName", null, "")
+            </label>
+            <label>
+                <span style="font-weight:500">活動名稱:</span>
+            </label>
+            <label>
+                @Html.DropDownList("acName", null, "")
+            </label>
+            <label>
+                <input type="submit" value="查詢" class="btn btn-default" />
+            </label>
+            <br />
+            <label>
+
+
+            </label>
+
 
         }
 
@@ -40,6 +52,8 @@
             <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
             @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
         </label>
+
+
         <br />
         <br />
         <table class="table">
@@ -47,10 +61,13 @@
             <h2>可參加活動</h2>
             @foreach (var item in Model)
             {
+                //if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "休閒類")
+                //{
+
                 <div class="card" style="width: 20rem; border:solid 2px lightgray; float: left; margin:10px;">
                     @*<img src="..." class="card-img-top" alt="..." style="border:solid 1px darkgray;">*@
                     <div class="card-body">
-                        <p>開始時間: @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName) </p>
+                        <p>活動類別: @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName) </p>
                         <p>活動名稱: @Html.DisplayFor(modelItem => item.ActivityName)</p>
                         @*<p class="card-title">@Html.DisplayFor(modelItem => item.ActivityName)</p>*@
                         <p class="card-text">
@@ -61,16 +78,16 @@
                             <br />
                             <br />活動人數: @{
                                 int nowPeopleCount = 0;
-                                for (int i=0;i< ViewBag.subActivityIDCount.Count;i++)
+                                for (int i = 0; i < ViewBag.subActivityIDCount.Count; i++)
                                 {
-                                    if(item.ActivityID== ViewBag.subParticipantID[i])
+                                    if (item.ActivityID == ViewBag.subParticipantID[i])
                                     {
                                         nowPeopleCount = ViewBag.subActivityIDCount[i];
                                     }
 
                                 }
-                                @nowPeopleCount;                                
-                                }
+                                @nowPeopleCount;
+                            }
                             /
                             @Html.DisplayFor(modelItem => item.PeopleCount) 位
                             <br />
@@ -131,8 +148,8 @@
                     </div>
                 </div>
                 <tr></tr>
+                //}
             }
-
         </table>
     </div>
 </section>
