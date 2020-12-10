@@ -9,7 +9,7 @@ namespace sln_SingleApartment.ViewModels
 {
     public class CMember_Factory
     {
-
+        
         SingleApartmentEntities db = new SingleApartmentEntities();
 
         public CMember isAuthticated(string account,string pwd)
@@ -38,7 +38,7 @@ namespace sln_SingleApartment.ViewModels
 
                 return member;
             }
-            return null;
+            return null ;
         }
     }
 }

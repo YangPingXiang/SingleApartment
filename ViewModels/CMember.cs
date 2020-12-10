@@ -13,7 +13,7 @@ namespace sln_SingleApartment.ViewModels
         public int fMemberId { get; set; }
 
         [DisplayName("會員姓名")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "姓名必須輸入...")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "姓名必須輸入...")]
         public string fMemberName { get; set; }
 
         [DisplayName("會員帳號")]

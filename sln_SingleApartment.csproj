@@ -990,6 +990,7 @@
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
     <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
+    <Content Include="Views\Activity\Back_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
