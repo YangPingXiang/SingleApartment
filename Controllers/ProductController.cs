@@ -50,7 +50,7 @@ namespace sln_SingleApartment.Controllers
 
             if (user == null) { return RedirectToAction("Login", "Member"); }
             
-            List<CProductViewModel> list = new List<CProductViewModel>();
+           
 
 
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
