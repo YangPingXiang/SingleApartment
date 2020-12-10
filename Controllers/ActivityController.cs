@@ -26,18 +26,30 @@ namespace sln_SingleApartment.Controllers
             #endregion
 
 
-            string search = Request.Form["txtKey"];
-            
+            string search = Request.Form["acName"];
+            string searchac = Request.Form["subName"];
             IEnumerable<Activity> table = null;
-            if (string.IsNullOrEmpty(search))
+            if (string.IsNullOrEmpty(search)&&string.IsNullOrEmpty(searchac))
             {
                 table = from p in db.Activity
                      select p;
             }
-            else
+            else if(searchac!="")
+            {
+                table = from p in db.Activity
+                        where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                        select p;
+            }
+            else if(search!="")
             {
                 table = from p in db.Activity
                         where p.ActivityName.Contains(search)
+                        select p;
+            }
+            else
+            {
+                table = from p in db.Activity
+                        where p.ActivityName.Contains(search)&&p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
                         select p;
             }
             //下拉式選單
@@ -53,7 +65,14 @@ namespace sln_SingleApartment.Controllers
                 ViewBag.subName = Namelist;
             }
             #endregion
-       
+            #region 活動名稱下拉式選單
+
+            var acNamelist = (from p in db.Activity
+                    select p.ActivityName).Distinct().ToList();
+                       
+                SelectList ActivityNamelist = new SelectList(acNamelist, "Name");
+                ViewBag.acName = ActivityNamelist;
+            #endregion
             #region 活動啟動更新狀態
             List<DateTime> acEndtime = new List<DateTime>();
             List<int> lnacid = new List<int>();
