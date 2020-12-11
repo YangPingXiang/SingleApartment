@@ -1,156 +1,211 @@
 ﻿@model IEnumerable<sln_SingleApartment.ViewModel.CActivity>
-
 @{
-    /**/
-
     ViewBag.Title = "List";
-    //int count = 0;
-    Layout = "~/Views/Shared/Information_Layout.cshtml";
-
+    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
 }
 
+<head>
+    <style>
+        td {
+            font-size: 18px;
+            font-weight: 400;
+            
+        }
+        .td1 {
+            font-size: 22px;
+            font-weight: 600;
+            
+        }
 
-@*<h2>活動列表</h2>*@
+    </style>
+</head>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <section id="main" class="wrapper" style="padding:3em">
-    <!--style="border:solid 1px;border-color:black"-->
+
     <div class="inner">
         <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">當窩們同在一起</h1>
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3;margin-bottom:2em">當窩們同在一起</h1>
         </header>
         @using (Html.BeginForm())
         {
-            <label class="form-group">
-                <span style="font-weight:500">活動類別:</span>
+            <div >
+                <label style="width:28em;margin-right:20px">
+                    <label style="font-weight:600;font-size:20px;">活動類別:</label>
+                    @Html.DropDownList("subName", null, "")
+                </label>
+                <label style="width:28em">
+                    <label style="font-weight:600;font-size:20px">活動名稱:</label>
+                    @Html.DropDownList("acName", null, "")
+                </label>
+                <label style="float:right;margin-top:2em">
+                    <input style="line-height:2.5em;padding:0em;width:150px;height:50px;font-size:20px;font-weight:500;" type="submit" value="查 詢" />
 
-            </label>
-            <label>
-                @Html.DropDownList("subName", null, "")
-            </label>
-            <label>
-                <span style="font-weight:500">活動名稱:</span>
-            </label>
-            <label>
-                @Html.DropDownList("acName", null, "")
-            </label>
-            <label>
-                <input type="submit" value="查詢" class="btn btn-default" />
-            </label>
-            <br />
-            <label>
+                </label>
+            </div>
+
+            <div style="margin-top:20px">
+                <label>
+                    <a style="margin-right:10px" href="~/Activity/Create" class="btn btn-primary btn-lg">新增活動</a>
+                    <a href="~/Activity/CartView" class="btn btn-info btn-lg">查看參加的活動</a>
+                </label>
 
 
-            </label>
-
+            </div>
 
         }
+        <h2 style="font-weight:600 ;text-align:center;margin-bottom:20px">可參加活動</h2>
 
-        <label>
-            @*@Html.ActionLink("新增活動", "Create")*@
-            <a href="~/Activity/Create" class="btn btn-primary">新增活動</a>
-        </label>
-        <label>
-            <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
-            @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
-        </label>
+        @foreach (var item in Model)
+        {
+            <table  class="table" style="margin-left:0.5em;width:64em;border:solid 0.2em #f6755e;">
 
+                <tr >
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        活動類別 : &nbsp;
+                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)</mark> 
+                    </td>
 
-        <br />
-        <br />
-        <table class="table">
+                    <td class="td1" style="padding:1em 2em 1em 0em;">
+                        活動名稱 : &nbsp;
+                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.ActivityName)</mark>
+                    </td>
 
-            <h2>可參加活動</h2>
-            @foreach (var item in Model)
-            {
-                //if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "休閒類")
-                //{
+                </tr>
 
-                <div class="card" style="width: 20rem; border:solid 2px lightgray; float: left; margin:10px;">
-                    @*<img src="..." class="card-img-top" alt="..." style="border:solid 1px darkgray;">*@
-                    <div class="card-body">
-                        <p>活動類別: @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName) </p>
-                        <p>活動名稱: @Html.DisplayFor(modelItem => item.ActivityName)</p>
-                        @*<p class="card-title">@Html.DisplayFor(modelItem => item.ActivityName)</p>*@
-                        <p class="card-text">
-
-                            <br />開始時間: @Html.DisplayFor(modelItem => item.StartTime)
-                            <br />
-                            <br />結束時間: @Html.DisplayFor(modelItem => item.EndTime)
-                            <br />
-                            <br />活動人數: @{
-                                int nowPeopleCount = 0;
-                                for (int i = 0; i < ViewBag.subActivityIDCount.Count; i++)
+                <tr >
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        開始時間:&nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.StartTime)</p>
+                    </td>
+                   
+                    <td class="td1" style="padding:1em 0em 1em 0em;">
+                        結束時間:&nbsp;
+                        <p> @Html.DisplayFor(modelItem => item.EndTime)</p>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        發起人:&nbsp;
+                        @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
+                    </td>
+                    
+                    <td class="td1" style="padding:1em 0em 1em 0em;">
+                        地點 : &nbsp;
+                        @Html.DisplayFor(modelItem => item.MeetingPoint)
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        活動人數: &nbsp;
+                        @{
+                            int nowPeopleCount = 0;
+                            for (int i = 0; i < ViewBag.subActivityIDCount.Count; i++)
+                            {
+                                if (item.ActivityID == ViewBag.subParticipantID[i])
                                 {
-                                    if (item.ActivityID == ViewBag.subParticipantID[i])
-                                    {
-                                        nowPeopleCount = ViewBag.subActivityIDCount[i];
-                                    }
-
-                                }
-                                @nowPeopleCount;
-                            }
-                            /
-                            @Html.DisplayFor(modelItem => item.PeopleCount) 位
-                            <br />
-                            <br />發起人: @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
-                            <br />
-                            <br />地點: @Html.DisplayFor(modelItem => item.MeetingPoint)
-                            <br />
-                            <br />備註: @Html.DisplayFor(modelItem => item.Note)
-                            <br />
-                            <br />狀態: @Html.DisplayFor(modelItem => item.Status)
-                            <br />
-                            <br />圖片:
-                        <p>
-                            <img src="@item.ActivityImage" width="120" height="100" />
-                        </p>
-                        <br />
-                        <p>
-                            @{
-
-                                if (19 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
-                                {
-                                    @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
-                                }
-                                else
-                                {
-                                    @("修改")
+                                    nowPeopleCount = ViewBag.subActivityIDCount[i];
                                 }
                             }
-                            |
-                            @{
-                                if (item.Status == "可參加")
-                                {
-                                    @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
-                                }
-                                else if (item.Status == "人員已滿")
-                                {
-                                    @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
-                                }
-                                else
-                                {
-                                    @("加入")
-                                }
+                            @nowPeopleCount;
+                        }
+                        /
+                        @Html.DisplayFor(modelItem => item.PeopleCount) 位
+                    </td>
+
+    
+                    <td class="td1" style="padding:1em 0em 1em 0em;">
+                        狀態 :&nbsp;
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        備註 :&nbsp;
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td></td>
+
+
+                </tr>
+
+                <tr>
+                    <td class="td1" style="padding:1em 0em 1em 3em;">
+                        圖片 :&nbsp;
+                        <img src="@item.ActivityImage" width="150" height="110" />
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+
+                    <td></td>
+                    <td class="td1" style="float:right">
+                        @{
+                            if (19 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
+                            {
+                                @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
                             }
-                            |
+                            else
+                            {
+                                @("修改")
+                            }
+                        }
+                        |
+                        @{
+                            if (item.Status == "可參加")
+                            {
+                                @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
+                            }
+                            else if (item.Status == "人員已滿")
+                            {
+                                @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
+                            }
+                            else
+                            {
+                                @("加入")
+
+                            }
                             @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
                             @*<a href="~/Product/Create">編輯商品</a>*@
-                            @{
-                                if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
-                                {
+                            
+                                    if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
+                                    {
 
-                                    <a href="@Url.Action("Create","ProductBack",new { id = item.ActivityID })">編輯商品</a>
-                                }
-                                else
-                                {
+                                    <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
+                                    }
+                                    else
+                                    {
                                     @("");
-                                }
+                                    }
+
+                            
+                        }
+                        |
+
+                        @{
+                            if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
+                            {
+                                @Html.ActionLink("編輯商品", "Create", "ProductBack", null, new { id = item.ActivityID })
+                            }
+                            else
+                            {
+                                @("");
+                            }
+                        }
+                    </td>
+
+
+
+                </tr>
+
+            </table>
                             }
 
-</div>
-                </div>
-                <tr></tr>
-                //}
-            }
-        </table>
+
+
     </div>
 </section>
