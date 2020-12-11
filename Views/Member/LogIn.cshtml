@@ -4,8 +4,8 @@
 
     ViewBag.Title = "LogIn";
 }
-
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -24,7 +24,11 @@
                             <label style="margin-bottom:10px;font-size:20px">密碼</label>
 
                             <input type="password" id="pwd" placeholder="請輸入密碼" required name="txtpwd">
-
+                            <!--我不是機器人-->
+                            <div>
+                                <div class="g-recaptcha" data-sitekey="6Ldd8wEaAAAAAIm2714PGW1zYIfX4BenxZ3wrm13"></div>
+                            </div>
+                      
                             <ul class="login-icons">
                                 <li>
                                     <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
