@@ -28,8 +28,7 @@
                             <!--姓名-->
                             <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">會員姓名</label>
-                                @*@Html.EditorFor(model => model.fMemberName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" }  })
-                                    @Html.ValidationMessageFor(model => model.fMemberName, "", new { @class = "text-danger", @id = "username" })*@
+                               
                                 <input type="text" name="fMemberName" id="Username" placeholder="請輸入您的姓名" autofocus autocomplete="off" onchange="Usercheck()" onfocus="focusName()" required />
                                 @*<div class="col-md-10"></div>*@
                                 <label id="StatusName" />
@@ -159,7 +158,7 @@
 
                             <!--第三方按鈕(尚未有功能)-->
                             <ul class="login-icons">
-                                <li>
+                                <li style="padding-left:0em;">
                                     <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
                                 </li>
                                 <li>

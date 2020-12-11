@@ -38,7 +38,7 @@ namespace sln_SingleApartment.ViewModels
 
         [DisplayName("庫存")]
         [Required(ErrorMessage = "請輸入庫存")]
-        public int Stock { get { return entity.Stock; } }
+        public int? Stock { get { return entity.Stock; } }
 
         [DisplayName("產品敘述")]
         [Required(ErrorMessage = "請輸入產品敘述")]
