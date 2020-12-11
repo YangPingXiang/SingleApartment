@@ -58,11 +58,11 @@
                             <div class="widget shop-filter">
                                 <div class="info_widget">
                                     <div class="price_filter">
-                                        <div id="slider-range"></div>
+                                        <div id="slider-range" onchange="SearchProductsByPrice()"></div>
                                         <div id="amount">
 
-                                            <input type="text" name="first_price" class="first_price" />
-                                            <input type="text" name="last_price" class="last_price" />
+                                            <input type="text" name="first_price" class="first_price" onchange="SearchProductsByPrice()"/>
+                                            <input type="text" name="last_price" class="last_price" onchange="SearchProductsByPrice()"/>
                                             <div style="margin-top:15px"></div>
                                             <input type="file" name="imgPhoto" style="display:inline" />
                                             <button class="button-shop" type="submit"><i class="fa fa-search search-icon"></i></button>
@@ -345,22 +345,23 @@
     $(function () {
         $('#allpd').click(function() { SearchProduct() });
         $('.myMainCate').click(function() {SearchProductsByMainC($(this).prop("name"));});
-        $('.mySubCate').click(function() { SearchProductsBySubC($(this).prop("name"));});
-        @{ 
+        $('.mySubCate').click(function () { SearchProductsBySubC($(this).prop("name")); });
+
+        @{
 
             if (ViewBag.ByPhoto == "true")
             {
                @:SearchProductsByKeyWord("@ViewBag.Keyword");
            }
+           
             else
             {
                 @:SearchProduct();
-                
             }
         }
-        
-       
-        
+
+
+
 
 
     });
@@ -421,7 +422,40 @@
             }
         });
     }
-
+    function SearchProductsByPrice() {
+        first = $('.first_price').val();
+        last = $('.last_price').val();
+        pagesize = $("#pageSize").val();
+        console.log("In SearchProductsByPrice Function");
+        console.log(first);
+        console.log(last);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                firstprice: first,
+                lastprice: last,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#home").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                firstprice: first,
+                lastprice: last,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
+            }
+        });
+    }
     function SearchProductsByMainC(id) {
         pagesize = $("#pageSize").val();
         $.ajax({
@@ -514,6 +548,6 @@
         });
     }
 
- </script>
+</script>
 
             <!-- #endregion -->
