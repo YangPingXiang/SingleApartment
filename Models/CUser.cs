@@ -1,7 +1,11 @@
-﻿using sln_SingleApartment.ViewModels;
+﻿using Newtonsoft.Json;
+using sln_SingleApartment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace sln_SingleApartment.Models
@@ -113,7 +117,12 @@ namespace sln_SingleApartment.Models
             var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             if (!String.IsNullOrEmpty(KeyWord))
             {
-                pd = db.Product.Where(r => r.ProductName.Contains(KeyWord) && r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
+                string[] kw = KeyWord.Split(' ');
+                pd = from p in db.Product
+                     where p.Discontinued == "N" && p.Stock >= 0 && p.ActivityID != null
+                       || kw.Any(x=>p.ProductName.Contains(x))
+                     select p;
+                var k = pd.ToList();
             }
             else if (SubCategory!= null)
             {
@@ -130,9 +139,25 @@ namespace sln_SingleApartment.Models
             return result;
         }
 
+
+        #endregion
+        #region 智慧辨識
+        public class Answer
+        {
+            public string id { get; set; }
+            public string project { get; set; }
+            public string iteration { get; set; }
+            public string created { get; set; }
+            public object[] predictions { get; set; }
+        }
+        public class MyObject
+        {
+            public double probability { get; set; }
+            public string tagId { get; set; }
+            public string tagName { get; set; }
+        }
         
         #endregion
-
         #endregion
     }
 }
