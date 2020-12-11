@@ -14,8 +14,8 @@
           <Property Name="ActivityName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PeopleCount" Type="int" Nullable="false" />
           <Property Name="MemberID" Type="int" Nullable="false" />
-          <Property Name="StartTime" Type="datetime" Nullable="false" />
-          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Step" Type="nvarchar" MaxLength="50" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="MeetingPoint" Type="nvarchar(max)" />
@@ -1010,8 +1010,8 @@
           <Property Name="ActivityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PeopleCount" Type="Int32" Nullable="false" />
           <Property Name="MemberID" Type="Int32" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Step" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MeetingPoint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1272,6 +1272,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
           <Property Name="RoomStyleID" Type="Int32" />
           <Property Name="RoomType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BuildCaseID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
@@ -1287,7 +1288,6 @@
           <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
           <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Room" FromRole="Room" ToRole="RoomFacilities" />
           <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="Room" ToRole="RoomFavorite" />
-          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="RoomFacilities">
           <Key>
@@ -1997,7 +1997,6 @@
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="SingleApartmentModel.Room">
               <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="RoomFacilityID" ColumnName="RoomFacilityID" />
                 <ScalarProperty Name="RoomPictureID" ColumnName="RoomPictureID" />
@@ -2007,6 +2006,7 @@
                 <ScalarProperty Name="BuildCaseID" ColumnName="BuildCaseID" />
                 <ScalarProperty Name="RoomType" ColumnName="RoomType" />
                 <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
