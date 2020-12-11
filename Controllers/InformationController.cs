@@ -230,7 +230,10 @@ namespace sln_SingleApartment.Controllers
                 }
                 else if (p_query_type == "200")
                 {//200 = 個人分類
-                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.MemberCategoryID == Convert.ToInt32(p_data);
+                    if (p_data == "999")
+                        myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.MemberCategoryID == null;
+                    else
+                        myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.MemberCategoryID == Convert.ToInt32(p_data);
                 }
                 else if (p_query_type == "300")
                 {//300 = 關鍵字
