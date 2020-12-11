@@ -6,6 +6,7 @@
 }
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -30,7 +31,7 @@
                             </div>
                       
                             <ul class="login-icons">
-                                <li>
+                                <li style="padding-left:0em;">
                                     <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
                                 </li>
 
@@ -38,21 +39,24 @@
                                     <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
                                 </li>
                             </ul>
-                            <label class="label-info">
-                                <input type="submit" value="會員登入">
+                            <label class="button">
+                                <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
                             </label>
                             @ViewBag.msg
-                            <div style="display:inline; margin-left:360px">
-                                <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px;  height:45px; padding:0; line-height:45px">
-                                <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px">
+                            <div  style="display:inline; margin-left:13.5em;font-size:18px;">
+                                <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                             </div>
+
+                            <div class="create">
+                                <h4 style="color:#25a2c3;font-weight:600;font-size:30px">歡迎來到窩居！</h4>
+                                <a style="background-color:#25a2c3;border-radius:5px;width:150px;text-align:center " class="hvr-sweep-to-right" href="../Member/Register"><label style="color:white">註冊帳號</label></a>
+                                <div class="clearfix"> </div>
+                            </div>
+
                         </form>
                     </div>
-                    <div class="create">
-                        <h4 style="color:#25a2c3">歡迎來到窩居！</h4>
-                        <a class="hvr-sweep-to-right" href="../Member/Register">註冊帳號</a>
-                        <div class="clearfix"> </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -69,6 +73,7 @@
         $("#account").val("admin");
         $("#pwd").val("adminadmin");
     }
+
 
    
 </script>

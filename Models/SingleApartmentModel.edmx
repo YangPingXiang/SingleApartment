@@ -199,7 +199,7 @@
           <Property Name="ProductSubCategoryID" Type="int" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UnitPrice" Type="int" Nullable="false" />
-          <Property Name="Discontinued" Type="nchar" MaxLength="10" />
+          <Property Name="Discontinued" Type="nvarchar" MaxLength="50" />
           <Property Name="Sales" Type="int" />
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
@@ -1228,7 +1228,7 @@
           <Property Name="ProductSubCategoryID" Type="Int32" Nullable="false" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UnitPrice" Type="Int32" Nullable="false" />
-          <Property Name="Discontinued" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Discontinued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sales" Type="Int32" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
