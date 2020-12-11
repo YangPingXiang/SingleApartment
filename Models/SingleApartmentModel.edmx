@@ -14,8 +14,8 @@
           <Property Name="ActivityName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PeopleCount" Type="int" Nullable="false" />
           <Property Name="MemberID" Type="int" Nullable="false" />
-          <Property Name="StartTime" Type="datetime" Nullable="false" />
-          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Step" Type="nvarchar" MaxLength="50" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="MeetingPoint" Type="nvarchar(max)" />
@@ -201,7 +201,7 @@
           <Property Name="UnitPrice" Type="int" Nullable="false" />
           <Property Name="Discontinued" Type="nvarchar" MaxLength="50" />
           <Property Name="Sales" Type="int" />
-          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="ActivityID" Type="int" />
         </EntityType>
@@ -577,7 +577,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductPictures_Product">
+        <Association Name="FK_ProductPictures_Product1">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductPictures" Type="Self.ProductPictures" Multiplicity="*" />
           <ReferentialConstraint>
@@ -804,7 +804,7 @@
             <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductPictures_Product" Association="Self.FK_ProductPictures_Product">
+          <AssociationSet Name="FK_ProductPictures_Product1" Association="Self.FK_ProductPictures_Product1">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPictures" EntitySet="ProductPictures" />
           </AssociationSet>
@@ -976,7 +976,7 @@
             <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductPictures_Product" Association="SingleApartmentModel.FK_ProductPictures_Product">
+          <AssociationSet Name="FK_ProductPictures_Product1" Association="SingleApartmentModel.FK_ProductPictures_Product1">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPictures" EntitySet="ProductPictures" />
           </AssociationSet>
@@ -1010,8 +1010,8 @@
           <Property Name="ActivityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PeopleCount" Type="Int32" Nullable="false" />
           <Property Name="MemberID" Type="Int32" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Step" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MeetingPoint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1230,14 +1230,14 @@
           <Property Name="UnitPrice" Type="Int32" Nullable="false" />
           <Property Name="Discontinued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sales" Type="Int32" />
-          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ActivityID" Type="Int32" />
           <NavigationProperty Name="Activity" Relationship="SingleApartmentModel.FK_Product_Activity" FromRole="Product" ToRole="Activity" />
           <NavigationProperty Name="FavoriteList" Relationship="SingleApartmentModel.FK_FavoriteList_Product" FromRole="Product" ToRole="FavoriteList" />
           <NavigationProperty Name="OrderDetails" Relationship="SingleApartmentModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetails" />
           <NavigationProperty Name="ProductSubCategory" Relationship="SingleApartmentModel.FK_Product_ProductSubClass" FromRole="Product" ToRole="ProductSubCategory" />
-          <NavigationProperty Name="ProductPictures" Relationship="SingleApartmentModel.FK_ProductPictures_Product" FromRole="Product" ToRole="ProductPictures" />
+          <NavigationProperty Name="ProductPictures" Relationship="SingleApartmentModel.FK_ProductPictures_Product1" FromRole="Product" ToRole="ProductPictures" />
         </EntityType>
         <EntityType Name="ProductMainCategory">
           <Key>
@@ -1254,7 +1254,7 @@
           <Property Name="ProductPictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="ProductPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Product" Relationship="SingleApartmentModel.FK_ProductPictures_Product" FromRole="ProductPictures" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="SingleApartmentModel.FK_ProductPictures_Product1" FromRole="ProductPictures" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductSubCategory">
           <Key>
@@ -1671,7 +1671,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductPictures_Product">
+        <Association Name="FK_ProductPictures_Product1">
           <End Type="SingleApartmentModel.Product" Role="Product" Multiplicity="1" />
           <End Type="SingleApartmentModel.ProductPictures" Role="ProductPictures" Multiplicity="*" />
           <ReferentialConstraint>
