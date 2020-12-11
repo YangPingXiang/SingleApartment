@@ -62,7 +62,7 @@ namespace sln_SingleApartment.ViewModels
         [DisplayName("商品主類別")]
         public string MainCategoryName { get { return entity.ProductSubCategory.ProductMainCategory.ProductMainCategoryName; } }
 
-        //public string MainCategoryNameJ;
+       
 
         [DisplayName("商品首圖")]
         public ProductPictures prodpic { get { return entity.ProductPictures.FirstOrDefault(); } }
