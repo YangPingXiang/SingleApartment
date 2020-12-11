@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 //using System.Windows.Forms;
 
 
@@ -15,7 +16,7 @@ namespace sln_SingleApartment.Controllers
     public class ActivityController : Controller
     {
         // GET: List
-        public ActionResult List()
+        public ActionResult List(string newActivity,int page = 1)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
 
@@ -29,29 +30,42 @@ namespace sln_SingleApartment.Controllers
             string search = Request.Form["acName"];
             string searchac = Request.Form["subName"];
             IEnumerable<Activity> table = null;
-            if (string.IsNullOrEmpty(search)&&string.IsNullOrEmpty(searchac))
+            List<CActivity> list = new List<CActivity>();
+            if (newActivity == "查看最新活動")
             {
-                table = from p in db.Activity
-                     select p;
-            }
-            else if(searchac!="")
-            {
-                table = from p in db.Activity
-                        where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
-                        select p;
-            }
-            else if(search!="")
-            {
-                table = from p in db.Activity
-                        where p.ActivityName.Contains(search)
-                        select p;
+                var newaclistt = (from p in db.Activity
+                             orderby p.ActivityID descending
+                             select p).Take(5).ToList();
+                table = newaclistt;
             }
             else
             {
-                table = from p in db.Activity
-                        where p.ActivityName.Contains(search)&&p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
-                        select p;
+
+                if (string.IsNullOrEmpty(search) && string.IsNullOrEmpty(searchac))
+                {
+                    table = from p in db.Activity
+                            select p;
+                }
+                else if (searchac != "")
+                {
+                    table = from p in db.Activity
+                            where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                            select p;
+                }
+                else if (search != "")
+                {
+                    table = from p in db.Activity
+                            where p.ActivityName.Contains(search)
+                            select p;
+                }
+                else
+                {
+                    table = from p in db.Activity
+                            where p.ActivityName.Contains(search) && p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                            select p;
+                }
             }
+
             //下拉式選單
             #region SubCategoryName
             List<string> cNamelist = new List<string>();
@@ -242,12 +256,23 @@ namespace sln_SingleApartment.Controllers
             //}
             #endregion
            
-            List< CActivity > list = new List<CActivity>();
+            
             foreach (Activity p in table)
                 list.Add(new CActivity() { entity = p });
-          
-            return View(list);
+            int pageSize = 5;
+            int currentpage = page < 1 ? 1 : page;
+            var pagelist = list.ToPagedList(currentpage, pageSize);
+            return View(pagelist);
+
+           // return View(list);
         }
+        //public ActionResult List(string newActivity)
+        //{
+        //    SingleApartmentEntities db = new SingleApartmentEntities();
+        //    List<Activity> list = new List<Activity>();
+            
+        //    return View(list);
+        //}
 
         //後台
         public ActionResult Back_List()

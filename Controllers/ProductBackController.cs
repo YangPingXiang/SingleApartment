@@ -61,19 +61,27 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
             
             Product prod = new Product();
-
+            
             Activity AV = db.Activity.Where(p => p.ActivityID == id).FirstOrDefault();
             
             prod.ActivityID = AV.ActivityID;
 
             prod.Stock = AV.PeopleCount;
-
+            //=====================================================================
+            //下拉式選單
+            var PROsubNamelist = (from p in db.ProductSubCategory
+                                  select p.ProductSubCategoryName).ToList();
+            
+            SelectList SUBNamelist = new SelectList(PROsubNamelist, "Name");
+            ViewBag.SUBNAME = SUBNamelist;
+            //=====================================================================
+            
             CProductViewModel cprod = new CProductViewModel() { entity = prod };//抓一筆資料
             
             return View(cprod);
         }
         [HttpPost]
-        public ActionResult Create(HttpPostedFileBase imgPhoto,Product p)
+        public ActionResult Create(HttpPostedFileBase imgPhoto,Product p,string SUBNAME)
         {  
             /*新增照片*/
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -92,13 +100,26 @@ namespace sln_SingleApartment.Controllers
 
             fs.Close();
             //=====================================================
-           
+            
+            //下拉式選單抓id
+            
+            int SUBID = (from S in db.ProductSubCategory
+                        where S.ProductSubCategoryName == SUBNAME
+                        select S.ProductSubCategoryID).FirstOrDefault();
+
+            var PROID = (from P in db.Product
+                         where P.ProductSubCategoryID == SUBID
+                         select P.ProductSubCategoryID).FirstOrDefault();
+
             p.Discontinued = "N";
+
+            p.ProductSubCategoryID = PROID;
                 
             db.Product.Add(p);
+            
+           //-----------------------
 
-
-            ProductPictures prodpic = new ProductPictures();
+           ProductPictures prodpic = new ProductPictures();
 
             prodpic.ProductID = p.ProductID;
 
@@ -114,6 +135,21 @@ namespace sln_SingleApartment.Controllers
             return RedirectToAction("ProductList");
 
         }
+        //下拉式選單
+        public string OPTITION()
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+
+            Product prod = new Product();
+
+            var prosub = from p in db.ProductSubCategory
+                         where p.ProductSubCategoryID == prod.ProductSubCategoryID
+                         select p.ProductSubCategoryName;
+
+
+            return "prosub";
+        }
+        
         //==========================================================
 
         //商城後台上架商品

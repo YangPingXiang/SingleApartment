@@ -16,10 +16,19 @@
     //}
 }
 
+<style>
+
+    .button_style {
+        height: unset;
+        background-color: transparent;
+        color: #428bca
+    }
+</style>
+
 <!-- Header -->
 <!-- Menu -->
 <!-- Main -->
-<section id="main" class="wrapper" style="padding:2em">
+<section id="main" class="wrapper" style="padding:1.5em">
     <!--style="border:solid 1px;border-color:black"-->
     <div class="inner">
         <header class="align-center">
@@ -32,10 +41,53 @@
         </p>
         @*=================================================================*@
         @*<h4>Alternate</h4>*@
+        @*<table class="alt" style="width:100%;">
+                <tr style="background-color:unset;">
+                    <td style="border-style:none;">
+                        <a id="id_type1" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">系統分類</a>
+                    </td>
+                    <td style="border-style:none;">
+                        <a id="id_type2" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">訊息內容分類</a>
+                    </td>
+                    <td style="border-style:none;">
+                        <a id="id_type3" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">關鍵字</a>
+                    </td>
+                    <td style="border-style:none;">
+                        <a id="id_type4" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">個人分類</a>
+                    </td>
+                </tr>
+            </table>*@
 
-        <div class="row" style="margin-bottom:10px;margin-top:30px">
+        <div class="row" style="margin-bottom:25px;margin-top:25px;margin-left:1px">
+            <div class="col">
+                <h4>進階查詢：</h4>
+            </div>
+            <div class="col">
+                <button id="id_type2" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('2');">優先等級</button>
+            </div>
+            <div class="col">
+                <button id="id_type3" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('3');">系統分類</button>
+            </div>
+            <div class="col">
+                <button id="id_type4" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('4');">訊息內容分類</button>
+            </div>
+            <div class="col">
+                <button id="id_type5" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('5');">關鍵字</button>
+            </div>
+            <div class="col">
+                <button id="id_type6" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('6');">個人分類</button>
+            </div>
+            <div class="col">
+                <button id="id_type1" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('1');">已讀/未讀</button>
+            </div>
+            <div class="col">
+                <button id="id_thisNotify" onclick="queryData('ALL','N','500','N');" class="btn btn-info" style="height:unset;background-color:transparent;color:#428bca">新活動通知</button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:0px;margin-bottom:20px;" hidden="hidden">
             @*style="border: 2px green solid"*@
-            <div class="col" style="width:160px">
+            <div class="col" style="width:160px" hidden="hidden">
                 <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
                     >
                     <option value="999">選擇查詢方式</option>
@@ -46,35 +98,34 @@
                     <option value="500">5.依當日新訊息</option>
                 </select>
             </div>
-            <div class="col">
+            <div class="col" hidden="hidden">
                 <span style="font-weight:500">1.系統分類:</span>
                 @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
                 <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
             </div>
-            <div class="col">
-                <span style="font-weight:500">2.個人分類:</span>
+            <div class="col" hidden="hidden">
+                @*<span style="font-weight:500">2.個人分類:</span>
                 <select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
-                @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
+                @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })*@
             </div>
 
-        </div>
-        <div class="row" style="margin-bottom:15px;margin-top:10px">
-            <div class="col" style="margin-left:160px">
+            @*</div>*@
+            @*<div class="row" style="margin-bottom:15px;margin-top:10px">*@
+            <div class="col" style="margin-left:160px" hidden="hidden">
                 <span style="font-weight:500">3.訊息內容分類:</span>
                 <select id="txtInfoContent" style="display:inline;width:150px;line-height:3em;height:3em"></select>
             </div>
             <div class="col">
-                <span style="font-weight:500">4.關鍵字: </span>
-                @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
-                <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>
-                <button id="id_thisNotify" onclick="queryData('ALL','N','500','N');" class="btn btn-info" style="height:unset;background-color:transparent;color:#428bca">新活動通知</button>
+                @*<span style="font-weight:500">4.關鍵字: </span>*@
+                @*@Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
+                <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>*@
             </div>
         </div>
         <div class="row">
             @*style="border:2px #46b8da solid;width:150px;border-radius:20px"*@
-            <div style="width:120px;">
+            @*=動態區塊2 優先等級======================================================*@
+            <div id="id_divAdvance2" hidden="hidden" style="width:150px;">
                 <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">優先等級</div>
-                @*<div style="margin:2px">@Html.ActionLink("全部", "ListPaging", new { p_priority = "ALL" }, new { @class = "btn" })</div>*@
                 <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('ALL','N','999','N')">全部</button>
                 <div>
                     <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('High','Null','999','N');">高</button>
@@ -84,16 +135,73 @@
                 </div>
                 <div>
                     <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Low','Null','999','N');">低</button>
-                    @*<div style="margin:2px">
-                            <a id="a_tag_low" class="btn" href="javascript:;" onclick="queryData('Low','Null','999','N');">次要(ok)</a>
-                        </div>*@
                 </div>
-                <div style="margin:2px;height:14px"></div>
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息分類</div>
-                <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','Y','999','N');">已讀</button>
-                <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','N','999','N');">未讀</button>
             </div>
-            <div style="width:750px">
+            @*=動態區塊2 優先等級======================================================*@
+            @*=動態區塊1 已讀/未讀======================================================*@
+            <div id="id_divAdvance1" style="width:150px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">已讀/未讀</div>
+                <div>
+                    <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','Y','999','N');">已讀</button>
+                </div>
+                <div>
+                    <button class="btn" style="height:unset;background-color:transparent;color:#428bca" onclick="queryData('Null','N','999','N');">未讀</button>
+                </div>
+            </div>
+            @*=動態區塊1 已讀/未讀======================================================*@
+            @*=動態區塊3 系統分類======================================================*@
+            <div id="id_divAdvance3" hidden="hidden" style="width:150px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">系統分類</div>
+                <div>
+                    <button class="btn button_style" onclick="two_multiQueryData('100','100');">產品類</button>
+                </div>
+                <button class="btn button_style" onclick="two_multiQueryData('100','200');">活動類</button>
+                <button class="btn button_style" onclick="two_multiQueryData('100','300');">團購類</button>
+                <button class="btn button_style" onclick="two_multiQueryData('100','400');">其他類</button>
+            </div>
+            @*=動態區塊3 系統分類======================================================*@
+
+            @*=動態區塊4 訊息內容分類==================================================*@
+            <div id="id_divAdvance4" hidden="hidden" style="width:150px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息內容分類</div>
+                <button class="btn button_style" onclick="two_multiQueryData('400','20010');">新活動上架</button>
+                <button class="btn button_style" onclick="two_multiQueryData('400','20030');">發起新活動完成</button>
+                <button class="btn button_style" onclick="two_multiQueryData('400','20040');">有新活動可以參加</button>                
+                <button class="btn button_style" onclick="two_multiQueryData('400','30010');">訂單成立</button>
+                @*<button class="btn button_style" onclick="two_multiQueryData('400','40010');">付款通知</button>*@
+            </div>
+            @*=動態區塊4 訊息內容分類==================================================*@
+
+            @*=動態區塊5 關鍵字========================================================*@
+            <div id="id_divAdvance5" hidden="hidden" style="width:150px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">關鍵字</div>
+                <div>
+                    @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
+                </div>
+                <br />
+                <div>
+                    <button onclick="two_multiQueryData('300','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
+                </div>
+            </div>
+            @*=動態區塊5 關鍵字========================================================*@
+
+            @*=動態區塊6 個人分類======================================================*@
+            <div id="id_divAdvance6" hidden="hidden" style="width:150px;">
+                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">個人分類</div>
+                <div>
+                    <select id="txtUserCategory" style="display:inline;line-height:3em;height:3em"></select>                    
+                </div>
+                <br />
+                <div>
+                    <button onclick="two_multiQueryData('200','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
+                </div>
+                <br />
+                <div>
+                    @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
+                </div>
+            </div>
+            @*=動態區塊6 個人分類======================================================*@
+            <div style="width:770px">
                 <div id="container" class="table-wrapper">
                     @*要分頁的table*@
                     @*要分頁的table*@
@@ -112,11 +220,44 @@
         //$(function () {
         //    console.log("onload = "+$("#id_priority").val());
         //})
+        
+        function two_multiQueryData(f_type, f_data) {
+            //console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
+            //console.log("txtKeyword=" + $("#txtKeyword").val());
+
+            if (f_type == "999") {
+                f_data = "N";
+            }
+            else if (f_type == "100") {
+                //系統分類
+            }
+            else if (f_type == "200") {
+                //個人分類
+                f_data = $('#txtUserCategory').val();
+            }
+            else if (f_type == "300") {
+                //關鍵字
+                f_data = $('#txtKeyword').val();
+            }
+            else if (f_type == "400") {
+                //依訊息內容分類
+            }
+            else if (f_type == "500") {
+                //5.依當日新訊息
+                f_data = "OK";
+            }
+
+            //重新查詢
+            queryData($('#id_priority').val(), $('#id_read_yn').val(), f_type, f_data);
+            //queryData("Low", "Null", "999", "N");
+        }
 
         //<option value="999">請選擇查詢項目</option>
         //    <option value="100">系統分類</option>
         //    <option value="200">個人分類</option>
         //    <option value="300">關鍵字</option>
+        //    <option value="400">訊息內容分類</option>
+        //    <option value="500">當日新訊息</option>
         function multiQueryData() {
             //console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
             //console.log("txtKeyword=" + $("#txtKeyword").val());
@@ -170,23 +311,6 @@
                     }
                 });
         }
-
-        //前一版
-        //function queryData(f_priority, f_read_yn) {
-        //    //url: "/Information/ListPaging?pageNum=1&p_priority=" + p_priority + "&p_read_yn=" + p_read_yn,
-        //    $.ajax({
-        //        url: "/Information/ListPaging?pageNum=1",
-        //        type: "POST",
-        //        data: {
-        //            p_priority: f_priority,  //傳遞參數
-        //            p_read_yn: f_read_yn
-        //        },
-        //        success: function (data) {
-        //            //console.log(data); //可先測試程式有無載入
-        //            $("#container").html(data);
-        //        }
-        //    });
-        //}
 
         @*function select_change() {
             //return confirm('確定要刪除嗎?');
@@ -285,9 +409,37 @@
             //$(obj).attr('disabled', false);    //有效
         }
 
+        function showTypeDiv(p_type) {
+
+            $("#id_divAdvance1").hide();
+            $("#id_divAdvance2").hide();
+            $("#id_divAdvance3").hide();
+            $("#id_divAdvance4").hide();
+            $("#id_divAdvance5").hide();
+            $("#id_divAdvance6").hide();
+
+            if (p_type == "1") {
+                $("#id_divAdvance1").show();
+            }
+            else if (p_type == "2") {
+                $("#id_divAdvance2").show();
+            }
+            else if (p_type == "3") {
+                $("#id_divAdvance3").show();
+            }
+            else if (p_type == "4") {
+                $("#id_divAdvance4").show();
+            }
+            else if (p_type == "5") {
+                $("#id_divAdvance5").show();
+            }
+            else if (p_type == "6") {
+                $("#id_divAdvance6").show();
+            }
+        }
+
         //一啟動馬上執行
         $(function () {
-
             //第一個 ajax 是List的分頁資料
             $.ajax({
                 type: "POST",
@@ -298,30 +450,30 @@
                 }
             });
 
-            //傳Json字串給下拉式選單
-            $.ajax({
-                type: "POST",
-                url: "/Information/GetInformationCategory",
-                success: function (data) {
-                    //console.log(data); //可先測試程式有無載入
-                    //$("#text1").html(data);
-                    var objJson = JSON.parse(data);
-                    //console.log(objJson);
+            ////傳Json字串給下拉式選單
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Information/GetInformationCategory",
+            //    success: function (data) {
+            //        //console.log(data); //可先測試程式有無載入
+            //        //$("#text1").html(data);
+            //        var objJson = JSON.parse(data);
+            //        //console.log(objJson);
 
-                    var selObj = $("#txtSystemCategory");
-                    selObj.append("<option value=999 selected>請選擇</option>");
-                    for (var i = 0; i < objJson.length; i++){
-                        //console.log(objJson[i].ID);
-                        //todo:ok 注意 value有使用''包起來
-                        selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
-                    }
+            //        var selObj = $("#txtSystemCategory");
+            //        selObj.append("<option value=999 selected>請選擇</option>");
+            //        for (var i = 0; i < objJson.length; i++){
+            //            //console.log(objJson[i].ID);
+            //            //todo:ok 注意 value有使用''包起來
+            //            selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+            //        }
 
-                    //var value = 100;
-                    //var text = "111";
-                    //selObj.append("<option value=" + value + ">" + text + "</option>");
-                    //selObj.append("<option value='200'>中文2</option>");
-                }
-            });
+            //        //var value = 100;
+            //        //var text = "111";
+            //        //selObj.append("<option value=" + value + ">" + text + "</option>");
+            //        //selObj.append("<option value='200'>中文2</option>");
+            //    }
+            //});
 
             //傳Json字串給下拉式選單
             $.ajax({
@@ -334,7 +486,7 @@
                     //console.log(objJson);
 
                     var selObj = $("#txtUserCategory");
-                    selObj.append("<option value=999 selected>請選擇</option>");
+                    selObj.append("<option value=999 selected>未分類</option>");
                     for (var i = 0; i < objJson.length; i++) {
                         //console.log(objJson[i].ID);
                         //todo:ok 注意 value有使用''包起來
@@ -343,25 +495,25 @@
                 }
             });
 
-            //傳Json字串給下拉式選單 訊息內容分類
-            $.ajax({
-                type: "POST",
-                url: "/Information/GetInfoContent",
-                success: function (data) {
-                    //console.log(data); //可先測試程式有無載入
-                    //$("#text1").html(data);
-                    var objJson = JSON.parse(data);
-                    //console.log(objJson);
+            ////傳Json字串給下拉式選單 訊息內容分類
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Information/GetInfoContent",
+            //    success: function (data) {
+            //        //console.log(data); //可先測試程式有無載入
+            //        //$("#text1").html(data);
+            //        var objJson = JSON.parse(data);
+            //        //console.log(objJson);
 
-                    var selObj = $("#txtInfoContent");
-                    selObj.append("<option value=999 selected>請選擇</option>");
-                    for (var i = 0; i < objJson.length; i++) {
-                        //console.log(objJson[i].ID);
-                        //todo:ok 注意 value有使用''包起來
-                        selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
-                    }
-                }
-            });
+            //        var selObj = $("#txtInfoContent");
+            //        selObj.append("<option value=999 selected>請選擇</option>");
+            //        for (var i = 0; i < objJson.length; i++) {
+            //            //console.log(objJson[i].ID);
+            //            //todo:ok 注意 value有使用''包起來
+            //            selObj.append("<option value=" + objJson[i].ID + ">" + objJson[i].NAME + "</option>");
+            //        }
+            //    }
+            //});
 
             //顯示當日的新活動訊息筆數
             $.ajax({

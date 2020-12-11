@@ -78,8 +78,6 @@ namespace sln_SingleApartment.Controllers
             shopv.MainCategory = cmcv;
 
             shopv.product = list;
-
-           
             
             return View(shopv);
             
@@ -414,6 +412,26 @@ namespace sln_SingleApartment.Controllers
             //    //user.fBirthDate =Request.Form[""];
             //}
             //===================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             return View(orderlist);
         }
