@@ -18,7 +18,7 @@ namespace sln_SingleApartment.ViewModels
         [DisplayName("產品編號")]
         public int ProductID { get { return entity.ProductID; } }
 
-        [DisplayName("子類別編號")]
+        [DisplayName("商品類別編號")]
         [Required(ErrorMessage = "請輸入子類別")]
         public int ProductSubCategoryID { get { return entity.ProductSubCategoryID; } }
 
@@ -78,6 +78,7 @@ namespace sln_SingleApartment.ViewModels
         public List<CProductSubCategoryViewModel> SubCategoryViewModels { get; set; }
         public int ProductCount { get; set; }
 
+        
       
     }
     public class CProductSubCategoryViewModel
@@ -94,6 +95,6 @@ namespace sln_SingleApartment.ViewModels
         public List<CProductViewModel> product { get; set; }
         public List<CProductMainCategoryViewModel> MainCategory { get; set; }
         public List<CProductSubCategoryViewModel> SubCategory { get; set; }
-        
+        public List<CActivity> Activity { get; set; }
     }
 }

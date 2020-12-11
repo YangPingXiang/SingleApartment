@@ -104,17 +104,6 @@
                 </div>
             </div>
         </div>
-        @using (Html.BeginForm())
-        {
-            <div class="form-group">
-                <div class="col-md-offset-0 col-md-10">
-                    @Html.TextBox("TXTKEYWORD")
-                    <input type="submit" value="查詢" class="btn btn-default" />
-                </div>
-
-            </div>
-
-        }
         <div class="row">
             <div class="col-xs-12">
                 <div class="product-tab nav nav-tabs">
@@ -132,15 +121,15 @@
             <!-- #region 全部商品-->
             <div class="tab-pane  fade in active" id="all">
                 <div id="tab-carousel-1" class="re-owl-carousel owl-carousel product-slider owl-theme">
-                    @{ foreach (var item in Model.product.Where(P=>P.Discontinued=="N"))
+                    @{ foreach (var item in Model.product.Where(Q => Q.Discontinued == "N"))
                         {
-                            //string pic = item.ProductID.ToString() + ".jpg";
+                           
                             string quickview = "quick-view" + item.ProductID.ToString();
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
+                                        <a>
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"  width="200px" height="200px" />
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -163,13 +152,13 @@
                        } }
                 </div>
             </div>
+            
             <!-- #endregion -->
             <!-- #region 分類1(衣服)-->
             <div class="tab-pane  fade in" id="clothings">
                 <div id="tab-carousel-2" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 1))
-                        {
-                            //string pic = item.ProductID.ToString() + ".jpg";
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 1).Where(p=>p.Discontinued=="N"))
+                      {
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
@@ -200,9 +189,9 @@
             <!-- #region 分類2(鞋子)-->
             <div class="tab-pane  fade in" id="shoes">
                 <div id="tab-carousel-3" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 2))
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 2).Where(p => p.Discontinued == "N"))
                         {
-                            //string pic = item.ProductID.ToString() + ".jpg";
+
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
@@ -232,7 +221,7 @@
             <!-- #region 分類3(包包) -->
             <div class="tab-pane  fade in" id="bags">
                 <div id="tab-carousel-4" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 3))
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 3).Where(p => p.Discontinued == "N"))
                         {
 
                             <div class="col-xs-12">
@@ -265,9 +254,9 @@
             <!-- #region 分類4(飾品) -->
             <div class="tab-pane  fade in" id="accessories">
                 <div id="tab-carousel-5" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 4))
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 4).Where(p => p.Discontinued == "N"))
                         {
-                            //string pic = item.ProductID.ToString() + ".jpg";
+                            
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
@@ -315,20 +304,20 @@
         </div>
         <div class="row">
             <div id="new-products" class="owl-carousel product-slider owl-theme">
-                @foreach (var item in Model.product.Where(Q=>Q.Discontinued=="Y"))
+                @foreach(var item in Model.product.Where(Q=>Q.Discontinued=="Y"))
                  {
                     <div class="col-xs-12">
                         <div class="single-product">
                             <div class="product-img">
                                 <div class="pro-type">
-                                    <span>sale</span>
+                                    <span>OVER</span>
                                 </div>
                                 <a href="#">
-                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" />
+                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px"/>
                                 </a>
                             </div>
                             <div class="product-dsc">
-                                <h3><a href="#">@item.ProductName</a></h3>
+                                <h3><a href="#">@item.ProductName"(活動已結束)"</a></h3>
                                 <div class="star-price">
                                     <span class="price-left">$@item.UnitPrice</span>
                                     <span class="star-right">
@@ -354,9 +343,8 @@
     <div class="container">
         <div class="row">
             <div id="view-gallery" class="owl-carousel product-slider owl-theme">
-                @foreach (var item in Model.product)
+                @foreach (var item in Model.product.Where(p=>p.Discontinued=="N"))
                 {
-                   
                     <!-- single-product item end -->
                     <div class="col-xs-12">
                         <div class="d-table">
@@ -373,23 +361,11 @@
                                                         <div class="tab-pane  fade in active" id="sin-pro-5">
                                                             <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="" />
                                                         </div>
-                                                        <div class="tab-pane fade in" id="sin-pro-6">
-                                                            <img src="~/Content/Product/img/quick-view/10.jpg" alt="" />
-                                                        </div>
-                                                        <div class="tab-pane fade in" id="sin-pro-7">
-                                                            <img src="~/Content/Product/img/quick-view/10.jpg" alt="" />
-                                                        </div>
-                                                        <div class="tab-pane fade in" id="sin-pro-8">
-                                                            <img src="~/Content/Product/img/quick-view/10.jpg" alt="" />
-                                                        </div>
                                                     </div>
                                                     <div class="quick-thumb">
                                                         <div class="nav nav-tabs">
                                                             <ul>
                                                                 <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" /> </a></li>
-                                                                <li><a data-toggle="tab" href="#sin-pro-6"> <img src="~/Content/Product/img/quick-view/10.jpg" alt="quick view" /> </a></li>
-                                                                <li><a data-toggle="tab" href="#sin-pro-7"> <img src="~/Content/Product/img/quick-view/10.jpg" alt="quick view" /> </a></li>
-                                                                <li><a data-toggle="tab" href="#sin-pro-8"> <img src="~/Content/Product/img/quick-view/10.jpg" alt="quick view" /> </a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -408,9 +384,9 @@
                                                             <div class="col-sm-6">
                                                                 <div class="por-dse">
                                                                     <ul>
-                                                                        <li><span>Availability</span><strong>:</strong> In stock</li>
-                                                                        <li><span>Condition</span><strong>:</strong> New product</li>
-                                                                        <li><span>類別</span><strong>:</strong> <a href="#">Men</a> <a href="#">Fashion</a> <a href="#">Shirt</a></li>
+                                                                        <li><span>庫存</span><strong>:</strong>@item.Stock</li>
+                                                                        <li><span>商品狀態</span><strong>:</strong>全新</li>
+                                                                        @*<li><span>類別</span><strong>:</strong> <a href="#">Men</a> <a href="#">Fashion</a> <a href="#">Shirt</a></li>*@
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -426,18 +402,10 @@
                                                                                 <form action="#" method="POST">
                                                                                     <div class="plus-minus">
                                                                                         <a class="dec qtybutton">-</a>
-                                                                                        <input type="text" value="02" name="qtybutton" class="plus-minus-box">
+                                                                                        <input type="text" value="01" name="qtybutton" class="plus-minus-box">
                                                                                         <a class="inc qtybutton">+</a>
                                                                                     </div>
                                                                                 </form>
-                                                                            </li>
-                                                                            <li class="share-btn clearfix">
-                                                                                <span>與朋友分享</span>
-                                                                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                                                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                                                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                                                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                                                                <a href="#"><i class="fa fa-instagram"></i></a>
                                                                             </li>
                                                                         </ul>
                                                                     </div>

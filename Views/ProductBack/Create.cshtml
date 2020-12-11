@@ -4,28 +4,27 @@
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
-<h2>Create</h2>
-
-<h2>後臺管理</h2>
+<p style="font-size:50px ; color:chocolate ; margin-left:100px" ><strong>活動團購商品</strong></p>
 
 @using (Html.BeginForm("Create", "ProductBack", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>新增商品</h4>
+    <p style="font-size:25px ; color:chocolate ; margin-left:100px"><strong>新增商品</strong></p>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActivityID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActivityID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActivityID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.ActivityID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ActivityID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActivityID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
     <div class="form-group">
+
         @Html.LabelFor(model => model.ProductSubCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.ProductSubCategoryID, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,28 +49,13 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
+        <p class="control-label col-md-2">團購數量(數量上限為活動人數)</p>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Discontinued, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Discontinued, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Sales, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Sales, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Sales, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -79,6 +63,15 @@
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <p class="control-label col-md-2">您的活動編號</p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ActivityID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ActivityID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
     @*//上傳照片*@
     @*//============================================*@
     <div class="form-group">

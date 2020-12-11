@@ -22,36 +22,12 @@ namespace sln_SingleApartment.Controllers
         {
 
             SingleApartmentEntities db = new SingleApartmentEntities();
-            //關鍵字查詢
-            //============================================
-            string KeyWord = Request.Form["TXTKEYWORD"];
-
-            IEnumerable<Product> table = null;
-            
-            if (string.IsNullOrEmpty(KeyWord))
-            {
-                table = from p in db.Product
-                        select p;
-            }
-            else
-            {
-                table = from p in db.Product
-                        where p.ProductName.Contains(KeyWord)
-                        select p;
-            }
-
-
-            
 
             //登入
-
             //============================================
             var user = Session[CDictionary.welcome] as CMember;
 
             if (user == null) { return RedirectToAction("Login", "Member"); }
-            
-           
-
 
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
 
@@ -75,7 +51,7 @@ namespace sln_SingleApartment.Controllers
             var ActivityProduct = from g in db.Activity.AsEnumerable()
                                   join p in db.Product.AsEnumerable()
                                   on g.ActivityID equals p.ActivityID
-                                  where g.EndTime >= DateTime.Now  || g.EndTime <= DateTime.Now 
+                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")|| (g.EndTime <= DateTime.Now && p.Discontinued == "Y")
                                   select p;
         
             foreach (var item in ActivityProduct)
@@ -86,7 +62,8 @@ namespace sln_SingleApartment.Controllers
             }
             //=====================================================================
             //分類商品
-            var mainCategory = from k in db.ProductMainCategory select k;
+            var mainCategory = from k in db.ProductMainCategory
+                               select k;
 
             foreach (var m in mainCategory)
             {
@@ -97,6 +74,8 @@ namespace sln_SingleApartment.Controllers
             shopv.MainCategory = cmcv;
 
             shopv.product = list;
+
+           
             
             return View(shopv);
             

@@ -55,10 +55,22 @@ namespace sln_SingleApartment.Controllers
             return View(prod);
         }
         //====================================================================
-        //新增(ok)
-        public ActionResult Create()
-        {
-            return View();
+        //團購商品新增(ok)
+        public ActionResult Create(int id)
+        {            
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            
+            Product prod = new Product();
+
+            Activity AV = db.Activity.Where(p => p.ActivityID == id).FirstOrDefault();
+            
+            prod.ActivityID = AV.ActivityID;
+
+            prod.Stock = AV.PeopleCount;
+
+            CProductViewModel cprod = new CProductViewModel() { entity = prod };//抓一筆資料
+            
+            return View(cprod);
         }
         [HttpPost]
         public ActionResult Create(HttpPostedFileBase imgPhoto,Product p)
@@ -79,48 +91,77 @@ namespace sln_SingleApartment.Controllers
             fs.Read(image, 0, length);
 
             fs.Close();
+            //=====================================================
+           
+            p.Discontinued = "N";
+                
+            db.Product.Add(p);
 
-            Product prod = new Product();
-
-            prod.ActivityID = p.ActivityID;
-
-            prod.ProductSubCategoryID = p.ProductSubCategoryID;
-
-            prod.ProductName = p.ProductName;
-
-            prod.UnitPrice = (int)p.UnitPrice;
-
-            prod.Discontinued = p.Discontinued;
-
-            prod.Sales = p.Sales;
-
-            prod.Stock = p.Stock;
-
-            prod.Description = p.Description;
-            //======================================================
-
-
-            db.Product.Add(prod);
-
-            //db.SaveChanges();
 
             ProductPictures prodpic = new ProductPictures();
 
-            prodpic.ProductID = prod.ProductID;
+            prodpic.ProductID = p.ProductID;
 
             //prodpic.ProductPictureID = 2;
 
             prodpic.ProductPicture = image;
 
             db.ProductPictures.Add(prodpic);
-
+                
             db.SaveChanges();
+            //======================================================
+            
+            return RedirectToAction("ProductList");
 
+        }
+        //==========================================================
+
+        //商城後台上架商品
+        public ActionResult CreatAllProduct()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateAllProduct(HttpPostedFileBase imgPhoto, Product p)
+        {
+            /*新增照片*/
+            SingleApartmentEntities db = new SingleApartmentEntities();
+
+            //======================================================
+
+            imgPhoto.SaveAs("c:\\temp\\111.jpg");
+
+            FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
+
+            int length = (int)fs.Length;
+
+            byte[] image = new byte[length];
+
+            fs.Read(image, 0, length);
+
+            fs.Close();
+            //=====================================================
+
+            db.Product.Add(p);
+
+
+            ProductPictures prodpic = new ProductPictures();
+
+            prodpic.ProductID = p.ProductID;
+
+                //prodpic.ProductPictureID = 2;
+
+            prodpic.ProductPicture = image;
+
+            db.ProductPictures.Add(prodpic);
+          
+            db.SaveChanges();
+            //======================================================
 
             return RedirectToAction("ProductList");
 
         }
-        
+
         //=====================================================================
         //修改(還未加入商品圖片修改)
         public ActionResult Edit(int id)
