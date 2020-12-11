@@ -137,7 +137,8 @@
                             @{
                                 if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
                                 {
-                                    @Html.ActionLink("編輯商品", "Create", "ProductBack", null, new { id = item.ActivityID })
+
+                                    <a href="@Url.Action("Create","ProductBack",new { id = item.ActivityID })">編輯商品</a>
                                 }
                                 else
                                 {
@@ -145,7 +146,7 @@
                                 }
                             }
 
-                    </div>
+</div>
                 </div>
                 <tr></tr>
                 //}

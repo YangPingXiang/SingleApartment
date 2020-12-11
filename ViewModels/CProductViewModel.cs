@@ -6,16 +6,19 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 using sln_SingleApartment.Models;
+using sln_SingleApartment.ViewModel;
+
 namespace sln_SingleApartment.ViewModels
 {
     public class CProductViewModel
     {
         [JsonIgnore]
         public Product entity { get; set; }
-        [DisplayName("產品編號")]
 
+        [DisplayName("產品編號")]
         public int ProductID { get { return entity.ProductID; } }
-        [DisplayName("子類別編號")]
+
+        [DisplayName("商品類別編號")]
         [Required(ErrorMessage = "請輸入子類別")]
         public int ProductSubCategoryID { get { return entity.ProductSubCategoryID; } }
 
@@ -59,8 +62,12 @@ namespace sln_SingleApartment.ViewModels
         [DisplayName("商品主類別")]
         public string MainCategoryName { get { return entity.ProductSubCategory.ProductMainCategory.ProductMainCategoryName; } }
 
+        //public string MainCategoryNameJ;
+
         [DisplayName("商品首圖")]
-        public ProductPictures prodpic { get { return entity.ProductPictures.FirstOrDefault(); } }/*12/6*/
+        public ProductPictures prodpic { get { return entity.ProductPictures.FirstOrDefault(); } }
+
+
     }
 
     public class CProductMainCategoryViewModel
@@ -70,6 +77,9 @@ namespace sln_SingleApartment.ViewModels
         public string ProductMainCategoryName { get { return entity_MainCategory.ProductMainCategoryName; } }
         public List<CProductSubCategoryViewModel> SubCategoryViewModels { get; set; }
         public int ProductCount { get; set; }
+
+        
+      
     }
     public class CProductSubCategoryViewModel
     {
@@ -85,8 +95,6 @@ namespace sln_SingleApartment.ViewModels
         public List<CProductViewModel> product { get; set; }
         public List<CProductMainCategoryViewModel> MainCategory { get; set; }
         public List<CProductSubCategoryViewModel> SubCategory { get; set; }
-
-        
-           
+        public List<CActivity> Activity { get; set; }
     }
 }

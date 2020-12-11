@@ -996,6 +996,8 @@
     <Content Include="Views\RoomBackend\BackRoomDetail.cshtml" />
     <Content Include="Views\RoomBackend\BackEditTheRoomDetail.cshtml" />
 
+    <Content Include="Views\ProductBack\CreatAllProduct.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
