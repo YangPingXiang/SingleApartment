@@ -162,12 +162,27 @@
                             }
                             else if (item.Status == "人員已滿")
                             {
-                                @Html.ActionLink("備取", "subActivity" , new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
+                                @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
                             }
                             else
                             {
                                 @("加入")
+
                             }
+                            @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
+                            @*<a href="~/Product/Create">編輯商品</a>*@
+                            
+                                    if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
+                                    {
+
+                                    <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
+                                    }
+                                    else
+                                    {
+                                    @("");
+                                    }
+
+                            
                         }
                         |
 
@@ -188,7 +203,8 @@
                 </tr>
 
             </table>
-        }
+                            }
+
 
 
     </div>
