@@ -43,6 +43,7 @@
 <script>
     function deleteOneProduct(id) {
         console.log("Delect Clicked");
+        console.log(id);
         $.ajax({
             type: "POST",
             url: "@Url.Action("RemoveONEProductInCart")",

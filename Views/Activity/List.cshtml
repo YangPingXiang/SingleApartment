@@ -1,4 +1,7 @@
-﻿@model IEnumerable<sln_SingleApartment.ViewModel.CActivity>
+﻿@model IPagedList<sln_SingleApartment.ViewModel.CActivity>
+@using PagedList;
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
@@ -9,14 +12,12 @@
         td {
             font-size: 18px;
             font-weight: 400;
-            
         }
+
         .td1 {
             font-size: 22px;
             font-weight: 600;
-            
         }
-
     </style>
 </head>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -28,7 +29,7 @@
         </header>
         @using (Html.BeginForm())
         {
-            <div >
+            <div>
                 <label style="width:28em;margin-right:20px">
                     <label style="font-weight:600;font-size:20px;">活動類別:</label>
                     @Html.DropDownList("subName", null, "")
@@ -47,9 +48,13 @@
                 <label>
                     <a style="margin-right:10px" href="~/Activity/Create" class="btn btn-primary btn-lg">新增活動</a>
                     <a href="~/Activity/CartView" class="btn btn-info btn-lg">查看參加的活動</a>
+                    @*<a style="margin-right:10px" href="~/Activity/Create" class="btn btn-primary btn-lg">查看最新活動</a>*@
+
+
                 </label>
-
-
+                <label style="float:right;margin-top:2em">
+                    <input style="line-height:2.5em;padding:0em;width:150px;height:50px;font-size:20px;font-weight:500;" type="submit" value="查看最新活動" name="newActivity">
+                </label>
             </div>
 
         }
@@ -57,12 +62,12 @@
 
         @foreach (var item in Model)
         {
-            <table  class="table" style="margin-left:0.5em;width:64em;border:solid 0.2em #f6755e;">
+            <table class="table" style="margin-left:0.5em;width:64em;border:solid 0.2em #f6755e;">
 
-                <tr >
+                <tr>
                     <td class="td1" style="padding:1em 0em 1em 3em;">
                         活動類別 : &nbsp;
-                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)</mark> 
+                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)</mark>
                     </td>
 
                     <td class="td1" style="padding:1em 2em 1em 0em;">
@@ -72,29 +77,29 @@
 
                 </tr>
 
-                <tr >
+                <tr>
                     <td class="td1" style="padding:1em 0em 1em 3em;">
                         開始時間:&nbsp;
                         <p>@Html.DisplayFor(modelItem => item.StartTime)</p>
                     </td>
-                   
+
                     <td class="td1" style="padding:1em 0em 1em 0em;">
                         結束時間:&nbsp;
                         <p> @Html.DisplayFor(modelItem => item.EndTime)</p>
                     </td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td1" style="padding:1em 0em 1em 3em;">
                         發起人:&nbsp;
                         @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
                     </td>
-                    
+
                     <td class="td1" style="padding:1em 0em 1em 0em;">
                         地點 : &nbsp;
                         @Html.DisplayFor(modelItem => item.MeetingPoint)
                     </td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td1" style="padding:1em 0em 1em 3em;">
@@ -114,10 +119,20 @@
                         @Html.DisplayFor(modelItem => item.PeopleCount) 位
                     </td>
 
-    
+                
                     <td class="td1" style="padding:1em 0em 1em 0em;">
                         狀態 :&nbsp;
-                        @Html.DisplayFor(modelItem => item.Status)
+                        @{if
+                               (item.Status == "人員已滿")
+                            {
+                                <span style="color:red"> @Html.DisplayFor(modelItem => item.Status) </span>
+                            }
+                            else
+                            {
+                                <span style="color:black"> @Html.DisplayFor(modelItem => item.Status)</span>
+                            }
+
+                        }
                     </td>
 
                 </tr>
@@ -169,33 +184,29 @@
                                 @("加入")
 
                             }
+
                             @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
                             @*<a href="~/Product/Create">編輯商品</a>*@
-                            
-                                    if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
-                                    {
-
-                                    <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
-                                    }
-                                    else
-                                    {
-                                    @("");
-                                    }
-
-                            
                         }
                         |
-
                         @{
+
+
                             if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
                             {
-                                @Html.ActionLink("編輯商品", "Create", "ProductBack", null, new { id = item.ActivityID })
+
+                                <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
                             }
                             else
                             {
                                 @("");
                             }
                         }
+
+
+
+
+
                     </td>
 
 
@@ -203,9 +214,11 @@
                 </tr>
 
             </table>
-                            }
 
+        }
 
+        @Html.PagedListPager(Model, Page => Url.Action("List", new { Page }))
 
     </div>
+
 </section>

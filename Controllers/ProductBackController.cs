@@ -61,19 +61,27 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
             
             Product prod = new Product();
-
+            
             Activity AV = db.Activity.Where(p => p.ActivityID == id).FirstOrDefault();
             
             prod.ActivityID = AV.ActivityID;
 
             prod.Stock = AV.PeopleCount;
-
+            //=====================================================================
+            //下拉式選單
+            var PROsubNamelist = (from p in db.ProductSubCategory
+                                  select p.ProductSubCategoryName).ToList();
+            
+            SelectList SUBNamelist = new SelectList(PROsubNamelist, "Name");
+            ViewBag.SUBNAME = SUBNamelist;
+            //=====================================================================
+            
             CProductViewModel cprod = new CProductViewModel() { entity = prod };//抓一筆資料
             
             return View(cprod);
         }
         [HttpPost]
-        public ActionResult Create(HttpPostedFileBase imgPhoto,Product p)
+        public ActionResult Create(HttpPostedFileBase imgPhoto,Product p,string SUBNAME)
         {  
             /*新增照片*/
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -92,13 +100,26 @@ namespace sln_SingleApartment.Controllers
 
             fs.Close();
             //=====================================================
-           
+            
+            //下拉式選單抓id
+            
+            int SUBID = (from S in db.ProductSubCategory
+                        where S.ProductSubCategoryName == SUBNAME
+                        select S.ProductSubCategoryID).FirstOrDefault();
+
+            var PROID = (from P in db.Product
+                         where P.ProductSubCategoryID == SUBID
+                         select P.ProductSubCategoryID).FirstOrDefault();
+
             p.Discontinued = "N";
+
+            p.ProductSubCategoryID = PROID;
                 
             db.Product.Add(p);
+            
+           //-----------------------
 
-
-            ProductPictures prodpic = new ProductPictures();
+           ProductPictures prodpic = new ProductPictures();
 
             prodpic.ProductID = p.ProductID;
 
@@ -115,14 +136,23 @@ namespace sln_SingleApartment.Controllers
 
         }
         //==========================================================
-
         //商城後台上架商品
         public ActionResult CreatAllProduct()
         {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            //=====================================================================
+            //下拉式選單
+            var PROsubNamelist = (from p in db.ProductSubCategory
+                                  select p.ProductSubCategoryName).ToList();
+
+            SelectList SUBNamelist = new SelectList(PROsubNamelist, "Name");
+            ViewBag.SUBNAME = SUBNamelist;
+            //====================================================================
+            
             return View();
         }
         [HttpPost]
-        public ActionResult CreateAllProduct(HttpPostedFileBase imgPhoto, Product p)
+        public ActionResult CreateAllProduct(HttpPostedFileBase imgPhoto, Product p, string SUBNAME)
         {
             /*新增照片*/
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -142,7 +172,23 @@ namespace sln_SingleApartment.Controllers
             fs.Close();
             //=====================================================
 
+            //下拉式選單抓id
+
+            int SUBID = (from S in db.ProductSubCategory
+                         where S.ProductSubCategoryName == SUBNAME
+                         select S.ProductSubCategoryID).FirstOrDefault();
+
+            var PROID = (from P in db.Product
+                         where P.ProductSubCategoryID == SUBID
+                         select P.ProductSubCategoryID).FirstOrDefault();
+
+            p.Discontinued = "N";
+
+            p.ProductSubCategoryID = PROID;
+
             db.Product.Add(p);
+
+            //-----------------------
 
 
             ProductPictures prodpic = new ProductPictures();
@@ -167,7 +213,7 @@ namespace sln_SingleApartment.Controllers
         public ActionResult Edit(int id)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
-
+            
             Product prod = db.Product.FirstOrDefault(p => p.ProductID == id);
 
             if (prod == null)
@@ -178,12 +224,31 @@ namespace sln_SingleApartment.Controllers
             return View(prod);
         }
         [HttpPost]
-        public ActionResult Edit(Product p)
+        public ActionResult Edit(HttpPostedFileBase imgPhoto,Product p)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
 
+            //======================================================
+            
+             imgPhoto.SaveAs("c:\\temp\\111.jpg");
+
+             FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
+
+             int length = (int)fs.Length;
+
+             byte[] image = new byte[length];
+
+             fs.Read(image, 0, length);
+
+             fs.Close();
+            
+            //=====================================================
+
             Product prod = db.Product.FirstOrDefault(q => q.ProductID == p.ProductID);
             
+          
+
+
             if (prod != null)
             {
               
@@ -201,10 +266,11 @@ namespace sln_SingleApartment.Controllers
 
                 prod.Discontinued = p.Discontinued;
 
+                prod.ProductPictures.FirstOrDefault().ProductPicture = image;
+
                 db.SaveChanges();
-
-
             }
+            //-----------------------
             
             return RedirectToAction("ProductList");
 

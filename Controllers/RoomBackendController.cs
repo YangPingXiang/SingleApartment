@@ -14,6 +14,8 @@ namespace tryTemplete_Room.Controllers
     {
         SingleApartmentEntities dbSA = new SingleApartmentEntities();
         // GET: RoomBackend
+        #region 先等一下
+
         //public ActionResult BackListBuildCase()
         //{
 
@@ -172,7 +174,7 @@ namespace tryTemplete_Room.Controllers
         //    return View(lt_roomstyle);
 
         //}
-
+        #endregion
 
         public ActionResult BackRoomManage(int page = 1, int pageSize = 10)
         {
@@ -191,6 +193,24 @@ namespace tryTemplete_Room.Controllers
             IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
             return View(query);
         }
+
+        public ActionResult BackPartialKeyWordResult(string keyword, int page = 1, int pageSize = 10)
+        {
+            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
+
+
+            var r = dbSA.Room.Where(x => x.RoomName.Contains(keyword) || x.Lease.FirstOrDefault().tMember.fMemberName.Contains(keyword)).OrderBy(x => x.RoomName);
+            var test = r.ToList();
+            foreach (Room item in r)
+            {
+                room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
+            }
+
+            IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
+            ViewData.Model = query;
+            return PartialView("_BackPartialKeyWordResult");
+        }
+
 
         public ActionResult BackCreateRoom()
         {

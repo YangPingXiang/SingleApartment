@@ -207,13 +207,14 @@ $(".pro-img-tab-slider").owlCarousel({
 	
     $( "#slider-range" ).slider({
         range: true,
-        min: 40,
-        max: 600,
-        values: [ 20, 1560 ],
+        min: 0,
+        max: 1200,
+        values: [ 0, 1200 ],
         slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - "+ "$" + ui.values[ 1 ] );
         $('input[name="first_price"]').val( "$" + ui.values[0]);
         $('input[name="last_price"]').val( "$" + ui.values[1]);
+	SearchProductsByPrice();
     },
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +

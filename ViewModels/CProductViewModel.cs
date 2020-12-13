@@ -38,7 +38,7 @@ namespace sln_SingleApartment.ViewModels
 
         [DisplayName("庫存")]
         [Required(ErrorMessage = "請輸入庫存")]
-        public int Stock { get { return entity.Stock; } }
+        public int? Stock { get { return entity.Stock; } }
 
         [DisplayName("產品敘述")]
         [Required(ErrorMessage = "請輸入產品敘述")]
@@ -62,7 +62,7 @@ namespace sln_SingleApartment.ViewModels
         [DisplayName("商品主類別")]
         public string MainCategoryName { get { return entity.ProductSubCategory.ProductMainCategory.ProductMainCategoryName; } }
 
-        //public string MainCategoryNameJ;
+       
 
         [DisplayName("商品首圖")]
         public ProductPictures prodpic { get { return entity.ProductPictures.FirstOrDefault(); } }
