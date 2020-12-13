@@ -55,5 +55,6 @@ namespace sln_SingleApartment.Models
         public virtual DbSet<SubActivity> SubActivity { get; set; }
         public virtual DbSet<tActivityCart> tActivityCart { get; set; }
         public virtual DbSet<tMember> tMember { get; set; }
+        public virtual DbSet<Message> Message { get; set; }
     }
 }
