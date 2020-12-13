@@ -22,8 +22,13 @@ namespace sln_SingleApartment.Controllers
 
             #region 登入者名稱
             CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
             ViewBag.memberID = memberID;
+
+            //var user = Session[CDictionary.welcome] as CMember;
+            //if (user == null) { return RedirectToAction("Login", "Member"); }
+            //ViewBag.MemberID = user.fMemberId;
             #endregion
 
 
@@ -281,6 +286,7 @@ namespace sln_SingleApartment.Controllers
 
             #region 登入者名稱
             CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
             ViewBag.memberID = memberID;
             #endregion
@@ -519,6 +525,7 @@ namespace sln_SingleApartment.Controllers
             #region 登入者名稱
             //TODO
             CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
           
 
@@ -552,9 +559,10 @@ namespace sln_SingleApartment.Controllers
                 t.EndTime = ac.EndTime;
                 t.MeetingPoint = ac.MeetingPoint;
                 t.PeopleCount = ac.PeopleCount;
+                t.Note = ac.Note;
                 t.Status = ac.Status;
                 t.SubCategoryDetailID = ac.SubCategoryDetailID;
-                t.MemberID = 1;
+                t.MemberID = memberID;
                 t.ActivityImage = ac.ActivityImage;
                 entity.Activity.Add(t);
             }
@@ -748,6 +756,7 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
 
             CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
 
             List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
@@ -773,6 +782,7 @@ namespace sln_SingleApartment.Controllers
         {
             SingleApartmentEntities entity = new SingleApartmentEntities();
             CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
             SubActivity subActivity = new SubActivity();
 

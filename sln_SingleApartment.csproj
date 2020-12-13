@@ -174,6 +174,7 @@
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
+    <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
     <Compile Include="Models\Discount.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
@@ -267,6 +268,9 @@
     <Compile Include="Models\SubActivity.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tActivityCart.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -294,6 +298,7 @@
     <Compile Include="ViewModels\CMemberRegister.cs" />
     <Compile Include="ViewModels\CMemberViewModel.cs" />
     <Compile Include="ViewModels\CMember_Factory.cs" />
+    <Compile Include="ViewModels\CMessage.cs" />
     <Compile Include="ViewModels\CMultiple.cs" />
     <Compile Include="ViewModels\COrder.cs" />
     <Compile Include="ViewModels\COrderDetails.cs" />
@@ -302,12 +307,16 @@
     <Compile Include="ViewModels\CPictureViewModel.cs" />
     <Compile Include="ViewModels\CProductViewModel.cs" />
     <Compile Include="ViewModels\CRoomFacilityViewModel.cs" />
+    <Compile Include="ViewModels\CRoomFavorite.cs" />
+    <Compile Include="ViewModels\CRoomListViewModel.cs" />
+    <Compile Include="ViewModels\CRoomSearchViewModel.cs" />
     <Compile Include="ViewModels\CRoomStyleViewModel.cs" />
     <Compile Include="ViewModels\CRoomViewModel.cs" />
     <Compile Include="ViewModels\CShopCart.cs" />
     <Compile Include="ViewModels\CShoppingCart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AllPay.Payment.Integration.dll" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -1413,7 +1422,6 @@
     <Content Include="Views\Product\shop.cshtml" />
     <Content Include="Views\Product\Favoritelist.cshtml" />
     <Content Include="Views\Product\_PartialFavorite.cshtml" />
-    <Content Include="Views\Product\OrderList.cshtml" />
     <Content Include="Views\Product\ShowProductInCart.cshtml" />
     <Content Include="Views\Member\Home.cshtml" />
     <Content Include="Views\Member\HomePage.cshtml" />
@@ -1468,15 +1476,22 @@
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
     <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
+    <Content Include="Views\Room\_box.cshtml" />
+    <Content Include="Views\Room\_PartialRoomFavorite.cshtml" />
+    <Content Include="Views\Room\RoomFavoritelist.cshtml" />
     <Content Include="Views\Activity\Back_List.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomDetail.cshtml" />
     <Content Include="Views\RoomBackend\BackEditTheRoomDetail.cshtml" />
     <Content Include="Views\ProductBack\CreatAllProduct.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialKeyWordResult.cshtml" />
+    <Content Include="Views\Product\OrderList.cshtml" />
+    <Content Include="Views\Product\_PartialOrders.cshtml" />
+    <Content Include="Views\Product\_PartialONEOrder.cshtml" />
+    <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
+    <Content Include="Views\MailMessage\MessageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MailMessage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

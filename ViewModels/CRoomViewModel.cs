@@ -20,7 +20,7 @@ namespace sln_SingelApartment.ViewModels
         public int? roomstyleID { get { return this.entity_room.RoomStyle.ID; } }
 
         [DisplayName("房間名稱")]
-        public string roomname { get { return this.entity_room.RoomName; } }
+        public string roomname {  get { return this.entity_room.RoomName; } }
 
         [DisplayName("目前房間狀態")]
         public int? status { get { return this.entity_room.Status; } }
@@ -48,4 +48,8 @@ namespace sln_SingelApartment.ViewModels
         [DisplayName("描述")]
         public string description { get { return this.entity_room.Description; } }
     }
+
+
+
+    
 }

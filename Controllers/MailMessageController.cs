@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Net;
 using sln_SingleApartment.Models;
 using sln_SingleApartment.ViewModels;
+using PagedList;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -77,6 +78,90 @@ namespace sln_SingleApartment.Controllers
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+        public ActionResult MessageList(int pageNum = 1, string orderByString = "ByDateAsc")
+        {            
+            try
+            {
+                int pageSize = 5;
+                int currentPage = pageNum < 1 ? 1 : pageNum;
+
+                ViewBag.OrderBy = orderByString;  //將資料傳給view
+
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                IEnumerable<Message> message = null;
+
+                if (orderByString == "ByDateAsc")
+                {
+                    message = db.Message.OrderBy(p => p.MessageDate);
+                }
+                else
+                {
+                    message = db.Message.OrderByDescending(p => p.MessageDate);
+                }
+
+                List<CMessage> list = new List<CMessage>();
+                foreach (Message d in message)
+                {
+                    list.Add(new CMessage() { message_entity = d });
+                }
+                var pagelist = list.ToPagedList(currentPage, pageSize);
+                return View(pagelist);
+                //return View(list);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Create
+        public ActionResult MessageCreate()
+        {
+            return View();
+        }
+
+        // POST: Create
+        [HttpPost]
+        public JsonResult MessageCreate(Message p_ms)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+
+                p_ms.MessageDate = DateTime.Now;
+                db.Message.Add(p_ms);
+                db.SaveChanges();
+
+                return new JsonResult { Data = new { status = true } };
+            }
+            catch
+            {
+                return new JsonResult { Data = new { status = false } };
+            }
+        }
+
+        // POST: Create
+        [HttpPost]
+        public JsonResult MessageEdit(Message p_ms)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Message mg = db.Message.FirstOrDefault(p => p.MessageID == p_ms.MessageID);
+                if (mg != null)
+                {
+                    //info.InformationSource = p_info.InformationSource;
+                    mg.AdminContent = p_ms.AdminContent;
+                    db.SaveChanges();
+                }
+
+                return new JsonResult { Data = new { status = true } };
+            }
+            catch
+            {
+                return new JsonResult { Data = new { status = false } };
             }
         }
 

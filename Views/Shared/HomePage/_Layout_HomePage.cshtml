@@ -2,7 +2,10 @@
     <title>窩居公寓</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
+    
 </head>
 <body>
     <script src="~/Content/HomePage/js/jquery.min.js"></script>
@@ -25,6 +28,7 @@
         <ul class="links">
             <li><a href="../Member/HomePage">首頁</a></li>
             <li>@Html.ActionLink("尋找窩們的愛屋", "SearchPage", "Room")</li>
+            <li>@Html.ActionLink("窩居留言板", "MessageList", "MailMessage")</li>
             <li><a href="../Member/LogIn">會員中心</a></li>
         </ul>
         <ul class="actions vertical">
@@ -33,7 +37,7 @@
     </nav>
 
 
-    <div>
+    <div style="min-height:75%">
         @RenderBody()
 
     </div>
@@ -57,7 +61,7 @@
     <div style="width:50px; height:50px;position: fixed;bottom:20px;right:20px">
         <iframe id="massageRoom" src='https://webchat.botframework.com/embed/singleapartqnamaker-bot?s=at00ZpRV72c.6wweuod-viU0UAI-gT4JaWhMVMCT6HHYU8iT9QqHvTA' style='display:none; position:relative; min-width: 300px; width: 100%; min-height: 480px;border:3px solid #4b98d0; border-radius:10px 10px; top:-510px; left:-260px;'></iframe>
     </div>
-    <div onclick="change()" style="width:70px; height:70px; position: fixed;bottom:20px;right:60px;" >
+    <div onclick="change()" style="width:70px; height:70px; position: fixed;bottom:20px;right:60px;">
         <img src="~/Content/img/頭 (1).png" style="width:100px; bottom:40px;right:40px" />
     </div>
     <!-- Scripts -->
@@ -66,6 +70,12 @@
             $("#massageRoom").toggle('display');
         }
     </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>  @*分頁檔使用*@
+    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
     <script src="~/Content/HomePage/js/util.js"></script>
     <script src="~/Content/HomePage/js/skel.min.js"></script>
     <script src="~/Content/HomePage/js/main.js"></script>
