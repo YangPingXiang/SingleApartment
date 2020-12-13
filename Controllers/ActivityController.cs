@@ -550,9 +550,10 @@ namespace sln_SingleApartment.Controllers
                 t.EndTime = ac.EndTime;
                 t.MeetingPoint = ac.MeetingPoint;
                 t.PeopleCount = ac.PeopleCount;
+                t.Note = ac.Note;
                 t.Status = ac.Status;
                 t.SubCategoryDetailID = ac.SubCategoryDetailID;
-                t.MemberID = 1;
+                t.MemberID = memberID;
                 t.ActivityImage = ac.ActivityImage;
                 entity.Activity.Add(t);
             }
