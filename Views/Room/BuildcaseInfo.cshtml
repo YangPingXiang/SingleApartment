@@ -1,18 +1,40 @@
 ﻿@model List<sln_SingelApartment.ViewModels.CBuildCaseViewModel>
-
 @{
     ViewBag.Title = "BuildcaseInfo";
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
+@functions{
+    public string GetMapUrl(string buildcaseID)
+    {
+
+        string map_url = null;
+        switch (buildcaseID)
+        {
+            case "A":
+                map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.1809487601085!2d121.54078291484173!3d25.027932583975268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa2c77204d41%3A0xf73bd50f3d59a6e!2zMTA25Y-w5YyX5biC5aSn5a6J5Y2A5b6p6IiI5Y2X6Lev5LqM5q61MTYw5be3MeiZnw!5e0!3m2!1szh-TW!2stw!4v1607445637333!5m2!1szh-TW!2stw";
+                break;
+
+            case "B":
+                map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0158200388823!2d121.49531471484183!3d25.033537183972477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9ae7a694085%3A0x4591d6f64d1f84dd!2zMTA45Y-w5YyX5biC6JCs6I-v5Y2A6ImL6Ii65aSn6YGTMjc15be3MTjomZ8!5e0!3m2!1szh-TW!2stw!4v1607446135594!5m2!1szh-TW!2stw";
+                break;
+
+            case "C":
+                map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.1246373836557!2d121.56816771484107!3d24.99588048399023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa6f77b326f3%3A0x768a055e8d4b571d!2zMTE25Y-w5YyX5biC5paH5bGx5Y2A6JCs6Iqz6LevMTjomZ8!5e0!3m2!1szh-TW!2stw!4v1607446203343!5m2!1szh-TW!2stw";
+                break;
+            case "D":
+                map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.1246373836557!2d121.56816771484107!3d24.99588048399023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa6f77b326f3%3A0x768a055e8d4b571d!2zMTE25Y-w5YyX5biC5paH5bGx5Y2A6JCs6Iqz6LevMTjomZ8!5e0!3m2!1szh-TW!2stw!4v1607446236650!5m2!1szh-TW!2stw";
+                break;
+        }
+
+        return map_url;
+    }
+
+
+}
 
 <body>
 
-    @{
-        int num = 1;
-        num++;
-
-    }
 
 
     <div style="background-color:#edf2fb; width:800px; margin:50px auto; text-align:center;">
@@ -24,87 +46,150 @@
                     建案：
                 </li>
                 <li>
-                    <a>綠意大安森活窩</a>
+                    <a onclick="GetResult('A')">綠意大安森活窩</a>
                 </li>
                 <li>
-                    <a>城市西門快捷窩</a>
+                    <a onclick="GetResult('B')">城市西門快捷窩</a>
                 </li>
                 <li>
-                    <a>慢活文山雲景窩</a>
+                    <a onclick="GetResult('C')">慢活文山雲景窩</a>
                 </li>
                 <li>
-                    <a>心醉信義忘憂窩</a>
+                    <a onclick="GetResult('D')">心醉信義忘憂窩</a>
                 </li>
             </ul>
 
 
+            <!--點下去放大 look JQ teacher shared 017 tooltip-->
+            <iframe id="mymap" src="@GetMapUrl("A")" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </form>
 
     </div>
 
-
     <div class="hotel-feature pt-80 white_bg" style="margin-top: 20px; margin-bottom:30px; ">
-        <div class="container">
-            @foreach (var item in Model)
-            {
-                <div class="row" style="margin-top:20px; ">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="feature-desc text-left">
-                            <div class="section-title mb-30" style="text-align:center;">
-                                <h2>
-                                    <span>
-                                        @item.buildcasename
+        <div id="mycontainer" class="container">
+            <div id="inforesult">
 
-                                    </span>
-                                </h2>
-
-                            </div>
-
-                            <div class="feature-item" style=" margin-top:30px; padding-top:20px;  font-size:20px;">
-
-                                <ol style="list-style-type:none; color:saddlebrown">
-                                    <li style="margin:10px;">
-                                        <span>地址:</span>  @item.address
-                                    </li>
-                                    <li style="margin:10px;">
-                                        <span>建造時間:</span>  @item.buildtime
-                                    </li>
-                                    <li style="margin:10px;">
-                                        <span>總樓層:</span> @item.totalfloor
-                                    </li>
-
-                                </ol>
-
-
-                            </div>
-
-                            <input type="button" name="map" value="地圖" />
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="feature-img-tab">
-                            <div class="feature-tab-desc">
-                                <div class="tab-content">
-                                    @{
-                                        var filename = item.buildcasename + ".jpg";
-                                    }
-                                    <div role="tabpanel" class="tab-pane active" id="feature1">
-                                        <div class="feature-tab-inner">
-                                            <img src="~/Content/Room/images/services/@filename" alt="">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            }
+            </div>
 
         </div>
     </div>
 
+    <!--先等一下-->
+    @*<div class="hotel-feature pt-80 white_bg" style="margin-top: 20px; margin-bottom:30px; ">
+            <div class="container">
+                @foreach (var item in Model)
+                {
+                    <div class="row" style="margin-top:20px; ">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="feature-desc text-left">
+                                <div class="section-title mb-30" style="text-align:center;">
+                                    <h2>
+                                        <span>
+                                            @item.buildcasename
+
+                                        </span>
+                                    </h2>
+
+                                </div>
+
+                                <div class="feature-item" style=" margin-top:30px; padding-top:20px;  font-size:20px;">
+
+                                    <ol style="list-style-type:none; color:saddlebrown">
+                                        <li style="margin:10px;">
+                                            <span>地址:</span>  @item.address
+                                        </li>
+                                        <li style="margin:10px;">
+                                            <span>建造時間:</span>  @item.buildtime
+                                        </li>
+                                        <li style="margin:10px;">
+                                            <span>總樓層:</span> @item.totalfloor
+                                        </li>
+
+                                    </ol>
+                                </div>
+
+                                <input type="button" name="map" value="地圖" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="feature-img-tab">
+                                <div class="feature-tab-desc">
+                                    <div class="tab-content">
+                                        @{
+                                            var filename = item.buildcasename + ".jpg";
+                                        }
+                                        <div role="tabpanel" class="tab-pane active" id="feature1">
+                                            <div class="feature-tab-inner">
+                                                <img src="~/Content/Room/images/services/@filename" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>*@
+
+    <!--先等一下-->
+
+
+    <script>
+        function GetResult(buildCaseID) {
+            console.log(buildCaseID);
+            let map_url;
+            switch (buildCaseID) {
+                case "A":
+                    map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.1809487601085!2d121.54078291484173!3d25.027932583975268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa2c77204d41%3A0xf73bd50f3d59a6e!2zMTA25Y-w5YyX5biC5aSn5a6J5Y2A5b6p6IiI5Y2X6Lev5LqM5q61MTYw5be3MeiZnw!5e0!3m2!1szh-TW!2stw!4v1607445637333!5m2!1szh-TW!2stw";
+                    break;
+
+                case "B":
+                    map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0158200388823!2d121.49531471484183!3d25.033537183972477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9ae7a694085%3A0x4591d6f64d1f84dd!2zMTA45Y-w5YyX5biC6JCs6I-v5Y2A6ImL6Ii65aSn6YGTMjc15be3MTjomZ8!5e0!3m2!1szh-TW!2stw!4v1607446135594!5m2!1szh-TW!2stw";
+                    break;
+
+                case "C":
+                    map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.1244943213937!2d121.56816771537822!3d24.995885345971377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa6f77b326f3%3A0x768a055e8d4b571d!2zMTE25Y-w5YyX5biC5paH5bGx5Y2A6JCs6Iqz6LevMTjomZ8!5e0!3m2!1szh-TW!2stw!4v1607520625928!5m2!1szh-TW!2stw";
+                    break;
+                case "D":
+                    map_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.657493258787!2d121.57454851537891!3d25.045695043975716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab98b3858413%3A0x3a349e71483c1e0c!2zMTEw5Y-w5YyX5biC5L-h576p5Y2A5rC45ZCJ6LevMzY36Jmf!5e0!3m2!1szh-TW!2stw!4v1607520469234!5m2!1szh-TW!2stw";
+                    break;
+            }
+            console.log('url = ' + map_url);
+            $('#mymap').prop('src', map_url);
+            @*$.ajax({
+                type:"POST",
+                url: "@Url.Action("PartialBuildCaseInfoResult")",
+                data: {
+                    buildCaseID = buildCaseID
+                }
+            })*@
+
+
+        }
+
+
+        $(function () {
+
+            $('li').click(function () {
+
+                $(this).css("background-color", "#e76f51")
+                    .siblings().css("background-color", "#e8e8e8")
+                $(this.firstElementChild).css("color", "white")
+                $(this).find("a:first-child").css("color", "white")
+                $(this).siblings().find("a:first-child").css("color", "#4FC1F0");
+
+                console.log(this);
+            });
+
+            $('#order')
+
+        });
+    </script>
 
 </body>
 

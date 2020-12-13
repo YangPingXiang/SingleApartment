@@ -9,7 +9,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnSave").click(function () {
-            alert("Booking is successful!")
             if (!$("#formBoking").valid()) {
                 return;
             }
@@ -20,22 +19,31 @@
     });
 
     function AddBookingInfo() {
-        var objBookingInfo = {};
-        objBookingInfo.MemberId = $("#txtMemberID").val();
-        objBookingInfo.RoomID = $("#txtRoomID").val();
-        objBookingInfo.StartTime = $("#txtStartTime").val();
-        objBookingInfo.EndTime = $("#txtEndTime").val();
+        var objBookingInfo = {
+            MemberId : $("#txtMemberID").val(),
+            RoomID: $("#txtRoomID").val(),
+            StartTime: $("#StartTime").val(),
+            EndTime: $("#EndTime").val()
+        };
+        //objBookingInfo.MemberId = $("#txtMemberID").val();
+        //objBookingInfo.RoomID = $("#txtRoomID").val();
+        //objBookingInfo.StartTime = $("#txtStartTime").val();
+        //objBookingInfo.EndTime = $("#txtEndTime").val();
+
+        console.log(objBookingInfo);
 
         $.ajax({
             async: true,
             type: 'POST',
             dataType: 'JSON',
-            contentType: 'application/json; charset=utf-8',
+            //contentType: 'application/json; charset=utf-8',
             url: '/Room/BookingInfo',
-            data: JSON.stringify(objBookingInfo),
+            //data: JSON.stringify(objBookingInfo),
+            data: objBookingInfo,
             success: function (data) {
                 if (data.success === true) {
                     alert(data.message);
+                    window.location = "/Room/MyRoom"
                 }
 
             },
@@ -139,8 +147,8 @@
                                             <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
                                         }*@
 
-                                   @* <button id="btnSave" type="submit" >>提交</button>*@
-                                   <input type="button" id="btnSave" value="提交" onclick="location.href='http://localhost:44332/Room/MyRoom'">
+                                   <button id="btnSave" type="button" onclick="AddBookingInfo();">提交</button>
+                                   @*<input type="submit" id="btnSave" value="提交" onclick="location.href='http://localhost:44332/Room/MyRoom'">*@
 
                                 </div>
                             </form>

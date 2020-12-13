@@ -140,6 +140,7 @@ namespace sln_SingleApartment.Models
             }
             return result;
         }
+
         public List<CProductViewModel> SearchProductsByPrice(int FirstPrice, int LastPrice)
         {
             List<CProductViewModel> result = new List<CProductViewModel>();
@@ -265,5 +266,61 @@ namespace sln_SingleApartment.Models
         }
         #endregion
         #endregion
+
+        //將房間加到我的最愛
+        public string AddRoomToFavorite(int RoomID)
+        {
+            var roomName = db.Room.Where(r => r.ID == RoomID).FirstOrDefault().RoomName;
+            var roomfa = db.RoomFavorite.Where(r => r.MemberID == tMember.fMemberId && r.RoomID == RoomID);
+            if (roomfa.Count() == 0)
+            {
+                try
+                {
+                    RoomFavorite roomfv = new RoomFavorite() { MemberID = tMember.fMemberId, RoomID = RoomID };
+                    db.RoomFavorite.Add(roomfv);
+                    db.SaveChanges();
+
+                    //50010 加入我的最愛
+                    CInformationFactory x = new CInformationFactory();
+                    x.Add(tMember.fMemberId, 400, 0, 40010);
+
+                    return $"已成功將 {roomName} 加入我的最愛";
+                }
+                catch (Exception)
+                {
+                    return $"出現錯誤！請稍後再嘗試！";
+                }
+            }
+            else return "我的最愛裡已有此房間";
+
+        }
+
+        //查詢房間的我的最愛
+        public List<CRoomFavorite> SearchRoomFavorite()
+        {
+            List<CRoomFavorite> list = new List<CRoomFavorite>();
+            var romfav = db.RoomFavorite.Where(r => r.MemberID == tMember.fMemberId);
+            foreach (var item in romfav)
+            {
+                CRoomFavorite MemberRoomfav = new CRoomFavorite() { entity_RoomFavorite = item };
+                list.Add(MemberRoomfav);
+            }
+            return list;
+        }
+
+        //刪除房間的我的最愛
+        public string DeleteRoomFavorite(int RoomID)
+        {
+            var roomfa = db.RoomFavorite.Where(r => r.MemberID == tMember.fMemberId && r.RoomID == RoomID).FirstOrDefault();
+            if (roomfa != null)
+            {
+                db.RoomFavorite.Remove(roomfa);
+                db.SaveChanges();
+                return "刪除成功";
+            }
+            return "我的最愛裡沒有此商品，請再試一次！";
+        }
+
+
     }
 }
