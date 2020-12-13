@@ -29,21 +29,21 @@
                             <div>
                                 <div class="g-recaptcha" data-sitekey="6Ldd8wEaAAAAAIm2714PGW1zYIfX4BenxZ3wrm13"></div>
                             </div>
-                      
+
                             <ul class="login-icons">
                                 <li style="padding-left:0em;">
                                     <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
                                 </li>
 
                                 <li>
-                                    <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
+                                    <a href="#" class="go" onclick="GoogleLogin()"><i class="google"></i><span >Google +</span></a>
                                 </li>
                             </ul>
                             <label class="button">
                                 <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
                             </label>
                             @ViewBag.msg
-                            <div  style="display:inline; margin-left:13.5em;font-size:18px;">
+                            <div style="display:inline; margin-left:13.5em;font-size:18px;">
                                 <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                                 <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                             </div>
@@ -56,7 +56,7 @@
 
                         </form>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -73,7 +73,65 @@
         $("#account").val("admin");
         $("#pwd").val("adminadmin");
     }
+</script>
 
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 
-   
+<script type="text/javascript">
+   //google
+    let Google_appId = "939804967327-o1ltm8bkp3m31v16tpmuthrg5g1psutk.apps.googleusercontent.com";
+    function HandleGoogleApiLibrary() {
+        // Load "client" & "auth2" libraries
+        gapi.load('client:auth2', {
+            callback: function () {
+                // Initialize client & auth libraries
+                gapi.client.init({
+                    clientId: Google_appId,
+                    scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me',
+
+                }).then(
+                    function (success) {
+                        // You can now make API calls
+                        console.log("Google Libraries are initialized successfully");
+                    },
+                    function (error) {
+
+                        console.log(error);
+                    }
+                );
+            },
+            onerror: function () {
+
+                console.log("Failed to load libraries");
+            }
+        });
+    }
+
+    function GoogleLogin() {
+
+        gapi.auth2.getAuthInstance().signIn().then(
+            function (success) {
+
+                let member = JSON.stringify(success["xt"]);
+                console.log(member);    
+                 $.ajax({
+                 url:'@Url.Action("GoLogin")',
+                 type: 'POST',
+                 data: { returnUrl: member },
+                 async: false,
+        success: function (data) {
+            console.log('測試123' + member);
+            console.log(data);
+            //console.log("test");
+            location.href = "/Member/Home"
+        }
+
+         });
+            },
+            function (error) {
+                console.log(error);
+            }
+        );
+    }
 </script>
