@@ -1,25 +1,25 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
 @model IPagedList<sln_SingleApartment.ViewModels.CFavoriteList>
-@functions
-   {
-    public string DisplayImage(byte[] imageData)
-    {
-        string imageSrc = null;
-        if (imageData != null)
-        {
-            string base64Str = Convert.ToBase64String(imageData);
-            imageSrc = "data:img/jpg;base64," + base64Str;
-        }
-        return imageSrc;
-    }
-}
 
 <h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
 <table id="shopping-cart-table" class="data-table cart-table">
     <tr>
-        <th class="low1"></th>
+        <th class="low1"></th>@functions
+   {
+            public string DisplayImage(byte[] imageData)
+            {
+                string imageSrc = null;
+                if (imageData != null)
+                {
+                    string base64Str = Convert.ToBase64String(imageData);
+                    imageSrc = "data:img/jpg;base64," + base64Str;
+                }
+                return imageSrc;
+            }
+        }
+
         <th>圖片</th>
         <th class="low2">商品名稱</th>
         <th>商品單價</th>
