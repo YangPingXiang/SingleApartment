@@ -349,6 +349,7 @@ namespace sln_SingleApartment.Controllers
             }
             return Json("沒有此商品");
         }
+        //更改單一商品(數量)
         public JsonResult ChangeONEProductQuantity(string ProductID, string Quantity)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -383,7 +384,6 @@ namespace sln_SingleApartment.Controllers
 
         #endregion
         #region Checkout
-
         //結帳畫面{12.6)
         public ActionResult CheckOut()
         {
@@ -399,42 +399,32 @@ namespace sln_SingleApartment.Controllers
                 return RedirectToAction("ShowProductInCart");
             }
             List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
-
-            //CUser theUser = new CUser();
-            ////===================================================================
-            //var user = Session[CDictionary.welcome] as CMember;
-            ////必須先登入會員 
-            //if (user != null)
-            //{
-            //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
-            //    user.fPhone= Request.Form["TXTPHONE"];
-            //    user.fEmail = Request.Form["TXTEMAIL"];
-            //    //user.fBirthDate =Request.Form[""];
-            //}
-            //===================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return View(orderlist);
         }
+        [HttpPost]
+        public ActionResult CheckOut(string payment_method)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list == null || list.Count == 0)
+            {
+                return RedirectToAction("ShowProductInCart");
+            }
+            if (theUser.MakeOrder(list)== "成功下訂！") {
+                Session[CDictionary.PRODUCTS_IN_CART] = null;
+                return RedirectToAction("OrderList");
+            }
+            else
+            {
+                return RedirectToAction("CheckOut");
+            }
+        }
+
         #endregion 
         //#region 秉庠
 

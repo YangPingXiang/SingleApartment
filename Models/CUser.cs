@@ -192,13 +192,61 @@ namespace sln_SingleApartment.Models
                 }
                 db.Order.Remove(od);
                 CInformationFactory x = new CInformationFactory();
-                db.SaveChanges();
                 x.Add(tMember.fMemberId, 100, id, 30020);
+                db.SaveChanges();
                 return "您的訂單已取消～";
             }
             return "發生錯誤，請稍後再試！";
         }
-
+        public string MakeOrder(List<CAddtoSessionView> cart)
+        {
+            Order order = new Order();
+            int totalPrice = 0;
+            if (cart!= null && cart.Count() != 0)
+            {
+                foreach(var item in cart)
+                {
+                    try
+                    {
+                        OrderDetails orderDetail = new OrderDetails();
+                        orderDetail.ProductID = item.txtProductID;
+                        orderDetail.Quantity = item.txtQuantity;
+                        //同步修改庫存
+                        db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().Stock -= item.txtQuantity;
+                        orderDetail.ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName;
+                        orderDetail.UnitPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice;
+                        totalPrice += item.txtQuantity * orderDetail.UnitPrice;
+                        order.OrderDetails.Add(orderDetail);
+                        
+                    }
+                    catch (Exception)
+                    {
+                        return "發生錯誤，請稍後再試！";
+                    }
+                }
+               
+            }
+            order.OrderDate = DateTime.Now;
+            order.ArrivedDate = DateTime.Now.AddDays(7);
+            order.TotalAmount = totalPrice;
+            order.OrderStatusID = 1;
+            order.SendingStatus = "配送中";
+            order.PayStatus = "已付款";
+            order.MemberID = this.tMember.fMemberId;
+            try
+            {
+                db.Order.Add(order);
+                db.SaveChanges();
+                CInformationFactory x = new CInformationFactory();
+                x.Add(tMember.fMemberId, 100, order.OrderID, 30010);
+                
+            }
+            catch (Exception)
+            {
+                return "發生錯誤，請稍後再試！";
+            }
+            return "成功下訂！";
+        }
         #endregion
         #region 智慧辨識
         public class Answer
