@@ -70,10 +70,16 @@ namespace sln_SingleApartment.Models
         public List<COrderDetailsViewModel> SearchProductInCart(List<CAddtoSessionView> list)
         {
             List<COrderDetailsViewModel> orderDetails = new List<COrderDetailsViewModel>();
+            
             foreach (var item in list)
             {
                 COrderDetailsViewModel odd = new COrderDetailsViewModel();
-                odd.entity = new OrderDetails() { ProductID = item.txtProductID, Quantity = item.txtQuantity };
+                odd.entity = new OrderDetails() {
+                    ProductID = item.txtProductID,
+                    Quantity = item.txtQuantity,
+                    ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName,
+                    UnitPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice
+                };
                 orderDetails.Add(odd);
             }
             return orderDetails;
