@@ -65,6 +65,32 @@ namespace sln_SingleApartment.Controllers
            return View();
         }
 
+        public ActionResult Robot(FormCollection form, CLogIn login)
+        {
+            var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
+            if (isVerify)
+            {
+                login.txtAccount = Request.Form["txtaccount"];
+                login.txtPassword = Request.Form["txtpwd"];
+                CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
+                if (cm != null)
+                {
+                    Session[CDictionary.welcome] = cm;
+                    CMember member = Session[CDictionary.welcome] as CMember;
+
+                    return RedirectToAction("Home");
+                }
+                else
+                {
+                    ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
+
+                }
+
+            }
+            return View();
+        }
+
+
         //註冊
         public ActionResult Register()
         {

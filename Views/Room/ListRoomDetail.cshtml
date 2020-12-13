@@ -23,11 +23,11 @@
         </div>
     </div>
 
- 
+
     @using (Html.BeginForm())
     {
 
-    
+
 
         <div class="wrapper">
             <!--Header section start-->
@@ -152,31 +152,81 @@
             </div>-->
             <!-- search bar End -->
             <!--Room Detail start-->
+            @*<div>
+
+                    <input type="button" name="previous" value="回上一頁" />
+
+                </div>*@
+
             <div class="hotel-feature pt-80 white_bg">
-                <div class="container">                    
+                <div class="container">
                     @foreach (var item in Model.roomViewModels)
                     {
                         <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="clear:right; ">
                                 <div class="feature-desc text-left">
                                     <form method="post">
                                         <div class="section-title mb-30">
                                             <h2 id="roomstylename">
-                                                
-                                                @item.entity_room.RoomName                                                                                                                                                                                                                                         
-                                                
+                                                @Html.DisplayFor(modelItem => item.roomname)
+
+
                                                 <input id="roomstyleId" type="hidden" value="@item.roomstyleID" name="roomstyleid" />
                                                 <input id="buildcaseId" type="hidden" value="@item.buildcaseID" name="buildcaseid" />
-                                                <input id="Rent" type="hidden" value="@item.entity_room.Rent" name="rent" />
-                                                <input id="peopleCount" type="hidden" value="@item.entity_room.RoomType" name="peoplecount" />
+                                                <input id="Rent" type="hidden" value="@item.rent" name="rent" />
+                                                <input id="roomtype" type="hidden" value="@item.roomtype" name="peoplecount" />
 
-                                            </h2>
+                                            </h2>                                         
 
-                                            <div>
-                                                @*<input  src="~/Views/Room/BookingInfo" class="btn btn-success" type="button" id="book" value="前往訂房" />*@
-                                                @Html.ActionLink("前往訂房","BookingInfo","Room",new { id=1})
-                                                
-                                            </div>
+                                            @{
+
+                                                var usedroom = Model.leaseViewModels.Where(x => x.roomID == item.roomID);
+
+                                                if (usedroom != null)
+                                                {
+                                                    var roomPesonCount = 0;
+                                                    if (item.roomtype.Equals("1人房"))
+                                                    {
+                                                        roomPesonCount = 1;
+                                                    }
+                                                    else if (item.roomtype.Equals("2人房"))
+                                                    {
+                                                        roomPesonCount = 2;
+                                                    }
+                                                    else if (item.roomtype.Equals("3人房"))
+                                                    {
+                                                        roomPesonCount = 3;
+                                                    }
+                                                    else if (item.roomtype.Equals("4人房"))
+                                                    {
+                                                        roomPesonCount = 4;
+                                                    }
+
+                                                    if (usedroom.Count() < roomPesonCount)
+                                                    {
+                                                        <a href="~/Room/BookingInfo/@item.roomID">
+                                                            <input class="submit-form" type="button" id="book" value="前往訂房" style="width:100px; float:right;" />
+                                                        </a>
+                                                        <input class="submit-form" type="button" id="book" value="目前有空缺" style="width:120px; float:right; overflow:visible;  margin-right:20px;" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="~/Room/BookingInfo/@item.roomID">
+                                                            <input class="submit-form" type="button" id="book" value="前往訂房" style="width:100px; float:right;" disabled />
+                                                        </a>
+                                                        <input class="submit-form" type="button" id="book" value="目前已滿房" style="width:120px; float:right; overflow:visible;  margin-right:20px;" />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="~/Room/BookingInfo/@item.roomID">
+                                                        <input class="submit-form" type="button" id="book" value="前往訂房" style="width:100px; float:right;" />
+                                                    </a>
+                                                    <input class="submit-form" type="button" id="book" value="目前有空缺" style="width:120px; float:right; overflow:visible;  margin-right:20px;" />
+                                                }
+
+                                            }
+
 
                                             <p>房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。</p>
                                         </div>
@@ -194,30 +244,27 @@
                                                 </li>
 
                                                 <li>
-                                                    <span>4.</span>可容納人數： @Html.DisplayFor(modelItem => item.entity_room.RoomType)
+                                                    <span>4.</span>種類： @Html.DisplayFor(modelItem => item.roomtype)
                                                 </li>
                                                 <li>
-                                                    <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_room.Rent)
+                                                    <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.rent)
                                                 </li>
                                                 <li>
                                                     <span>6.</span> 設備：
                                                 </li>
-                                                @*@foreach (var i in Model.facilityViewModels)
+                                                @foreach (var i in Model.facilityViewModels)
                                                 {
                                                     <li style="margin-left:50px">
                                                         @i.facilityName
                                                     </li>
 
 
-                                                }*@
+                                                }
 
                                             </ul>
                                         </div>
+
                                         <div class="">
-
-                                            <div id="mycontainer" style="border: 2px solid lightblue">
-
-                                            </div>
 
                                             <hr>
 
@@ -227,48 +274,52 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="feature-img-tab">
-                                <div class="feature-tab-desc">
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="feature1">
-                                            <div class="feature-tab-inner">
-                                                <img src="~/Content/Room/images/room/房間101-1.jpg" alt="">
+                            <div class="col-md-6 col-sm-6" @*style="border:2px dashed black;"*@>
+                                <div class="feature-img-tab">
+                                    <div class="feature-tab-desc">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="feature1">
+                                                <div class="feature-tab-inner">
+                                                    <img src="~/Content/Room/images/room/房間101-1.jpg" alt="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="feature2">
-                                            <div class="feature-tab-inner">
-                                                <img src="~/Content/Room/images/room/房間101-2.jpg" alt="">
+                                            <div role="tabpanel" class="tab-pane" id="feature2">
+                                                <div class="feature-tab-inner">
+                                                    <img src="~/Content/Room/images/room/房間101-2.jpg" alt="">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="feature-tab-item">
-                                    <ul class="nav" role="tablist">
-                                        <li class="active">
-                                            <a href="#feature1" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-3.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-4.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-5.jpg" alt=""></a>
-                                        </li>
+                                    <div class="feature-tab-item">
+                                        <ul class="nav" role="tablist">
+                                            <li class="active">
+                                                <a href="#feature1" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-3.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-4.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-5.jpg" alt=""></a>
+                                            </li>
 
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div id="mycontainer" style="border:2px solid lightblue; width:300px; background-color:lightblue; margin:10px auto;">
 
                         </div>
 
-                        }
+
+
+                    }
 
                 </div>
             </div>
             <!--Room Detail end-->
+
+
 
 
         </div>

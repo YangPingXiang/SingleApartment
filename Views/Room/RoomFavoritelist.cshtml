@@ -1,0 +1,49 @@
+﻿@model  List<sln_SingleApartment.ViewModels.CRoomFavorite>
+
+@{
+    ViewBag.Title = "RoomFavoritelist";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+}
+
+<session class="wrapper" style="padding:3em">
+    <div class="inner">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        房間編號
+                    </th>
+                    <th>
+                        房間名稱
+                    </th>
+                    <th>
+                        建案
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.RoomID
+                        </td>
+                        <td>
+                            @item.Room.RoomName
+                        </td>
+                        <td>
+                            @item.Room.BuildCase.BuildCaseName
+                        </td>
+                        <td>
+                            @Html.ActionLink("刪除", "DeleteRoomFavorite", new { id = item.RoomID })
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</session>
+

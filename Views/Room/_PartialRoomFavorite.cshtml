@@ -1,47 +1,48 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<sln_SingleApartment.ViewModels.CFavoriteList>
+@model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
 
 <h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
 <table id="shopping-cart-table" class="data-table cart-table">
     <tr>
-        <th class="low1"></th>@functions
-   {
-            public string DisplayImage(byte[] imageData)
-            {
-                string imageSrc = null;
-                if (imageData != null)
-                {
-                    string base64Str = Convert.ToBase64String(imageData);
-                    imageSrc = "data:img/jpg;base64," + base64Str;
-                }
-                return imageSrc;
-            }
-        }
-
-        <th>圖片</th>
-        <th class="low2">商品名稱</th>
-        <th>商品單價</th>
-        <th class="low5"></th>
+        <th class="low1"></th>
+        @*<th>圖片</th>*@
+        <th class="low2">房間名稱</th>
+        <th>房租</th>
+        @*<th class="low5"></th>*@
     </tr>
     @{
 
         foreach (var item in Model)
         {
 
+
             <tr>
                 <td class="sop-icon1">
-                    <a href="" class="mydeleteFav" name="@item.ProductID">
+                    <a href="" class="mydeleteFav" name="@item.RoomID">
                         <i class="fa fa-times"></i>
                     </a>
                 </td>
-                <td class="sop-cart">
+                @*<td class="sop-cart">
                     <a href="#"><img class="primary-image" alt="" src="@DisplayImage(item.pro.prodpic.ProductPicture)"></a>
-                </td>
+                </td>*@
                 <td class="sop-cart an-sh">
                     <div class="tb-beg">
-                        <a>@item.Product.ProductName</a>
+                        <a>@item.Room.RoomName</a>
                     </div>
                     @*<div class="last-cart l-mrgn">
                             <a class="las4" href="#">Quick View</a>
@@ -49,20 +50,20 @@
                 </td>
                 <td class="sop-cart">
                     <div class="tb-product-price font-noraure-3">
-                        <span class="amount2 ana">$ @item.Product.UnitPrice</span>
+                        <span class="amount2 ana">$ @item.Room.Rent</span>
                     </div>
                 </td>
-                <td class="sop-cart">
+                @*<td class="sop-cart">
                     <div class="last-cart l-mrgn wish">
                         <a class="las4" name="@item.ProductID" onclick="AddToCart()">加入購物車</a>
                     </div>
-                </td>
+                </td>*@
             </tr>
         }
     }
 </table>
 <h1>this is PartialView</h1>
-@Html.PagedListPager(Model, page => Url.Action("PartialFavorite", new { page = page, MemberID=ViewBag.MemberID  }),
+@Html.PagedListPager(Model, page => Url.Action("PartialRoomFavorite", new { page = page, MemberID = ViewBag.MemberID }),
 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
 {
     HttpMethod = "Get",
@@ -93,6 +94,3 @@ PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
         })
     }
 </script>
-
-
-

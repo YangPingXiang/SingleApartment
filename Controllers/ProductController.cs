@@ -24,7 +24,6 @@ namespace sln_SingleApartment.Controllers
         #region index.html
         public ActionResult Home()
         {
-
             SingleApartmentEntities db = new SingleApartmentEntities();
 
             //登入
@@ -110,7 +109,7 @@ namespace sln_SingleApartment.Controllers
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             var result = theUser.SearchProduct();
-             if (imgPhoto != null)
+            if (imgPhoto != null)
             {
                 imgPhoto.SaveAs("c:\\temp\\111.jpg");
                 FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
@@ -119,13 +118,14 @@ namespace sln_SingleApartment.Controllers
                 fs.Read(image, 0, length);
                 fs.Close();
                 List<string> strs = await MakePredictionRequest(image);
-                var list_product = theUser.SearchProductsBy(null, null, strs[0]); result.product = list_product;
-                ViewBag.ByPhoto = "true";
                 string Keyword = "";
                 foreach (var str in strs)
                 {
                     Keyword += (str + " ");
                 }
+                var list_product = theUser.SearchProductsBy(null, null, Keyword); result.product = list_product;
+                ViewBag.ByPhoto = "true";
+                
                 ViewBag.Keyword = Keyword;
             }
             return View(result);
@@ -349,6 +349,7 @@ namespace sln_SingleApartment.Controllers
             }
             return Json("沒有此商品");
         }
+        //更改單一商品(數量)
         public JsonResult ChangeONEProductQuantity(string ProductID, string Quantity)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -383,7 +384,6 @@ namespace sln_SingleApartment.Controllers
 
         #endregion
         #region Checkout
-
         //結帳畫面{12.6)
         public ActionResult CheckOut()
         {
@@ -399,42 +399,32 @@ namespace sln_SingleApartment.Controllers
                 return RedirectToAction("ShowProductInCart");
             }
             List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
-
-            //CUser theUser = new CUser();
-            ////===================================================================
-            //var user = Session[CDictionary.welcome] as CMember;
-            ////必須先登入會員 
-            //if (user != null)
-            //{
-            //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
-            //    user.fPhone= Request.Form["TXTPHONE"];
-            //    user.fEmail = Request.Form["TXTEMAIL"];
-            //    //user.fBirthDate =Request.Form[""];
-            //}
-            //===================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return View(orderlist);
         }
+        [HttpPost]
+        public ActionResult CheckOut(string payment_method)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list == null || list.Count == 0)
+            {
+                return RedirectToAction("ShowProductInCart");
+            }
+            if (theUser.MakeOrder(list)== "成功下訂！") {
+                Session[CDictionary.PRODUCTS_IN_CART] = null;
+                return RedirectToAction("OrderList");
+            }
+            else
+            {
+                return RedirectToAction("CheckOut");
+            }
+        }
+
         #endregion 
         //#region 秉庠
 
@@ -493,77 +483,52 @@ namespace sln_SingleApartment.Controllers
 
         //}
         //訂單
-        public ActionResult OrderList(int order_id = 0)
+        public ActionResult OrderList()
         {
-
-            bool l_flag = false;  //顯示訂單明細
-            SingleApartmentEntities db = new SingleApartmentEntities();
-
-            int member_id = db.Order.FirstOrDefault().MemberID;
-
-
-            IEnumerable<Order> l_order = from x in db.Order
-                                         where x.MemberID > 0   //之後要改成memberID  先抓全部
-                                         select x;
-
-
-            List<COrder> list = new List<COrder>();
-            foreach (Order o in l_order)
-            {
-                list.Add(new COrder() { order_entity = o });
-            }
-
-            IEnumerable<OrderDetails> l_orderdetail = from p in db.OrderDetails
-                                                      where p.OrderID == order_id
-                                                      select p;
-            List<COrderDetails> odlist = new List<COrderDetails>();
-            foreach (OrderDetails od in l_orderdetail)
-            {
-                var prod = db.Product.FirstOrDefault(x => x.ProductID == od.ProductID);
-                odlist.Add(new COrderDetails() { entity = od, product_entity = prod });
-            }
-
-            COrderMasterDetail a = new COrderMasterDetail() { display_flag = l_flag, t_order = list, t_orderDetail = odlist };
-
-            return View(a);
-
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+            ViewBag.MemberID = user.fMemberId;
+            return View();
         }
-        //訂單明細
-        //public ActionResult List(int ID)
-        //{
-        //    using (SingleApartmentEntities db = new SingleApartmentEntities())
-        //    {
-        //        var table = (from p in db.OrderDetails
-        //                     where p.OrderID == ID
-        //                     select p).ToList();
 
-        //}
+        public ActionResult PartialOrders(string MemberID, int page = 1, int pageSize = 6)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId.ToString() == MemberID).FirstOrDefault() };
+            int currentPage = page < 1 ? 1 : page;
+            var lt = theUser.SearchOrders();
+            var result = lt.ToPagedList(currentPage, pageSize);
+            ViewData.Model = result;
+            ViewBag.MemberID = MemberID;
+            return PartialView("_PartialOrders");
+        }
+        public ActionResult PartialONEOrder(string MemberID, int OrderID)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId.ToString() == MemberID).FirstOrDefault() };
+           
+            var result = theUser.SearchOrder(OrderID);
+            ViewData.Model = result;
+            ViewBag.MemberID = MemberID;
+            return PartialView("_PartialONEOrder");
+        }
         //取消訂單
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
+        {
+            try
             {
+                var user = Session[CDictionary.welcome] as CMember;
                 SingleApartmentEntities db = new SingleApartmentEntities();
-
-                Order od = db.Order.FirstOrDefault(p => p.OrderID == id);
-
-                var odd = db.OrderDetails.Where(q => q.OrderID == id);
-
-                if (odd != null)
-                {
-
-                    foreach (var ITEM in odd)
-                    {
-                        db.OrderDetails.Remove(ITEM);
-
-                    }
-                    if (od != null)
-                    {
-                        db.Order.Remove(od);
-                    }
-                    db.SaveChanges();
-                }
-
-                return RedirectToAction("Home");
+                CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+                ViewBag.MemberID = user.fMemberId;
+                var answer = theUser.DeleteAnOrder(id);
+                return Json(answer);
             }
+            catch(Exception)
+            {
+                return Json("發生錯誤");
+            }
+        }
 
         //#endregion
 
