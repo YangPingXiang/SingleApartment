@@ -6,37 +6,38 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1" ZoomLevel="29">
         <AssociationConnector Association="SingleApartmentModel.FK_ProductPictures_Product" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Activity" Width="1.5" PointX="3" PointY="19.125" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ActivityMainCategory" Width="1.5" PointX="1.5" PointY="31.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategory" Width="1.5" PointX="0.75" PointY="25.125" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategoryDetail" Width="1.5" PointX="3" PointY="37.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.BuildCase" Width="1.5" PointX="1.5" PointY="9.75" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Discount" Width="1.5" PointX="11.25" PointY="23.125" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Facility" Width="1.5" PointX="6.75" PointY="4.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.FavoriteList" Width="1.5" PointX="10.5" PointY="17.25" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Activity" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivityMainCategory" Width="1.5" PointX="1.5" PointY="13.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategory" Width="1.5" PointX="3.75" PointY="13.125" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ActivitySubCategoryDetail" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.BuildCase" Width="1.5" PointX="1.5" PointY="1.125" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Discount" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Facility" Width="1.5" PointX="0.75" PointY="28.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.FavoriteList" Width="1.5" PointX="13.5" PointY="17.875" />
         <EntityTypeShape EntityType="SingleApartmentModel.Information" Width="1.5" PointX="5.25" PointY="30.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.InformationCategory" Width="1.5" PointX="3" PointY="34.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.InformationContent" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SingleApartmentModel.JobService" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Lease" Width="1.5" PointX="6" PointY="24" />
+        <EntityTypeShape EntityType="SingleApartmentModel.InformationCategory" Width="1.5" PointX="3" PointY="31.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.InformationContent" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.JobService" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Lease" Width="1.5" PointX="6" PointY="23" />
         <EntityTypeShape EntityType="SingleApartmentModel.MemberInformationCategory" Width="1.5" PointX="3" PointY="44.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Message" Width="1.5" PointX="3" PointY="26.875" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Order" Width="1.5" PointX="6" PointY="19.625" />
-        <EntityTypeShape EntityType="SingleApartmentModel.OrderDetails" Width="1.5" PointX="13.5" PointY="19.75" />
-        <EntityTypeShape EntityType="SingleApartmentModel.OrderStatus" Width="1.5" PointX="3.75" PointY="24.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Participant" Width="1.5" PointX="8.25" PointY="16.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Picture" Width="1.5" PointX="6" PointY="11.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Product" Width="1.5" PointX="8.25" PointY="19.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ProductMainCategory" Width="1.5" PointX="3.75" PointY="7.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ProductPictures" Width="1.5" PointX="10.5" PointY="20.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.ProductSubCategory" Width="1.5" PointX="6" PointY="7.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.Room" Width="1.5" PointX="3.75" PointY="9.875" />
-        <EntityTypeShape EntityType="SingleApartmentModel.RoomFacilities" Width="1.5" PointX="9" PointY="11.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.RoomFavorite" Width="1.5" PointX="6" PointY="16.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.RoomInformation" Width="1.5" PointX="3" PointY="16.25" />
-        <EntityTypeShape EntityType="SingleApartmentModel.RoomStyle" Width="1.5" PointX="1.5" PointY="13" />
-        <EntityTypeShape EntityType="SingleApartmentModel.SubActivity" Width="1.5" PointX="5.25" PointY="27.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.tActivityCart" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Message" Width="1.5" PointX="3" PointY="40.125" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Order" Width="1.5" PointX="3" PointY="19.625" />
+        <EntityTypeShape EntityType="SingleApartmentModel.OrderDetails" Width="1.5" PointX="10.5" PointY="16.625" />
+        <EntityTypeShape EntityType="SingleApartmentModel.OrderStatus" Width="1.5" PointX="0.75" PointY="25.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Participant" Width="1.5" PointX="8.25" PointY="18.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Picture" Width="1.5" PointX="3" PointY="24" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Product" Width="1.5" PointX="8.25" PointY="13.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductMainCategory" Width="1.5" PointX="3.75" PointY="10.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductPictures" Width="1.5" PointX="10.5" PointY="20.625" />
+        <EntityTypeShape EntityType="SingleApartmentModel.ProductSubCategory" Width="1.5" PointX="6" PointY="10.25" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Room" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomFacilities" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomFavorite" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomInformation" Width="1.5" PointX="6" PointY="20.25" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomStyle" Width="1.5" PointX="1.5" PointY="4.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.SubActivity" Width="1.5" PointX="8.25" PointY="23.375" />
+        <EntityTypeShape EntityType="SingleApartmentModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.tActivityCart" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.tMember" Width="1.5" PointX="0.75" PointY="18.25" />
         <AssociationConnector Association="SingleApartmentModel.FK_Activity_ActivitySubCategory" />
         <AssociationConnector Association="SingleApartmentModel.FK_Activity_tMember" />
