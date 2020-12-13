@@ -1,17 +1,26 @@
-﻿@using PagedList
+﻿@using sln_SingleApartment.ViewModels
+
+@using PagedList
 @using PagedList.Mvc
 
 @model IPagedList<sln_SingleApartment.ViewModels.CMessage>
 
 @{
+    CMember db = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+    if (db == null)
+    {
+        //todo:如果沒有登入
+        Layout = "~/Views/Shared/HomePage/_Layout_HomePage.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+    }
 
-    Layout = "~/Views/Shared/HomePage/_Layout_HomePage.cshtml";
+
     ViewBag.Title = "MessageList";
     //Layout = null;
 }
-
-@*<h2>留言板</h2>*@
-
 
 <!-- Header -->
 <!-- Menu -->
@@ -60,8 +69,8 @@
                     @Html.DisplayNameFor(model => model.FirstOrDefault().MessageSubject)
                 </th>
                 @*<th style="font-size:unset">
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().MessageContent)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().MessageContent)
+                    </th>*@
 
                 <th style="font-size:unset"></th>
             </tr>
@@ -85,14 +94,14 @@
                         @Html.DisplayFor(modelItem => item.MessageSubject)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.MessageContent)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.MessageContent)
+                        </td>*@
 
                     <td>
                         <button onclick="showTable(this, @item.MessageID, '@item.MessageContent', '@item.AdminContent')" class="btn" style="height:unset;background-color:#8ddd59" flag="true">內文</button>
                         @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                        <button onclick="updateApply(@item.MessageID, '@item.GuestName', '@item.MessageSubject', '@item.MessageContent');" class="btn btn-info" style="height:unset;">回覆</button>
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                        <button onclick="updateApply(@item.MessageID, '@item.GuestName', '@item.MessageSubject', '@item.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>
                     </td>
                 </tr>
             }
@@ -237,7 +246,7 @@
     //管理者回覆  第二個 Modal
     function updateApply(p_MessageID, p_GuestName, p_MessageSubject, p_MessageContent) {
         $("#exampleModal2").modal('show');
-        
+
         //修改
         $("#id_guestname2").attr('disabled', true);   //失效
         $("#id_subject2").attr('disabled', true);     //失效
@@ -328,6 +337,32 @@
         //console.log($("#id_OrderType").val());
         //這一行很重要
         $("#id_OrderType").val("@ViewBag.OrderBy");
+        $('.AdminReply').hide();
     });
 
 </script>
+
+@{
+    if (db != null)
+    {
+        <script>
+            $(function() {
+                    var role = '@db.fRole';
+                    var el = document.getElementById("isAdmin");
+                    if (role == "Admin") {
+                        el.innerHTML =
+                            '<li><a href="#">首頁</a></li>' +
+                            '<li>@Html.ActionLink("房間管理", "BackRoomManage", "RoomBackend") </li>' +
+                            '<li>@Html.ActionLink("商品管理", "ProductList", "ProductBack")</li>' +
+                            '<li>@Html.ActionLink("訂單管理", "BackupOrderList", "ProductBack")</li>' +
+                            '<li>@Html.ActionLink("訊息管理", "BackList", "BackInformation")</li>' +
+                            '<li>@Html.ActionLink("活動管理", "Back_List", "Activity")</li>' +
+                            '<li>@Html.ActionLink("會員管理", "List", "Member")</li >' +
+                            '<li>@Html.ActionLink("窩居留言板", "MessageList", "MailMessage")</li>';
+                        $('.AdminReply').show();
+                    }
+                });
+        </script>
+    }
+}
+       
