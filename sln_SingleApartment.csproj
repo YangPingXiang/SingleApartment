@@ -244,6 +244,9 @@
     <Compile Include="Models\RoomFavorite.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoomInformation.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoomStyle.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -263,6 +266,9 @@
       <DependentUpon>SingleApartmentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SubActivity.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tActivityCart.cs">
@@ -310,6 +316,7 @@
     <Compile Include="ViewModels\CShoppingCart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AllPay.Payment.Integration.dll" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
