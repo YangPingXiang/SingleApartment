@@ -81,7 +81,7 @@ namespace sln_SingleApartment.Controllers
             }
         }
         public ActionResult MessageList(int pageNum = 1, string orderByString = "ByDateAsc")
-        {
+        {            
             try
             {
                 int pageSize = 5;

@@ -2,10 +2,11 @@
     <title>窩居公寓</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
-
+    
 </head>
-
 <body>
     <script src="~/Content/HomePage/js/jquery.min.js"></script>
     <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
@@ -16,7 +17,7 @@
         </nav>
         <a href="#" class="logo"><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
         <nav class="right " style="margin-top:20px">
-            @Html.ActionLink("Log Out", "LogOut", "Member", new { @class = "button alt" })
+            <a href="@Url.Action("LogOut","Member")" class="button alt">Log Out</a>
         </nav>
 
     </header>
@@ -59,7 +60,8 @@
     @RenderSection("scripts", required: false)
 
     <!-- Scripts -->
-
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script src="~/Content/HomePage/js/util.js"></script>
     <script src="~/Content/HomePage/js/skel.min.js"></script>
