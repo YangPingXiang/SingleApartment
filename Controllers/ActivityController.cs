@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 //using System.Windows.Forms;
 
 
@@ -15,7 +16,7 @@ namespace sln_SingleApartment.Controllers
     public class ActivityController : Controller
     {
         // GET: List
-        public ActionResult List()
+        public ActionResult List(string newActivity,int page = 1)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
 
@@ -26,20 +27,45 @@ namespace sln_SingleApartment.Controllers
             #endregion
 
 
-            string search = Request.Form["txtKey"];
-            
+            string search = Request.Form["acName"];
+            string searchac = Request.Form["subName"];
             IEnumerable<Activity> table = null;
-            if (string.IsNullOrEmpty(search))
+            List<CActivity> list = new List<CActivity>();
+            if (newActivity == "查看最新活動")
             {
-                table = from p in db.Activity
-                     select p;
+                var newaclistt = (from p in db.Activity
+                             orderby p.ActivityID descending
+                             select p).Take(5).ToList();
+                table = newaclistt;
             }
             else
             {
-                table = from p in db.Activity
-                        where p.ActivityName.Contains(search)
-                        select p;
+
+                if (string.IsNullOrEmpty(search) && string.IsNullOrEmpty(searchac))
+                {
+                    table = from p in db.Activity
+                            select p;
+                }
+                else if (searchac != "")
+                {
+                    table = from p in db.Activity
+                            where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                            select p;
+                }
+                else if (search != "")
+                {
+                    table = from p in db.Activity
+                            where p.ActivityName.Contains(search)
+                            select p;
+                }
+                else
+                {
+                    table = from p in db.Activity
+                            where p.ActivityName.Contains(search) && p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                            select p;
+                }
             }
+
             //下拉式選單
             #region SubCategoryName
             List<string> cNamelist = new List<string>();
@@ -53,9 +79,16 @@ namespace sln_SingleApartment.Controllers
                 ViewBag.subName = Namelist;
             }
             #endregion
-       
+            #region 活動名稱下拉式選單
+
+            var acNamelist = (from p in db.Activity
+                    select p.ActivityName).Distinct().ToList();
+                       
+                SelectList ActivityNamelist = new SelectList(acNamelist, "Name");
+                ViewBag.acName = ActivityNamelist;
+            #endregion
             #region 活動啟動更新狀態
-            List<DateTime> acEndtime = new List<DateTime>();
+            List<DateTime?> acEndtime = new List<DateTime?>();
             List<int> lnacid = new List<int>();
 
           
@@ -136,12 +169,12 @@ namespace sln_SingleApartment.Controllers
 
                         }
 
-                        else if (y.acstates != "活動時間已過")
-                        {
-                            nIDbuffer = ParticipantID[j];
-                            Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
-                            acSt.Status = "可參加";
-                        }
+                        //else if (y.acstates != "活動時間已過")
+                        //{
+                        //    nIDbuffer = ParticipantID[j];
+                        //    Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
+                        //    acSt.Status = "可參加";
+                        //}
 
                     }
             
@@ -187,6 +220,193 @@ namespace sln_SingleApartment.Controllers
             //}
             #endregion
             #region 活動時間已過下架活動
+            //for (int me = 0; me < MemberIDList.Count; me++)
+            //{
+            //    if (MemberfActivityMessageList[me] == "TRUE")
+            //    {
+            //        var statusendtime = (from u in db.Activity
+            //                             where u.Status == "活動時間已過"
+            //                             select u.ActivityID).ToList();
+
+            //        var dbInformationSource = (from dbin in db.Information
+            //                            select dbin.InformationSource).ToList();
+            //        var dbDocumentID = (from dbin in db.Information
+            //                             select dbin.DocumentID).ToList();
+            //        //foreach(var informationoverlap in dbinformation)
+            //        //{
+            //        //    int? aaa=informationoverlap.InformationSource;
+            //        //    int bbb = informationoverlap.DocumentID;
+            //        //}
+
+            //        int p_source_id = 0;
+            //        for (int sst = 0; sst < statusendtime.Count; sst++)
+            //        {
+            //             p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
+            //            bool flag;
+            //            CInformationFactory infactory = new CInformationFactory();
+
+            //            flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
+
+
+            //        }
+                    
+                           
+                      
+            //    }
+            //}
+            #endregion
+           
+            
+            foreach (Activity p in table)
+                list.Add(new CActivity() { entity = p });
+            int pageSize = 5;
+            int currentpage = page < 1 ? 1 : page;
+            var pagelist = list.ToPagedList(currentpage, pageSize);
+            return View(pagelist);
+
+           // return View(list);
+        }
+        //public ActionResult List(string newActivity)
+        //{
+        //    SingleApartmentEntities db = new SingleApartmentEntities();
+        //    List<Activity> list = new List<Activity>();
+            
+        //    return View(list);
+        //}
+
+        //後台
+        public ActionResult Back_List()
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+
+            #region 登入者名稱
+            CMember member = Session[CDictionary.welcome] as CMember;
+            int memberID = member.fMemberId;
+            ViewBag.memberID = memberID;
+            #endregion
+
+            string search = Request.Form["txtKey"];
+
+            IEnumerable<Activity> table = null;
+            if (string.IsNullOrEmpty(search))
+            {
+                table = from p in db.Activity
+                        select p;
+            }
+            else
+            {
+                table = from p in db.Activity
+                        where p.ActivityName.Contains(search)
+                        select p;
+            }
+            //下拉式選單
+            #region SubCategoryName
+            List<string> cNamelist = new List<string>();
+            var q = from p in db.ActivitySubCategory
+                    select p.ActivitySubCategoryName;
+            foreach (var g in q)
+            {
+                cNamelist.Add(g);
+                SelectList Namelist = new SelectList(cNamelist, "Name");
+                ViewBag.subName = Namelist;
+            }
+            #endregion
+            #region 活動啟動更新狀態
+            List<DateTime?> acEndtime = new List<DateTime?>();
+            List<int> lnacid = new List<int>();
+            var actimenow = from p in db.Activity
+                            select new { endtime = p.EndTime, acid = p.ActivityID };
+            foreach (var r in actimenow)
+            {
+                acEndtime.Add(r.endtime);
+                lnacid.Add(r.acid);
+            }
+            int nowacid = 0;
+            for (int i = 0; i < acEndtime.Count; i++)
+            {
+
+                if (acEndtime[i] < DateTime.Now)
+                {
+                    nowacid = lnacid[i];
+                    Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nowacid);
+                    acSt.Status = "活動時間已過";
+                }
+                else
+                {
+                    nowacid = lnacid[i];
+                    Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nowacid);
+                    acSt.Status = "可參加";
+                }
+            }
+            #endregion
+            #region 活動人數確認
+            int nIDcount = 0;
+            int nIDbuffer = 0;
+            List<int> ParticipantID = new List<int>();
+            //已參加人員數量
+            List<int> ActivityIDCount = new List<int>();
+            var palist = from p in db.Participant
+                         group p.ActivityID by p.ActivityID into g
+                         select new
+                         {
+                             g.Key,
+                             AcIDcount = g.Count()
+                         };
+
+            foreach (var x in palist)
+            {
+                ParticipantID.Add(x.Key);
+                ActivityIDCount.Add(x.AcIDcount);
+                ViewBag.subParticipantID = ParticipantID;
+                ViewBag.subActivityIDCount = ActivityIDCount;
+            }
+
+            for (int j = 0; j < ActivityIDCount.Count; j++)
+            {
+                nIDbuffer = ParticipantID[j];
+                var AcIDCounttotle = from k in db.Activity
+                                     select new { acidbuffer = k.ActivityID, acpeoplecount = k.PeopleCount, acstates = k.Status };
+                foreach (var y in AcIDCounttotle)
+                {
+                    if (y.acidbuffer == ParticipantID[j])
+                    {
+
+                        if (y.acpeoplecount <= ActivityIDCount[j])
+                        {
+                            nIDcount = ParticipantID[j];
+                            Activity aaaa = db.Activity.FirstOrDefault(p => p.ActivityID == nIDcount);
+                            aaaa.Status = "人員已滿";
+
+                        }
+
+                        else if (y.acstates != "活動時間已過")
+                        {
+                            nIDbuffer = ParticipantID[j];
+                            Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
+                            acSt.Status = "可參加";
+                        }
+
+                    }
+
+                }
+            }
+            #endregion
+            db.SaveChanges();//db SaveChange
+
+            #region 人數已滿下架活動
+            List<int> MemberIDList = new List<int>();
+            List<string> MemberfActivityMessageList = new List<string>();
+            tMember tMember = new tMember();
+            var membermessage = from mbmsg in db.tMember
+                                select new { MbID = mbmsg.fMemberId, MbMessage = mbmsg.fActivityMessage };
+            foreach (var m in membermessage)
+            {
+                MemberIDList.Add(m.MbID);
+                MemberfActivityMessageList.Add(m.MbMessage);
+            }
+          
+            #endregion
+            #region 活動時間已過下架活動
             for (int me = 0; me < MemberIDList.Count; me++)
             {
                 if (MemberfActivityMessageList[me] == "TRUE")
@@ -205,13 +425,14 @@ namespace sln_SingleApartment.Controllers
                 }
             }
             #endregion
-           
-            List< CActivity > list = new List<CActivity>();
+
+            List<CActivity> list = new List<CActivity>();
             foreach (Activity p in table)
                 list.Add(new CActivity() { entity = p });
-          
+
             return View(list);
         }
+
 
         // GET: Joined_List
         public ActionResult Joined_List()
@@ -238,10 +459,6 @@ namespace sln_SingleApartment.Controllers
             return View(list);
 
         }
-
-
-
-
 
         //暫存到購物車
         public ActionResult AddToCart_Session(int id)
@@ -272,39 +489,6 @@ namespace sln_SingleApartment.Controllers
             
             return RedirectToAction("List");
         }
-
-        //[HttpPost]
-        //public ActionResult AddToCart_Session(CShoppingCart ac)
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
-        //    Activity table = db.Activity.FirstOrDefault(p => p.ActivityID == ac.txtfId);
-        //    if (table != null)
-        //    {
-        //        CActivityCart tb = new CActivityCart();
-        //        tb.fJoinedId = table.ActivityID;
-        //        //tb.SubCategoryDetailID = table.SubCategoryDetailID;
-        //        tb.fAvtivityName = table.ActivityName;
-        //        tb.fStartTime = table.StartTime;
-        //        tb.fEndTime = table.EndTime;
-        //        tb.fLocation = table.MeetingPoint;
-        //        tb.fPeopleCount = table.PeopleCount;
-        //        tb.fMemberId = table.MemberID;
-        //        //tb.Note = table.Note;
-        //        tb.fNote = table.Note;
-        //        List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
-        //        if (list == null)
-        //        {
-        //            list = new List<CActivityCart>();
-        //            Session[CDictionary.Cart_Key] = list;
-        //        }
-        //        list.Add(tb);
-        //    }
-        //    //CActivity CA = new CActivity() { entity = table };
-        //    //return View(CA);
-        //    return RedirectToAction("List");
-        //}
-
-
 
         // GET: Create
         public ActionResult Create()

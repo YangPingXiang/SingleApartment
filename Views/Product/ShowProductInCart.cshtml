@@ -48,7 +48,8 @@
                                 </table>
                             </div>
                             <div class="wc-proceed-to-checkout">
-                                <a class="wc-forward" href="#">繼續購物</a>
+                                
+                                <a class="wc-forward" onclick="history.back();">回到上一頁</a>
                             </div>
                         </div>
                     </div>
@@ -84,8 +85,8 @@
                                             </td>
                                             <td class="sop-cart an-sh">
                                                 <div class="quantity ray">
-                                                    <input class="input-text qty text" type="number" size="4" title="Qty" value="@item.Quantity" min="0" step="1">
-                                                    <a class="remove" onclick="deleteOneProduct(@item.ProductID)">
+                                                    <input class="input-text qty text" type="number" size="4" title="Qty" value="@item.Quantity" min="0" step="1" onchange="ChangeQuantity(@item.ProductID)">
+                                                    <a class="remove" onclick="deleteOneProductC(@item.ProductID)">
                                                         <span>x</span>
                                                     </a>
                                                 </div>
@@ -130,14 +131,14 @@
                                         <tr class="cart-subtotal">
                                             <th>Subtotal:</th>
                                             <td>
-                                                <span class="amount">$ @Sum</span>
+                                                <span class="amount TotalPrice" >$ @Sum</span>
                                             </td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>Total:</th>
                                             <td>
                                                 <strong>
-                                                    <span class="amount">$ @Sum</span>
+                                                    <span class="amount TotalPrice">$ @Sum</span>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -421,7 +422,8 @@
 *@
 <!-- #endregion quick view end -->
 <script>
-    function deleteOneProduct(id) {
+    function deleteOneProductC(id) {
+        console.log("CC");
         $.ajax({
             type: "POST",
             url: "@Url.Action("RemoveONEProductInCart")",
@@ -433,5 +435,27 @@
                 window.location.reload();
             }
         })
+    }
+    function ChangeQuantity(productID) {
+        console.log("In ChangeQuantity Function");
+        console.log(productID);
+        let qty = $(event.currentTarget).val();
+        console.log(qty);
+        $.ajax({
+            type: "POST", 
+            url: "@Url.Action("ChangeONEProductQuantity")",
+            data: {
+                ProductID: productID,
+                Quantity: qty
+            },
+            success: function (data) {
+                if (data.ans == "成功") {
+                    $(".TotalPrice").text("$ " + data.sum);
+                }
+                reload();
+            }
+
+        });
+
     }
 </script>

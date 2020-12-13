@@ -11,6 +11,7 @@ namespace sln_SingleApartment.Controllers
 {
     public class MemberController : Controller
     {
+      
         SingleApartmentEntities db = new SingleApartmentEntities();
         //後台會員列表   12月2號-修改將參考型別改為CMemberRister
         public ActionResult List()
@@ -56,8 +57,39 @@ namespace sln_SingleApartment.Controllers
 
                 return RedirectToAction("Home");
             }
+            else
+            {
+                ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
+                
+            }
+           return View();
+        }
+
+        public ActionResult Robot(FormCollection form, CLogIn login)
+        {
+            var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
+            if (isVerify)
+            {
+                login.txtAccount = Request.Form["txtaccount"];
+                login.txtPassword = Request.Form["txtpwd"];
+                CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
+                if (cm != null)
+                {
+                    Session[CDictionary.welcome] = cm;
+                    CMember member = Session[CDictionary.welcome] as CMember;
+
+                    return RedirectToAction("Home");
+                }
+                else
+                {
+                    ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
+
+                }
+
+            }
             return View();
         }
+
 
         //註冊
         public ActionResult Register()
@@ -73,7 +105,7 @@ namespace sln_SingleApartment.Controllers
             {
                 return View();
             }
-            var member = db.tMember.Where(p => p.fMemberId == input.fMemberId).FirstOrDefault();
+            var member = db.tMember.Where(p => p.fAccount == input.fAccount).FirstOrDefault();
 
             if (member == null)
             {
@@ -110,6 +142,16 @@ namespace sln_SingleApartment.Controllers
             ViewBag.Message = "此帳號已有人使用，請輸入新的帳號";
             return View();
         }
+
+        //public string Check()
+        //{
+        //    string val1 = Request["val1"].ToString();
+        //    string result="0";
+        //    var member = db.tMember.Where(p => p.fMemberName == val1).FirstOrDefault();
+        //    if (member != null)
+        //        result = "1";
+        //    return result;
+        //}
 
         //登出
         public ActionResult LogOut()
@@ -182,7 +224,108 @@ namespace sln_SingleApartment.Controllers
         //  會員中心
         public ActionResult MemberCenter()
         {
-            return View();
+            CMember me = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+            var tm = db.tMember.Where(m => m.fMemberId == me.fMemberId).FirstOrDefault();
+
+            CMultiple cm = new CMultiple();
+            cm.t = tm;
+
+            //Room
+            var tr = db.Lease.Where(l => l.MemberID == me.fMemberId).FirstOrDefault();
+            if (tr != null)
+            {
+                cm.r = tr.Room;
+                cm.rs = tr.Room.RoomStyle;
+            }
+
+            //Activity
+            var ta = db.Activity.Where(a => a.MemberID == me.fMemberId).ToList();
+            //var z = db.Activity.Where(a => a.MemberID == me.fMemberId).FirstOrDefault();
+            
+
+            List<Activity> activities = new List<Activity>();
+            foreach(var ac in ta)
+            {
+                activities.Add(ac);
+                
+            }
+            cm.atv = activities;
+
+            List<Product> products = new List<Product>();
+            foreach (var i  in ta)
+            {
+                var p = db.Product.Where(s => s.ActivityID == i.ActivityID).ToList();
+                if (p != null)
+                {
+                    foreach(var v in p)
+                    {
+                        products.Add(v);
+                    }
+                } 
+            }
+            cm.prod = products;
+            return View(cm);
+        }
+
+
+
+
+
+
+        public JsonResult CheckName(string cn)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fMemberName == cn).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+        }
+        public JsonResult CheckAccount(string ca)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fAccount == ca).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
+        }
+        public JsonResult CheckEmail(string ce)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fEmail == ce).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
+        }
+        public JsonResult CheckPhone(string cp)
+        {
+            System.Threading.Thread.Sleep(800);
+            var search = db.tMember.Where(p => p.fPhone == cp).FirstOrDefault();
+            if (search != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
         }
     }
 }

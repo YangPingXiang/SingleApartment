@@ -14,6 +14,8 @@ namespace tryTemplete_Room.Controllers
     {
         SingleApartmentEntities dbSA = new SingleApartmentEntities();
         // GET: RoomBackend
+        #region 先等一下
+
         //public ActionResult BackListBuildCase()
         //{
 
@@ -172,7 +174,7 @@ namespace tryTemplete_Room.Controllers
         //    return View(lt_roomstyle);
 
         //}
-
+        #endregion
 
         public ActionResult BackRoomManage(int page = 1, int pageSize = 10)
         {
@@ -192,12 +194,88 @@ namespace tryTemplete_Room.Controllers
             return View(query);
         }
 
+        public ActionResult BackPartialKeyWordResult(string keyword, int page = 1, int pageSize = 10)
+        {
+            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
+
+
+            var r = dbSA.Room.Where(x => x.RoomName.Contains(keyword) || x.Lease.FirstOrDefault().tMember.fMemberName.Contains(keyword)).OrderBy(x => x.RoomName);
+            var test = r.ToList();
+            foreach (Room item in r)
+            {
+                room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
+            }
+
+            IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
+            ViewData.Model = query;
+            return PartialView("_BackPartialKeyWordResult");
+        }
+
+
         public ActionResult BackCreateRoom()
         {
             return View();
         }
 
 
+        public ActionResult BackRoomDetail(/*int page = 1, int pageSize = 10 ,*/ string id)
+        {
+            //CAboutRoomViewModel abt_VM = new CAboutRoomViewModel();
+
+
+
+            var table = dbSA.Room.Where(x => x.ID.ToString() == id);
+
+
+            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
+            //List<CRoomFacilityViewModel> roomfacility_VM_lt = new List<CRoomFacilityViewModel>();
+            //List<CFacilityViewModel> facility_VM_lt = new List<CFacilityViewModel>();
+
+            foreach (var item in table)
+            {
+                room_VM_lt.Add(new CRoomViewModel() { entity_room = item });
+
+            }
+            //abt_VM.roomViewModels = room_VM_lt;
+
+            //foreach(var item in table)
+            //{
+            //    roomfacility_VM_lt.Add(new CRoomFacilityViewModel() { entity_roomfacilities = item.rf });
+            //}
+            //abt_VM.roomfacilityViewModel = roomfacility_VM_lt;
+
+            //foreach(var item in table)
+            //{
+            //    facility_VM_lt.Add(new CFacilityViewModel() { entity_Facility = item.f });
+            //}
+            //abt_VM.facilityViewModels = facility_VM_lt;
+
+            //List<CAboutRoomViewModel> abt_VM_lt = new List<CAboutRoomViewModel>();
+
+            //abt_VM_lt.Add(abt_VM);
+
+            //var query = room_VM_lt.ToPagedList(page, pageSize);
+
+            return View(room_VM_lt);
+        }
+
+
+        public ActionResult BackEditTheRoomDetail(string id)
+        {
+
+            var table = dbSA.Room.Where(x => x.ID.ToString() == id);
+
+
+            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
+
+            foreach (var item in table)
+            {
+                room_VM_lt.Add(new CRoomViewModel() { entity_room = item });
+
+            }
+
+            return View(room_VM_lt);
+        }
 
     }
 }

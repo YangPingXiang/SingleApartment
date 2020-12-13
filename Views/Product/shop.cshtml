@@ -51,24 +51,29 @@
 
                         </ul>
                     </div>
+                    @using (Html.BeginForm("shop", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="shop-one re-shop-one">
+                            <h3 class="wg-title2">價格區間</h3>
+                            <div class="widget shop-filter">
+                                <div class="info_widget">
+                                    <div class="price_filter">
+                                        <div id="slider-range" onchange="SearchProductsByPrice()"></div>
+                                        <div id="amount">
 
-                    <div class="shop-one re-shop-one">
-                        <h3 class="wg-title2">價格區間</h3>
-                        <div class="widget shop-filter">
-                            <div class="info_widget">
-                                <div class="price_filter">
-                                    <div id="slider-range"></div>
-                                    <div id="amount">
-                                        <input type="text" name="first_price" class="first_price" />
-                                        <input type="text" name="last_price" class="last_price" />
-                                        <button class="button-shop" type="submit"><i class="fa fa-search search-icon"></i></button>
+                                            <input type="text" name="first_price" class="first_price" onchange="SearchProductsByPrice()"/>
+                                            <input type="text" name="last_price" class="last_price" onchange="SearchProductsByPrice()"/>
+                                            <div style="margin-top:15px"></div>
+                                            <input type="file" name="imgPhoto" style="display:inline" />
+                                            <button class="button-shop" type="submit"><i class="fa fa-search search-icon"></i></button>
+
+                                        </div>
+
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    }
                     <!-- #region Bestseller & 下面那ㄍ圖-->
 
                     <div class="top-shop-sidebar an-shop">
@@ -176,6 +181,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- Tab panes -->
                             <div class="tab-content" id="ProductTab">
                                 <div role="tabpanel" class="tab-pane active" id="home">
@@ -187,8 +193,11 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -331,17 +340,29 @@
 </div>
 <!-- quick view end -->
 <!-- #region 顯示產品的功能Ajax-->
+
 <script>
     $(function () {
-        SearchProduct();
-        $('#allpd').click(function () { SearchProduct() });
+        $('#allpd').click(function() { SearchProduct() });
+        $('.myMainCate').click(function() {SearchProductsByMainC($(this).prop("name"));});
+        $('.mySubCate').click(function () { SearchProductsBySubC($(this).prop("name")); });
 
-        $('.myMainCate').click(function () {
-            SearchProductsByMainC($(this).prop("name"));
-        });
-        $('.mySubCate').click(function () {
-            SearchProductsBySubC($(this).prop("name"));
-        });
+        @{
+
+            if (ViewBag.ByPhoto == "true")
+            {
+               @:SearchProductsByKeyWord("@ViewBag.Keyword");
+           }
+           
+            else
+            {
+                @:SearchProduct();
+            }
+        }
+
+
+
+
 
     });
 
@@ -353,7 +374,7 @@
             url: "@Url.Action("PartialProductTabPane")",
             data: {
                 MemberID: @ViewBag.MemberID,
-                pageSize : pagesize
+                pageSize: pagesize
             },
             success: function (data) {
                 $("#home").html(data);
@@ -372,6 +393,69 @@
         });
     }
 
+    function SearchProductsByKeyWord(str) {
+        pagesize = $("#pageSize").val();
+        console.log("In SearchProductKW Function");
+        console.log(str);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                KeyWord: str,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#home").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                KeyWord: str,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
+            }
+        });
+    }
+    function SearchProductsByPrice() {
+        first = $('.first_price').val();
+        last = $('.last_price').val();
+        pagesize = $("#pageSize").val();
+        console.log("In SearchProductsByPrice Function");
+        console.log(first);
+        console.log(last);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductTabPane")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                firstprice: first,
+                lastprice: last,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#home").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PartialProductProfile")",
+            data: {
+                MemberID: @ViewBag.MemberID,
+                firstprice: first,
+                lastprice: last,
+                pageSize: pagesize
+            },
+            success: function (data) {
+                $("#zone_product_detail").html(data);
+            }
+        });
+    }
     function SearchProductsByMainC(id) {
         pagesize = $("#pageSize").val();
         $.ajax({
@@ -426,28 +510,26 @@
             }
         });
     }
-    @* 一頁幾筆搜尋 *@
+            @* 一頁幾筆搜尋 *@
     function SearchProductForNumbers() {
         SearchProduct();
     }
     @* 加到最愛 *@
     function AddToFavoriteList(MemberID) {
-
         var pdID = $(event.currentTarget).prop("name");
         $.ajax({
-                    url: '@Url.Action("AddToFavorite", "Product")',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        MemberID: MemberID,
-                        ProductID: pdID
-                        }),
-                    contentType: 'application/json',
-                    type: 'POST',
-                    success: function (data)
-                    {
-                        window.alert(JSON.parse(data).ans);
-                    }
-        })
+            url: '@Url.Action("AddToFavorite", "Product")',
+            dataType: 'json',
+            data: JSON.stringify({
+                MemberID: MemberID,
+                ProductID: pdID
+            }),
+            contentType: 'application/json',
+            type: 'POST',
+            success: function (data) {
+                window.alert(JSON.parse(data).ans);
+            }
+        });
     }
     @*加到購物車*@
     function AddToCart() {
@@ -463,9 +545,9 @@
                 window.alert("已加入購物車！");
                 $(".drop-cart").html(data);
             }
-        })
+        });
     }
 
 </script>
 
-<!-- #endregion -->
+            <!-- #endregion -->

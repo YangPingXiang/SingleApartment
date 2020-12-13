@@ -9,41 +9,44 @@
 
 <body>
 
+
     <div style="border:2px solid black; margin:50px 80px 50px 80px; padding:40px;">
 
-        <button id="btnAdd" type="button" class="btn btn-info">
-            新增房間
-        </button>
+        <div>
+            <button id="btnAdd" type="button" class="btn btn-info" style="">
+                新增房間
+            </button>
+        </div>
 
-        <div style="margin-left:200px; margin-bottom:50px;">
-            <span style="font-weight:500;"> 房號</span>
-            @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+        <!--如果有時間 做關鍵字的Partial View -->
+        <div style="margin-left:250px; margin-bottom:50px; width:1000px; border-bottom:2px solid lightgray; padding-bottom:20px; ">
+            <h3 style="margin-bottom:35px; text-align:center; ">查詢條件</h3>
+            <span style="margin-left:60px; font-weight:500;">建案代號</span>
+            @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_b", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-            <span style="margin-left:15px; font-weight:500;">合約到期日</span>
-            @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+            <span style=" margin-left:15px; font-weight:500;"> 房號</span>
+            @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_r", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-            <span style="margin-left:15px; font-weight:500;">建案代號</span>
-            @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+            <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
+            @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_mn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-
-            <select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:200px; font-weight:500;width:200px;  ">
+            <select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:40px; font-weight:500;width:200px;  ">
 
                 <option value="999">選擇查詢方式...</option>
                 <option value="100">依建案分類</option>
                 <option value="200">依樓層分類</option>
                 <option value="400">依房型類型內容分類</option>
-                <option value="300">依關鍵字</option>
-                <option value="500">依當日新訊息</option>
-                <option value="500">顯示全部</option>
+
             </select>
 
         </div>
 
+        <div id="keyresult">
 
-        @*<p style="background-color:lightblue; width:150px;">
-                @Html.ActionLink("Create New", "Create")
-            </p>*@
-        <table id="abtroomtable" style="width:900px; margin:10px auto; ">
+        </div>
+
+
+        <table id="abtroomtable" style="width:1000px; margin:10px auto; ">
             <tr style="background-color:lightblue; text-align:center;">
 
                 <th>
@@ -53,7 +56,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.roomtype)
                 </th>
-
+                <th>
+                    房客姓名
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.rent)
                 </th>
@@ -78,6 +83,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.roomtype)
                     </td>
+                    <td>
+                        @foreach (var i in item.entity_room.Lease)
+                        {
+                            @Html.DisplayFor(modelItem => i.tMember.fMemberName)
+                            <br>
+                        }
+
+
+                    </td>
 
                     <td>
                         NT @Html.DisplayFor(modelItem => item.rent)
@@ -91,14 +105,14 @@
                     </td>
                     <td>
                         @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("詳細資料", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }) |
                         @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn - danger" })
                     </td>
                 </tr>
             }
 
         </table>
-        <div style="float:inherit; margin-left:480px;">
+        <div id="abtroomtable_pagelist" style="float:inherit; margin-left:480px;">
             @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
         </div>
 
@@ -106,8 +120,28 @@
     </div>
 
     <script>
-
+        function SearchRoomByRoomName(keyword) {
+            $.ajax({
+                url: "@Url.Action("BackPartialKeyWordResult")",
+                data: { keyword: keyword },
+                success: function (data) { $("#keyresult").html(data) }
+            })
+        }
         $(document).ready(function () {
+
+           
+
+            $('.txtkeybox').on("keydown", function (event) {
+                if (event.key === "Enter") {
+                    let k = $("#txtkeybox_b").val() + $("#txtkeybox_r").val() + $("#txtkeybox_mn").val();
+                    console.log( 'key down')
+                    console.log(k);
+                    SearchRoomByRoomName(k);
+                    $("#abtroomtable").fadeOut();
+                    $("#abtroomtable_pagelist").fadeOut();
+                } // Handle press
+
+            })
 
             $('#abtroomtable').on("click", ".btn-danger", function () {
                 $(this).parents("tr").remove();

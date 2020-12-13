@@ -1,7 +1,12 @@
-﻿using sln_SingleApartment.ViewModels;
+﻿using Newtonsoft.Json;
+using sln_SingleApartment.ViewModel;
+using sln_SingleApartment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace sln_SingleApartment.Models
@@ -107,13 +112,19 @@ namespace sln_SingleApartment.Models
             ShopViewModel result = new ShopViewModel() { product = list_product, MainCategory = list_main, SubCategory = list_sub };
             return result;
         }
-        public List<CProductViewModel> SearchProductsBy(int? MainCategory=null, int? SubCategory=null, string KeyWord="")
+        public List<CProductViewModel> SearchProductsBy(int? MainCategory=null, int? SubCategory=null,string KeyWord="")
         {
+            string[] kw = null;
+            if (KeyWord !="")
+            {
+                 kw = KeyWord.Split(' ');
+            }
             List<CProductViewModel> result = new List<CProductViewModel>();
             var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
-            if (!String.IsNullOrEmpty(KeyWord))
+            if (kw!= null && kw.Length!=0)
             {
-                pd = db.Product.Where(r => r.ProductName.Contains(KeyWord) && r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
+                pd = pd.Where(p => kw.Any(x => p.ProductName.Contains(x)));
+                var k = pd.ToList();
             }
             else if (SubCategory!= null)
             {
@@ -130,9 +141,130 @@ namespace sln_SingleApartment.Models
             return result;
         }
 
-
+        public List<CProductViewModel> SearchProductsByPrice(int FirstPrice, int LastPrice)
+        {
+            List<CProductViewModel> result = new List<CProductViewModel>();
+            var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
+            pd = pd.Where(r => r.UnitPrice >= FirstPrice && r.UnitPrice <= LastPrice);
+            foreach (var item in pd)
+            {
+                result.Add(new CProductViewModel() { entity = item });
+            }
+            return result;
+        }
         #endregion
+        #region 訂單
+        public List<COrder> SearchOrders()
+        {
+            List<COrder> list = new List<COrder>();
+            var orders = db.Order.Where(r => r.MemberID == tMember.fMemberId);
+            foreach (var item in orders)
+            {
+                COrder order = new COrder() { order_entity = item };
+                list.Add(order);
+            }
+            return list;
+        }
+        public List<COrderDetailsViewModel> SearchOrder(int id)
+        {
+            List<COrderDetailsViewModel> lt = new List<COrderDetailsViewModel>();
+            var odd = db.OrderDetails.Where(r => r.OrderID == id);
+            foreach(var item in odd)
+            {
+                lt.Add(new COrderDetailsViewModel() { entity = item });
+            }
+            return lt;
+        }
+        public string DeleteAnOrder(int id)
+        {
+            Order od = db.Order.FirstOrDefault(p => p.OrderID == id);
 
+            var odd = db.OrderDetails.Where(q => q.OrderID == id);
+            if (od != null)
+            {
+                if (od.OrderDate.AddDays(7) < DateTime.Now)
+                    return "此筆訂單已超過七天鑑賞期，無法退貨囉！";
+                if (odd.Count() != 0)
+                {
+                    foreach (var ITEM in odd)
+                    {
+                        db.OrderDetails.Remove(ITEM);
+                    }
+                }
+                db.Order.Remove(od);
+                CInformationFactory x = new CInformationFactory();
+                x.Add(tMember.fMemberId, 100, id, 30020);
+                db.SaveChanges();
+                return "您的訂單已取消～";
+            }
+            return "發生錯誤，請稍後再試！";
+        }
+        public string MakeOrder(List<CAddtoSessionView> cart)
+        {
+            Order order = new Order();
+            int totalPrice = 0;
+            if (cart!= null && cart.Count() != 0)
+            {
+                foreach(var item in cart)
+                {
+                    try
+                    {
+                        OrderDetails orderDetail = new OrderDetails();
+                        orderDetail.ProductID = item.txtProductID;
+                        orderDetail.Quantity = item.txtQuantity;
+                        //同步修改庫存
+                        db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().Stock -= item.txtQuantity;
+                        orderDetail.ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName;
+                        orderDetail.UnitPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice;
+                        totalPrice += item.txtQuantity * orderDetail.UnitPrice;
+                        order.OrderDetails.Add(orderDetail);
+                        
+                    }
+                    catch (Exception)
+                    {
+                        return "發生錯誤，請稍後再試！";
+                    }
+                }
+               
+            }
+            order.OrderDate = DateTime.Now;
+            order.ArrivedDate = DateTime.Now.AddDays(7);
+            order.TotalAmount = totalPrice;
+            order.OrderStatusID = 1;
+            order.SendingStatus = "配送中";
+            order.PayStatus = "已付款";
+            order.MemberID = this.tMember.fMemberId;
+            try
+            {
+                db.Order.Add(order);
+                db.SaveChanges();
+                CInformationFactory x = new CInformationFactory();
+                x.Add(tMember.fMemberId, 100, order.OrderID, 30010);
+                
+            }
+            catch (Exception)
+            {
+                return "發生錯誤，請稍後再試！";
+            }
+            return "成功下訂！";
+        }
+        #endregion
+        #region 智慧辨識
+        public class Answer
+        {
+            public string id { get; set; }
+            public string project { get; set; }
+            public string iteration { get; set; }
+            public string created { get; set; }
+            public object[] predictions { get; set; }
+        }
+        public class MyObject
+        {
+            public double probability { get; set; }
+            public string tagId { get; set; }
+            public string tagName { get; set; }
+        }
+        #endregion
         #endregion
 
         //將房間加到我的最愛

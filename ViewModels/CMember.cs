@@ -13,7 +13,7 @@ namespace sln_SingleApartment.ViewModels
         public int fMemberId { get; set; }
 
         [DisplayName("會員姓名")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "姓名必須輸入...")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "姓名必須輸入...")]
         public string fMemberName { get; set; }
 
         [DisplayName("會員帳號")]
@@ -68,5 +68,8 @@ namespace sln_SingleApartment.ViewModels
 
         [DisplayName("欲接收活動種類的訊息")]
         public string fActivityMessage { get; set; }
+
+        //public string RoomName { get; set; }
+        //public string InformationContent { get; set; }
     }
 }
