@@ -143,6 +143,23 @@
           <Property Name="MemberCategoryID" Type="int" Nullable="false" />
           <Property Name="MemberCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageDate" Type="datetime" Nullable="false" />
+          <Property Name="InformationCategoryID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="GuestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageSubject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MessageContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdminContent" Type="nvarchar(max)" />
+          <Property Name="AdditionField1" Type="nvarchar" MaxLength="255" />
+          <Property Name="AdditionField2" Type="nvarchar" MaxLength="255" />
+          <Property Name="AdditionField3" Type="int" />
+        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -261,6 +278,14 @@
           <Property Name="MemberID" Type="int" />
           <Property Name="RoomID" Type="int" />
         </EntityType>
+        <EntityType Name="RoomInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="RoomID" Type="int" />
+        </EntityType>
         <EntityType Name="RoomStyle">
           <Key>
             <PropertyRef Name="ID" />
@@ -310,6 +335,7 @@
           <Property Name="fLeave" Type="bit" />
           <Property Name="fRole" Type="nvarchar(max)" />
           <Property Name="fActivityMessage" Type="nvarchar(max)" />
+          <Property Name="fActivityEmail" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Activity_ActivitySubCategory">
           <End Role="ActivitySubCategory" Type="Self.ActivitySubCategory" Multiplicity="1" />
@@ -453,6 +479,18 @@
               <PropertyRef Name="fMemberId" />
             </Principal>
             <Dependent Role="MemberInformationCategory">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_tMember">
+          <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="Message">
               <PropertyRef Name="MemberID" />
             </Dependent>
           </ReferentialConstraint>
@@ -673,6 +711,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RoomInformation_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomInformation">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomInformation_tMember">
+          <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+          <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="RoomInformation">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SubActivity_Activity">
           <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
           <End Role="SubActivity" Type="Self.SubActivity" Multiplicity="*" />
@@ -700,6 +762,7 @@
           <EntitySet Name="JobService" EntityType="Self.JobService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lease" EntityType="Self.Lease" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberInformationCategory" EntityType="Self.MemberInformationCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
@@ -712,6 +775,7 @@
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomFacilities" EntityType="Self.RoomFacilities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomFavorite" EntityType="Self.RoomFavorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomInformation" EntityType="Self.RoomInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomStyle" EntityType="Self.RoomStyle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubActivity" EntityType="Self.SubActivity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tActivityCart" EntityType="Self.tActivityCart" Schema="dbo" store:Type="Tables" />
@@ -763,6 +827,10 @@
           <AssociationSet Name="FK_MemberInformationCategory_tMember" Association="Self.FK_MemberInformationCategory_tMember">
             <End Role="tMember" EntitySet="tMember" />
             <End Role="MemberInformationCategory" EntitySet="MemberInformationCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_tMember" Association="Self.FK_Message_tMember">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="Message" EntitySet="Message" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
@@ -835,6 +903,14 @@
           <AssociationSet Name="FK_RoomFavorite_tMember" Association="Self.FK_RoomFavorite_tMember">
             <End Role="tMember" EntitySet="tMember" />
             <End Role="RoomFavorite" EntitySet="RoomFavorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomInformation_Room" Association="Self.FK_RoomInformation_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="RoomInformation" EntitySet="RoomInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomInformation_tMember" Association="Self.FK_RoomInformation_tMember">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="RoomInformation" EntitySet="RoomInformation" />
           </AssociationSet>
           <AssociationSet Name="FK_SubActivity_Activity" Association="Self.FK_SubActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
@@ -999,6 +1075,20 @@
           <AssociationSet Name="FK_RoomFavorite_tMember" Association="SingleApartmentModel.FK_RoomFavorite_tMember">
             <End Role="tMember" EntitySet="tMember" />
             <End Role="RoomFavorite" EntitySet="RoomFavorite" />
+          </AssociationSet>
+          <EntitySet Name="Message" EntityType="SingleApartmentModel.Message" />
+          <EntitySet Name="RoomInformation" EntityType="SingleApartmentModel.RoomInformation" />
+          <AssociationSet Name="FK_Message_tMember" Association="SingleApartmentModel.FK_Message_tMember">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomInformation_Room" Association="SingleApartmentModel.FK_RoomInformation_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="RoomInformation" EntitySet="RoomInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomInformation_tMember" Association="SingleApartmentModel.FK_RoomInformation_tMember">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="RoomInformation" EntitySet="RoomInformation" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activity">
@@ -1288,6 +1378,7 @@
           <NavigationProperty Name="RoomStyle" Relationship="SingleApartmentModel.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
           <NavigationProperty Name="RoomFacilities" Relationship="SingleApartmentModel.FK_RoomFacilities_Room" FromRole="Room" ToRole="RoomFacilities" />
           <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="Room" ToRole="RoomFavorite" />
+          <NavigationProperty Name="RoomInformation" Relationship="SingleApartmentModel.FK_RoomInformation_Room" FromRole="Room" ToRole="RoomInformation" />
         </EntityType>
         <EntityType Name="RoomFacilities">
           <Key>
@@ -1368,6 +1459,9 @@
           <NavigationProperty Name="Order" Relationship="SingleApartmentModel.FK_Order_tMember" FromRole="tMember" ToRole="Order" />
           <NavigationProperty Name="Participant" Relationship="SingleApartmentModel.FK_Participant_tMember" FromRole="tMember" ToRole="Participant" />
           <NavigationProperty Name="RoomFavorite" Relationship="SingleApartmentModel.FK_RoomFavorite_tMember" FromRole="tMember" ToRole="RoomFavorite" />
+          <Property Name="fActivityEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Message" Relationship="SingleApartmentModel.FK_Message_tMember" FromRole="tMember" ToRole="Message" />
+          <NavigationProperty Name="RoomInformation" Relationship="SingleApartmentModel.FK_RoomInformation_tMember" FromRole="tMember" ToRole="RoomInformation" />
         </EntityType>
         <Association Name="FK_Activity_ActivitySubCategory">
           <End Type="SingleApartmentModel.ActivitySubCategory" Role="ActivitySubCategory" Multiplicity="1" />
@@ -1743,6 +1837,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InformationCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="GuestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageSubject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdminContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionField1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionField2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionField3" Type="Int32" />
+          <NavigationProperty Name="tMember" Relationship="SingleApartmentModel.FK_Message_tMember" FromRole="Message" ToRole="tMember" />
+        </EntityType>
+        <EntityType Name="RoomInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_RoomInformation_Room" FromRole="RoomInformation" ToRole="Room" />
+          <NavigationProperty Name="tMember" Relationship="SingleApartmentModel.FK_RoomInformation_tMember" FromRole="RoomInformation" ToRole="tMember" />
+        </EntityType>
+        <Association Name="FK_Message_tMember">
+          <End Type="SingleApartmentModel.tMember" Role="tMember" Multiplicity="0..1" />
+          <End Type="SingleApartmentModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomInformation_Room">
+          <End Type="SingleApartmentModel.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="SingleApartmentModel.RoomInformation" Role="RoomInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomInformation">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomInformation_tMember">
+          <End Type="SingleApartmentModel.tMember" Role="tMember" Multiplicity="0..1" />
+          <End Type="SingleApartmentModel.RoomInformation" Role="RoomInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="RoomInformation">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2065,6 +2223,7 @@
           <EntitySetMapping Name="tMember">
             <EntityTypeMapping TypeName="SingleApartmentModel.tMember">
               <MappingFragment StoreEntitySet="tMember">
+                <ScalarProperty Name="fActivityEmail" ColumnName="fActivityEmail" />
                 <ScalarProperty Name="fActivityMessage" ColumnName="fActivityMessage" />
                 <ScalarProperty Name="fRole" ColumnName="fRole" />
                 <ScalarProperty Name="fLeave" ColumnName="fLeave" />
@@ -2081,6 +2240,33 @@
                 <ScalarProperty Name="fAccount" ColumnName="fAccount" />
                 <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
                 <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="SingleApartmentModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="AdditionField3" ColumnName="AdditionField3" />
+                <ScalarProperty Name="AdditionField2" ColumnName="AdditionField2" />
+                <ScalarProperty Name="AdditionField1" ColumnName="AdditionField1" />
+                <ScalarProperty Name="AdminContent" ColumnName="AdminContent" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="InformationCategoryID" ColumnName="InformationCategoryID" />
+                <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomInformation">
+            <EntityTypeMapping TypeName="SingleApartmentModel.RoomInformation">
+              <MappingFragment StoreEntitySet="RoomInformation">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
