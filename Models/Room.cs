@@ -21,6 +21,7 @@ namespace sln_SingleApartment.Models
             this.Picture = new HashSet<Picture>();
             this.RoomFacilities = new HashSet<RoomFacilities>();
             this.RoomFavorite = new HashSet<RoomFavorite>();
+            this.RoomInformation = new HashSet<RoomInformation>();
         }
     
         public int ID { get; set; }
@@ -46,5 +47,7 @@ namespace sln_SingleApartment.Models
         public virtual ICollection<RoomFacilities> RoomFacilities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoomFavorite> RoomFavorite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomInformation> RoomInformation { get; set; }
     }
 }

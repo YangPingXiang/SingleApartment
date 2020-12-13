@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Net;
 using sln_SingleApartment.Models;
 using sln_SingleApartment.ViewModels;
+using PagedList;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -80,7 +81,7 @@ namespace sln_SingleApartment.Controllers
             }
         }
         public ActionResult MessageList(int pageNum = 1, string orderByString = "ByDateAsc")
-        {
+        {            
             try
             {
                 int pageSize = 5;
