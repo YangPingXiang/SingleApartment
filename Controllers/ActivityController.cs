@@ -478,13 +478,15 @@ namespace sln_SingleApartment.Controllers
                 tb.fMemberId = table.MemberID;
                
                 tb.fNote = table.Note;
-                List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
+                List<CActivityCart> list = new List<CActivityCart>();
+                list.Add(tb);
+                Session[CDictionary.Cart_Key] =  list ;
                 if (list == null)
                 {
                     list = new List<CActivityCart>();
                     Session[CDictionary.Cart_Key] = list;
                 }
-                list.Add(tb);
+               
             }
             
             return RedirectToAction("List");
@@ -749,8 +751,8 @@ namespace sln_SingleApartment.Controllers
             int memberID = member.fMemberId;
 
             List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
-            CActivityCart t = new CActivityCart();
-            tActivityCart cart = new tActivityCart();
+            //CActivityCart t = new CActivityCart();
+            //tActivityCart cart = new tActivityCart();
             if (list != null)
             {
                 Participant p = new Participant();
@@ -764,7 +766,7 @@ namespace sln_SingleApartment.Controllers
                 Session[CDictionary.Cart_Key] = list;
 
             }
-            list.Remove(t);
+            //list.Remove(list);
             return RedirectToAction("List");
         }
         public ActionResult subActivity(int id)

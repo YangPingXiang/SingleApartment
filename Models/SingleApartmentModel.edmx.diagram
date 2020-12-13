@@ -66,6 +66,11 @@
         <AssociationConnector Association="SingleApartmentModel.FK_RoomFacilities_Room" />
         <AssociationConnector Association="SingleApartmentModel.FK_RoomFavorite_Room" />
         <AssociationConnector Association="SingleApartmentModel.FK_RoomFavorite_tMember" />
+        <EntityTypeShape EntityType="SingleApartmentModel.Message" Width="1.5" PointX="3" PointY="38.75" />
+        <EntityTypeShape EntityType="SingleApartmentModel.RoomInformation" Width="1.5" PointX="12" PointY="10" />
+        <AssociationConnector Association="SingleApartmentModel.FK_Message_tMember" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomInformation_Room" />
+        <AssociationConnector Association="SingleApartmentModel.FK_RoomInformation_tMember" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
