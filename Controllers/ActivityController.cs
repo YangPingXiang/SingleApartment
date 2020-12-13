@@ -169,12 +169,12 @@ namespace sln_SingleApartment.Controllers
 
                         }
 
-                        else if (y.acstates != "活動時間已過")
-                        {
-                            nIDbuffer = ParticipantID[j];
-                            Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
-                            acSt.Status = "可參加";
-                        }
+                        //else if (y.acstates != "活動時間已過")
+                        //{
+                        //    nIDbuffer = ParticipantID[j];
+                        //    Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
+                        //    acSt.Status = "可參加";
+                        //}
 
                     }
             

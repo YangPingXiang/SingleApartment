@@ -21,15 +21,43 @@ namespace sln_SingleApartment.Controllers
 
         public string SendMail(string strHtml)
         {
-            string htmlBody = strHtml.ToString();                       
-
+            string htmlBody = strHtml.ToString();
+         
+            SingleApartmentEntities entity = new SingleApartmentEntities();
             try
             {
+                string sMemberEmail = "";
                 MailMessage mail = new MailMessage();
                 //string email = "dddd";
                 mail.From = new MailAddress("singleapart@gmail.com");
                 //多收信人, 使用,隔開, 而不是;喔
-                mail.To.Add("singleapart@gmail.com,jonywu168@gmail.com");   //new MailAddress("singleapart@gmail.com")
+
+                #region 活動建立後媒合訊息發送
+                List<int> MemberIDList = new List<int>();
+                List<string> MemberMemberEmailList = new List<string>();
+             
+                tMember tMember = new tMember();
+                var membermessage = from mbmsg in entity.tMember
+                                    select new { MbID = mbmsg.fMemberId, MbEmail = mbmsg.fEmail};
+                foreach (var m in membermessage)
+                {
+                    MemberIDList.Add(m.MbID);
+                    MemberMemberEmailList.Add(m.MbEmail);
+                }
+                for (int me = 0; me < MemberIDList.Count; me++)
+                {
+                    //if(MemberfActivityMessageList[me] == "TRUE")
+                    //{
+                        
+                        mail.To.Add(MemberMemberEmailList[me]);
+                    //}
+                  
+                                       
+                }
+                #endregion
+
+                //mail.To.Add("singleapart@gmail.com,apple385827@gmail.com"); 
+               mail.To.Add("singleapart@gmail.com");//new MailAddress("singleapart@gmail.com")
                 mail.Subject = "窩居公寓:新活動通知!";
                 //mail.Date = DateTime.Now;
                 
