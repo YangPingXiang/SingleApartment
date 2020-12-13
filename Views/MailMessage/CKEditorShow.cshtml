@@ -1,0 +1,91 @@
+﻿
+@{
+    Layout = "~/Views/Shared/CKEditor_Layout.cshtml";
+    //Layout = "~/Views/Shared/Information_Layout.cshtml";
+    ViewBag.Title = "CKEditorShow";
+}
+
+@*<h2>CKEditorShow</h2>*@
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+<span id="id_result">gggg</span>
+<input id="Button1" onclick="showEditor();" type="button" value="顯示編輯器" />
+<br />
+
+<input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />
+
+@*<button id="id_thisNotify" onclick="queryData('ALL','N','500','N');" class="btn btn-info" style="height:unset;background-color:transparent;color:#428bca">新活動通知</button>*@
+@*<a href="~/CKEditor/SendMail">發mail</a>*@
+
+<div style="width:800px" id="div_editor">
+    <textarea id="editor1" name="editor1">
+          Hello World! 這是 CKeditorf!
+         </textarea>
+</div>
+
+@*<div style="width:800px;height:800px">
+    <textarea id="editor2">          
+     </textarea>
+</div>*@
+
+
+<script>
+
+    function SendMailData(p_data) {
+        $.ajax({
+            contentType: 'application/json',
+            url: "/MailMessage/SendMail",
+            type: "POST",
+            data: JSON.stringify({
+                strHtml: p_data
+                //p_priority: f_priority,  //傳遞參數
+                //p_data: f_data
+            }),
+            success: function (data) {
+                console.log(data); //可先測試程式有無載入
+                //$("#id_result").html(data);
+                $("#id_result").html(data);
+            }
+        });
+    }
+
+    function showEditor() {
+        $("#div_editor").show();
+    }
+
+    function showHtmlSendmail() {
+        //取得編輯後的格式
+        var content = CKEDITOR.instances.editor1.getData();
+        //console.log(content)
+        //$("#editor2").val(content);
+        //content = "dd";
+        //執行發送 mail
+        SendMailData(content);
+    }
+
+    //一啟動馬上執行
+    $(function () {
+
+        CKEDITOR.replace('editor1');
+        $("#div_editor").hide();  //editor 先隱藏
+        
+        let strHtml = ''
+            + '<div style="width: 40em;display: block;margin: auto;border: 2px solid #63bcfc;border-radius: 10px;box-shadow: 5px 5px 5px 3px aliceblue;" >'
+            + '<div class="card" style="width:auto">'
+            + '<div style="margin-bottom:20px;margin-top:20px">'
+            + '<div style="text-align:center;font-size:22px;font-weight:900;"><span style="color:#f6755e">活動資訊</span></div></div>'
+            + '<div style="margin-left:10px;">'
+            + '<div style="text-align:center;font-size:20px;font-weight:600;margin:30px">'
+            + '<label>您好!您有興趣的 <span style="background-color:#ffff00">休閒類</span> 活動上架了!名額有限，想參加活動請儘快報名!</label></div>'
+            + '<dl style="font-weight:500"><dt>活動類別：內容</dt>'
+            + '<dt>活動名稱：內容</dt><dt>開始時間：內容</dt><dt>結束時間：內容</dt></dl>'
+            + '<dl style="font-weight:500"><dt>地點：內容</dt><dt>活動人數：內容</dt>'
+            + '<dt>發起人：內容</dt></dl>'
+            + '<div style="text-align:right;font-size:22px;font-weight:900;margin-bottom:15px;margin-right:20px"><span style="color:#f6755e">窩居公寓</span></div> '
+            + '</div ></div ></div ></body >';
+        $("#editor1").html(strHtml)
+
+    });
+</script>
+

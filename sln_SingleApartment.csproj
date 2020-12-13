@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -47,7 +47,6 @@
   <ItemGroup>
     <Reference Include="AllPay.Payment.Integration">
       <HintPath>..\..\..\Desktop\ ?s     M D(12.6)\AllPay.Payment.Integration.dll</HintPath>
-
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -290,6 +289,7 @@
     <Compile Include="ViewModels\CMemberRegister.cs" />
     <Compile Include="ViewModels\CMemberViewModel.cs" />
     <Compile Include="ViewModels\CMember_Factory.cs" />
+    <Compile Include="ViewModels\CMessage.cs" />
     <Compile Include="ViewModels\CMultiple.cs" />
     <Compile Include="ViewModels\COrder.cs" />
     <Compile Include="ViewModels\COrderDetails.cs" />
@@ -1477,10 +1477,11 @@
     <Content Include="Views\Product\OrderList.cshtml" />
     <Content Include="Views\Product\_PartialOrders.cshtml" />
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
+    <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
+    <Content Include="Views\MailMessage\MessageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MailMessage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
