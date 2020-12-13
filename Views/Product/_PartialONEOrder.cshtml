@@ -1,0 +1,57 @@
+﻿@model List<global::sln_SingleApartment.ViewModels.COrderDetailsViewModel>
+@functions
+   {
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
+        {
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
+        }
+        return imageSrc;
+    }
+}
+
+<table class="data-table cart-table" id="#orderdetail">
+    <tr>
+        <th class="low7">商品編號</th>
+        <th class="low7">商品名稱</th>
+        <th class="low7">數量</th>
+        <th class="low7">小計</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*會員編號*@
+            <td class="sop-cart an-shop-cart">
+                <a href="#"><img class="primary-image" alt="" src="@DisplayImage(item.prodpic.ProductPicture)"></a>
+
+            </td>
+            @*商品名稱*@
+            <td class="sop-cart">
+                <div class="tb-product-price font-noraure-3">
+                    <span class="amount"> @item.ProductName</span>
+                </div>
+            </td>
+            @*數量*@
+            <td class="sop-cart">
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            @*小計*@
+            <td class="sop-cart">
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            @*<td class="sop-cart">
+                    <a onclick="SearchONEOrder(@item.OrderID)" class="btn btn-default"> 訂單明細</a>
+                   @Html.ActionLink("訂單明細", "List", new { ID = item.OrderID }, new { @class = "btn btn-default" })
+                </td>
+                <td class="sop-cart">
+                    @Html.ActionLink("取消訂單", "Delete", new { id = item.order_entity.OrderID }, new { @class = "btn btn-default" })
+
+                </td>*@
+        </tr>
+
+    }
+</table>

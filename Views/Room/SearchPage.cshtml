@@ -1,4 +1,5 @@
 ﻿@model sln_SingelApartment.ViewModels.CAboutRoomViewModel
+
 @{
     ViewBag.Title = "SearchPage";
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
@@ -6,64 +7,61 @@
 
 
 <body>
+    <input type="hidden" id="case1" value="" />
+    <input type="hidden" id="case2" value="" />
+    <input type="hidden" id="case3" value="0" />
+    <input type="hidden" id="case4" value="0" />
 
-    <div style="background-color:#edf2fb; width:800px; margin:50px auto; text-align:center;">
+    <div style="background-color: #edf2fb; width: 900px; margin: 50px auto; text-align: center;">
 
         <form method="post">
 
             <ul class="list">
-                <li style="font-weight:800; float:left; ">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px; ">
                     建案：
                 </li>
-                <li>
-                    <a>綠意大安森活窩</a>
-                </li>
-                <li>
-                    <a>城市西門快捷窩</a>
-                </li>
-                <li>
-                    <a>慢活文山雲景窩</a>
-                </li>
-                <li>
-                    <a>心醉信義忘憂窩</a>
-                </li>
+                @foreach (var item in Model.buildcaseViewModels)
+                {
+                    <li><a href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a></li>
+                }
             </ul>
+
             <ul class="list">
-                <li style="font-weight:800; float:left;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     類型：
                 </li>
                 <li>
-                    <a>1人房</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房">1人房</a>
                 </li>
                 <li>
-                    <a>2人房</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="2人房">2人房</a>
                 </li>
                 <li>
-                    <a>3人房</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="3人房">3人房</a>
                 </li>
                 <li>
-                    <a>4人房</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="4人房">4人房</a>
                 </li>
             </ul>
 
             <ul class="list">
-                <li style="font-weight:800; float:left;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     租金：
                 </li>
                 <li>
-                    <a>10000元以下</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="1">10000元以下</a>
                 </li>
                 <li>
-                    <a>10000-20000元</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="2">10000-20000元</a>
                 </li>
                 <li>
-                    <a>20000-30000元</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="3">20000-30000元</a>
                 </li>
                 <li>
-                    <a>30000-40000元</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="4">30000-40000元</a>
                 </li>
                 <li>
-                    <a>40000元以上</a>
+                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="5">40000元以上</a>
                 </li>
 
             </ul>
@@ -71,29 +69,15 @@
 
 
             <ul class="list">
-                <li style="font-weight:800; float:left;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     風格：
                 </li>
-
-                <li>
-                    <a>北歐風</a>
-                </li>
-                <li>
-                    <a>工業風</a>
-                </li>
-                <li>
-                    <a>夢幻風</a>
-                </li>
-                <li>
-                    <a>地中海風</a>
-                </li>
-                <li>
-                    <a>日式風</a>
-                </li>
-                <li>
-                    <a>美式潮流風</a>
-                </li>
-
+                @foreach (var item in Model.roomStyleViewModels)
+                {
+                    <li>
+                        <a href="javascript:;" onclick="filter(this);" data-item="4" data-case="@item.ID">@item.entity_roomstyle.RoomStyleName</a>
+                    </li>
+                }
             </ul>
 
 
@@ -183,7 +167,7 @@
             <div class="news-list">
                 <div class="row">
                     <div class="our-news-list owl-pagination">
-                        <div class="single-view_post" ">
+                        <div class="single-view_post" id="ShowRooms">
                             @foreach (var item in Model.roomViewModels)
                             {
                                 <div class="col-md-12 pb-80">
@@ -196,9 +180,10 @@
                                             <div class="news-post">
                                                 @*評價*@
                                                 <div class="n-date">@item.entity_room.BuildCase.BuildTimes</div>
-                                                <a href="#" class="comment"><span><i class="mdi mdi-comment-processing-outline"></i></span> 20</a>
                                                 <div class="news-views">
-                                                    <a href="#"><span><i class="mdi mdi-heart"></i></span>40</a>
+                                                    <a name="@item.roomID" onclick="AddRoomToFavoriteList(@ViewBag.MemberID)">
+                                                        <i class="mdi mdi-heart"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,8 +196,8 @@
                                             <p class="news_desc">建案： @item.entity_room.BuildCase.BuildCaseName  /  坪數：  @item.squarefootage   </p>
                                             <div class="news-action">
                                                 <div class="read-more">
-                                                    @Html.ActionLink("更多....", "ListRoomDetail", "Room")
-                                                    @*<a href="~/Views/Room/ListRoomDetail">更多...</a>*@
+                                                    @*@Html.ActionLink("更多....", "ListRoomDetail", "Room",new { id=item.roomID})*@
+                                                    <a href="~/Room/ListRoomDetail/@item.roomID">更多...</a>
                                                 </div>
                                                 <div class="news-share">
                                                     <p>Share:</p>
@@ -242,14 +227,89 @@
                     .siblings().css("background-color", "#e8e8e8")
                 $(this.firstElementChild).css("color", "white")
                 $(this).find("a:first-child").css("color", "white")
-                $(this).siblings().find("a:first-child").css("color","#4FC1F0");
-                console.log(this);
+                $(this).siblings().find("a:first-child").css("color", "#4FC1F0");
+                console.log(this.innerText);
             });
+
+            //$('a').click(function () {
+            //    console.log(this.innerText);
+            //});
 
 
 
         });
 
+        var filter = function (e) {
+
+            var elm = $(e);
+
+            var data = {
+                item: elm.data("item"),
+                case: elm.data("case")
+            };
+
+            if (data.item == "1") {
+                $("#case1").val(data.case);
+            } else if (data.item == "2") {
+                $("#case2").val(data.case);
+            } else if (data.item == "3") {
+                $("#case3").val(data.case);
+            } else if (data.item == "4") {
+                $("#case4").val(data.case);
+            }
+
+            var postData = {
+                case1: $("#case1").val(),
+                case2: $("#case2").val(),
+                case3: $("#case3").val(),
+                case4: $("#case4").val(),
+            };
+
+            $.ajax({
+                url: "@Url.Action("GetSearchData", "Room")", //請求的url地址
+                dataType: "json", //返回格式為json
+                async: true, //請求是否非同步，預設為非同步，這也是ajax重要特性
+                data: postData, //引數值
+                type: "POST", //請求方式
+                beforeSend: function () {
+                    //請求前的處理
+                },
+                success: function (req) {
+                    //請求成功時處理
+                    console.log(req);
+
+                    $("#ShowRooms").html(req.html);
+                },
+                complete: function () {
+                    //請求完成的處理
+                },
+                error: function () {
+                    //請求出錯處理
+                }
+            });
+
+            //console.log(elm.data("case"));
+
+        }
+
+        @*加入我的最愛*@
+        function AddRoomToFavoriteList(MemberID) {
+        var roomID = $(event.currentTarget).prop("name");
+        $.ajax({
+                    url: '@Url.Action("AddRoomToFavorite", "Room")',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        MemberID: MemberID,
+                        RoomID: roomID
+                        }),
+                    contentType: 'application/json',
+                    type: 'POST',
+                    success: function (data)
+                    {
+                        window.alert(JSON.parse(data).ans);
+                    }
+        })
+    }
 
 
     </script>

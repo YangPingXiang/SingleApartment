@@ -22,9 +22,11 @@ namespace sln_SingleApartment.Models
             this.Information = new HashSet<Information>();
             this.Lease = new HashSet<Lease>();
             this.MemberInformationCategory = new HashSet<MemberInformationCategory>();
+            this.Message = new HashSet<Message>();
             this.Order = new HashSet<Order>();
             this.Participant = new HashSet<Participant>();
             this.RoomFavorite = new HashSet<RoomFavorite>();
+            this.RoomInformation = new HashSet<RoomInformation>();
         }
     
         public int fMemberId { get; set; }
@@ -43,6 +45,7 @@ namespace sln_SingleApartment.Models
         public Nullable<bool> fLeave { get; set; }
         public string fRole { get; set; }
         public string fActivityMessage { get; set; }
+        public string fActivityEmail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }
@@ -55,10 +58,14 @@ namespace sln_SingleApartment.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MemberInformationCategory> MemberInformationCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Message { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Participant> Participant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoomFavorite> RoomFavorite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomInformation> RoomInformation { get; set; }
     }
 }

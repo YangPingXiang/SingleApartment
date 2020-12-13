@@ -1,0 +1,107 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModel.COrder>
+
+@{int myID = 0; }
+<table id="shopping-cart-table" class="data-table cart-table">
+    <tr>
+        <th class="low7">訂單編號</th>
+        <th class="low7">訂單總金額</th>
+        <th class="low7">下單日期</th>
+        <th class="low7">到貨日期</th>
+        <th class="low7">詳細訂單</th>
+        <th class="low7">取消訂單</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        myID += 1;
+        <tr>
+            @*會員編號*@
+            <td class="sop-cart an-shop-cart">
+                <a href="#"><img class="primary-image" alt="" src="img/products/10.jpg"></a>
+                <a href="#">@myID</a>
+            </td>
+            @*價錢*@
+            <td class="sop-cart">
+                <div class="tb-product-price font-noraure-3">
+                    <span class="amount"> @Html.DisplayFor(modelItem => item.TotalAmount)</span>
+                </div>
+            </td>
+            @*訂單日期*@
+            <td class="sop-cart">
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            @*到貨日期*@
+            <td class="sop-cart">
+                @Html.DisplayFor(modelItem => item.ArrivedDate)
+            </td>
+            <td class="sop-cart">
+                <a onclick="SearchONEOrder(@item.OrderID)" class="btn btn-default orderdetail" href="#bookmark"> 訂單明細</a>
+                @*@Html.ActionLink("訂單明細", "List", new { ID = item.OrderID }, new { @class = "btn btn-default" })*@
+            </td>
+            <td class="sop-cart">
+                <a onclick="DeleteAnOrder(@item.order_entity.OrderID)" class="btn btn-default">取消訂單</a>
+            </td>
+        </tr>
+
+    }
+</table>
+<div id="bookmark"></div>
+    @Html.PagedListPager(Model, page => Url.Action("PartialOrders", new { page = page, MemberID=ViewBag.MemberID  }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+    {
+       HttpMethod = "Get",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "Orders"
+    }))
+<br /><br /><br /><br />
+<h1> 訂單明細 </h1>
+<script>
+    function SearchONEOrder(orderID) {
+        console.log(orderID);
+        $.ajax({
+                type: "POST",
+                url: "@Url.Action("PartialONEOrder")",
+                data: {
+                    MemberID : @ViewBag.MemberID, 
+                    OrderID: orderID
+                },
+                success: function (data) {
+                    $("#OrderDetail").html(data);
+                }
+            });
+       
+    }
+    function DeleteAnOrder(orderID) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Delete")",
+            data: {
+                id: orderID
+            },
+            success: function (data) {
+                alert(data)
+                $.ajax({
+                type: "POST",
+                url: "@Url.Action("PartialOrders")",
+                data: {
+                    MemberID: @ViewBag.MemberID
+                },
+                success: function (data) {
+                $("#Orders").html(data);
+                }
+            });
+            }
+        });
+    }
+    $(function () {
+        $('.orderdetail').click(function () {
+            $('html, body').animate({
+                scrollTop: $('#bookmark').offset().top
+            }, 'slow');
+        });
+      
+    })
+    
+</script>

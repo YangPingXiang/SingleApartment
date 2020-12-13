@@ -1,0 +1,46 @@
+﻿
+@using sln_SingelApartment.ViewModels
+@model List<CRoomViewModel>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12 pb-80">
+        <div class="news-inner">
+            @*@{
+                    var fiilename = "房型_" + item.roomStyleName + ".jpg";
+                }*@
+            <div class="news-img">
+                <img src="~/Content/Room/images/roomstyle/工業風-1.jpg" alt="@item.roomname">
+                <div class="news-post">
+                    @*評價*@
+                    <div class="n-date">@item.entity_room.BuildCase.BuildCaseName</div>
+                    <div class="news-views">
+                        <a name="@item.roomID" onclick="AddRoomToFavoriteList(@ViewBag.MemberID)"><i class="mdi mdi-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="news-desc">
+                <h3 class="news-title">
+                    <a href="#">
+                        @item.roomname
+                    </a>
+                </h3>
+                <p class="news_desc">建案： @*@item.entity_room.BuildCase.BuildCaseName*@  /  坪數：  @item.squarefootage   </p>
+                <div class="news-action">
+                    <div class="read-more">
+                        @*@Html.ActionLink("更多....", "ListRoomDetail", "Room")*@
+                        <a href="~/Room/ListRoomDetail/@item.roomID">更多...</a>
+                    </div>
+                    <div class="news-share">
+                        <p>Share:</p>
+                        <a href="https://www.facebook.com/"><i class="mdi mdi-facebook"></i></a>
+                        <a href="#"><i class="mdi mdi-rss"></i></a>
+                        <a href="#"><i class="mdi mdi-google-plus"></i></a>
+                        <a href="https://www.instagram.com/accounts/login/"><i class="mdi mdi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

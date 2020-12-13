@@ -18,8 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -47,13 +46,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AllPay.Payment.Integration">
-      <HintPath>..\..\..\Desktop\�̷s�����M�D(12.6)\AllPay.Payment.Integration.dll</HintPath>
+      <HintPath>..\..\..\Desktop\ ?s     M D(12.6)\AllPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleRecaptcha, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GoogleRecaptcha.1.2.1\lib\GoogleRecaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleRecaptchaMvc, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GoogleRecaptchaMvc.1.0.1\lib\GoogleRecaptchaMvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -169,6 +174,7 @@
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
+    <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
     <Compile Include="Models\Discount.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
@@ -179,6 +185,8 @@
     <Compile Include="Models\FavoriteList.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\google.cs" />
+    <Compile Include="Models\GoogleReCaptcha.cs" />
     <Compile Include="Models\Information.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +203,9 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MemberInformationCategory.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
@@ -233,6 +244,9 @@
     <Compile Include="Models\RoomFavorite.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoomInformation.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoomStyle.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -252,6 +266,9 @@
       <DependentUpon>SingleApartmentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SubActivity.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tActivityCart.cs">
@@ -281,6 +298,7 @@
     <Compile Include="ViewModels\CMemberRegister.cs" />
     <Compile Include="ViewModels\CMemberViewModel.cs" />
     <Compile Include="ViewModels\CMember_Factory.cs" />
+    <Compile Include="ViewModels\CMessage.cs" />
     <Compile Include="ViewModels\CMultiple.cs" />
     <Compile Include="ViewModels\COrder.cs" />
     <Compile Include="ViewModels\COrderDetails.cs" />
@@ -289,12 +307,16 @@
     <Compile Include="ViewModels\CPictureViewModel.cs" />
     <Compile Include="ViewModels\CProductViewModel.cs" />
     <Compile Include="ViewModels\CRoomFacilityViewModel.cs" />
+    <Compile Include="ViewModels\CRoomFavorite.cs" />
+    <Compile Include="ViewModels\CRoomListViewModel.cs" />
+    <Compile Include="ViewModels\CRoomSearchViewModel.cs" />
     <Compile Include="ViewModels\CRoomStyleViewModel.cs" />
     <Compile Include="ViewModels\CRoomViewModel.cs" />
     <Compile Include="ViewModels\CShopCart.cs" />
     <Compile Include="ViewModels\CShoppingCart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AllPay.Payment.Integration.dll" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -747,18 +769,18 @@
     <Content Include="Content\HomePage\images\pic03.jpg" />
     <Content Include="Content\HomePage\images\pic04.jpg" />
     <Content Include="Content\HomePage\images\pic05.jpg" />
-    <Content Include="Content\HomePage\images\�۩~�r��]�p7.png" />
+    <Content Include="Content\HomePage\images\ ?~ r  ] p7.png" />
     <Content Include="Content\HomePage\js\jquery.min.js" />
     <Content Include="Content\HomePage\js\jquery.scrolly.min.js" />
     <Content Include="Content\HomePage\js\main.js" />
     <Content Include="Content\HomePage\js\skel.min.js" />
     <Content Include="Content\HomePage\js\util.js" />
-    <Content Include="Content\img\�۩~�r��]�p.png" />
-    <Content Include="Content\img\�۩~�r��]�p3.png" />
-    <Content Include="Content\img\�۩~�r��]�p6.png" />
-    <Content Include="Content\img\�۩~�r��]�p7.png" />
-    <Content Include="Content\img\�Y %281%29.png" />
-    <Content Include="Content\img\�Y.png" />
+    <Content Include="Content\img\ ?~ r  ] p.png" />
+    <Content Include="Content\img\ ?~ r  ] p3.png" />
+    <Content Include="Content\img\ ?~ r  ] p6.png" />
+    <Content Include="Content\img\ ?~ r  ] p7.png" />
+    <Content Include="Content\img\ Y %281%29.png" />
+    <Content Include="Content\img\ Y.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
@@ -1197,7 +1219,7 @@
     <Content Include="Content\Room\images\instagram\ins-5.jpg" />
     <Content Include="Content\Room\images\logo\logo.png" />
     <Content Include="Content\Room\images\logo\pay-card.png" />
-    <Content Include="Content\Room\images\logo\�۩~�r��]�p7.png" />
+    <Content Include="Content\Room\images\logo\ ?~ r  ] p7.png" />
     <Content Include="Content\Room\images\map-marker.png" />
     <Content Include="Content\Room\images\news\item2\n-10.jpg" />
     <Content Include="Content\Room\images\news\item2\n-11.jpg" />
@@ -1211,34 +1233,34 @@
     <Content Include="Content\Room\images\news\n-1.jpg" />
     <Content Include="Content\Room\images\news\n-2.jpg" />
     <Content Include="Content\Room\images\news\n-3.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�_�ڭ�-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�a������-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�a������-2.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�ڤۭ�-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�ڤۭ�-2.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�u�~��-1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\�u�~��-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ _ ? -1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ a      -1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ a      -2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ ?? -1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ ?? -2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ u ~  -1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\ u ~  -2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
     <Content Include="Content\Room\images\room\room3.jpg" />
     <Content Include="Content\Room\images\room\small-room.jpg" />
-    <Content Include="Content\Room\images\room\�Ы�_�_�ڭ����H��.jpg" />
-    <Content Include="Content\Room\images\room\�Ы�_�樭�M��.jpg" />
-    <Content Include="Content\Room\images\room\�Ы�_�u�~���T�H��.jpg" />
-    <Content Include="Content\Room\images\room\�Ы�_���ɮa�x��.jpg" />
-    <Content Include="Content\Room\images\room\�Ы�_���ɲ��e�M��.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101-1.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101-2.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101-3.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101-4.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101-5.jpg" />
-    <Content Include="Content\Room\images\room\�ж�101.jpg" />
-    <Content Include="Content\Room\images\room\�ж�102-1.jpg" />
-    <Content Include="Content\Room\images\room\�ж�102-2.jpg" />
-    <Content Include="Content\Room\images\room\�ж�102-3.jpg" />
-    <Content Include="Content\Room\images\room\�ж�102.jpg" />
-    <Content Include="Content\Room\images\room\�ж�103.jpg" />
+    <Content Include="Content\Room\images\room\ ? _ _ ?    H  .jpg" />
+    <Content Include="Content\Room\images\room\ ? _ ? M  .jpg" />
+    <Content Include="Content\Room\images\room\ ? _ u ~   T H  .jpg" />
+    <Content Include="Content\Room\images\room\ ? _   ?a x  .jpg" />
+    <Content Include="Content\Room\images\room\ ? _   ?  e M  .jpg" />
+    <Content Include="Content\Room\images\room\ ? 101-1.jpg" />
+    <Content Include="Content\Room\images\room\ ? 101-2.jpg" />
+    <Content Include="Content\Room\images\room\ ? 101-3.jpg" />
+    <Content Include="Content\Room\images\room\ ? 101-4.jpg" />
+    <Content Include="Content\Room\images\room\ ? 101-5.jpg" />
+    <Content Include="Content\Room\images\room\ ? 101.jpg" />
+    <Content Include="Content\Room\images\room\ ? 102-1.jpg" />
+    <Content Include="Content\Room\images\room\ ? 102-2.jpg" />
+    <Content Include="Content\Room\images\room\ ? 102-3.jpg" />
+    <Content Include="Content\Room\images\room\ ? 102.jpg" />
+    <Content Include="Content\Room\images\room\ ? 103.jpg" />
     <Content Include="Content\Room\images\services\services1.jpg" />
     <Content Include="Content\Room\images\services\services2.jpg" />
     <Content Include="Content\Room\images\services\services3.jpg" />
@@ -1248,10 +1270,10 @@
     <Content Include="Content\Room\images\services\services7.jpg" />
     <Content Include="Content\Room\images\services\tab-1.jpg" />
     <Content Include="Content\Room\images\services\tab-2.jpg" />
-    <Content Include="Content\Room\images\services\��������ֱ���.jpg" />
-    <Content Include="Content\Room\images\services\�߾K�H�q�Ѽ~��.jpg" />
-    <Content Include="Content\Room\images\services\�C����s������.jpg" />
-    <Content Include="Content\Room\images\services\��N�j�w�ˬ���.jpg" />
+    <Content Include="Content\Room\images\services\        ?   .jpg" />
+    <Content Include="Content\Room\images\services\ ?K H q ?~  .jpg" />
+    <Content Include="Content\Room\images\services\ C    s      .jpg" />
+    <Content Include="Content\Room\images\services\  N j w ?   .jpg" />
     <Content Include="Content\Room\images\staff\about.jpg" />
     <Content Include="Content\Room\images\staff\client1.jpg" />
     <Content Include="Content\Room\images\staff\staff1.jpg" />
@@ -1400,7 +1422,6 @@
     <Content Include="Views\Product\shop.cshtml" />
     <Content Include="Views\Product\Favoritelist.cshtml" />
     <Content Include="Views\Product\_PartialFavorite.cshtml" />
-    <Content Include="Views\Product\OrderList.cshtml" />
     <Content Include="Views\Product\ShowProductInCart.cshtml" />
     <Content Include="Views\Member\Home.cshtml" />
     <Content Include="Views\Member\HomePage.cshtml" />
@@ -1455,17 +1476,22 @@
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
     <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
+    <Content Include="Views\Room\_box.cshtml" />
+    <Content Include="Views\Room\_PartialRoomFavorite.cshtml" />
+    <Content Include="Views\Room\RoomFavoritelist.cshtml" />
     <Content Include="Views\Activity\Back_List.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomDetail.cshtml" />
     <Content Include="Views\RoomBackend\BackEditTheRoomDetail.cshtml" />
     <Content Include="Views\ProductBack\CreatAllProduct.cshtml" />
-
     <Content Include="Views\RoomBackend\_BackPartialKeyWordResult.cshtml" />
-
+    <Content Include="Views\Product\OrderList.cshtml" />
+    <Content Include="Views\Product\_PartialOrders.cshtml" />
+    <Content Include="Views\Product\_PartialONEOrder.cshtml" />
+    <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
+    <Content Include="Views\MailMessage\MessageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MailMessage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -1509,7 +1535,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>���M�װѦҳo���q���W�үʤ֪� NuGet �M��C�бҥ� NuGet �M���٭�A�H�U���ӮM��C�p�ݸԲӸ�T�A�аѾ\ http://go.microsoft.com/fwlink/?LinkID=322105�C�ʤ֪��ɮ׬O {0}�C</ErrorText>
+      <ErrorText>   M ???o   q   W ???  NuGet  M  C ??  NuGet  M   ? A H U   ?M  C p ??? T A ??\ http://go.microsoft.com/fwlink/?LinkID=322105 C ??  ??O {0} C</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http.Headers;
 using static sln_SingleApartment.Models.CUser;
-using AllPay.Payment.Integration;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -25,7 +24,6 @@ namespace sln_SingleApartment.Controllers
         #region index.html
         public ActionResult Home()
         {
-
             SingleApartmentEntities db = new SingleApartmentEntities();
 
             //登入
@@ -111,7 +109,7 @@ namespace sln_SingleApartment.Controllers
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             var result = theUser.SearchProduct();
-             if (imgPhoto != null)
+            if (imgPhoto != null)
             {
                 imgPhoto.SaveAs("c:\\temp\\111.jpg");
                 FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
@@ -120,13 +118,14 @@ namespace sln_SingleApartment.Controllers
                 fs.Read(image, 0, length);
                 fs.Close();
                 List<string> strs = await MakePredictionRequest(image);
-                var list_product = theUser.SearchProductsBy(null, null, strs[0]); result.product = list_product;
-                ViewBag.ByPhoto = "true";
                 string Keyword = "";
                 foreach (var str in strs)
                 {
                     Keyword += (str + " ");
                 }
+                var list_product = theUser.SearchProductsBy(null, null, Keyword); result.product = list_product;
+                ViewBag.ByPhoto = "true";
+                
                 ViewBag.Keyword = Keyword;
             }
             return View(result);
@@ -350,6 +349,7 @@ namespace sln_SingleApartment.Controllers
             }
             return Json("沒有此商品");
         }
+        //更改單一商品(數量)
         public JsonResult ChangeONEProductQuantity(string ProductID, string Quantity)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
@@ -384,7 +384,6 @@ namespace sln_SingleApartment.Controllers
 
         #endregion
         #region Checkout
-
         //結帳畫面{12.6)
         public ActionResult CheckOut()
         {
@@ -400,185 +399,136 @@ namespace sln_SingleApartment.Controllers
                 return RedirectToAction("ShowProductInCart");
             }
             List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
-
-            int TotalPrice = 0;
-
-            foreach (var item in orderlist)
-            {
-              
-                TotalPrice += (item.ProductPrice == null ? 0 : (int)item.ProductPrice) * item.Quantity;
-            }
-            //CUser theUser = new CUser();
-            ////===================================================================
-            //var user = Session[CDictionary.welcome] as CMember;
-            ////必須先登入會員 
-            //if (user != null)
-            //{
-            //    user.fMemberName = Request.Form["TXTMEMBERNAME"];
-            //    user.fPhone= Request.Form["TXTPHONE"];
-            //    user.fEmail = Request.Form["TXTEMAIL"];
-            //    //user.fBirthDate =Request.Form[""];
-            //}
-            //===================================================================
-            //歐富寶
-            List<string> enErrors = new List<string>();
-            try
-            {
-                using (AllInOne oPayment = new AllInOne())
-                {
-
-                    var order1 = new Order();
-
-                    var orderdetails = orderlist.Where(p => p.OrderID == order1.OrderID);
-
-                    int? total = orderlist.FirstOrDefault().TotalPrice;
-
-
-
-                    /* 服務參數 */
-                    oPayment.ServiceMethod = AllPay.Payment.Integration.HttpMethod.HttpPOST;
-                    oPayment.ServiceURL = "https://payment-stage.opay.tw/Cashier/AioCheckOut/V5";
-                    oPayment.HashKey = "5294y06JbISpM5x9";
-                    oPayment.HashIV = "v77hoKGq4kWxNNIS";
-                    oPayment.MerchantID = "2000132";
-                    /* 基本參數 */
-                    oPayment.Send.ReturnURL = "http://localhost:44332/Member/Home";
-                    oPayment.Send.ClientBackURL = "http://localhost:44332/Product/OrderList";
-                    oPayment.Send.OrderResultURL = "<<您要收到付款完成通知的瀏覽器端網址>>";
-                    oPayment.Send.MerchantTradeNo = string.Format("{0:00000}",(new Random()).Next(100000)) ;
-                    oPayment.Send.MerchantTradeDate = DateTime.Now;
-                    oPayment.Send.TotalAmount = (decimal)total;
-                    oPayment.Send.TradeDesc = "感謝您的購買";
-                    //oPayment.Send.ChoosePayment = PaymentMethod.ALL;
-                    //oPayment.Send.Remark = "<<您要填寫的其他備註>>";
-                    oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;
-                    oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;
-                    oPayment.Send.HoldTrade = HoldTradeType.No;
-                    oPayment.Send.DeviceSource = DeviceType.PC;
-                    //oPayment.Send.UseRedeem = UseRedeemFlag.Yes; //購物金/紅包折抵
-                    //oPayment.Send.IgnorePayment = "<<您不要顯示的付款方式>>"; // 例如財付通:Tenpay
-                    //                                                      // 加入選購商品資料。
-
-                    foreach (var item in orderlist)
-                    {
-                        oPayment.Send.Items.Add(new Item()
-                        {
-                            Name = item.ProductName,
-
-                            Price = (decimal)item.ProductPrice,
-
-                            Currency = "元",
-
-                            Quantity = item.Quantity
-                        });
-
-
-                    }
-                    // 當付款方式為 ALL 時，建議增加的參數。
-                    //oPayment.SendExtend.PaymentInfoURL = "<<您要接收回傳自動櫃員機/超商/條碼付款相關資訊的網址。>> ";
-                  
-                    /* 產生訂單 */
-                    enErrors.AddRange(oPayment.CheckOut());
-                    /* 產生產生訂單 Html Code 的方法 */
-                    string szHtml = String.Empty;
-                    enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
-                    //return szHtml;
-                }
-            }
-            catch (Exception ex)
-            {
-                // 例外錯誤處理。
-                enErrors.Add(ex.Message);
-                //return ex.Message
-
-            }
-            finally
-            {
-                // 顯示錯誤訊息。
-                if (enErrors.Count() > 0)
-                {
-                    string szErrorMessage = String.Join("\\r\\n", enErrors);
-                }
-            }
-            //=======================================================================
             return View(orderlist);
         }
-
-        #endregion
-        //#region 秉庠
-        ////===========================================================================
-        //訂單
-        public ActionResult OrderList(int order_id = 0)
+        [HttpPost]
+        public ActionResult CheckOut(string payment_method)
         {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
 
-            bool l_flag = false;  //顯示訂單明細
             SingleApartmentEntities db = new SingleApartmentEntities();
-
-            int member_id = db.Order.FirstOrDefault().MemberID;
-
-
-            IEnumerable<Order> l_order = from x in db.Order
-                                         where x.MemberID > 0   //之後要改成memberID  先抓全部
-                                         select x;
-
-
-            List<COrder> list = new List<COrder>();
-            foreach (Order o in l_order)
+            ViewBag.MemberID = user.fMemberId;
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            if (list == null || list.Count == 0)
             {
-                list.Add(new COrder() { order_entity = o });
+                return RedirectToAction("ShowProductInCart");
             }
-
-            IEnumerable<OrderDetails> l_orderdetail = from p in db.OrderDetails
-                                                      where p.OrderID == order_id
-                                                      select p;
-            List<COrderDetails> odlist = new List<COrderDetails>();
-            foreach (OrderDetails od in l_orderdetail)
+            if (theUser.MakeOrder(list)== "成功下訂！") {
+                Session[CDictionary.PRODUCTS_IN_CART] = null;
+                return RedirectToAction("OrderList");
+            }
+            else
             {
-                var prod = db.Product.FirstOrDefault(x => x.ProductID == od.ProductID);
-                odlist.Add(new COrderDetails() { entity = od, product_entity = prod });
+                return RedirectToAction("CheckOut");
             }
-
-            COrderMasterDetail a = new COrderMasterDetail() { display_flag = l_flag, t_order = list, t_orderDetail = odlist };
-
-            return View(a);
-
         }
-        //訂單明細
-        //public ActionResult List(int ID)
+
+        #endregion 
+        //#region 秉庠
+
+
+        ////===========================================================================
+        ////傳回資料庫
+        //[HttpPost]
+        //public ActionResult ShowProductInCart(int MemberID)//第四步
         //{
-        //    using (SingleApartmentEntities db = new SingleApartmentEntities())
+        //    int totalPrice = 0;
+
+        //    SingleApartmentEntities DB = new SingleApartmentEntities();
+
+        //    List<COrderDetailsViewModel> list = Session[CDictionary.PRODUCTS_IN_CART] as List<COrderDetailsViewModel>;
+
+        //    Order od = new Order();
+        //    //抓出多筆資料
+        //    foreach (var item in list)
         //    {
-        //        var table = (from p in db.OrderDetails
-        //                     where p.OrderID == ID
-        //                     select p).ToList();
+        //        OrderDetails ODD = new OrderDetails();
+
+        //        ODD.ProductName = DB.Product.Where(p => p.ProductID == item.ProductID).FirstOrDefault().ProductName;
+
+        //        ODD.Quantity = item.Quantity;
+
+        //        ODD.ProductID = item.ProductID;
+
+        //        ODD.UnitPrice = DB.Product.Where(p => p.ProductID == item.ProductID).FirstOrDefault().UnitPrice;
+
+        //        totalPrice += item.Quantity * (DB.Product.Where(p => p.ProductID == item.ProductID).FirstOrDefault().UnitPrice);
+
+        //        od.OrderDetails.Add(ODD);
+        //    }
+
+        //    //訂單日期
+        //    od.OrderDate = DateTime.Now;
+        //    //到貨日期
+        //    od.ArrivedDate = DateTime.Now.AddDays(7);
+        //    //總金額
+        //    od.TotalAmount = totalPrice;
+
+        //    od.OrderStatusID = 1;
+
+        //    od.SendingStatus = "配送中";
+
+        //    od.PayStatus = "尚未付款";
+
+        //    od.MemberID = MemberID;//到時候要改成使用者的memberID
+
+
+        //    DB.Order.Add(od);
+
+        //    DB.SaveChanges();
+
+        //    return RedirectToAction("Home");
 
         //}
+        //訂單
+        public ActionResult OrderList()
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+            ViewBag.MemberID = user.fMemberId;
+            return View();
+        }
+
+        public ActionResult PartialOrders(string MemberID, int page = 1, int pageSize = 6)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId.ToString() == MemberID).FirstOrDefault() };
+            int currentPage = page < 1 ? 1 : page;
+            var lt = theUser.SearchOrders();
+            var result = lt.ToPagedList(currentPage, pageSize);
+            ViewData.Model = result;
+            ViewBag.MemberID = MemberID;
+            return PartialView("_PartialOrders");
+        }
+        public ActionResult PartialONEOrder(string MemberID, int OrderID)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId.ToString() == MemberID).FirstOrDefault() };
+           
+            var result = theUser.SearchOrder(OrderID);
+            ViewData.Model = result;
+            ViewBag.MemberID = MemberID;
+            return PartialView("_PartialONEOrder");
+        }
         //取消訂單
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
+        {
+            try
             {
+                var user = Session[CDictionary.welcome] as CMember;
                 SingleApartmentEntities db = new SingleApartmentEntities();
-
-                Order od = db.Order.FirstOrDefault(p => p.OrderID == id);
-
-                var odd = db.OrderDetails.Where(q => q.OrderID == id);
-
-                if (odd != null)
-                {
-
-                    foreach (var ITEM in odd)
-                    {
-                        db.OrderDetails.Remove(ITEM);
-
-                    }
-                    if (od != null)
-                    {
-                        db.Order.Remove(od);
-                    }
-                    db.SaveChanges();
-                }
-
-                return RedirectToAction("Home");
+                CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+                ViewBag.MemberID = user.fMemberId;
+                var answer = theUser.DeleteAnOrder(id);
+                return Json(answer);
             }
+            catch(Exception)
+            {
+                return Json("發生錯誤");
+            }
+        }
 
         //#endregion
 
