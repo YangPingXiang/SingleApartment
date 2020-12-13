@@ -205,6 +205,9 @@
     <Compile Include="Models\MemberInformationCategory.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
@@ -239,6 +242,9 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoomFavorite.cs">
+      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomInformation.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoomStyle.cs">
