@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http.Headers;
 using static sln_SingleApartment.Models.CUser;
+using AllPay.Payment.Integration;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -402,27 +403,116 @@ namespace sln_SingleApartment.Controllers
             return View(orderlist);
         }
         [HttpPost]
-        public ActionResult CheckOut(string payment_method)
+        public string CheckOut(string payment_method)
         {
             var user = Session[CDictionary.welcome] as CMember;
-            if (user == null) { return RedirectToAction("Login", "Member"); }
+            //if (user == null) { return RedirectToAction("Login", "Member"); }
 
             SingleApartmentEntities db = new SingleApartmentEntities();
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
             List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
-            if (list == null || list.Count == 0)
+            List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
+            int TotalPrice = 0;
+
+            foreach (var item in orderlist)
             {
-                return RedirectToAction("ShowProductInCart");
+
+                TotalPrice += (item.ProductPrice == null ? 0 : (int)item.ProductPrice) * item.Quantity;
             }
-            if (theUser.MakeOrder(list)== "成功下訂！") {
-                Session[CDictionary.PRODUCTS_IN_CART] = null;
-                return RedirectToAction("OrderList");
-            }
-            else
+
+            List<string> enErrors = new List<string>();
+
+            try
             {
-                return RedirectToAction("CheckOut");
+                using (AllInOne oPayment = new AllInOne())
+                {
+
+                    var order1 = new Order();
+
+                    var orderdetails = orderlist.Where(p => p.OrderID == order1.OrderID);
+
+                    int? total = TotalPrice;
+
+
+
+                    /* 服務參數 */
+                    oPayment.ServiceMethod = AllPay.Payment.Integration.HttpMethod.HttpPOST;
+                    oPayment.ServiceURL = "https://payment-stage.opay.tw/Cashier/AioCheckOut/V5";
+                    oPayment.HashKey = "5294y06JbISpM5x9";
+                    oPayment.HashIV = "v77hoKGq4kWxNNIS";
+                    oPayment.MerchantID = "2000132";
+                    /* 基本參數 */
+                    oPayment.Send.ReturnURL = "http://localhost:44332/Member/Home";
+                    oPayment.Send.ClientBackURL = "http://localhost:44332/Product/OrderList";
+                    //oPayment.Send.OrderResultURL = "<<您要收到付款完成通知的瀏覽器端網址>>";
+                    oPayment.Send.MerchantTradeNo = string.Format("{0:00000}", (new Random()).Next(100000));
+                    oPayment.Send.MerchantTradeDate = DateTime.Now;
+                    oPayment.Send.TotalAmount = (decimal)total;
+                    oPayment.Send.TradeDesc = "感謝您的購買";
+                    //oPayment.Send.ChoosePayment = PaymentMethod.ALL;
+                    //oPayment.Send.Remark = "<<您要填寫的其他備註>>";
+                    oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;
+                    oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;
+                    oPayment.Send.HoldTrade = HoldTradeType.No;
+                    oPayment.Send.DeviceSource = DeviceType.PC;
+                    //oPayment.Send.UseRedeem = UseRedeemFlag.Yes; //購物金/紅包折抵
+                    //oPayment.Send.IgnorePayment = "<<您不要顯示的付款方式>>"; // 例如財付通:Tenpay
+                    //                                                      // 加入選購商品資料。
+
+                    foreach (var item in orderlist)
+                    {
+                        oPayment.Send.Items.Add(new Item()
+                        {
+                            Name = item.ProductName,
+
+                            Price = (decimal)item.ProductPrice,
+
+                            Currency = "元",
+
+                            Quantity = item.Quantity
+                        });
+
+
+                    }
+                    // 當付款方式為 ALL 時，建議增加的參數。
+                    //oPayment.SendExtend.PaymentInfoURL = "<<您要接收回傳自動櫃員機/超商/條碼付款相關資訊的網址。>> ";
+
+                    /* 產生訂單 */
+                    enErrors.AddRange(oPayment.CheckOut());
+                    /* 產生產生訂單 Html Code 的方法 */
+                    string szHtml = String.Empty;
+                    enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
+                    return szHtml;
+                }
             }
+            catch (Exception ex)
+            {
+                // 例外錯誤處理。
+                enErrors.Add(ex.Message);
+                return ex.Message;
+
+            }
+            finally
+            {
+                // 顯示錯誤訊息。
+                if (enErrors.Count() > 0)
+                {
+                    string szErrorMessage = String.Join("\\r\\n", enErrors);
+                }
+            }
+            //if (list == null || list.Count == 0)
+            //{
+            //    return RedirectToAction("ShowProductInCart");
+            //}
+            //if (theUser.MakeOrder(list)== "成功下訂！") {
+            //    Session[CDictionary.PRODUCTS_IN_CART] = null;
+            //    return RedirectToAction("OrderList");
+            //}
+            //else
+            //{
+            //    return RedirectToAction("CheckOut");
+            //}
         }
 
         #endregion 
