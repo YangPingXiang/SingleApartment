@@ -25,6 +25,7 @@ namespace sln_SingleApartment.Models
     
         public int ID { get; set; }
         public string RoomName { get; set; }
+        public Nullable<int> Status { get; set; }
         public Nullable<int> RoomStyleID { get; set; }
         public string RoomType { get; set; }
         public string BuildCaseID { get; set; }

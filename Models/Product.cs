@@ -28,7 +28,7 @@ namespace sln_SingleApartment.Models
         public int UnitPrice { get; set; }
         public string Discontinued { get; set; }
         public Nullable<int> Sales { get; set; }
-        public int Stock { get; set; }
+        public Nullable<int> Stock { get; set; }
         public string Description { get; set; }
         public Nullable<int> ActivityID { get; set; }
     

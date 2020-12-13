@@ -168,6 +168,7 @@
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
+    <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
     <Compile Include="Models\Discount.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
@@ -287,6 +288,9 @@
     <Compile Include="ViewModels\CPictureViewModel.cs" />
     <Compile Include="ViewModels\CProductViewModel.cs" />
     <Compile Include="ViewModels\CRoomFacilityViewModel.cs" />
+    <Compile Include="ViewModels\CRoomFavorite.cs" />
+    <Compile Include="ViewModels\CRoomListViewModel.cs" />
+    <Compile Include="ViewModels\CRoomSearchViewModel.cs" />
     <Compile Include="ViewModels\CRoomStyleViewModel.cs" />
     <Compile Include="ViewModels\CRoomViewModel.cs" />
     <Compile Include="ViewModels\CShopCart.cs" />
@@ -989,6 +993,9 @@
     <Content Include="Views\Activity\ParticipantStatus.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomManage.cshtml" />
     <Content Include="Views\RoomBackend\BackCreateRoom.cshtml" />
+    <Content Include="Views\Room\_box.cshtml" />
+    <Content Include="Views\Room\_PartialRoomFavorite.cshtml" />
+    <Content Include="Views\Room\RoomFavoritelist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

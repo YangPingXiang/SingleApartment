@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using Newtonsoft.Json;
+using PagedList;
 using sln_SingelApartment.ViewModels;
 using sln_SingleApartment.Models;
 using sln_SingleApartment.ViewModels;
@@ -12,6 +17,145 @@ namespace sln_SingelApartment.Controllers
     public class RoomController : Controller
     {
         SingleApartmentEntities dbSA = new SingleApartmentEntities();
+
+        public string RenderPartialToString(string viewName, object model, ControllerContext ControllerContext)
+        {
+            if (string.IsNullOrEmpty(viewName))
+                viewName = ControllerContext.RouteData.GetRequiredString("action");
+            ViewDataDictionary ViewData = new ViewDataDictionary();
+            TempDataDictionary TempData = new TempDataDictionary();
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
+        }
+        
+        public ActionResult GetSearchData(string case1, string case2, int case3, int case4)
+        {
+
+            List<CRoomViewModel> room_list = new List<CRoomViewModel>();           
+
+            if (case3 == 1)
+            {
+
+                var query = from r in dbSA.Room
+                            join b in dbSA.BuildCase
+                            on r.BuildCaseID equals b.ID
+                            join rs in dbSA.RoomStyle
+                            on r.RoomStyleID equals rs.ID
+                            where r.BuildCaseID == case1 && r.RoomType == case2 && r.RoomStyleID == case4
+                            && r.Rent <= 10000
+                            select new { r };
+
+                foreach (var item in query)
+                {
+                    CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+                    room_list.Add(room_VM);
+                }
+
+
+            }
+
+            if (case3 == 2)
+            {
+
+                var query = from r in dbSA.Room
+                            join b in dbSA.BuildCase
+                            on r.BuildCaseID equals b.ID
+                            join rs in dbSA.RoomStyle
+                            on r.RoomStyleID equals rs.ID
+                            where r.BuildCaseID == case1 && r.RoomType == case2 && r.RoomStyleID == case4
+                            && r.Rent > 10000 && r.Rent <= 20000
+                            select new { r };
+
+                foreach (var item in query)
+                {
+                    CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+                    room_list.Add(room_VM);
+                }
+
+
+            }
+
+            if (case3 == 3)
+            {
+
+                var query = from r in dbSA.Room
+                            join b in dbSA.BuildCase
+                            on r.BuildCaseID equals b.ID
+                            join rs in dbSA.RoomStyle
+                            on r.RoomStyleID equals rs.ID
+                            where r.BuildCaseID == case1 && r.RoomType == case2 && r.RoomStyleID == case4
+                            && r.Rent > 20000 && r.Rent <= 30000
+                            select new { r };
+
+                foreach (var item in query)
+                {
+                    CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+                    room_list.Add(room_VM);
+                }
+
+
+            }
+
+            if (case3 == 4)
+            {
+
+                var query = from r in dbSA.Room
+                            join b in dbSA.BuildCase
+                            on r.BuildCaseID equals b.ID
+                            join rs in dbSA.RoomStyle
+                            on r.RoomStyleID equals rs.ID
+                            where r.BuildCaseID == case1 && r.RoomType == case2 && r.RoomStyleID == case4
+                            && r.Rent > 30000 && r.Rent<= 40000
+                            select new { r };
+
+                foreach (var item in query)
+                {
+                    CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+                    room_list.Add(room_VM);
+                }
+
+
+            }
+
+            if (case3 == 5)
+            {
+
+                var query = from r in dbSA.Room
+                            join b in dbSA.BuildCase
+                            on r.BuildCaseID equals b.ID
+                            join rs in dbSA.RoomStyle
+                            on r.RoomStyleID equals rs.ID
+                            where r.BuildCaseID == case1 && r.RoomType == case2 && r.RoomStyleID == case4
+                            && r.Rent > 40000
+                            select new { r };
+
+                foreach (var item in query)
+                {
+                    CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
+                    room_list.Add(room_VM);
+                }
+
+
+            }
+
+
+
+            var html = RenderPartialToString("_box", room_list, ControllerContext);
+
+            
+
+            return Json(new { html = html }); ;
+
+
+        }
 
         //new search Page
         public ActionResult SearchPage()
@@ -36,109 +180,82 @@ namespace sln_SingelApartment.Controllers
             }
             abt_VM.roomViewModels = room_VM_lt;
 
+            //RoomStyle
+            List<CRoomStyleViewModel> roomStyle_VM_lt = new List<CRoomStyleViewModel>();
+            var rs = dbSA.RoomStyle;
+            foreach(var item in rs)
+            {
+                roomStyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
+            }
+            abt_VM.roomStyleViewModels = roomStyle_VM_lt;
 
 
             return View(abt_VM);
         }
 
-        public ActionResult Searching()
+        public JsonResult AddRoomToFavorite(string RoomID)
         {
-            CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-
-            //建案
-            CBuildCaseViewModel buildcase_VM = new CBuildCaseViewModel();
-            List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
-            var b = dbSA.BuildCase;
-            foreach (var item in b)
+            var user = Session[CDictionary.welcome] as CMember;
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            var result = "發生錯誤，請重新登入再試一次！";
+            if (user != null && int.TryParse(RoomID, out int roomID))
             {
-                buildcase_VM_lt.Add(new CBuildCaseViewModel() { entity_buildcase = item });
+                CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+                result = theUser.AddRoomToFavorite(roomID);
             }
-            abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
-
-            //Roomstyle
-            CRoomStyleViewModel roomstyle_VM = new CRoomStyleViewModel();
-            List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-            var rs = dbSA.RoomStyle;
-            foreach (var item in rs)
-            {
-                roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-            }
-            abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-
-            return View(abtRoom_VM);
+            return Json(JsonConvert.SerializeObject(new { ans = result }));
         }
 
-        //[HttpPost]
-        //public ActionResult Searching(
-        //   string buildcaseID, string roomstyleID, string peoplecount, string amountrent)
+        public ActionResult RoomFavoritelist(int page = 1, int pageSize = 6)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+            int memberID = user.fMemberId;
+            var list = dbSA.RoomFavorite.Where(r => r.MemberID == memberID);
+            int currentPage = page < 1 ? 1 : page;
+            List<CRoomFavorite> lt = new List<CRoomFavorite>();
+            foreach (var item in list)
+            {
+                lt.Add(new CRoomFavorite { entity_RoomFavorite = item });
+            }
+            //var result = lt.ToPagedList(currentPage, pageSize);
+            ViewData.Model = lt;
+            ViewBag.MemberID = memberID;
+            return View(lt);
+        }
+
+        public ActionResult DeleteRoomFavorite(int id)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            int memberID = user.fMemberId;
+            RoomFavorite roomfa = dbSA.RoomFavorite.FirstOrDefault(r => r.RoomID == id);
+            if (roomfa != null)
+            {
+                dbSA.RoomFavorite.Remove(roomfa);
+                dbSA.SaveChanges();
+                
+            }
+            return RedirectToAction("RoomFavoritelist");
+        }
+
+        //PartialRoomFavorite
+        //public ActionResult PartialRoomFavorite(string MemberID, int page = 1, int pageSize = 6)
         //{
-        //    CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-
-
-        //    #region Find room by buildcase 
-        //    CBuildCaseViewModel buildcase_VM = new CBuildCaseViewModel();
-        //    List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
-        //    var b = dbSA.BuildCase.Where(r => r.ID == buildcaseID);
-        //    foreach (var item in b)
+        //    SingleApartmentEntities db = new SingleApartmentEntities();
+        //    var list = db.RoomFavorite.Where(r => r.MemberID.ToString() == MemberID);
+        //    int currentPage = page < 1 ? 1 : page;
+        //    List<CRoomFavorite> lt = new List<CRoomFavorite>();
+        //    foreach (var item in list)
         //    {
-        //        buildcase_VM_lt.Add(new CBuildCaseViewModel() { entity_buildcase = item });
+        //        lt.Add(new CRoomFavorite { entity_RoomFavorite = item });
         //    }
-        //    abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
-        //    #endregion
-
-
-        //    #region Find room by roomstyle
-        //    CRoomStyleViewModel roomstyle_VM = new CRoomStyleViewModel();
-        //    List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-        //    var rs = dbSA.RoomStyle.Where(i => i.ID.ToString() == roomstyleID);
-        //    foreach (var item in rs)
-        //    {
-        //        roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-        //    }
-        //    abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-        //    #endregion
-
-
-        //    #region Find room by peoplecount
-        //    var p = dbSA.RoomStyle.Where(t => t.MaxNumberOfPeople.ToString() == peoplecount);
-        //    foreach (var item in p)
-        //    {
-        //        roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-
-        //    }
-        //    abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-        //    #endregion
-
-
-
-        //    #region Find room by rent
-        //    var a = dbSA.RoomStyle.Where(f => f.Rent.ToString() == amountrent);
-        //    foreach (var item in a)
-        //    {
-        //        roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-        //    }
-        //    abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-        //    #endregion
-
-        //    ViewData.Model = abtRoom_VM;
-
-
-        //    ViewBag.amountrent = amountrent;
-        //    ViewBag.peoplecount = peoplecount;
-        //    ViewBag.buildcaseID = buildcaseID;
-        //    ViewBag.roomstyleID = roomstyleID;
-
-
-        //    return RedirectToAction("ListAllRooms",
-        //        new
-        //        {
-        //            buildcaseID = buildcaseID,
-        //            roomstyleID = roomstyleID,
-        //            peoplecount = peoplecount,
-        //            amountrent = amountrent
-        //        });
-
+        //    var result = lt.ToPagedList(currentPage, pageSize);
+        //    ViewData.Model = result;
+        //    ViewBag.MemberID = MemberID;
+        //    return PartialView("_PartialRoomFavorite");
         //}
+
+        
 
         //public ActionResult PartialResult(string buildcaseID, string roomstyleID, string peoplecount, string amountrent)
         //{
@@ -222,7 +339,7 @@ namespace sln_SingelApartment.Controllers
         }
         
         //GET
-        public ActionResult ListRoomDetail()
+        public ActionResult ListRoomDetail(int id)
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
@@ -231,19 +348,15 @@ namespace sln_SingelApartment.Controllers
                          on r.RoomStyleID equals rs.ID 
                          join b in dbSA.BuildCase
                          on r.BuildCaseID equals b.ID
-                         //join rf in dbSA.RoomFacilities
-                         //on r.ID equals rf.RoomID
-                         //join f in dbSA.Facility
-                         //on rf.FacilityID equals f.ID
-                         where r.ID == 1
-                         select new { r = r, b = b, rs = rs,/* rf = rf, f = f*/ };
+                         where r.ID == id
+                         select new { r = r, b = b, rs = rs, };
 
             List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
             List<CRoomViewModel> rooom_VM_lt = new List<CRoomViewModel>();
             List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
             List<CRoomFacilityViewModel> roomfacility_VM_lt = new List<CRoomFacilityViewModel>();
             List<CFacilityViewModel> facility_VM_lt = new List<CFacilityViewModel>();
-
+            
             var test = result.ToList();   //有4個
             foreach (var item in result)
             {
@@ -253,16 +366,25 @@ namespace sln_SingelApartment.Controllers
                 roomstyle_VM_lt.Add(roomstyle_VM);
                 CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
                 rooom_VM_lt.Add(room_VM);
-                //CRoomFacilityViewModel roomfacility_VM = new CRoomFacilityViewModel() { entity_roomfacilities = item.rf };
-                //roomfacility_VM_lt.Add(roomfacility_VM);
-                //CFacilityViewModel facility_VM = new CFacilityViewModel() { entity_Facility = item.f };
-                //facility_VM_lt.Add(facility_VM);
             }
+
+            List<CLeaseViewModel> lease_VM_lt = new List<CLeaseViewModel>();
+            var l_result = from l in dbSA.Lease
+                           select l;
+            foreach(var litem in l_result)
+            {
+                CLeaseViewModel lease_VM = new CLeaseViewModel() { entity_lease = litem };
+                lease_VM_lt.Add(lease_VM);
+            }
+
+            CMember member = Session[CDictionary.welcome] as CMember;           
+
             abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
             abtRoom_VM.roomfacilityViewModel = roomfacility_VM_lt;
             abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
             abtRoom_VM.roomViewModels = rooom_VM_lt;
             abtRoom_VM.facilityViewModels = facility_VM_lt;
+            abtRoom_VM.leaseViewModels = lease_VM_lt;
 
             ViewData.Model = abtRoom_VM;
 
@@ -270,71 +392,6 @@ namespace sln_SingelApartment.Controllers
 
         }
 
-        //[HttpPost]
-        //public ActionResult ListRoomDetail(string roomstyleID)
-        //{
-        //    CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-
-
-        //    var result = dbSA.Room.Where(r => r.RoomStyleID.ToString() == roomstyleID);
-
-        //    List<CRoomViewModel> rooom_VM_lt = new List<CRoomViewModel>();
-
-        //    var test = result.ToList();
-
-        //    foreach (var item in result)
-        //    {
-        //        CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item };
-        //        rooom_VM_lt.Add(room_VM);
-
-        //    }
-      
-        //    abtRoom_VM.roomViewModels = rooom_VM_lt;
-
-        //    ViewData.Model = abtRoom_VM;
-        //    ViewBag.roomstyleid = roomstyleID;
-
-        //    return View(abtRoom_VM);
-        //}
-
-        //public ActionResult PartialCheckRoom(string roomstyleID, string buildcaseID, string peoplecount, string rent)
-        //{
-        //    //todo: 【FOR ROOM】 寫if判斷式 Room 關聯到Lease table的Lease的DateTime.Now 是否在startdat & Expiry Date之間, if false 才可以show
-
-        //    var available = dbSA.Room.Where(r =>
-        //                                        r.RoomStyleID.ToString() == roomstyleID
-        //                                        && r.BuildCaseID == buildcaseID
-        //                                        && r.RoomStyle.MaxNumberOfPeople.ToString() == peoplecount
-        //                                        && r.RoomStyle.Rent.ToString() == rent
-        //                                        );
-        //    var test = available.ToList();
-
-        //    List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-
-        //    foreach (var item in available)
-        //    {
-        //        room_VM_lt.Add(new CRoomViewModel() { entity_room = item });
-
-        //    }
-
-        //    ViewData.Model = room_VM_lt;
-        //    return PartialView("_PartialCheckRoom");
-        //}
-
-        public ActionResult ListAllRoomStyle()
-        {
-            List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-            var all = from rs in dbSA.RoomStyle
-                      select rs;
-
-            foreach (var item in all)
-            {
-                roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-
-            }
-
-            return View(roomstyle_VM_lt);
-        }
 
         public ActionResult BuildcaseInfo()
         {
@@ -351,53 +408,58 @@ namespace sln_SingelApartment.Controllers
         }
 
         // RoomBooking
-        public ActionResult BookingInfo()
+        public ActionResult BookingInfo(int id)
         {
 
             CMember member = Session[CDictionary.welcome] as CMember;
 
             var model = new CRoomBooking();
 
-            model.RoomId = 1;
-            //model.MemberId = member.fMemberId;
-            //model.MemberName = member.fAccount;
+            model.RoomId = id;
+            model.MemberId = member.fMemberId;
+            model.MemberName = member.fAccount;
 
             return View(model);
 
         }
 
-        //[HttpPost]
-        //public ActionResult BookingInfo(CRoomBooking objBookingInfo)
-        //{
-        //    Lease roomBooking = new Lease()
-        //    {
-        //        MemberID = objBookingInfo.MemberId,
-        //        RoomID = objBookingInfo.RoomId,
-        //        StartDate = objBookingInfo.StartTime,
-        //        ExpiryDate = objBookingInfo.EndTime,
+        [HttpPost]
+        public ActionResult BookingInfo(CRoomBooking objBookingInfo)
+        {
+            Lease roomBooking = new Lease()
+            {
+                MemberID = objBookingInfo.MemberId,
+                RoomID = objBookingInfo.RoomId,
+                StartDate = objBookingInfo.StartTime,
+                ExpiryDate = objBookingInfo.EndTime,
 
-        //    };
+            };
 
-        //    dbSA.Lease.Add(roomBooking);
-        //    dbSA.SaveChanges();
-        //    return Json(data: new { message = "Booking is successfully", success = true }, behavior: JsonRequestBehavior.AllowGet);
+            dbSA.Lease.Add(roomBooking);
+            dbSA.SaveChanges();
 
-        //    return Json(new { data = model });
+            //訂房成功
+            CInformationFactory x = new CInformationFactory();
+            x.Add(objBookingInfo.MemberId, 400, objBookingInfo.RoomId, 40020);
 
-        //    return Content(model.MemberId.ToString());
-        //}
+            return Json(data: new { message = "Booking is successfully", success = true }, behavior: JsonRequestBehavior.AllowGet);
+
+            //return Json(new { data = model });
+
+            //return Content(model.MemberId.ToString());
+        }
 
         public ActionResult MyRoom()
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
             CMember member = Session[CDictionary.welcome] as CMember;
-            //int memberID = member.fMemberId;
+            int memberID = member.fMemberId;
 
             var result = from L in dbSA.Lease
                          join R in dbSA.Room
                          on L.RoomID equals R.ID
-                         where L.MemberID == 1
+                         where L.MemberID == memberID
                          select new { L, R };
 
             List<CRoomViewModel> List_Room = new List<CRoomViewModel>();
@@ -478,23 +540,6 @@ namespace sln_SingelApartment.Controllers
 
         //    return View(abtRoom_VM);
         //}
-
-        public ActionResult Logintest(int memberID)
-        {
-            //Session["UserName"] = Name;
-
-            CMember member = Session[CDictionary.welcome] as CMember;
-            memberID = member.fMemberId;
-
-            return Content("登入成功");
-        }
-
-        public ActionResult LogintestResult()
-        {
-            var userName = Session["UserName"] != null ? (string)Session["UserName"] : "未登入";
-
-            return Content(userName);
-        }
 
 
 

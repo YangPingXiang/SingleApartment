@@ -71,12 +71,12 @@ namespace sln_SingleApartment.Controllers
                 }
 
             }
-            else
-            {
-                PID.Discontinued = "Y";
-                db.SaveChanges();
+            //else
+            //{
+            //    PID.Discontinued = "Y";
+            //    db.SaveChanges();
 
-            }
+            //}
             return View(list);
         }
         //=======================================================================
