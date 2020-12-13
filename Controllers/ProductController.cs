@@ -100,7 +100,7 @@ namespace sln_SingleApartment.Controllers
             var mymodel = theUser.SearchProduct();
             return View(mymodel);
         }
-        #region 以圖搜關鍵字
+        #region 以圖搜關鍵字 & 價格搜尋
         [HttpPost]
         public async Task<ActionResult> shop(HttpPostedFileBase imgPhoto)
         {
@@ -109,10 +109,8 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
-            
             var result = theUser.SearchProduct();
-            
-            if (imgPhoto != null)
+             if (imgPhoto != null)
             {
                 imgPhoto.SaveAs("c:\\temp\\111.jpg");
                 FileStream fs = new FileStream("c:\\temp\\111.jpg", FileMode.Open, FileAccess.Read);
@@ -167,50 +165,19 @@ namespace sln_SingleApartment.Controllers
 
         }
         #endregion
-
-        public JsonResult GetProductShowing(string condition, string id)
-        {
-            SingleApartmentEntities db = new SingleApartmentEntities();
-            List<CProductViewModel> list_product = new List<CProductViewModel>();
-            if (condition.Trim() == "all")
-            {
-                foreach (var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0))
-                {
-                    list_product.Add(new CProductViewModel() { entity = item });
-                }
-            }
-            else if (condition == "SubCategory" && id != null)
-            {
-                foreach (var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ProductSubCategoryID.ToString() == id))
-                {
-                    list_product.Add(new CProductViewModel() { entity = item });
-                }
-            }
-            else if (condition == "MainCategory" && id != null)
-            {
-                foreach (var item in db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ProductSubCategory.ProductMainCategoryID.ToString() == id))
-                {
-                    list_product.Add(new CProductViewModel() { entity = item });
-                }
-            }
-            List<string> ArrayList = new List<string>();
-            foreach (var item in list_product)
-            {
-                var json = JsonConvert.SerializeObject(item);
-                ArrayList.Add(json);
-            }
-            return Json(ArrayList);
-        }
-        public ActionResult PartialProductTabPane(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "")
+        public ActionResult PartialProductTabPane(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "", string firstprice = "", string lastprice = "")
         {
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
             List<CProductViewModel> lt;
+            if(firstprice !="" && lastprice!= "")
+                firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
             {
                 lt = user.SearchProductsBy(null, null, KeyWord);
             }
-
+            else if (int.TryParse(firstprice, out int first) &&int.TryParse(lastprice, out int last) && last > first)
+                lt = user.SearchProductsByPrice(first, last);
             else if (SubCategory != null)
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
             else if (MainCategory != null)
@@ -223,13 +190,17 @@ namespace sln_SingleApartment.Controllers
             ViewBag.pageSize = pageSize;
             return PartialView("_PartialProduct_TabPane");
         }
-        public ActionResult PartialProductProfile(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "")
+        public ActionResult PartialProductProfile(string MemberID, int page = 1, string pageSize = "6", string MainCategory = null, string SubCategory = null, string KeyWord = "", string firstprice = "", string lastprice = "")
         {
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
             List<CProductViewModel> lt;
+            if (firstprice != "" && lastprice != "")
+                firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
                 lt = user.SearchProductsBy(null, null, KeyWord);
+            else if (int.TryParse(firstprice, out int first) && int.TryParse(lastprice, out int last) && last > first)
+                lt = user.SearchProductsByPrice(first, last);
             else if (SubCategory != null)
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
             else if (MainCategory != null)
@@ -242,7 +213,6 @@ namespace sln_SingleApartment.Controllers
             ViewBag.pageSize = pageSize;
             return PartialView("_PartialProduct_Profile");
         }
-
 
         #endregion
         #region FavoriteList.cshtml (1130改)
@@ -379,6 +349,38 @@ namespace sln_SingleApartment.Controllers
             }
             return Json("沒有此商品");
         }
+        public JsonResult ChangeONEProductQuantity(string ProductID, string Quantity)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
+            Product prod = db.Product.FirstOrDefault(p => p.ProductID.ToString() == ProductID);
+            if (prod != null)
+            {
+                List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+                if (list != null && list.Count != 0)
+                {
+                    int Sum = 0;
+                    for (int i = 0; i < list.Count; i++)     //foreach沒有辦法去修改自己本身的陣列
+                    {
+                        if (list[i].txtProductID.ToString() == ProductID)
+                        {
+                            if (int.TryParse(Quantity, out int qty))
+                            {
+                                list[i].txtQuantity = qty;
+                                Sum += list[i].txtQuantity * prod.UnitPrice;
+                                
+                            }
+                        }
+                        else
+                        {
+                            Sum += list[i].txtQuantity * db.Product.AsEnumerable().FirstOrDefault(p => p.ProductID == list[i].txtProductID).UnitPrice;
+                        }
+                    }
+                    return Json(new { ans = "成功", sum = Sum });
+                }
+            }
+            return Json(new{ans= "發生錯誤"});
+        }
+
         #endregion
         #region Checkout
 

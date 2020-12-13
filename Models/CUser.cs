@@ -120,7 +120,7 @@ namespace sln_SingleApartment.Models
                 string[] kw = KeyWord.Split(' ');
                 pd = from p in db.Product
                      where p.Discontinued == "N" && p.Stock >= 0 && p.ActivityID != null
-                       || kw.Any(x=>p.ProductName.Contains(x))
+                       && kw.Any(x=>p.ProductName.Contains(x))
                      select p;
                 var k = pd.ToList();
             }
@@ -138,7 +138,17 @@ namespace sln_SingleApartment.Models
             }
             return result;
         }
-
+        public List<CProductViewModel> SearchProductsByPrice(int FirstPrice, int LastPrice)
+        {
+            List<CProductViewModel> result = new List<CProductViewModel>();
+            var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
+            pd = pd.Where(r => r.UnitPrice >= FirstPrice && r.UnitPrice <= LastPrice);
+            foreach (var item in pd)
+            {
+                result.Add(new CProductViewModel() { entity = item });
+            }
+            return result;
+        }
 
         #endregion
         #region 智慧辨識
