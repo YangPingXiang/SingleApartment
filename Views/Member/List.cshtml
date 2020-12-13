@@ -1,4 +1,4 @@
-﻿@model IEnumerable<sln_SingleApartment.ViewModels.CMemberRegister>
+﻿@model IEnumerable<sln_SingleApartment.Models.tMember>
 
 @{
     ViewBag.Title = "List";
@@ -76,47 +76,61 @@
         <table class="table" style="border:2px #97CBFF solid;padding:5px;" rules="all">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.fMemberId)
+                    @*@Html.DisplayNameFor(model => model.fMemberId)*@
+                    活動ID
                 </th>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.fMemberName)
+                    @*@Html.DisplayNameFor(model => model.fMemberName)*@
+                    活動名稱
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fAccount)
+                    @*@Html.DisplayNameFor(model => model.fAccount)*@
+                    帳號
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fPassword)
+                    @*@Html.DisplayNameFor(model => model.fPassword)*@
+                    會員密碼
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fEmail)
+                    @*@Html.DisplayNameFor(model => model.fEmail)*@
+                    會員信箱
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fPhone)
+                    @*@Html.DisplayNameFor(model => model.fPhone)*@
+                    手機號碼
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fAge)
+                    @*@Html.DisplayNameFor(model => model.fAge)*@
+                    年齡
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fSex)
+                    @*@Html.DisplayNameFor(model => model.fSex)*@
+                    性別
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fBirthDate)
+                    @*@Html.DisplayNameFor(model => model.fBirthDate)*@
+                    出生日期
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fSalary)
+                    @*@Html.DisplayNameFor(model => model.fSalary)*@
+                    年收入
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fCareer)
+                    @*  @Html.DisplayNameFor(model => model.fCareer)*@
+                    職業
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fImage)
+                    @*@Html.DisplayNameFor(model => model.fImage)*@
+                    照片
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fRoomId)
+                    @*@Html.DisplayNameFor(model => model.fRoomId)*@
+                    房間號碼
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.fLeave)
+                    @*@Html.DisplayNameFor(model => model.fLeave)*@
+                    是否已退租
                 </th>
                 <th></th>
             </tr>
