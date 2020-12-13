@@ -1,0 +1,333 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<sln_SingleApartment.ViewModels.CMessage>
+
+@{
+
+    Layout = "~/Views/Shared/HomePage/_Layout_HomePage.cshtml";
+    ViewBag.Title = "MessageList";
+    //Layout = null;
+}
+
+@*<h2>留言板</h2>*@
+
+
+<!-- Header -->
+<!-- Menu -->
+<!-- Main -->
+<section id="main" class="wrapper" style="padding:2em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">留言板</h1>
+            @*<div id="timer"></div>*@
+        </header>
+        @*=================================================================*@
+
+        <br />
+        <div class="row" style="width:800px;margin:0 auto;">
+            <div class="col-md-8" style="padding-left:0;">
+                <button type="button" onclick="openModal()">留言</button>
+            </div>
+
+            @*style="text-align:right"*@
+            <div class="col-md-4">
+                @*value="@ViewBag.OrderBy"*@
+                <select id="id_OrderType" onchange="queryOrderBy(this.value)" style="display:inline;width:250px;line-height:3em;height:3em;background-color:white;">
+                    <option value="ByDateAsc">依日期-遞增</option>
+                    <option value="ByDateDesc">依日期-遞減</option>
+                </select>
+                @*<button type="button" onclick="openModal()">查詢</button>*@
+            </div>
+        </div>
+        <br />
+        <table class="alt table-hover" style="width:800px;margin:0 auto">
+            <tr>
+
+                <th style="font-size:unset">
+                    項目
+                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().MessageID)*@
+                </th>
+                <th style="font-size:unset">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().MessageDate)
+                </th>
+
+                <th style="font-size:unset">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().GuestName)
+                </th>
+                <th style="font-size:unset">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().MessageSubject)
+                </th>
+                @*<th style="font-size:unset">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().MessageContent)
+                </th>*@
+
+                <th style="font-size:unset"></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageID)
+                    </td>
+                    <td>
+                        @item.MessageDate.ToString("yyyy/MM/dd")
+                        @*@Html.DisplayFor(modelItem => item.MessageDate)*@
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuestName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageSubject)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.MessageContent)
+                    </td>*@
+
+                    <td>
+                        <button onclick="showTable(this, @item.MessageID, '@item.MessageContent', '@item.AdminContent')" class="btn" style="height:unset;background-color:#8ddd59" flag="true">內文</button>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                        <button onclick="updateApply(@item.MessageID, '@item.GuestName', '@item.MessageSubject', '@item.MessageContent');" class="btn btn-info" style="height:unset;">回覆</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div style="width:800px;margin:0 auto">
+            @Html.PagedListPager(Model, Page => Url.Action("MessageList", new { pageNum = Page, orderByString = ViewBag.OrderBy }))
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">留言者</label>
+                                <input type="text" class="form-control" id="id_guestname">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">主旨</label>
+                                <input type="text" class="form-control" id="id_subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">內文</label>
+                                <textarea class="form-control" style="height:100px" id="id_content"></textarea>
+                            </div>
+                            <div class="form-group" id="group_apply">
+                                <label for="message-text" class="col-form-label">回覆</label>
+                                <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="id_save">存檔</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*修改的modal*@
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group" hidden="hidden">
+                                <label for="recipient-name" class="col-form-label">留言者</label>
+                                <input type="text" class="form-control" id="id_messageID2">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">留言者</label>
+                                <input type="text" class="form-control" id="id_guestname2">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">主旨</label>
+                                <input type="text" class="form-control" id="id_subject2">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">內文</label>
+                                <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
+                            </div>
+                            <div class="form-group" id="group_apply2">
+                                <label for="message-text" class="col-form-label">回覆</label>
+                                <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="id_save2">存檔</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*=================================================================*@
+        @*<p> Aenean iaculis, neque sed preti</p>*@
+    </div>
+</section>
+
+<!-- Footer -->
+
+<script>
+    //使用這按下[訊息]鈕, 預設flag="true"
+    function showTable(obj, p_id, p_message, p_source) {
+        //$("tr").after("<u>Hello</u>")   //ok的語法
+        //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
+
+        var str_f = "<tr><td>訊息內容</td><td colspan='5'>" + p_message + "</td></tr>" +
+            "<tr><td>版主回覆</td><td colspan='5'>" + p_source + "</td></tr>";
+        console.log(str_f);
+        //$(obj).attr('disabled', true);    //失效
+        //console.log('修改前'+ $(obj).attr('flag'));
+        ////$(obj).attr('flag', 'false');
+        //console.log('修改後' + $(obj).attr('flag'));
+
+        if ($(obj).attr('flag') == 'true') {
+            $(obj).parents("tr").after(str_f); //動態加入 訊息資料tr
+            $(obj).text("收合");
+            //table tr 已讀則將此row的底色改為淺藍色
+            //$(obj).parent().parent().css('background-color', '#EEF9FC'); // "#E6F5FA");
+            $(obj).attr('flag', 'false');  //改成 false
+        }
+        else {
+            $(obj).parent().parent().next().remove(); //刪除下面第一個 tr
+            $(obj).parent().parent().next().remove(); //刪除下面第一個 tr
+
+            $(obj).text("內文");
+            $(obj).attr('flag', 'true');  //改成 false
+        }
+    }
+
+    function queryOrderBy(p_data) {
+        console.log("@ViewBag.OrderBy");
+        console.log("queryOrderBy-" + p_data);
+
+        window.location.href = "/MailMessage/MessageList?orderByString=" + p_data;
+    }
+    function openModal() {
+        $("#exampleModal").modal('show');
+
+        //新增留言
+        //$("#id_guestname").attr('disabled', false);   //有效
+        //$("#id_subject").attr('disabled', false);     //有效
+        //$("#id_content").attr('disabled', false);     //有效
+        $("#group_apply").hide();
+    }
+
+    //管理者回覆  第二個 Modal
+    function updateApply(p_MessageID, p_GuestName, p_MessageSubject, p_MessageContent) {
+        $("#exampleModal2").modal('show');
+        
+        //修改
+        $("#id_guestname2").attr('disabled', true);   //失效
+        $("#id_subject2").attr('disabled', true);     //失效
+        $("#id_content2").attr('disabled', true);     //失效
+        //$("#group_apply").show();
+        $("#id_messageID2").val(p_MessageID);
+        $("#id_guestname2").val(p_GuestName);
+        $("#id_subject2").val(p_MessageSubject);
+        $("#id_content2").val(p_MessageContent);
+    }
+
+    $("#id_save").click(function () {
+        let p_guestname = $("#id_guestname").val();
+        let p_subject = $("#id_subject").val();
+        let p_content = $("#id_content").val();
+        let p_apply = $("#id_apply").val();
+        //console.log(p_subject);
+        $.ajax({
+            url: "/MailMessage/MessageCreate",
+            type: "POST",
+            data: {
+                GuestName: p_guestname,
+                MessageSubject: p_subject,  //傳遞參數
+                InformationCategoryID: "500",  //其他類
+                MessageContent: p_content,
+                AdminContent: p_apply
+            },
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //$("#container").html(data);
+
+                //List 資料重查
+                window.location.href = "/MailMessage/MessageList";
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/MailMessage/MessageList",
+                //    success: function (data) {
+                //    console.log(data); //可先測試程式有無載入
+                //    //$("#container").html(data);
+                //    }
+                //});
+            },
+            error: function () {
+                alert("There has been an error~");
+            }
+        });
+
+        $("#exampleModal").modal('hide');
+    })
+
+    //修改 管理者回覆
+    $("#id_save2").click(function () {
+        let p_messageID = $("#id_messageID2").val();
+        let p_apply = $("#id_apply2").val();
+        //console.log(p_subject);
+        $.ajax({
+            url: "/MailMessage/MessageEdit",
+            type: "POST",
+            data: {
+                MessageID: p_messageID,
+                AdminContent: p_apply
+            },
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //$("#container").html(data);
+
+                //List 資料重查
+                window.location.href = "/MailMessage/MessageList";
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/MailMessage/MessageList",
+                //    success: function (data) {
+                //    console.log(data); //可先測試程式有無載入
+                //    //$("#container").html(data);
+                //    }
+                //});
+            },
+            error: function () {
+                alert("There has been an error~");
+            }
+        });
+
+        $("#exampleModal2").modal('hide');
+    })
+
+    //109-12-12 一啟動即執行
+    $(function () {
+        //console.log($("#id_OrderType").val());
+        //這一行很重要
+        $("#id_OrderType").val("@ViewBag.OrderBy");
+    });
+
+</script>

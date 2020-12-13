@@ -3,6 +3,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -17,6 +18,7 @@
         <nav class="right " style="margin-top:20px">
             @Html.ActionLink("Log Out", "LogOut", "Member", new { @class = "button alt" })
         </nav>
+
     </header>
 
     <!-- Menu -->
@@ -29,6 +31,7 @@
             <li id="id_infoNotify">@Html.ActionLink("窩的訊息", "List", "Information")</li>
             <li>@Html.ActionLink("當窩們同在一起", "List", "Activity")</li>
             <li>@Html.ActionLink("會員中心", "MemberCenter", "Member")</li>
+            <li>@Html.ActionLink("窩居留言板", "MessageList", "MailMessage")</li>
         </ul>
         <ul class="actions vertical">
             <li><a href="#" class="button fit">Login</a></li>
@@ -37,7 +40,7 @@
 
 
 
-    <div>
+    <div style="min-height:75%">
         @RenderBody()
     </div>
 
