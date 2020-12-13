@@ -7,6 +7,9 @@ using System.Net.Mail;
 using System.Net;
 using sln_SingleApartment.Models;
 using sln_SingleApartment.ViewModels;
+using System.Web.Services.Description;
+using Message = sln_SingleApartment.Models.Message;
+using PagedList;
 
 namespace sln_SingleApartment.Controllers
 {
