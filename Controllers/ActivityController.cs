@@ -471,6 +471,8 @@ namespace sln_SingleApartment.Controllers
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             Activity table = db.Activity.FirstOrDefault(p => p.ActivityID == id);
+           
+             //List<CActivityCart> list = new List<CActivityCart>();
             if (table != null)
             {
                 CActivityCart tb = new CActivityCart();
@@ -484,13 +486,28 @@ namespace sln_SingleApartment.Controllers
                 tb.fMemberId = table.MemberID;
                
                 tb.fNote = table.Note;
-                List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
-                if (list == null)
+                List<CActivityCart> list = new List<CActivityCart>();
+                if (Session[CDictionary.Cart_Key] != null)
                 {
-                    list = new List<CActivityCart>();
-                    Session[CDictionary.Cart_Key] = list;
+                    list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
+
                 }
+                
+
+                    //List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
+                    //list.Add(tb);
+                    //Session[CDictionary.Cart_Key] = list;
+                
+
                 list.Add(tb);
+                Session[CDictionary.Cart_Key] = list;
+                //Session[CDictionary.Cart_Key] =  list ;
+                //if (list == null)
+                //{
+                //    list = new List<CActivityCart>();
+
+                //}
+
             }
             
             return RedirectToAction("List");
@@ -749,7 +766,7 @@ namespace sln_SingleApartment.Controllers
         }
 
         //將session資料加進DB 12/4
-        public ActionResult AddToDB(CActivityCart input)
+        public ActionResult AddToDB(int id)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
 
@@ -757,23 +774,34 @@ namespace sln_SingleApartment.Controllers
             if (member == null) { return RedirectToAction("Login", "Member"); }
             int memberID = member.fMemberId;
 
-            List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
-            CActivityCart t = new CActivityCart();
-            tActivityCart cart = new tActivityCart();
-            if (list != null)
-            {
+
+
+            //CActivityCart t = new CActivityCart();
+            //tActivityCart cart = new tActivityCart();
+            //if (list != null)
+            //{
                 Participant p = new Participant();
-                p.ActivityID = input.fJoinedId;
+                p.ActivityID = id;
                 p.MemberID = memberID;
              
 
                 db.Participant.Add(p);
                 db.SaveChanges();
-                list = new List<CActivityCart>();
+
+            List<CActivityCart> list = Session[CDictionary.Cart_Key] as List<CActivityCart>;
+            foreach(var a in list)
+            {
+                if (a.fJoinedId == id)
+                {
+                    list.Remove(a);
+                    break;
+                }
+            }
+            //list = new List<CActivityCart>();
                 Session[CDictionary.Cart_Key] = list;
 
-            }
-            list.Remove(t);
+            //}
+            //list.Remove(list);
             return RedirectToAction("List");
         }
         public ActionResult subActivity(int id)
