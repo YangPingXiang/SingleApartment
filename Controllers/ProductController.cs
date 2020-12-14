@@ -52,15 +52,15 @@ namespace sln_SingleApartment.Controllers
             //List<CActivity> Activity = new List<CActivity>();
             //=====================================================================
             //取得團購商品(活動尚未結束)
-            var ActivityProduct = from g in db.Activity.AsEnumerable()
-                                  join p in db.Product.AsEnumerable()
-                                  on g.ActivityID equals p.ActivityID
-                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")|| (g.EndTime <= DateTime.Now || p.Discontinued == "Y")
+            var ActivityProduct = from p in db.Product.AsEnumerable()
+                                  join g in db.Activity.AsEnumerable()
+                                  on p.ActivityID equals g.ActivityID
+                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")||(g.EndTime <= DateTime.Now && p.Discontinued=="Y")
                                   select p;
-        
+            
             foreach (var item in ActivityProduct)
             {
-              
+                
                list.Add(new CProductViewModel() { entity = item });
 
             }
