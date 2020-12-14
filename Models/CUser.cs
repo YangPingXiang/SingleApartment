@@ -228,11 +228,11 @@ namespace sln_SingleApartment.Models
                
             }
             order.OrderDate = DateTime.Now;
-            order.ArrivedDate = DateTime.Now.AddDays(7);
+            
             order.TotalAmount = totalPrice;
             order.OrderStatusID = 1;
-            order.SendingStatus = "配送中";
-            order.PayStatus = "未付款";
+            order.SendingStatus = "等待付款中";
+            order.PayStatus = "尚未付款";
             order.MemberID = this.tMember.fMemberId;
             try
             {

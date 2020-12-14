@@ -405,9 +405,7 @@ namespace sln_SingleApartment.Controllers
         [HttpPost]
         public string CheckOut(string payment_method)
         {
-
             var user = Session[CDictionary.welcome] as CMember;
-            
             SingleApartmentEntities db = new SingleApartmentEntities();
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
@@ -630,28 +628,19 @@ namespace sln_SingleApartment.Controllers
             {
                 return "其他";
             }
-            //if (list == null || list.Count == 0)
-            //{
-            //    return RedirectToAction("ShowProductInCart");
-            //}
-            //if (theUser.MakeOrder(list)== "成功下訂！") {
-            //    Session[CDictionary.PRODUCTS_IN_CART] = null;
-            //    return RedirectToAction("OrderList");
-            //}
-            //else
-            //{
-            //    return RedirectToAction("CheckOut");
-            //}
         }
 
-        #endregion 
+        #endregion
+        #region 訂單
         //產生訂單
         public ActionResult MakeOrderIntoDB(int RtnCode, string RtnMsg, string CustomField1, string CustomField2)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             string cusID = CustomField1;
             string OrderID = CustomField2;
-            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().PayStatus = "已付款";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().PayStatus = "付款完成";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().SendingStatus = "出貨中";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().ArrivedDate = DateTime.Now.AddDays(7);
             db.SaveChanges();
             return RedirectToAction("OrderList");
         }
@@ -701,8 +690,7 @@ namespace sln_SingleApartment.Controllers
                 return Json("發生錯誤");
             }
         }
-        
-
+        #endregion
 
     }
 
