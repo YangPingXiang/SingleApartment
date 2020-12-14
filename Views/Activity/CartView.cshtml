@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "CartView";
     Layout = "~/Views/Shared/Information_Layout.cshtml";
+    
 }
 
 <h2>您所選擇參加的活動</h2>
@@ -57,7 +58,7 @@
     {
         <tr>
             <td>
-                @Html.Hidden("txtfJoinedID", item.fJoinedId)
+                @Html.Hidden("fJoinedId", item.fJoinedId)
             </td>
 
             <td>

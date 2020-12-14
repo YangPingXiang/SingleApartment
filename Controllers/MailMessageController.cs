@@ -27,7 +27,7 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities entity = new SingleApartmentEntities();
             try
             {
-                string sMemberEmail = "";
+                //string sMemberEmail = "";
                 MailMessage mail = new MailMessage();
                 //string email = "dddd";
                 mail.From = new MailAddress("singleapart@gmail.com");
