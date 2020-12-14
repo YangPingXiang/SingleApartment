@@ -17,10 +17,10 @@
     {
         myID += 1;
         <tr>
-            @*會員編號*@
+            @*訂單編號*@
             <td class="sop-cart an-shop-cart">
-                <a href="#"><img class="primary-image" alt="" src="img/products/10.jpg"></a>
                 <a href="#">@myID</a>
+                  [ @Html.DisplayFor(modelItem => item.PayStatus) ]
             </td>
             @*價錢*@
             <td class="sop-cart">

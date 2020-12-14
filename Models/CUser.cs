@@ -238,7 +238,7 @@ namespace sln_SingleApartment.Models
             order.TotalAmount = totalPrice;
             order.OrderStatusID = 1;
             order.SendingStatus = "配送中";
-            order.PayStatus = "已付款";
+            order.PayStatus = "未付款";
             order.MemberID = this.tMember.fMemberId;
             try
             {
@@ -252,7 +252,7 @@ namespace sln_SingleApartment.Models
             {
                 return "發生錯誤，請稍後再試！";
             }
-            return "成功下訂！";
+            return $"{order.OrderID}";
         }
         #endregion
         #region 智慧辨識
