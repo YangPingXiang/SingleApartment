@@ -271,9 +271,6 @@
     <Compile Include="Models\SubActivity.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tActivityCart.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
