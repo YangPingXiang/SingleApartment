@@ -6,12 +6,14 @@ using System.Web.Security;
 using System.Security.Principal;
 using sln_SingleApartment.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using CaptchaMvc.HtmlHelpers;
 
 namespace sln_SingleApartment.Controllers
 {
     public class MemberController : Controller
     {
-      
+
         SingleApartmentEntities db = new SingleApartmentEntities();
         //後台會員列表   12月2號-修改將參考型別改為CMemberRister
         public ActionResult List()
@@ -19,14 +21,14 @@ namespace sln_SingleApartment.Controllers
             var table = from p in db.tMember
                         orderby p.fLeave
                         select p;
-            List<CMemberRegister> list = new List<CMemberRegister>();
-            foreach (tMember p in table)
-            {
-                list.Add(new CMemberRegister() { entity = p });
-            }
-            return View(list);
+            //List<CMemberRegister> list = new List<CMemberRegister>();
+            //foreach (tMember p in table)
+            //{
+            //    list.Add(new CMemberRegister() { entity = p });
+            //}
+            return View(table);
         }
-     
+
         //  最一開始的首頁
         public ActionResult HomePage()
         {
@@ -38,57 +40,112 @@ namespace sln_SingleApartment.Controllers
         {
             return View();
         }
+
+        public string GoLogin(string returnUrl)
+        {
+            google ms = JsonConvert.DeserializeObject<google>(returnUrl);
+
+            var member = db.tMember.Where(x => x.fEmail == ms.du).FirstOrDefault();
+            if (member == null)
+            {
+                tMember t = new tMember();
+                t.fEmail = ms.du;
+                t.fMemberName = ms.Ad;
+                t.fAccount = ms.du;
+                t.fPassword = ms.OT;
+                db.tMember.Add(t);
+                db.SaveChanges();
+                member = db.tMember.Where(x => x.fEmail == ms.du).FirstOrDefault();
+
+
+
+            }
+            CMember c = new CMember();
+            c.fMemberId = member.fMemberId;
+            c.fMemberName = member.fMemberName;
+            c.fAccount = member.fAccount;
+            c.fPassword = member.fPassword;
+            c.fEmail = member.fEmail;
+            c.fRoomId = member.fRoomId;
+            c.fPhone = member.fPhone;
+            c.fAge = member.fAge;
+            c.fSex = member.fSex;
+            c.fBirthDate = member.fBirthDate;
+            c.fSalary = member.fSalary;
+            c.fCareer = member.fCareer;
+            c.fImage = member.fImage;
+            c.fLeave = member.fLeave;
+            c.fRole = member.fRole;
+            Session[CDictionary.welcome] = c;
+            return "驗證成功";
+        }
+
+
+
         //  登入
         public ActionResult LogIn()
         {
             return View();
         }
-
         [HttpPost]
-        public ActionResult LogIn(CLogIn login)
-        { 
+        public ActionResult LogIn(CLogIn login, FormCollection form)
+        {
+
+            if (!this.IsCaptchaValid(""))
+            {
+                ViewBag.ErrorMessage = "會不會算數?";
+                return View("LogIn", login);
+            }
+
             login.txtAccount = Request.Form["txtaccount"];
             login.txtPassword = Request.Form["txtpwd"];
             CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
+            var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
+
+
             if (cm != null)
             {
-                Session[CDictionary.welcome] = cm;
-                CMember member = Session[CDictionary.welcome] as CMember;  
+                if (isVerify)
+                {
+                    ViewBag.ErrorMessage = "證明你是人類";
+                    return View("LogIn", login);
 
+                }
+
+                Session[CDictionary.welcome] = cm;
+                CMember member = Session[CDictionary.welcome] as CMember;
                 return RedirectToAction("Home");
             }
             else
             {
                 ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
-                
-            }
-           return View();
-        }
-
-        public ActionResult Robot(FormCollection form, CLogIn login)
-        {
-            var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
-            if (isVerify)
-            {
-                login.txtAccount = Request.Form["txtaccount"];
-                login.txtPassword = Request.Form["txtpwd"];
-                CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
-                if (cm != null)
-                {
-                    Session[CDictionary.welcome] = cm;
-                    CMember member = Session[CDictionary.welcome] as CMember;
-
-                    return RedirectToAction("Home");
-                }
-                else
-                {
-                    ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
-
-                }
-
             }
             return View();
         }
+        //    public ActionResult Robot(FormCollection form, CLogIn login)
+        //{
+        //    var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
+        //    if (isVerify)
+        //    {
+        //        login.txtAccount = Request.Form["txtaccount"];
+        //        login.txtPassword = Request.Form["txtpwd"];
+        //        CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
+        //        if (cm != null)
+        //        {
+        //            Session[CDictionary.welcome] = cm;
+        //            CMember member = Session[CDictionary.welcome] as CMember;
+
+        //            return RedirectToAction("Home");
+        //        }
+        //        else
+        //        {
+        //            ViewBag.msg = "帳號或密碼錯誤，請重新輸入正確帳號密碼!";
+
+        //        }
+
+        //    }
+        //   
+        //}
 
 
         //註冊
@@ -169,8 +226,24 @@ namespace sln_SingleApartment.Controllers
                 return RedirectToAction("Home");
             }
             //12月2號修改------
-            CMemberRegister list = new CMemberRegister() { entity = table };
-            return View(list);
+          
+            CMember c = new CMember();
+            c.fMemberId = table.fMemberId;
+            c.fMemberName = table.fMemberName;
+            c.fAccount = table.fAccount;
+            c.fPassword = table.fPassword;
+            c.fEmail = table.fEmail;
+            c.fRoomId = table.fRoomId;
+            c.fPhone = table.fPhone;
+            c.fAge = table.fAge;
+            c.fSex = table.fSex;
+            c.fBirthDate = table.fBirthDate;
+            c.fSalary = table.fSalary;
+            c.fCareer = table.fCareer;
+            c.fImage = table.fImage;
+            c.fLeave = table.fLeave;
+            c.fRole = table.fRole;
+            return View(c);
         }
 
         [HttpPost]
@@ -179,29 +252,34 @@ namespace sln_SingleApartment.Controllers
             var table = db.tMember.Where(p => p.fMemberId == cm.fMemberId).FirstOrDefault();
             if (cm != null)
             {
-                int index = cm.myImage.FileName.IndexOf(".");
-                string extention = cm.myImage.FileName.Substring(index, cm.myImage.FileName.Length - index);
-                string photoName = Guid.NewGuid().ToString() + extention;
+                if (cm.myImage != null)
+                {
+                    int index = cm.myImage.FileName.IndexOf(".");
+                    string extention = cm.myImage.FileName.Substring(index, cm.myImage.FileName.Length - index);
+                    string photoName = Guid.NewGuid().ToString() + extention;
 
-                cm.fImage = "../Content/" + photoName;
-                cm.myImage.SaveAs(Server.MapPath("~/Content/") + photoName);
+                    cm.fImage = "../Content/" + photoName;
+                    cm.myImage.SaveAs(Server.MapPath("~/Content/") + photoName);
+                }
                 //12月2號新增------------------
-                tMember t = new tMember();
-                t.fMemberId = cm.fMemberId;
-                t.fMemberName = cm.fMemberName;
-                t.fAccount = cm.fAccount;
-                t.fPassword = cm.fPassword;
-                t.fEmail = cm.fEmail;
-                t.fRoomId = cm.fRoomId;
-                t.fPhone = cm.fPhone;
-                t.fAge = cm.fAge;
-                t.fSex = cm.fSex;
-                t.fBirthDate = cm.fBirthDate;
-                t.fSalary = cm.fSalary;
-                t.fCareer = cm.fCareer;
-                t.fImage = cm.fImage;
-                t.fLeave = cm.fLeave;
-                t.fRole = cm.fRole;
+                table.fMemberId = cm.fMemberId;
+                table.fMemberName = cm.fMemberName;
+                table.fAccount = cm.fAccount;
+                table.fPassword = cm.fPassword;
+                table.fEmail = cm.fEmail;
+                table.fRoomId = cm.fRoomId;
+                table.fPhone = cm.fPhone;
+                table.fAge = cm.fAge;
+                table.fSex = cm.fSex;
+                table.fBirthDate = cm.fBirthDate;
+                table.fSalary = cm.fSalary;
+                table.fCareer = cm.fCareer;
+                if (cm.fImage != null)
+                {
+                    table.fImage = cm.fImage;
+                }
+                table.fLeave = cm.fLeave;
+                table.fRole = cm.fRole;
                 //-------------------------------------
                 db.SaveChanges();
 
