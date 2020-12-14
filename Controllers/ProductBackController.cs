@@ -246,9 +246,6 @@ namespace sln_SingleApartment.Controllers
 
             Product prod = db.Product.FirstOrDefault(q => q.ProductID == p.ProductID);
             
-          
-
-
             if (prod != null)
             {
               
