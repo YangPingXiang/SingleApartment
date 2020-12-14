@@ -407,9 +407,7 @@ namespace sln_SingleApartment.Controllers
         [HttpPost]
         public string CheckOut(string payment_method)
         {
-
             var user = Session[CDictionary.welcome] as CMember;
-            
             SingleApartmentEntities db = new SingleApartmentEntities();
             ViewBag.MemberID = user.fMemberId;
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
@@ -528,12 +526,12 @@ namespace sln_SingleApartment.Controllers
                         //oPayment.Send.ReturnURL = "http://example.com";//付款完成通知回傳的網址
                         //oPayment.Send.ClientBackURL = "http://www.ecpay.com.tw/";//瀏覽器端返回的廠商網址
                         oPayment.Send.OrderResultURL = "http://localhost:44332/Product/MakeOrderIntoDB";//瀏覽器端回傳付款結果網址
-                        oPayment.Send.MerchantTradeNo = "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
+                        oPayment.Send.MerchantTradeNo = "WoJuApartment" + orderID.ToString();//廠商的交易編號
                         oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"); ;//廠商的交易時間
                         oPayment.Send.TotalAmount = (decimal)TotalPrice;//交易總金額
                         oPayment.Send.TradeDesc = "感謝您的購買^^";//交易描述
                         //oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
-                        //oPayment.Send.Remark = "";//備註欄位
+                        oPayment.Send.Remark = "窩居公寓－測試訂單";//備註欄位
                         //oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;//使用的付款子項目
                         //oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;//是否需要額外的付款資訊
                         //oPayment.Send.DeviceSource = DeviceType.PC;//來源裝置
@@ -632,28 +630,19 @@ namespace sln_SingleApartment.Controllers
             {
                 return "其他";
             }
-            //if (list == null || list.Count == 0)
-            //{
-            //    return RedirectToAction("ShowProductInCart");
-            //}
-            //if (theUser.MakeOrder(list)== "成功下訂！") {
-            //    Session[CDictionary.PRODUCTS_IN_CART] = null;
-            //    return RedirectToAction("OrderList");
-            //}
-            //else
-            //{
-            //    return RedirectToAction("CheckOut");
-            //}
         }
 
-        #endregion 
+        #endregion
+        #region 訂單
         //產生訂單
         public ActionResult MakeOrderIntoDB(int RtnCode, string RtnMsg, string CustomField1, string CustomField2)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             string cusID = CustomField1;
             string OrderID = CustomField2;
-            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().PayStatus = "已付款";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().PayStatus = "付款完成";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().SendingStatus = "出貨中";
+            db.Order.Where(r => r.OrderID.ToString() == OrderID).FirstOrDefault().ArrivedDate = DateTime.Now.AddDays(7);
             db.SaveChanges();
             return RedirectToAction("OrderList");
         }
@@ -703,8 +692,7 @@ namespace sln_SingleApartment.Controllers
                 return Json("發生錯誤");
             }
         }
-        
-
+        #endregion
 
     }
 

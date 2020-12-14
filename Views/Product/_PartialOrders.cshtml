@@ -2,7 +2,6 @@
 @using PagedList.Mvc;
 @model IPagedList<sln_SingleApartment.ViewModel.COrder>
 
-@{int myID = 0; }
 <table id="shopping-cart-table" class="data-table cart-table">
     <tr>
         <th class="low7">訂單編號</th>
@@ -15,12 +14,12 @@
     </tr>
     @foreach (var item in Model)
     {
-        myID += 1;
         <tr>
             @*訂單編號*@
             <td class="sop-cart an-shop-cart">
-                <a href="#">@myID</a>
-                  [ @Html.DisplayFor(modelItem => item.PayStatus) ]
+                [ @Html.DisplayFor(modelItem => item.PayStatus) ]
+                
+                <a href="#">@item.OrderID</a>
             </td>
             @*價錢*@
             <td class="sop-cart">
@@ -56,7 +55,7 @@
        UpdateTargetId = "Orders"
     }))
 <br /><br /><br /><br />
-<h1> 訂單明細 </h1>
+<h1 style="position:center"> 訂單明細 </h1>
 <script>
     function SearchONEOrder(orderID) {
         console.log(orderID);
