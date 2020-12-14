@@ -42,7 +42,7 @@
                     <a href="#menu"><span>Menu</span></a>
                 </nav>
                 <a href="#" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
-                <nav class="right"  style="margin-top:20px">
+                <nav class="right" style="margin-top:20px">
                     <a href="@Url.Action("LogOut","Member")" class="button alt">Log Out</a>
                 </nav>
             </header>
@@ -56,7 +56,7 @@
                     <li id="id_infoNotify">@Html.ActionLink("窩的訊息", "List", "Information")</li>
                     <li>@Html.ActionLink("當窩們同在一起", "List", "Activity")</li>
                     <li>@Html.ActionLink("會員中心", "MemberCenter", "Member")</li>
-                    
+
                 </ul>
                 <ul class="actions vertical">
                     <li><a href="#" class="button fit">Login</a></li>
@@ -66,27 +66,18 @@
             @RenderBody()
 
             <!-- Footer -->
-            <footer id="footer" style="height:180px">
+            <footer id="footer">
                 <div class="inner">
+                    <h2>聯絡我們</h2>
                     <ul class="actions">
-                        @*<li>
-                        <span class="icon fa-phone"></span>
-                        <a href="#">(000) 000-0000</a>
-                    </li>
-                    <li>
-                        <span class="icon fa-envelope"></span>
-                        <a href="#">information@untitled.tld</a>
-                    </li>
-                    <li>
-                            <span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000
-                        </li>*@
+                        <li><span class="icon fa-phone"></span> <a>(02)6631-8168</a></li>
+                        <li><span class="icon fa-envelope"></span> <a>singleapart@gmail.com</a></li>
+                        <li><span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓</li>
                     </ul>
                 </div>
-                <div class="copyright">
-                    &copy; Untitled. Design
-                    <a href="https://templated.co">TEMPLATED</a>. Images
-                    <a href="https://unsplash.com">Unsplash</a>.
-                </div>
+                <!--<div class="copyright">
+            &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+        </div>-->
             </footer>
 
             <script>

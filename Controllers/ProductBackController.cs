@@ -274,24 +274,24 @@ namespace sln_SingleApartment.Controllers
         }
         //=====================================================================
         ////刪除
-        //public ActionResult Delete(int id)
-        //{
-        //    SingleApartmentEntities db = new SingleApartmentEntities();
+        public ActionResult Delete(int id)
+        {
+            SingleApartmentEntities db = new SingleApartmentEntities();
 
-        //    Product prod = db.Product.FirstOrDefault(p => p.ProductID == id);
-           
-        //    if (prod != null)
-        //    {
-        //        db.Product.Remove(prod);
-        //        db.SaveChanges();
+            Product prod = db.Product.FirstOrDefault(p => p.ProductID == id);
 
-                
-        //    }
-           
-        //    return RedirectToAction("ProductList");
+            if (prod != null)
+            {
+                db.Product.Remove(prod);
+                db.SaveChanges();
 
 
-        //} 
+            }
+
+            return RedirectToAction("ProductList");
+
+
+        }
         //後台訂單(全部人的訂單)
         public ActionResult BackupOrderList(int order_id = 0)
         {
