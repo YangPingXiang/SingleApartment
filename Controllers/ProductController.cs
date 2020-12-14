@@ -40,8 +40,6 @@ namespace sln_SingleApartment.Controllers
 
             Product pod = new Product();
 
-            
-
             ShopViewModel shopv = new ShopViewModel();
 
             List<CProductViewModel> list = new List<CProductViewModel>();
