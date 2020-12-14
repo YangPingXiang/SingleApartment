@@ -55,7 +55,7 @@ namespace sln_SingleApartment.Controllers
             var ActivityProduct = from g in db.Activity.AsEnumerable()
                                   join p in db.Product.AsEnumerable()
                                   on g.ActivityID equals p.ActivityID
-                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")|| (g.EndTime <= DateTime.Now && p.Discontinued == "Y")
+                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")|| (g.EndTime <= DateTime.Now || p.Discontinued == "Y")
                                   select p;
         
             foreach (var item in ActivityProduct)
