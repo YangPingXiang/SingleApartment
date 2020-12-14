@@ -1,4 +1,6 @@
 ﻿@using sln_SingleApartment.ViewModels;
+@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
 @{ Layout = @"~/Views/Shared/HomePage/_LayoutLogin.cshtml";}
 @{
 
@@ -28,21 +30,23 @@
                             <!--我不是機器人-->
                             <div>
                                 <div class="g-recaptcha" data-sitekey="6Ldd8wEaAAAAAIm2714PGW1zYIfX4BenxZ3wrm13"></div>
+                                <div class="form-group">
+                                    @Html.MathCaptcha()
+                                </div>
                             </div>
-
-                            <ul class="login-icons">
-                                <li style="padding-left:0em;">
-                                    <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="go" onclick="GoogleLogin()"><i class="google"></i><span >Google +</span></a>
-                                </li>
-                            </ul>
+        
                             <label class="button">
                                 <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
                             </label>
-                            @ViewBag.msg
+                            <ul class="login-icons">
+
+                                @ViewBag.msg
+                                @ViewBag.Robot
+                                @ViewBag.ErrorMessage
+                                <li>
+                                    <a href="#" class="go" onclick="GoogleLogin()"><i class="google"></i><span>Google +</span></a>
+                                </li>
+                            </ul>
                             <div style="display:inline; margin-left:13.5em;font-size:18px;">
                                 <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                                 <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
@@ -114,7 +118,7 @@
             function (success) {
 
                 let member = JSON.stringify(success["xt"]);
-                console.log(member);    
+                console.log(member);
                  $.ajax({
                  url:'@Url.Action("GoLogin")',
                  type: 'POST',

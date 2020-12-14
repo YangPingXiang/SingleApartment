@@ -304,8 +304,8 @@
         </div>
         <div class="row">
             <div id="new-products" class="owl-carousel product-slider owl-theme">
-                @foreach(var item in Model.product.Where(Q=>Q.Discontinued=="Y"))
-                 {
+                @foreach(var item in Model.product.Where(P=>P.Discontinued=="Y").Where(p=>p.entity.Activity.EndTime<=DateTime.Now))
+                {
                     <div class="col-xs-12">
                         <div class="single-product">
                             <div class="product-img">

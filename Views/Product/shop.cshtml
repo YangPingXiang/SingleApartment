@@ -1,5 +1,11 @@
 ﻿@model global::sln_SingleApartment.ViewModels.ShopViewModel
-
+@{ 
+    string MainCategory = null;
+    string SubCategory = null;
+    string KeyWord = "";
+    string firstprice = "";
+    string lastprice = "";
+}
 <!--#region 頁首標題-->
 <!-- pages-title-start -->
 <section class="contact-img-area">
@@ -24,9 +30,12 @@
                 <div class="all-shop-sidebar">
                     <div class="top-shop-sidebar">
                         <h3 class="wg-title">SHOP BY</h3>
-                        <input id="allpd" type="button" value="全部商品" />
+                        <span style="font-size:16px" id="condition">全部</span>
+                        @*<a id="allpd" style="font-size:16px">全部商品</a>*@
                     </div>
                     <div class="shop-one">
+                        <h3 id="allpd" class="wg-title2">全部商品</h3>
+                        <span>／</span>
                         <h3 class="wg-title2">商品主類別</h3>
                         <ul class="product-categories">
                             @{
@@ -46,7 +55,7 @@
                                             }
                                         </ol>
                                     </li>
-                                }
+                                                }
                             }
 
                         </ul>
@@ -343,7 +352,7 @@
 
 <script>
     $(function () {
-        $('#allpd').click(function() { SearchProduct() });
+        $('#allpd').click(function () { SearchProduct(); });
         $('.myMainCate').click(function() {SearchProductsByMainC($(this).prop("name"));});
         $('.mySubCate').click(function () { SearchProductsBySubC($(this).prop("name")); });
 
@@ -353,7 +362,7 @@
             {
                @:SearchProductsByKeyWord("@ViewBag.Keyword");
            }
-           
+
             else
             {
                 @:SearchProduct();
@@ -369,6 +378,7 @@
     @* 條件搜索 *@
     function SearchProduct() {
         pagesize = $("#pageSize").val();
+        $("#condition").text("全部");
         $.ajax({
             type: "POST",
             url: "@Url.Action("PartialProductTabPane")",
@@ -396,6 +406,7 @@
     function SearchProductsByKeyWord(str) {
         pagesize = $("#pageSize").val();
         console.log("In SearchProductKW Function");
+        $("#condition").text(str);
         console.log(str);
         $.ajax({
             type: "POST",
@@ -423,6 +434,7 @@
         });
     }
     function SearchProductsByPrice() {
+        $("#condition").text("價格");
         first = $('.first_price').val();
         last = $('.last_price').val();
         pagesize = $("#pageSize").val();
@@ -457,6 +469,7 @@
         });
     }
     function SearchProductsByMainC(id) {
+        $("#condition").text($(event.currentTarget).val());
         pagesize = $("#pageSize").val();
         $.ajax({
             type: "POST",
@@ -484,6 +497,7 @@
         });
     }
     function SearchProductsBySubC(id) {
+        $("#condition").text($(event.currentTarget).val());
         let pagesize = $("#pageSize").val();
         $.ajax({
             type: "POST",

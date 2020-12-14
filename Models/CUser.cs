@@ -71,10 +71,16 @@ namespace sln_SingleApartment.Models
         public List<COrderDetailsViewModel> SearchProductInCart(List<CAddtoSessionView> list)
         {
             List<COrderDetailsViewModel> orderDetails = new List<COrderDetailsViewModel>();
+            
             foreach (var item in list)
             {
                 COrderDetailsViewModel odd = new COrderDetailsViewModel();
-                odd.entity = new OrderDetails() { ProductID = item.txtProductID, Quantity = item.txtQuantity };
+                odd.entity = new OrderDetails() {
+                    ProductID = item.txtProductID,
+                    Quantity = item.txtQuantity,
+                    ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName,
+                    UnitPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice
+                };
                 orderDetails.Add(odd);
             }
             return orderDetails;
@@ -228,11 +234,11 @@ namespace sln_SingleApartment.Models
                
             }
             order.OrderDate = DateTime.Now;
-            order.ArrivedDate = DateTime.Now.AddDays(7);
+            
             order.TotalAmount = totalPrice;
             order.OrderStatusID = 1;
-            order.SendingStatus = "配送中";
-            order.PayStatus = "已付款";
+            order.SendingStatus = "等待付款中";
+            order.PayStatus = "尚未付款";
             order.MemberID = this.tMember.fMemberId;
             try
             {
@@ -246,7 +252,7 @@ namespace sln_SingleApartment.Models
             {
                 return "發生錯誤，請稍後再試！";
             }
-            return "成功下訂！";
+            return $"{order.OrderID}";
         }
         #endregion
         #region 智慧辨識
