@@ -1493,6 +1493,13 @@
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGotoLease.cshtml" />
+    <Content Include="Views\RoomBackend\BackRoomEdit.cshtml" />
+    <Content Include="Views\RoomBackend\BackListRoomStylePic.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialReturnRoomManage.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialLeaseKeyword.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

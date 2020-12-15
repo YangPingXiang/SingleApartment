@@ -171,18 +171,29 @@ namespace sln_SingleApartment.Controllers
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
             List<CProductViewModel> lt;
-            if(firstprice !="" && lastprice!= "")
+            if (firstprice != "" && lastprice != "")
                 firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
             {
                 lt = user.SearchProductsBy(null, null, KeyWord);
+                ViewBag.KeyWord = KeyWord;
             }
-            else if (int.TryParse(firstprice, out int first) &&int.TryParse(lastprice, out int last) && last > first)
+            else if (int.TryParse(firstprice, out int first) && int.TryParse(lastprice, out int last) && last > first)
+            {
                 lt = user.SearchProductsByPrice(first, last);
+                ViewBag.firstprice = firstprice;
+                ViewBag.lastprice = lastprice;
+            }
             else if (SubCategory != null)
+            {
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+                ViewBag.SubCategory = SubCategory;
+            }
             else if (MainCategory != null)
+            {
                 lt = user.SearchProductsBy(int.Parse(MainCategory));
+                ViewBag.MainCategory = MainCategory;
+            }
             else
                 lt = user.SearchProductsBy();
             var result = lt.ToPagedList(currentPage, int.Parse(pageSize));
@@ -199,13 +210,26 @@ namespace sln_SingleApartment.Controllers
             if (firstprice != "" && lastprice != "")
                 firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
+            {
                 lt = user.SearchProductsBy(null, null, KeyWord);
+                ViewBag.KeyWord = KeyWord;
+            }
             else if (int.TryParse(firstprice, out int first) && int.TryParse(lastprice, out int last) && last > first)
+            {
                 lt = user.SearchProductsByPrice(first, last);
+                ViewBag.firstprice = firstprice;
+                ViewBag.lastprice = lastprice;
+            }
             else if (SubCategory != null)
+            {
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+                ViewBag.SubCategory = SubCategory;
+            }
             else if (MainCategory != null)
+            {
                 lt = user.SearchProductsBy(int.Parse(MainCategory));
+                ViewBag.MainCategory = MainCategory;
+            }
             else
                 lt = user.SearchProductsBy();
             var result = lt.ToPagedList(currentPage, int.Parse(pageSize));
