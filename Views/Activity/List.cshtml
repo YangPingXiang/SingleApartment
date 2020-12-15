@@ -1,10 +1,16 @@
 ﻿@model IPagedList<sln_SingleApartment.ViewModel.CActivity>
 @using PagedList;
 @using PagedList.Mvc;
+@using sln_SingleApartment.ViewModels
+@using sln_SingleApartment.Models
 
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+    CMember member = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
+    string memberName = member.fMemberName;
+    int memberid = member.fMemberId;
+    SingleApartmentEntities db = new SingleApartmentEntities();
 }
 
 <head>
@@ -73,6 +79,9 @@
                     <td class="td1" style="padding:1em 2em 1em 0em;">
                         活動名稱 : &nbsp;
                         <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.ActivityName)</mark>
+                        <br />
+
+
                     </td>
 
                 </tr>
@@ -119,11 +128,11 @@
                         @Html.DisplayFor(modelItem => item.PeopleCount) 位
                     </td>
 
-                
+
                     <td class="td1" style="padding:1em 0em 1em 0em;">
                         狀態 :&nbsp;
                         @{if
-                               (item.Status == "人員已滿")
+                                           (item.Status == "人員已滿")
                             {
                                 <span style="color:red"> @Html.DisplayFor(modelItem => item.Status) </span>
                             }
@@ -173,7 +182,7 @@
                         @{
                             if (item.Status == "可參加")
                             {
-                                @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
+                                @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID }, new { OnClick = "return confirm('確認欲加入活動')" })
                             }
                             else if (item.Status == "人員已滿")
                             {
@@ -201,8 +210,41 @@
                             {
                                 @("");
                             }
-                        }
+                            <br />
+                            if (item.entity.MemberID != memberid)
+                            {
+                                <button type="button" class="btn btn-info AdminReply" style="height:unset" onclick="openModal(@item.ActivityID )">留言</button>
+                            }
+                            else
+                            {
+                                @("");
+                            }
 
+                            if (item.entity.MemberID == memberid)
+                            {
+                               
+                                Message m = db.Message.FirstOrDefault(p => p.AdditionField3 == item.ActivityID);
+                                if (m != null)
+                                {
+                                    <button onclick="showMessage(@item.ActivityID);" class="btn btn-info AdminReply" style="height:unset;">查看留言</button>
+                                }
+                                else
+                                {
+                                    @("");
+                                }
+                            }
+                            else
+                            {
+                                @("");
+                            }
+                        
+
+                        @*<button onclick="updateApply(@ViewBag.MessageID, '@ViewBag.GuestName', '@ViewBag.MessageSubject', '@ViewBag.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>*@
+
+                        }
+                        @*<td class="col-md-8" style="padding-left:0;">*@
+
+                        @*</td>*@
 
 
 
@@ -218,7 +260,220 @@
         }
 
         @Html.PagedListPager(Model, Page => Url.Action("List", new { Page }))
-
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for=recipient-name class="col-form-label">留言者</label>
+                                <input type="text" class="form-control" id="id_guestname" value="@member.fMemberName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">主旨</label>
+                                <input type="text" class="form-control" id="id_subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">內文</label>
+                                <textarea class="form-control" style="height:100px" id="id_content"></textarea>
+                            </div>
+                            <div class="form-group" id="group_apply">
+                                <label for="message-text" class="col-form-label">回覆</label>
+                                <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
+                            </div>
+                            <span hidden="hidden">
+                                <input type="text" class="form-control" id="id_acid">
+                            </span>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="id_save">存檔</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*修改的modal*@
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group" hidden="hidden" >
+                                <label for="recipient-name" class="col-form-label">留言者ID</label>
+                                <input type="text" class="form-control" id="id_messageID2">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">留言者</label>
+                                <input type="text" class="form-control" id="id_guestname2">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">主旨</label>
+                                <input type="text" class="form-control" id="id_subject2">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">內文</label>
+                                <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
+                            </div>
+                            <div class="form-group" id="group_apply2">
+                                <label for="message-text" class="col-form-label">回覆</label>
+                                <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="id_save2">存檔</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>
+<script>
+    function openModal(p_ActivityID) {
+        $("#exampleModal").modal('show');
+        $("#id_acid").val(p_ActivityID);
+        //新增留言
+        //$("#id_guestname").attr('disabled', false);   //有效
+        //$("#id_subject").attr('disabled', false);     //有效
+        //$("#id_content").attr('disabled', false);     //有效
+        $("#group_apply").hide();
+    }
+
+    function showMessage(p_id) {
+        $("#exampleModal2").modal('show');
+        
+        let id = p_id;  //$("#id_acid").val();
+        console.log(id);
+        $.ajax({
+            url: "/Activity/ActivityMessageShow",
+            type: "POST",
+            data: {
+                activity_id: id
+                // AdminContent: p_apply
+            },
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //console.log(JSON.parse(data));
+                console.log(JSON.parse(data).MessageContent);
+
+                let l_activityID = JSON.parse(data).AdditionField3;
+                let l_GuestName = JSON.parse(data).GuestName;
+                let l_subject = JSON.parse(data).MessageSubject;
+                let l_MessageContent = JSON.parse(data).MessageContent;
+                if (l_activityID != "0") {
+
+                    $("#id_guestname2").val(l_GuestName)
+                    $("#id_subject2").val(l_subject)
+
+                    $("#id_content2").val(l_MessageContent)
+                }
+
+            },
+            error: function () {
+                alert("There has been an error~");
+            }
+        });
+
+        //修改
+        $("#id_guestname2").attr('disabled', true);   //失效
+        $("#id_subject2").attr('disabled', true);     //失效
+        $("#id_content2").attr('disabled', true);     //失效
+        ////$("#group_apply").show();
+        $("#id_messageID2").val(p_id);  //改成給 activity id
+        //$("#id_guestname2").val(p_GuestName);
+        //$("#id_subject2").val(p_MessageSubject);
+        //$("#id_content2").val(p_MessageContent);
+    }
+
+    $("#id_save").click(function () {
+        let p_guestname = $("#id_guestname").val();
+        let p_subject = $("#id_subject").val();
+        let p_content = $("#id_content").val();
+        let p_acid = $("#id_acid").val();
+        //let p_apply = $("#id_apply").val();
+        //console.log(p_subject);
+        $.ajax({
+            url: "/Activity/ActivityMessageCreate",
+            type: "POST",
+            data: {
+                GuestName: p_guestname,
+                MessageSubject: p_subject,  //傳遞參數
+                InformationCategoryID: "800",  //活動類
+                MessageContent: p_content,
+                AdditionField3: p_acid
+                // AdminContent: p_apply
+            },
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //$("#container").html(data);
+
+                //List 資料重查
+                //window.location.href = "/MailMessage/MessageList";
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/MailMessage/MessageList",
+                //    success: function (data) {
+                //    console.log(data); //可先測試程式有無載入
+                //    //$("#container").html(data);
+                //    }
+                //});
+            },
+            error: function () {
+                alert("There has been an error~");
+            }
+        });
+
+        $("#exampleModal").modal('hide');
+    })
+
+    $("#id_save2").click(function () {
+        let l_messageID2 = $("#id_messageID2").val();  //這是 activity id 
+        let l_messagerequest = $("#id_apply2").val();
+        console.log("l_messageID2:"+l_messageID2);
+
+        $.ajax({
+            url: "/Activity/ActivityMessageEdit",
+            type: "POST",
+            data: {
+                MessageID: l_messageID2,
+                AdminContent: l_messagerequest
+            },
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                //$("#container").html(data);
+
+                //List 資料重查
+                //window.location.href = "/MailMessage/MessageList";
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/MailMessage/MessageList",
+                //    success: function (data) {
+                //    console.log(data); //可先測試程式有無載入
+                //    //$("#container").html(data);
+                //    }
+                //});
+            },
+            error: function () {
+                alert("There has been an error~");
+            }
+        });
+
+        $("#exampleModal2").modal('hide');
+    })
+
+</script>

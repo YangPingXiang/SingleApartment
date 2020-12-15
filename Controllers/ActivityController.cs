@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Newtonsoft.Json;
 //using System.Windows.Forms;
 
 
@@ -19,6 +20,13 @@ namespace sln_SingleApartment.Controllers
         public ActionResult List(string newActivity,int page = 1)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
+            Message message = new Message();
+
+            
+            //ViewBag.MessageID = message.MemberID;
+            //ViewBag.GuestName = message.GuestName;
+            //ViewBag.MessageSubject = message.MessageSubject;
+            //ViewBag.MessageContent = message.MessageSubject;
 
             #region 登入者名稱
             CMember member = Session[CDictionary.welcome] as CMember;
@@ -617,7 +625,7 @@ namespace sln_SingleApartment.Controllers
                 if (MemberfActivityMessageList[me] == "TRUE")
                 {
 
-                    flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20040, subNamebuffer);
+                    flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20040, "("+subNamebuffer+")");
                 }
             }
             #endregion
@@ -826,6 +834,88 @@ namespace sln_SingleApartment.Controllers
             return RedirectToAction("ParticipantStatus");
            
         }
+        [HttpPost]
+        public JsonResult ActivityMessageCreate(Message p_ms)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
 
+                p_ms.MessageDate = DateTime.Now;
+                db.Message.Add(p_ms);
+                db.SaveChanges();
+
+                return new JsonResult { Data = new { status = true } };
+            }
+            catch
+            {
+                return new JsonResult { Data = new { status = false } };
+            }
+        }
+        [HttpPost]
+        public JsonResult ActivitySend(Message p_ms)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Message mg = db.Message.FirstOrDefault(p => p.MessageID == p_ms.MessageID);
+                if (mg != null)
+                {
+                    //info.InformationSource = p_info.InformationSource;
+                    mg.AdminContent = p_ms.AdminContent;
+                    db.SaveChanges();
+                }
+
+                return new JsonResult { Data = new { status = true } };
+            }
+            catch
+            {
+                return new JsonResult { Data = new { status = false } };
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ActivityMessageShow(int activity_id)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Message mg = db.Message.FirstOrDefault(p => p.AdditionField3 == activity_id);
+                if (mg != null)
+                {
+                    return Json(JsonConvert.SerializeObject(mg));
+                }
+                else
+                {
+                    return Json(JsonConvert.SerializeObject(new Message { AdditionField3 = 0 }));
+                }
+
+            }
+            catch
+            {
+                return Json(JsonConvert.SerializeObject(new Message { AdditionField3 = 0 }));
+            }
+        }
+        [HttpPost]
+        public JsonResult ActivityMessageEdit(Message p_ms)
+        {
+            try
+            {
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                Message mg = db.Message.FirstOrDefault(p => p.AdditionField3 == p_ms.AdditionField3);
+                if (mg != null)
+                {
+                    //info.InformationSource = p_info.InformationSource;
+                    mg.AdminContent = p_ms.AdminContent;
+                    db.SaveChanges();
+                }
+
+                return new JsonResult { Data = new { status = true } };
+            }
+            catch
+            {
+                return new JsonResult { Data = new { status = false } };
+            }
+        }
     }
 }
