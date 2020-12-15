@@ -52,15 +52,15 @@ namespace sln_SingleApartment.Controllers
             //List<CActivity> Activity = new List<CActivity>();
             //=====================================================================
             //取得團購商品(活動尚未結束)
-            var ActivityProduct = from g in db.Activity.AsEnumerable()
-                                  join p in db.Product.AsEnumerable()
-                                  on g.ActivityID equals p.ActivityID
-                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")|| (g.EndTime <= DateTime.Now || p.Discontinued == "Y")
+            var ActivityProduct = from p in db.Product.AsEnumerable()
+                                  join g in db.Activity.AsEnumerable()
+                                  on p.ActivityID equals g.ActivityID
+                                  where (g.EndTime >= DateTime.Now && p.Discontinued=="N")||(g.EndTime <= DateTime.Now && p.Discontinued=="Y")
                                   select p;
-        
+            
             foreach (var item in ActivityProduct)
             {
-              
+                
                list.Add(new CProductViewModel() { entity = item });
 
             }
@@ -171,18 +171,29 @@ namespace sln_SingleApartment.Controllers
             int currentPage = page < 1 ? 1 : page;
             CUser user = new CUser();
             List<CProductViewModel> lt;
-            if(firstprice !="" && lastprice!= "")
+            if (firstprice != "" && lastprice != "")
                 firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
             {
                 lt = user.SearchProductsBy(null, null, KeyWord);
+                ViewBag.KeyWord = KeyWord;
             }
-            else if (int.TryParse(firstprice, out int first) &&int.TryParse(lastprice, out int last) && last > first)
+            else if (int.TryParse(firstprice, out int first) && int.TryParse(lastprice, out int last) && last > first)
+            {
                 lt = user.SearchProductsByPrice(first, last);
+                ViewBag.firstprice = firstprice;
+                ViewBag.lastprice = lastprice;
+            }
             else if (SubCategory != null)
+            {
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+                ViewBag.SubCategory = SubCategory;
+            }
             else if (MainCategory != null)
+            {
                 lt = user.SearchProductsBy(int.Parse(MainCategory));
+                ViewBag.MainCategory = MainCategory;
+            }
             else
                 lt = user.SearchProductsBy();
             var result = lt.ToPagedList(currentPage, int.Parse(pageSize));
@@ -199,13 +210,26 @@ namespace sln_SingleApartment.Controllers
             if (firstprice != "" && lastprice != "")
                 firstprice = firstprice.TrimStart('$'); lastprice = lastprice.TrimStart('$');
             if (KeyWord != "")
+            {
                 lt = user.SearchProductsBy(null, null, KeyWord);
+                ViewBag.KeyWord = KeyWord;
+            }
             else if (int.TryParse(firstprice, out int first) && int.TryParse(lastprice, out int last) && last > first)
+            {
                 lt = user.SearchProductsByPrice(first, last);
+                ViewBag.firstprice = firstprice;
+                ViewBag.lastprice = lastprice;
+            }
             else if (SubCategory != null)
+            {
                 lt = user.SearchProductsBy(null, int.Parse(SubCategory));
+                ViewBag.SubCategory = SubCategory;
+            }
             else if (MainCategory != null)
+            {
                 lt = user.SearchProductsBy(int.Parse(MainCategory));
+                ViewBag.MainCategory = MainCategory;
+            }
             else
                 lt = user.SearchProductsBy();
             var result = lt.ToPagedList(currentPage, int.Parse(pageSize));

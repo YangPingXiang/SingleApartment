@@ -66,15 +66,15 @@
                     @Html.DisplayFor(modelItem => item.floor)
                 </td>
                 <td>
-                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }) |
-                    @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn - danger" })
+                    @Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |
+                    @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
 
     </table>
     <div style="float:inherit; margin-left:480px;">
-        @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-    </div>
+            @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </div>
 </body>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1" ZoomLevel="29">
+      <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1" ZoomLevel="82">
         <AssociationConnector Association="SingleApartmentModel.FK_ProductPictures_Product" />
         <EntityTypeShape EntityType="SingleApartmentModel.Activity" Width="1.5" PointX="6" PointY="15.125" />
         <EntityTypeShape EntityType="SingleApartmentModel.ActivityMainCategory" Width="1.5" PointX="1.5" PointY="13.375" />
