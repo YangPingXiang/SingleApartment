@@ -27,7 +27,7 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities entity = new SingleApartmentEntities();
             try
             {
-                string sMemberEmail = "";
+                //string sMemberEmail = "";
                 MailMessage mail = new MailMessage();
                 //string email = "dddd";
                 mail.From = new MailAddress("singleapart@gmail.com");
@@ -92,13 +92,14 @@ namespace sln_SingleApartment.Controllers
                 SingleApartmentEntities db = new SingleApartmentEntities();
                 IEnumerable<Message> message = null;
 
+                //modify by Jony 109-12-14 增加 p.InformationCategoryID != 800
                 if (orderByString == "ByDateAsc")
                 {
-                    message = db.Message.OrderBy(p => p.MessageDate);
+                    message = db.Message.Where(p=>p.InformationCategoryID != 800).OrderBy(p => p.MessageDate);
                 }
                 else
                 {
-                    message = db.Message.OrderByDescending(p => p.MessageDate);
+                    message = db.Message.Where(p => p.InformationCategoryID != 800).OrderByDescending(p => p.MessageDate);
                 }
 
                 List<CMessage> list = new List<CMessage>();
