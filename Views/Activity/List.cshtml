@@ -169,7 +169,7 @@
                     <td></td>
                     <td class="td1" style="float:right">
                         @{
-                            if (19 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
+                            if (3 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
                             {
                                 @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
                             }
@@ -180,7 +180,7 @@
                         }
                         |
                         @{
-                            if (item.Status == "可參加")
+                            if (item.Status == "可參加"&&item.MemberID!=memberid)
                             {
                                 @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID }, new { OnClick = "return confirm('確認欲加入活動')" })
                             }
@@ -190,7 +190,7 @@
                             }
                             else
                             {
-                                @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
+                                @("已加入");
 
                             }
 
@@ -222,7 +222,7 @@
 
                             if (item.entity.MemberID == memberid)
                             {
-                               
+
                                 Message m = db.Message.FirstOrDefault(p => p.AdditionField3 == item.ActivityID);
                                 if (m != null)
                                 {
@@ -237,9 +237,9 @@
                             {
                                 @("");
                             }
-                        
 
-                        @*<button onclick="updateApply(@ViewBag.MessageID, '@ViewBag.GuestName', '@ViewBag.MessageSubject', '@ViewBag.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>*@
+
+                            @*<button onclick="updateApply(@ViewBag.MessageID, '@ViewBag.GuestName', '@ViewBag.MessageSubject', '@ViewBag.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>*@
 
                         }
                         @*<td class="col-md-8" style="padding-left:0;">*@
@@ -294,7 +294,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save">存檔</button>
+                        <button type="button" class="btn btn-primary" id="id_save">發送</button>
                     </div>
                 </div>
             </div>
@@ -335,7 +335,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save2">存檔</button>
+                        <button type="button" class="btn btn-primary" id="id_save2">發送</button>
                     </div>
                 </div>
             </div>
