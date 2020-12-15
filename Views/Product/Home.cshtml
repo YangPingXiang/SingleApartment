@@ -44,48 +44,7 @@
         <div class="bend niceties preview-2 hm-ver-1">
             <div id="ensign-nivoslider-2" class="slides">
                 <img src="~/Content/Product/img/slider/1.png" alt="" title="#slider-direction-3" />
-                <img src="~/Content/Product/img/slider/2.png" alt="" title="#slider-direction-1" />
-            </div>
-            <!-- direction 1 -->
-            <div id="slider-direction-3" class="t-cn slider-direction Builder">
-                <div class="slide-all">
-                    <!-- layer 1 -->
-                    <div class="layer-1">
-                        <h2 class="title5">new collection</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <h2 class="title6">Men’s Fashion</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <p class="title0">Save Up To 40% Off</p>
-                    </div>
-                    <!-- layer 3 -->
-                    <div class="layer-3">
-                        <a class="min1" href="#">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            <div id="slider-direction-1" class="t-cn slider-direction Builder">
-                <div class="slide-all slide2">
-                    <!-- layer 1 -->
-                    <div class="layer-1">
-                        <h2 class="title5">new collection</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <h2 class="title6">Women’s Fashion</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <p class="title0">Save Up To 40% Off</p>
-                    </div>
-                    <!-- layer 3 -->
-                    <div class="layer-3">
-                        <a class="min1" href="#">Shop Now</a>
-                    </div>
-                </div>
+                @*<img src="~/Content/Product/img/slider/2.png" alt="" title="#slider-direction-1" />*@
             </div>
         </div>
     </div>
@@ -163,8 +122,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
+                                           
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -196,8 +155,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
+                                           
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -228,8 +187,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
+                                           
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -261,8 +220,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+                                          
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -342,7 +301,6 @@
 <div class="quick-view modal fade in" id="quick-view">
     <div class="container">
         <div class="row">
-            <div id="view-gallery" class="owl-carousel product-slider owl-theme">
                 @foreach (var item in Model.product.Where(p=>p.Discontinued=="N"))
                 {
                     <!-- single-product item end -->
@@ -359,13 +317,13 @@
                                                 <div class="quick-image">
                                                     <div class="single-quick-image tab-content text-center">
                                                         <div class="tab-pane  fade in active" id="sin-pro-5">
-                                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="" />
+                                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                                         </div>
                                                     </div>
                                                     <div class="quick-thumb">
                                                         <div class="nav nav-tabs">
                                                             <ul>
-                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" /> </a></li>
+                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" width="200px" height="200px"  /> </a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
