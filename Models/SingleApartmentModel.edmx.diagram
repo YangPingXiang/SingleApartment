@@ -36,7 +36,6 @@
         <EntityTypeShape EntityType="SingleApartmentModel.RoomInformation" Width="1.5" PointX="6" PointY="20.25" />
         <EntityTypeShape EntityType="SingleApartmentModel.RoomStyle" Width="1.5" PointX="1.5" PointY="4.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.SubActivity" Width="1.5" PointX="8.25" PointY="23.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.tActivityCart" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.tMember" Width="1.5" PointX="0.75" PointY="18.25" />
         <AssociationConnector Association="SingleApartmentModel.FK_Activity_ActivitySubCategory" />
