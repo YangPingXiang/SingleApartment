@@ -13,7 +13,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1" />
 
             @*<title>@ViewBag.Title - My ASP.NET Application</title>
-        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+                <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
 
             <link rel="stylesheet" href="~/Content/Homepage/assets/css/main.css" />
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -49,7 +49,9 @@
             <!-- Menu -->
             <nav id="menu">
                 <ul class="links" id="isAdmin">
-                    <li><a href="../Member/Home">首頁</a></li>
+                    <li>
+                        <a href="../Member/Home">首頁</a>
+                    </li>
                     <li>@Html.ActionLink("尋找窩們的愛屋", "SearchPage", "Room")</li>
                     <li>@Html.ActionLink("窩居商品", "Home", "Product")</li>
                     <li>@Html.ActionLink("窩的訂單", "OrderList", "Product")</li>
@@ -59,25 +61,37 @@
 
                 </ul>
                 <ul class="actions vertical">
-                    <li><a href="#" class="button fit">Login</a></li>
+                    <li>
+                        <a href="#" class="button fit">Login</a>
+                    </li>
                 </ul>
             </nav>
 
-            @RenderBody()
+            <div style="min-height:75%">
+                @RenderBody()
+            </div>
 
             <!-- Footer -->
             <footer id="footer">
                 <div class="inner">
                     <h2>聯絡我們</h2>
                     <ul class="actions">
-                        <li><span class="icon fa-phone"></span> <a>(02)6631-8168</a></li>
-                        <li><span class="icon fa-envelope"></span> <a>singleapart@gmail.com</a></li>
-                        <li><span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓</li>
+                        <li>
+                            <span class="icon fa-phone"></span>
+                            <a>(02)6631-8168</a>
+                        </li>
+                        <li>
+                            <span class="icon fa-envelope"></span>
+                            <a>singleapart@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓
+                        </li>
                     </ul>
                 </div>
                 <!--<div class="copyright">
-            &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
-        </div>-->
+                    &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+                </div>-->
             </footer>
 
             <script>
@@ -101,26 +115,32 @@
             </script>
         </body>
 
-        </html>
-        }
-
+    </html>
+}
+else
+{
+    RenderBody();
+    <H1>
+        <a href="@Url.Action("Login","Member")">請先登入!</a>
+    </H1>
+}
 
 }
 
-        <script>
-            $(function () {
-                //顯示當日的新活動訊息筆數
-                $.ajax({
-                    type: "POST",
-                    url: "/Information/GetNewActivityNotify",
-                    success: function (data) {
-                        //console.log(data); //可先測試程式有無載入
-                        console.log("info_layout:" + data);
-                        let f_data;
-                        f_data = "窩的訊息(" + data + ")";
-                        $("#id_infoNotify").html("<a href='/Information/List'>" + f_data + "</a>");
-                    }
-                });
-            });
+<script>
+    $(function () {
+        //顯示當日的新活動訊息筆數
+        $.ajax({
+            type: "POST",
+            url: "/Information/GetNewActivityNotify",
+            success: function (data) {
+                //console.log(data); //可先測試程式有無載入
+                console.log("info_layout:" + data);
+                let f_data;
+                f_data = "窩的訊息(" + data + ")";
+                $("#id_infoNotify").html("<a href='/Information/List'>" + f_data + "</a>");
+            }
+        });
+    });
 
-        </script>
+</script>

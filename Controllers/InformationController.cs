@@ -177,6 +177,10 @@ namespace sln_SingleApartment.Controllers
 
         public ActionResult List()
         {
+            //modify by Jony 109-12-15
+            CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
+
             return View();
         }
 
@@ -185,6 +189,14 @@ namespace sln_SingleApartment.Controllers
         {
             try
             {
+                //int memberID = 1;
+                CMember member = Session[CDictionary.welcome] as CMember;
+                //modify by Jony 109-12-15
+                int memberID = 0;
+                if (member != null) {
+                    memberID = member.fMemberId;
+                }
+
                 int pageSize = 5;
                 int currentPage = pageNum < 1 ? 1 : pageNum;
 
@@ -192,10 +204,6 @@ namespace sln_SingleApartment.Controllers
                 ViewBag.Priority = p_priority;
                 ViewBag.Query_Type = p_query_type;
                 ViewBag.Query_Data = p_data;
-
-                //int memberID = 1;
-                CMember member = Session[CDictionary.welcome] as CMember;
-                int memberID = member.fMemberId;  //(int)Session["MemberID"];
 
                 Func<Information, bool> myWhere = null;
                 SingleApartmentEntities db = new SingleApartmentEntities();
