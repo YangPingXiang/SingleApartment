@@ -124,7 +124,8 @@ namespace sln_SingleApartment.Controllers
                 {
                     Keyword += (str + " ");
                 }
-                var list_product = theUser.SearchProductsBy(null, null, Keyword); result.product = list_product;
+                var list_product = theUser.SearchProductsBy(null, null, Keyword);
+                result.product = list_product;
                 ViewBag.ByPhoto = "true";
                 
                 ViewBag.Keyword = Keyword;
