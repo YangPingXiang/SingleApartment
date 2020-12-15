@@ -1,0 +1,137 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+
+@model IEnumerable<sln_SingelApartment.ViewModels.CLeaseViewModel>
+@{
+    ViewBag.Title = "_BackPartialGotoLease";
+    Layout = null;
+}
+
+
+
+<body>
+    <div style="margin-left:250px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
+        <h2 style="margin-bottom:35px; text-align:center; ">查詢條件</h2>
+        <h3 style="color:#1170b6; margin-left:60px;">以下條件擇一即可</h3>
+        <span style="margin-left:60px; font-weight:500;">建案代號</span>
+
+        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lb", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+
+        <span style=" margin-left:15px; font-weight:500;"> 房號</span>
+        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lr", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+
+        <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
+        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lmn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+
+        <div style="margin-left:150px;">
+            <button id="btnAdd" type="button" class="btn btn-info" style="margin-top:20px; height:50px;">
+                新增房間
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <div id="keyresult">
+
+    </div>
+
+
+    <table id="abtleasetable" style="width:1200px; margin:10px auto; ">
+        <tr style="background-color:lightblue; text-align:center; font-size:20px;">
+
+            <th>
+                合約序號
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.entity_lease.Room.RoomName)
+            </th>
+            <th>
+                房客姓名
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expirydate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personalrent)
+            </th>
+
+            <th>Information</th>
+        </tr>
+
+
+
+        @foreach (var item in Model)
+        {
+
+        <tr style="font-size:18px; font-weight:400;">
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.leaseID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => item.entity_lease.Room.RoomName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.entity_lease.tMember.fMemberName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startdate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.expirydate)
+            </td>
+
+            <td>
+                NT @Html.DisplayFor(modelItem => item.personalrent)
+            </td>
+
+            <td>
+                @Html.ActionLink("編輯", "BackLeaseEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |
+               
+                @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
+
+    </table>
+    <div id="abtleasetable_pagelist" style="float:inherit; margin-left:480px;">
+        @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackPartialGotoLease", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+
+    <script>
+        function SearchLeaseByKeyword(keyword) {
+            $.ajax({
+                url: "@Url.Action("BackPartialLeaseKeyword")",
+                url: "@Url.Action("BackPartialLeaseKeyword")",
+                url: "@Url.Action("BackPartialLeaseKeyword")",
+                data: { keyword: keyword },
+                success: function (data) { $("#keyresult").html(data) }
+            })
+        }
+        $(document).ready(function () {
+
+
+
+            $('.txtkeybox').on("keydown", function (event) {
+                if (event.key === "Enter") {
+                    let k = $("#txtkeybox_lb").val() + $("#txtkeybox_lr").val() + $("#txtkeybox_lmn").val();
+                    console.log( 'key down')
+                    console.log(k);
+                    SearchRoomByRoomName(k);
+                    $("#abtroomtable").fadeOut();
+                    $("#abtroomtable_pagelist").fadeOut();
+                } // Handle press
+
+            })
+
+    </script>
+</body>
+

@@ -29,5 +29,8 @@ namespace sln_SingelApartment.ViewModels
 
         [DisplayName("會員編號")]
         public int? memberID { get { return this.entity_lease.MemberID; } }
+
+        [DisplayName("房客租金")]
+        public int? personalrent { get { return this.entity_lease.PersonalRent;  } }
     }
 }

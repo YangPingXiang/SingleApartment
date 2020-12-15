@@ -51,6 +51,10 @@
     <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
       <HintPath>packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
     </Reference>
+    <Reference Include="ECPay.Payment.Integration, Version=1.0.0.7, Culture=neutral, PublicKeyToken=afb33c1e6a3b1bbd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -1489,6 +1493,13 @@
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGotoLease.cshtml" />
+    <Content Include="Views\RoomBackend\BackRoomEdit.cshtml" />
+    <Content Include="Views\RoomBackend\BackListRoomStylePic.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialReturnRoomManage.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialLeaseKeyword.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
