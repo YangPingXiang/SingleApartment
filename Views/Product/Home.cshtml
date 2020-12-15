@@ -39,7 +39,7 @@
     </script>*@
 <!-- slider-section-start -->
 <section class="slider-main-area">
-    
+
     <div class="main-slider an-si">
         <div class="bend niceties preview-2 hm-ver-1">
             <div id="ensign-nivoslider-2" class="slides">
@@ -48,6 +48,8 @@
             </div>
         </div>
     </div>
+
+
 </section>
 <!-- #region 熱門商品-->
 <!-- new-products section start -->
@@ -82,13 +84,13 @@
                 <div id="tab-carousel-1" class="re-owl-carousel owl-carousel product-slider owl-theme">
                     @{ foreach (var item in Model.product.Where(Q => Q.Discontinued == "N"))
                         {
-                           
+
                             string quickview = "quick-view" + item.ProductID.ToString();
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a>
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"  width="200px" height="200px" />
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -104,26 +106,26 @@
                                         @*加入購物車*@
                                     </div>
                                 </div>
-                                
-                            </div>
-                        <!-- quick view end -->
 
-                       } }
+                            </div>
+                            <!-- quick view end -->
+
+                        } }
                 </div>
             </div>
-            
+
             <!-- #endregion -->
             <!-- #region 分類1(衣服)-->
             <div class="tab-pane  fade in" id="clothings">
                 <div id="tab-carousel-2" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 1).Where(p=>p.Discontinued=="N"))
-                      {
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 1).Where(p => p.Discontinued == "N"))
+                        {
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
-                                           
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -155,8 +157,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
-                                           
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -180,15 +182,15 @@
             <!-- #region 分類3(包包) -->
             <div class="tab-pane  fade in" id="bags">
                 <div id="tab-carousel-4" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 3).Where(p => p.Discontinued == "N"))
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 3).Where(p => p.Discontinued == "N"))
                         {
 
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"width="200px" height="200px"  />
-                                           
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -215,13 +217,12 @@
                 <div id="tab-carousel-5" class="owl-carousel product-slider owl-theme">
                     @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 4).Where(p => p.Discontinued == "N"))
                         {
-                            
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
                                             <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
-                                          
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -237,7 +238,7 @@
                                     </div>
                                 </div>
                             </div>
-                        }
+                       }
                     }
                 </div>
             </div>
@@ -263,7 +264,7 @@
         </div>
         <div class="row">
             <div id="new-products" class="owl-carousel product-slider owl-theme">
-                @foreach(var item in Model.product.Where(P=>P.Discontinued=="Y").Where(p=>p.entity.Activity.EndTime<=DateTime.Now))
+                @foreach (var item in Model.product.Where(P => P.Discontinued == "Y").Where(p => p.entity.Activity.EndTime <= DateTime.Now))
                 {
                     <div class="col-xs-12">
                         <div class="single-product">
@@ -272,7 +273,7 @@
                                     <span>OVER</span>
                                 </div>
                                 <a href="#">
-                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px"/>
+                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                 </a>
                             </div>
                             <div class="product-dsc">
@@ -290,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                 }
+                }
             </div>
         </div>
     </div>
@@ -301,7 +302,8 @@
 <div class="quick-view modal fade in" id="quick-view">
     <div class="container">
         <div class="row">
-                @foreach (var item in Model.product.Where(p=>p.Discontinued=="N"))
+            <div id="view-gallery" class="owl-carousel product-slider owl-theme">
+                @foreach (var item in Model.product.Where(p => p.Discontinued == "N"))
                 {
                     <!-- single-product item end -->
                     <div class="col-xs-12">
@@ -323,7 +325,7 @@
                                                     <div class="quick-thumb">
                                                         <div class="nav nav-tabs">
                                                             <ul>
-                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" width="200px" height="200px"  /> </a></li>
+                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" width="200px" height="200px" /> </a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -394,6 +396,7 @@
                     <!-- single-product item end -->
                 }
             </div>
+
         </div>
     </div>
 </div>
