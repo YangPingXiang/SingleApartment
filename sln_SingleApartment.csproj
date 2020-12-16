@@ -179,6 +179,7 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
+    <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CRoomResponseModel.cs" />
@@ -1075,6 +1076,7 @@
     <Content Include="Content\Room\css\default.css" />
     <Content Include="Content\Room\css\flexslider.css" />
     <Content Include="Content\Room\css\font-awesome.min.css" />
+    <Content Include="Content\Room\css\jquery.fancybox.css" />
     <Content Include="Content\Room\css\materialdesignicons.min.css" />
     <Content Include="Content\Room\css\owl.carousel.css" />
     <Content Include="Content\Room\css\owl.theme.css" />
@@ -1288,6 +1290,7 @@
     <Content Include="Content\Room\js\bootstrap.min.js" />
     <Content Include="Content\Room\js\isotope.pkgd.min.js" />
     <Content Include="Content\Room\js\jquery.counterup.min.js" />
+    <Content Include="Content\Room\js\jquery.fancybox.js" />
     <Content Include="Content\Room\js\jquery.isotope.js" />
     <Content Include="Content\Room\js\jquery.magnific-popup.js" />
     <Content Include="Content\Room\js\lettering.js" />
@@ -1400,6 +1403,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mousewheel.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1500,6 +1504,7 @@
     <Content Include="Views\RoomBackend\_BackPartialLeaseKeyword.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
+    <Content Include="Views\RoomBackend\BackImageGalleryforRoomStyle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
