@@ -927,5 +927,10 @@ namespace sln_SingleApartment.Controllers
                 return new JsonResult { Data = new { status = false } };
             }
         }
+        public ActionResult PowerBI()
+        {
+            return View();
+        }
     }
-}
+   
+    }
