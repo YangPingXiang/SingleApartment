@@ -132,7 +132,8 @@
 
                                 <div class="col-md-12 text-center">
                                     <p class="checkout-coupon">
-                                        <input type="submit" value="CONTINUE">
+                                        <input type="submit" value="下一步" onclick="tonext()">
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -169,25 +170,20 @@
                                                     <input id="payment_method_1" class="input-radio" type="radio" value="歐付寶" checked="checked" name="payment_method">
                                                     <label for="payment_method_1"> 歐付寶 </label>
                                                     <div class="payment_box payment_method_bacs">
-                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                                        <p>歐付寶提供多元的快速收款及付款服務！讓您手機即是錢包，出門在外購物秒付，只帶手機就能輕鬆消費</p>
                                                     </div>
                                                 </div>
                                                 <div class="pay-top sin-payment">
                                                     <input id="payment_method_2" class="input-radio" type="radio" value="綠界科技" name="payment_method">
                                                     <label for="payment_method_2"> 綠界科技  </label>
                                                     <div class="payment_box payment_method_bacs">
-                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                        <p>綠界科技Ecpay是第三方支付領導品牌，提供金流、物流、電子發票、 跨境電商、資安聯防一站購足服務</p>
                                                     </div>
                                                 </div>
-                                                <div class="pay-top sin-payment">
-                                                    <input id="payment_method_3" class="input-radio" type="radio" value="cheque" name="payment_method">
-                                                    <label for="payment_method_3">PayPal <img alt="" src="img/icon-img/44.png"><a href="#">What is PayPal?</a></label>
-                                                    <div class="payment_box payment_method_bacs">
-                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="form-row place-order">
+                                                
                                                 <input class="button alt" type="submit" value="下訂">
                                             </div>
                                         </div>
@@ -260,3 +256,10 @@
     </div>
 </div>
 <!-- checkout  content section end -->
+<script>
+    function tonext() {
+        $('.nav-tabs').children().eq(1).addClass("active").siblings().removeClass("active");
+        $('#profile').addClass("active").siblings().removeClass("active");
+       
+    }
+</script>

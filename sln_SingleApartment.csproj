@@ -751,14 +751,7 @@
     <Content Include="ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="ckeditor\vendor\promise.js" />
-    <Content Include="Content\14e5a3e1-5495-4a1d-b29a-540365d422be.jpg" />
-    <Content Include="Content\38fe7226-8e08-4658-ac3d-7263e54a25af.jpg" />
-    <Content Include="Content\455f933a-af9d-4812-a783-6f7ac2e83ee6.jpg" />
-    <Content Include="Content\54d40b0f-8afd-47da-a492-64c53505c002.jpg" />
-    <Content Include="Content\57a0021b-b6d9-477a-aea1-a553e58e68fa.jpg" />
-    <Content Include="Content\85f8bed3-210c-468e-b66e-e123b093dad9.jpg" />
     <Content Include="Content\9322173d-e728-46a6-aadb-d0770e1ac84f.jpg" />
-    <Content Include="Content\9e575cd1-38e6-40d2-b2d9-e23bf24b1459.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -783,8 +776,6 @@
     <Content Include="Content\img\ ?~ r  ] p3.png" />
     <Content Include="Content\img\ ?~ r  ] p6.png" />
     <Content Include="Content\img\ ?~ r  ] p7.png" />
-    <Content Include="Content\img\ Y %281%29.png" />
-    <Content Include="Content\img\ Y.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
@@ -1238,12 +1229,8 @@
     <Content Include="Content\Room\images\news\n-2.jpg" />
     <Content Include="Content\Room\images\news\n-3.jpg" />
     <Content Include="Content\Room\images\roomstyle\ _ ? -1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\ a      -1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\ a      -2.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -1.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -2.jpg" />
-    <Content Include="Content\Room\images\roomstyle\ u ~  -1.jpg" />
-    <Content Include="Content\Room\images\roomstyle\ u ~  -2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
@@ -1276,7 +1263,6 @@
     <Content Include="Content\Room\images\services\tab-2.jpg" />
     <Content Include="Content\Room\images\services\        ?   .jpg" />
     <Content Include="Content\Room\images\services\ ?K H q ?~  .jpg" />
-    <Content Include="Content\Room\images\services\ C    s      .jpg" />
     <Content Include="Content\Room\images\services\  N j w ?   .jpg" />
     <Content Include="Content\Room\images\staff\about.jpg" />
     <Content Include="Content\Room\images\staff\client1.jpg" />
@@ -1391,6 +1377,7 @@
     <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1446,7 +1433,6 @@
     <Content Include="Views\Activity\Edit.cshtml" />
     <Content Include="Views\Activity\Joined_List.cshtml" />
     <Content Include="Views\Activity\List.cshtml" />
-    <Content Include="Views\Back\Index.cshtml" />
     <Content Include="Views\Shared\Back_Layout.cshtml" />
     <Content Include="Views\Shared\HomePage\_Layout_HomePage.cshtml" />
     <Content Include="Views\Room\_PartialCheckRoom.cshtml" />
@@ -1466,7 +1452,6 @@
     <Content Include="Views\Member\List.cshtml" />
     <Content Include="Views\Member\LogIn.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
-    <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
     <Content Include="Views\BackInformation\BackList.cshtml" />
     <Content Include="Views\BackInformation\BackListPaging.cshtml" />
     <Content Include="Views\BackInformation\InfoCategoryList.cshtml" />
@@ -1503,6 +1488,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
+    <Folder Include="Content\Room\images\roomstyle\" />
+    <Folder Include="Views\Back\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

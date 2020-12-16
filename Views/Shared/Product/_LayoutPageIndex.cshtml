@@ -125,15 +125,14 @@
                                     <ul>
                                         <li class="re-icon tnm">
                                             <i class="fa fa-search" aria-hidden="true"></i>
-                                            <form method="get" id="searchform" action="#">
+                                            <form method="post" id="searchform" action="#">
                                                 <input type="text" value="" name="s" id="ws" placeholder="搜尋商品..." />
                                                 <button type="submit"><i class="pe-7s-search"></i></button>
                                             </form>
                                         </li>
                                         <li>
                                             <a href="@Url.Action("ShowProductInCart","Product")"><i class="fa fa-shopping-cart"></i></a>
-                                            <ul class="drop-cart">
-                                            </ul>
+                                            <ul class="drop-cart"></ul>
                                         </li>
                                     </ul>
                                 </div>
