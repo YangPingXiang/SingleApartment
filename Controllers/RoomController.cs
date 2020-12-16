@@ -778,7 +778,7 @@ namespace sln_SingelApartment.Controllers
 
                 //mail.To.Add("singleapart@gmail.com,apple385827@gmail.com"); 
                 mail.To.Add("singleapart@gmail.com");//new MailAddress("singleapart@gmail.com")
-                mail.Subject = "窩居公寓:新活動通知!";
+                mail.Subject = "窩居公寓:租房成功通知!";
                 //mail.Date = DateTime.Now;
 
                 mail.Body = htmlBody;
