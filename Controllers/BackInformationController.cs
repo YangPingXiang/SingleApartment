@@ -193,6 +193,10 @@ namespace sln_SingleApartment.Controllers
         
         public ActionResult BackList()
         {
+            //modify by Jony 109-12-15
+            CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
+
             return View();
         }
 
