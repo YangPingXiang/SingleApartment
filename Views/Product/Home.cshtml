@@ -101,8 +101,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="AddToCart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                      
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                         @*加入購物車*@
                                     </div>
                                 </div>
@@ -136,8 +136,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -169,8 +169,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -201,8 +201,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                      
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -233,8 +233,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -373,13 +373,12 @@
                                                                 <div class="col-sm-6">
                                                                     <div class="por-dse clearfix">
                                                                         <ul class="other-btn">
-                                                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-refresh"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="por-dse add-to">
-                                                                        <a href="Addtosession/@item.ProductID">加到購物車</a>
+                                                                        <a name="@item.ProductID" onclick="AddToCart()" >加到購物車</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -402,3 +401,39 @@
 </div>
 <!-- quick view end -->
 <!-- #endregion -->
+
+<script>
+    @* 加到最愛 *@
+    function AddToFavoriteList(MemberID) {
+        var pdID = $(event.currentTarget).prop("name");
+        $.ajax({
+            url: '@Url.Action("AddToFavorite", "Product")',
+            dataType: 'json',
+            data: JSON.stringify({
+                MemberID: MemberID,
+                ProductID: pdID
+            }),
+            contentType: 'application/json',
+            type: 'POST',
+            success: function (data) {
+                window.alert(JSON.parse(data).ans);
+            }
+        });
+    }
+    @*加到購物車*@
+    function AddToCart() {
+        var pdID = $(event.currentTarget).prop("name");
+        $.ajax({
+            url: '@Url.Action("AddToCart", "Product")',
+            dataType: 'html',
+            data: {
+                ProductID: pdID,
+            },
+            type: 'POST',
+            success: function (data) {
+                window.alert("已加入購物車！");
+                $(".drop-cart").html(data);
+            }
+        });
+    }
+</script>
