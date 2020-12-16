@@ -102,7 +102,7 @@ namespace sln_SingleApartment.Controllers
         }
         #region 以圖搜關鍵字 & 價格搜尋
         [HttpPost]
-        public async Task<ActionResult> shop(HttpPostedFileBase imgPhoto)
+        public async Task<ActionResult> shop(HttpPostedFileBase imgPhoto , string s)
         {
             var user = Session[CDictionary.welcome] as CMember;
             if (user == null) { return RedirectToAction("Login", "Member"); }
@@ -128,6 +128,14 @@ namespace sln_SingleApartment.Controllers
                 result.product = list_product;
                 ViewBag.ByPhoto = "true";
                 
+                ViewBag.Keyword = Keyword;
+            }
+            if(s!= null)
+            {
+                string Keyword = s;
+                var list_product = theUser.SearchProductsBy(null, null, Keyword);
+                result.product = list_product;
+                ViewBag.ByPhoto = "true";
                 ViewBag.Keyword = Keyword;
             }
             return View(result);
@@ -683,7 +691,7 @@ namespace sln_SingleApartment.Controllers
             CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId.ToString() == MemberID).FirstOrDefault() };
             int currentPage = page < 1 ? 1 : page;
             var lt = theUser.SearchOrders();
-            var result = lt.ToPagedList(currentPage, pageSize);
+            var result = lt.OrderByDescending(r=>r.OrderDate).ToPagedList(currentPage, pageSize);
             ViewData.Model = result;
             ViewBag.MemberID = MemberID;
             return PartialView("_PartialOrders");

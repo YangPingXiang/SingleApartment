@@ -147,10 +147,10 @@
                             </div>
                             <div class="wc-proceed-to-checkout">
                                 <p class="return-to-shop">
-                                    <a class="button wc-backward" href="#">繼續購物</a>
+                                    <a class="button wc-backward" onclick="history.back()">回到上一頁</a>
                                     <a class="button wc-backward" href="RemoveProductsInCart">清空購物車</a>
 
-                                </p><a class="wc-forward" href="#">確認下單</a>
+                                </p><a class="wc-forward" href="@Url.Action("CheckOut", "Product")">確認下單</a>
                             </div>
                         </div>
                     </div>
