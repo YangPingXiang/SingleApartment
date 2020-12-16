@@ -123,14 +123,13 @@ namespace sln_SingleApartment.Models
             string[] kw = null;
             if (KeyWord !="")
             {
-                 kw = KeyWord.Split(' ');
+                 kw = KeyWord.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries);
             }
             List<CProductViewModel> result = new List<CProductViewModel>();
             var pd = db.Product.Where(r => r.Discontinued == "N" && r.Stock >= 0 && r.ActivityID == null);
             if (kw!= null && kw.Length!=0)
             {
-                pd = pd.Where(p => kw.Any(x => p.ProductName.Contains(x)));
-                var k = pd.ToList();
+                pd = pd.Where(p => kw.Any(x => p.ProductName.Contains(x))).OrderByDescending(pdd=>kw.All(x=>pdd.ProductName.Contains(x)));
             }
             else if (SubCategory!= null)
             {
