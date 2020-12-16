@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using AllPay.Payment.Integration;
 using Newtonsoft.Json;
 using PagedList;
 using sln_SingelApartment.ViewModels;
@@ -254,90 +257,7 @@ namespace sln_SingelApartment.Controllers
         //    ViewBag.MemberID = MemberID;
         //    return PartialView("_PartialRoomFavorite");
         //}
-
-        
-
-        //public ActionResult PartialResult(string buildcaseID, string roomstyleID, string peoplecount, string amountrent)
-        //{
-        //    CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-
-        //    var result = from t in dbSA.BuildCase
-        //                 join r in dbSA.Room
-        //                 on t.ID equals r.BuildCaseID
-        //                 join rms in dbSA.RoomStyle
-        //                 on r.RoomStyleID equals rms.ID
-        //                 where t.ID == buildcaseID
-        //                    && r.RoomStyleID.ToString() == roomstyleID
-        //                 && rms.MaxNumberOfPeople.ToString() == peoplecount
-        //                 //rms.Rent.ToString() == amountrent
-        //                 select new { b = t, r = r, rms = rms };
-
-        //    List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-        //    List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
-        //    List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-        //    var test = result.ToList();
-        //    foreach (var item in result)
-        //    {
-        //        CRoomStyleViewModel roomstyle_VM = new CRoomStyleViewModel() { entity_roomstyle = item.rms };
-        //        roomstyle_VM_lt.Add(roomstyle_VM);
-
-        //        CBuildCaseViewModel buildcase_VM = new CBuildCaseViewModel() { entity_buildcase = item.b };
-        //        buildcase_VM_lt.Add(buildcase_VM);
-
-        //        CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
-        //        room_VM_lt.Add(room_VM);
-
-        //    }
-        //    abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
-        //    abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-        //    abtRoom_VM.roomViewModels = room_VM_lt;
-
-        //    ViewData.Model = abtRoom_VM;
-
-        //    return PartialView("_PartialSearchResult");
-        //}
-
-
-        public ActionResult ListAllRooms(
-                string buildcaseID, string roomname, string roomstyleID, string area)
-        {
-
-            
-            CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
-            var result = from b in dbSA.BuildCase
-                         join r in dbSA.Room
-                         on b.ID equals r.BuildCaseID
-                         join rms in dbSA.RoomStyle
-                         on r.RoomStyleID equals rms.ID
-                         where b.ID == buildcaseID
-                         && rms.ID.ToString() == roomstyleID
-                         select new { b = b, r = r, rms = rms };
-            List<CBuildCaseViewModel> buildcase_VM_lt = new List<CBuildCaseViewModel>();
-            List<CRoomViewModel> rooom_VM_lt = new List<CRoomViewModel>();
-            List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-
-            var test = result.ToList();
-
-            foreach (var item in result)
-            {
-                CBuildCaseViewModel buildcase_VM = new CBuildCaseViewModel() { entity_buildcase = item.b };
-                buildcase_VM_lt.Add(buildcase_VM);
-
-                CRoomStyleViewModel roomstyle_VM = new CRoomStyleViewModel() { entity_roomstyle = item.rms };
-                roomstyle_VM_lt.Add(roomstyle_VM);
-
-                CRoomViewModel room_VM = new CRoomViewModel() { entity_room = item.r };
-                rooom_VM_lt.Add(room_VM);
-            }
-            abtRoom_VM.buildcaseViewModels = buildcase_VM_lt;
-            abtRoom_VM.roomStyleViewModels = roomstyle_VM_lt;
-            abtRoom_VM.roomViewModels = rooom_VM_lt;
-
-            ViewData.Model = abtRoom_VM;
-
-            return View(abtRoom_VM);
-        }
-        
+       
         //GET
         public ActionResult ListRoomDetail(int id)
         {
@@ -541,8 +461,344 @@ namespace sln_SingelApartment.Controllers
         //    return View(abtRoom_VM);
         //}
 
+        public ActionResult RoomCheckOut()
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
+            ViewBag.MemberID = user.fMemberId;
+
+            var memberRoom = from l in dbSA.Lease
+                             where l.MemberID == user.fMemberId
+                             select l;
+            List<CLeaseViewModel> lease_VM_lt = new List<CLeaseViewModel>();
+            foreach(var item in memberRoom)
+            {
+                lease_VM_lt.Add(new CLeaseViewModel() { entity_lease = item });
+            }
+
+            //CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            //List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+            
+            if (lease_VM_lt == null || lease_VM_lt.Count == 0)
+            {
+                return RedirectToAction("MyRoom");
+            }
+
+            //List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
+            
+            return View(lease_VM_lt);
+        }
+        [HttpPost]
+        public string RoomCheckOut(string payment_method)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            ViewBag.MemberID = user.fMemberId;
+
+            //CUser theUser = new CUser() { tMember = db.tMember.Where(r => r.fMemberId == user.fMemberId).FirstOrDefault() };
+            //List<CAddtoSessionView> list = Session[CDictionary.PRODUCTS_IN_CART] as List<CAddtoSessionView>;
+
+            var memberlease = from l in dbSA.Lease
+                              where l.MemberID == user.fMemberId
+                              select l;
+            
+            List<CLeaseViewModel> list = new List<CLeaseViewModel>();
+            
+            foreach(var item in memberlease)
+            {
+                list.Add(new CLeaseViewModel() { entity_lease = item });
+            }
+
+            var leaseid = list.FirstOrDefault().leaseID;
+                
+           
+            //int leaseID = 0;
+            //if (cLease != null)
+            //{
+            //    leaseID = cLease.leaseID == null ? 0 : (int)cLease.leaseID;
+            //    //if (orderID != "發生錯誤，請稍後再試！")
+            //    //{
+            //    //    Session[CDictionary.PRODUCTS_IN_CART] = null;
+            //    //}
+            //}
 
 
+            //List<COrderDetailsViewModel> orderlist = theUser.SearchProductInCart(list);
+
+            int TotalPrice = 0;
+
+            foreach (var item in list)
+            {
+                TotalPrice += (item.rent == null ? 0 : (int)item.rent);
+            }
+            if (payment_method == "歐付寶")
+            {
+                List<string> enErrors = new List<string>();
+                try
+                {
+                    using (AllInOne oPayment = new AllInOne())
+                    {
+
+                        //var order1 = new Order();
+                        //var orderdetails = orderlist.Where(p => p.OrderID == order1.OrderID);
+                        int? total = TotalPrice;
+
+                        /* 服務參數 */
+                        oPayment.ServiceMethod = AllPay.Payment.Integration.HttpMethod.HttpPOST;
+                        oPayment.ServiceURL = "https://payment-stage.opay.tw/Cashier/AioCheckOut/V5";
+                        oPayment.HashKey = "5294y06JbISpM5x9";
+                        oPayment.HashIV = "v77hoKGq4kWxNNIS";
+                        oPayment.MerchantID = "2000132";
+                        /* 基本參數 */
+                        oPayment.Send.ReturnURL = "http://localhost:44332/Member/Home";
+                        oPayment.Send.ClientBackURL = "http://localhost:44332/Product/OrderList";
+                        //oPayment.Send.OrderResultURL = "<<您要收到付款完成通知的瀏覽器端網址>>";
+                        oPayment.Send.MerchantTradeNo = string.Format("{0:00000}", (new Random()).Next(100000));
+                        oPayment.Send.MerchantTradeDate = DateTime.Now;
+                        oPayment.Send.TotalAmount = (decimal)total;
+                        oPayment.Send.TradeDesc = "感謝您的購買";
+                        //oPayment.Send.ChoosePayment = PaymentMethod.ALL;
+                        //oPayment.Send.Remark = "<<您要填寫的其他備註>>";
+                        oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;
+                        oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;
+                        oPayment.Send.HoldTrade = HoldTradeType.No;
+                        oPayment.Send.DeviceSource = DeviceType.PC;
+                        //oPayment.Send.UseRedeem = UseRedeemFlag.Yes; //購物金/紅包折抵
+                        //oPayment.Send.IgnorePayment = "<<您不要顯示的付款方式>>"; // 例如財付通:Tenpay
+                        //                                                      // 加入選購商品資料。
+
+                        foreach (var item in list)
+                        {
+                            oPayment.Send.Items.Add(new Item()
+                            {
+                                Name = item.entity_lease.Room.RoomName,
+
+                                Price = (decimal)item.rent,
+
+                                Currency = "元",
+
+                                //Quantity = item.Quantity
+                            });
+
+
+                        }
+                        // 當付款方式為 ALL 時，建議增加的參數。
+                        //oPayment.SendExtend.PaymentInfoURL = "<<您要接收回傳自動櫃員機/超商/條碼付款相關資訊的網址。>> ";
+
+                        /* 產生訂單 */
+                        enErrors.AddRange(oPayment.CheckOut());
+                        /* 產生產生訂單 Html Code 的方法 */
+                        string szHtml = String.Empty;
+                        enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
+                        return szHtml;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // 例外錯誤處理。
+                    enErrors.Add(ex.Message);
+                    return ex.Message;
+
+                }
+                finally
+                {
+                    // 顯示錯誤訊息。
+                    if (enErrors.Count() > 0)
+                    {
+                        string szErrorMessage = String.Join("\\r\\n", enErrors);
+                    }
+                }
+            }
+            else if (payment_method == "綠界科技")
+            {
+                List<string> enErrors = new List<string>();
+                try
+                {
+                    using (ECPay.Payment.Integration.AllInOne oPayment = new ECPay.Payment.Integration.AllInOne())
+                    {
+                        /* 服務參數 */
+                        oPayment.ServiceMethod = ECPay.Payment.Integration.HttpMethod.HttpPOST;//介接服務時，呼叫 API 的方法
+                        oPayment.ServiceURL = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";//要呼叫介接服務的網址
+                        oPayment.HashKey = "5294y06JbISpM5x9";//ECPay提供的Hash Key
+                        oPayment.HashIV = "v77hoKGq4kWxNNIS";//ECPay提供的Hash IV
+                        oPayment.MerchantID = "2000132";//ECPay提供的特店編號
+
+                        /* 基本參數 */
+                        oPayment.Send.ReturnURL = "http://localhost:44332/Product/MakeOrderIntoDB";
+                        oPayment.Send.ClientBackURL = "http://localhost:44332/Product/OrderList";
+                        //oPayment.Send.ReturnURL = "http://example.com";//付款完成通知回傳的網址
+                        //oPayment.Send.ClientBackURL = "http://www.ecpay.com.tw/";//瀏覽器端返回的廠商網址
+                        oPayment.Send.OrderResultURL = "http://localhost:44332/Product/MakeOrderIntoDB";//瀏覽器端回傳付款結果網址
+                        oPayment.Send.MerchantTradeNo = "WoJuApartment" + leaseid.ToString();//廠商的交易編號
+                        oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"); ;//廠商的交易時間
+                        oPayment.Send.TotalAmount = (decimal)TotalPrice;//交易總金額
+                        oPayment.Send.TradeDesc = "感謝您的購買^^";//交易描述
+                        //oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
+                        oPayment.Send.Remark = "窩居公寓－測試訂單";//備註欄位
+                        //oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;//使用的付款子項目
+                        //oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;//是否需要額外的付款資訊
+                        //oPayment.Send.DeviceSource = DeviceType.PC;//來源裝置
+                        oPayment.Send.CustomField1 = user.fMemberId.ToString(); ;
+                        //oPayment.Send.CustomField2 = leaseid;
+                        //訂單的商品資料
+                        foreach (var item in list)
+                        {
+                            oPayment.Send.Items.Add(new ECPay.Payment.Integration.Item()
+                            {
+                                Name = item.entity_lease.Room.RoomName,
+                                Price = (decimal)item.rent,
+                                Currency = "元",
+                                //Quantity = item.Quantity
+                            });
+                        }
+
+                        /*************************非即時性付款:ATM、CVS 額外功能參數**************/
+
+                        #region ATM 額外功能參數
+
+                        //oPayment.SendExtend.ExpireDate = 3;//允許繳費的有效天數
+                        //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
+                        //oPayment.SendExtend.ClientRedirectURL = "";//Client 端回傳付款相關資訊
+
+                        #endregion
+                        #region CVS 額外功能參數
+
+                        //oPayment.SendExtend.StoreExpireDate = 3; //超商繳費截止時間 CVS:以分鐘為單位 BARCODE:以天為單位
+                        //oPayment.SendExtend.Desc_1 = "test1";//交易描述 1
+                        //oPayment.SendExtend.Desc_2 = "test2";//交易描述 2
+                        //oPayment.SendExtend.Desc_3 = "test3";//交易描述 3
+                        //oPayment.SendExtend.Desc_4 = "";//交易描述 4
+                        //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
+                        //oPayment.SendExtend.ClientRedirectURL = "";///Client 端回傳付款相關資訊
+
+                        #endregion
+
+                        /***************************信用卡額外功能參數***************************/
+
+                        #region Credit 功能參數
+
+                        //oPayment.SendExtend.BindingCard = BindingCardType.No; //記憶卡號
+                        //oPayment.SendExtend.MerchantMemberID = ""; //記憶卡號識別碼
+                        //oPayment.SendExtend.Language = ""; //語系設定
+
+                        #endregion Credit 功能參數
+                        #region 一次付清
+
+                        //oPayment.SendExtend.Redeem = false;   //是否使用紅利折抵
+                        //oPayment.SendExtend.UnionPay = true; //是否為銀聯卡交易
+
+                        #endregion
+                        #region 分期付款
+
+                        //oPayment.SendExtend.CreditInstallment = "3,6";//刷卡分期期數
+
+                        #endregion 分期付款
+                        #region 定期定額
+
+                        //oPayment.SendExtend.PeriodAmount = 1000;//每次授權金額
+                        //oPayment.SendExtend.PeriodType = PeriodType.Day;//週期種類
+                        //oPayment.SendExtend.Frequency = 1;//執行頻率
+                        //oPayment.SendExtend.ExecTimes = 2;//執行次數
+                        //oPayment.SendExtend.PeriodReturnURL = "";//伺服器端回傳定期定額的執行結果網址。
+
+                        #endregion
+
+                        /* 產生訂單 */
+                        enErrors.AddRange(oPayment.CheckOut());
+                        /* 產生產生訂單 Html Code 的方法 */
+                        string szHtml = String.Empty;
+                        enErrors.AddRange(oPayment.CheckOutString(ref szHtml));
+                        return szHtml;
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    // 例外錯誤處理。
+                    enErrors.Add(ex.Message);
+                    return ex.Message;
+                }
+                finally
+                {
+                    // 顯示錯誤訊息。
+                    if (enErrors.Count() > 0)
+                    {
+                        string szErrorMessage = String.Join("\\r\\n", enErrors);
+                    }
+                }
+
+            }
+            else
+            {
+                return "其他";
+            }
+        }
+
+        public string RoomSendMail(string strHtml)
+        {
+            string htmlBody = strHtml.ToString();
+
+            SingleApartmentEntities entity = new SingleApartmentEntities();
+            try
+            {
+                //string sMemberEmail = "";
+                MailMessage mail = new MailMessage();
+                //string email = "dddd";
+                mail.From = new MailAddress("singleapart@gmail.com");
+                //多收信人, 使用,隔開, 而不是;喔
+
+                #region 活動建立後媒合訊息發送
+                List<int> MemberIDList = new List<int>();
+                List<string> MemberMemberEmailList = new List<string>();
+
+                var user = Session[CDictionary.welcome] as CMember;
+                tMember tMember = new tMember();
+             
+                var membermessage = from mbmsg in entity.tMember
+                                    where mbmsg.fMemberId == user.fMemberId
+                                    select new { MbID = mbmsg.fMemberId, MbEmail = mbmsg.fEmail };
+                
+                foreach (var m in membermessage)
+                {
+                    MemberIDList.Add(m.MbID);
+                    MemberMemberEmailList.Add(m.MbEmail);
+                }
+                for (int me = 0; me < MemberIDList.Count; me++)
+                {
+                    //if(MemberfActivityMessageList[me] == "TRUE")
+                    //{
+
+                    mail.To.Add(MemberMemberEmailList[me]);
+                    //}
+
+
+                }
+                #endregion
+
+                //mail.To.Add("singleapart@gmail.com,apple385827@gmail.com"); 
+                mail.To.Add("singleapart@gmail.com");//new MailAddress("singleapart@gmail.com")
+                mail.Subject = "窩居公寓:新活動通知!";
+                //mail.Date = DateTime.Now;
+
+                mail.Body = htmlBody;
+                //mail.Body = $@"<h1 style='text-align:center;color:#ff0000'>iTicket 訂購成功</h1>{email}";
+                mail.IsBodyHtml = true;
+                mail.Priority = MailPriority.High;
+                using (SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com"))
+                {
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new NetworkCredential("singleapart@gmail.com", "wojuwoju");
+                    SmtpServer.EnableSsl = true;
+                    SmtpServer.Send(mail);
+                }
+                return "true";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
 
     }
 }

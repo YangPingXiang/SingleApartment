@@ -12,7 +12,7 @@
             if (!$("#formBoking").valid()) {
                 return;
             }
-            
+
             AddBookingInfo();
 
         });
@@ -20,7 +20,7 @@
 
     function AddBookingInfo() {
         var objBookingInfo = {
-            MemberId : $("#txtMemberID").val(),
+            MemberId: $("#txtMemberID").val(),
             RoomID: $("#txtRoomID").val(),
             StartTime: $("#StartTime").val(),
             EndTime: $("#EndTime").val()
@@ -138,23 +138,35 @@
                                             }
                                         </select>*@
                                 </div>
-                                @*<div class="booking-comment fix">
-                                        <textarea placeholder="comment"></textarea>
-                                    </div>*@
+
+
                                 <div class="submit-form mt-25">
-                                    @*@foreach (var a in Model.roomStyleViewModels)
-                                        {
-                                            <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
-                                        }*@
-
-                                   <button id="btnSave" type="button" onclick="AddBookingInfo();">提交</button>
-                                   @*<input type="submit" id="btnSave" value="提交" onclick="location.href='http://localhost:44332/Room/MyRoom'">*@
-
+                                    <button id="btnSave" type="button" onclick="AddBookingInfo();">提交</button>
                                 </div>
+
+
+
+
                             </form>
+
+                            <div style="width:800px" id="div_editor">
+                                <textarea id="editor1" name="editor1">
+                                        Hello World! 這是 CKeditorf!
+                                </textarea>
+                            </div>
+
+                            <div>
+                                <!--Button鍵-->
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
+                                        @*<input id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />*@
+                                        <input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-
-
                     </div>
                 </div>
 
@@ -207,10 +219,115 @@
         </div>
     </div>
 
-    <script>
-
-    </script>
-
 }
+
+<script type="text/javascript">
+    //$(function () {
+
+    //});
+
+
+    function SendMailData(p_data) {
+
+        $.ajax({
+            contentType: 'application/json',
+            url: "/Room/RoomSendMail",
+            type: "POST",
+            data: JSON.stringify({
+                strHtml: p_data
+                //p_priority: f_priority,  //傳遞參數
+                //p_data: f_data
+            }),
+            success: function (data) {
+                console.log(data); //可先測試程式有無載入
+                //$("#id_result").html(data);
+                $("#id_result").html(data);
+            }
+        });
+    }
+
+    function showEditor() {
+        //CKEDITOR.replace('editor1');
+        $("#div_editor").show();
+        $("#btnSubmit").show();
+        //修改郵件內容
+        //let memberID = $("#txtMemberID").val();
+        //let roomID = $("#txtRoomID").val();
+        //console.log($("#StartTime").val());
+        //let starttime = $("#txtStartTime").val();
+        //let endtime = $("#txtEndTime").val();
+
+        @*var ststart = new Date($("#StartTime").val().replace('T',' '));
+        var stend = new Date($("#EndTime").val().replace('T', ' '));
+        let StartTime = ststart.toLocaleString();
+        let EndTime = stend.toLocaleString();
+        let subName = $("#subName").val();
+        let userName = '@memberName';
+        let MeetingPoint = $("#MeetingPoint").val();
+
+        console.log(ActivityName);*@
+
+        //let strHtml = ''
+        //    + '<div style="width: 40em;display: block;margin: auto;border: 2px solid #63bcfc;border-radius: 10px;box-shadow: 5px 5px 5px 3px aliceblue;" >'
+        //    + '<div class="card" style="width:auto">'
+        //    + '<div style="margin-bottom:20px;margin-top:20px">'
+        //    + '<div style="text-align:center;font-size:22px;font-weight:900;"><span style="color:#f6755e">活動資訊</span></div></div>'
+        //    + '<div style="margin-left:10px;">'
+        //    + '<div style="text-align:center;font-size:20px;font-weight:600;margin:30px">'
+        //    + '<label>您好!您有興趣的 <span style="background-color:#ffff00">休閒類</span> 活動上架了!名額有限，想參加活動請儘快報名!</label></div>'
+        //    + '<dl style="font-weight:500"><dt>活動類別：' /*+ memberID + '</dt>'*/
+        //    + '<dt>活動名稱：' /*+ roomID + '</dt><dt>開始時間：' + starttime + '</dt><dt>結束時間：' + endtime + '</dt></dl>'*/
+        //    + '<dl style="font-weight:500"><dt>地點：' /*+ memberID + '</dt><dt>活動人數：' + memberID + '</dt>'*/
+        //    + '<dt>發起人：'/*+'</dt></dl>'*/
+        //    + '<div style="text-align:right;font-size:22px;font-weight:900;margin-bottom:15px;margin-right:20px"><span style="color:#f6755e">窩居公寓</span></div> '
+        //    + '</div ></div ></div ></body >';
+
+        let strHtml = ''
+            + '<div>你好</div>';
+
+        console.log(strHtml);
+        $("#editor1").html(strHtml);
+    }
+
+    function showHtmlSendmail() {
+        //alert("hellooooooo");
+        //取得編輯後的格式
+        //var content = CKEDITOR.instances.editor1.getData();
+        var content = $("#editor1").val();
+        //var content = CKEDITOR.instances["editor1"].getData();
+        console.log(content);
+
+        //執行發送 mail
+        SendMailData(content);
+    }
+
+    $(function () {
+        //$('#datetimepicker1').datetimepicker();
+        //$('#datetimepicker2').datetimepicker();
+
+        //送出先隱藏
+        $("#btnSubmit").hide();
+        //CKEDITOR.replace('editor1');
+        $("#div_editor").hide();  //editor 先隱藏
+
+        //let strHtml = ''
+        //    + '<div style="width: 40em;display: block;margin: auto;border: 2px solid #63bcfc;border-radius: 10px;box-shadow: 5px 5px 5px 3px aliceblue;" >'
+        //    + '<div class="card" style="width:auto">'
+        //    + '<div style="margin-bottom:20px;margin-top:20px">'
+        //    + '<div style="text-align:center;font-size:22px;font-weight:900;"><span style="color:#f6755e">活動資訊</span></div></div>'
+        //    + '<div style="margin-left:10px;">'
+        //    + '<div style="text-align:center;font-size:20px;font-weight:600;margin:30px">'
+        //    + '<label>您好!您有興趣的 <span style="background-color:#ffff00">休閒類</span> 活動上架了!名額有限，想參加活動請儘快報名!</label></div>'
+        //    + '<dl style="font-weight:500"><dt>活動類別：內容</dt>'
+        //    + '<dt>活動名稱：內容</dt><dt>開始時間：內容</dt><dt>結束時間：內容</dt></dl>'
+        //    + '<dl style="font-weight:500"><dt>地點：內容</dt><dt>活動人數：內容</dt>'
+        //    + '<dt>發起人：內容</dt></dl>'
+        //    + '<div style="text-align:right;font-size:22px;font-weight:900;margin-bottom:15px;margin-right:20px"><span style="color:#f6755e">窩居公寓</span></div> '
+        //    + '</div ></div ></div ></body >';
+        //$("#editor1").html(strHtml)
+
+    });
+
+</script>
 <!--room booking start-->
 <!--room booking end-->

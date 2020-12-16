@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
+    <Compile Include="Models\CLease.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
@@ -269,9 +270,6 @@
       <DependentUpon>SingleApartmentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SubActivity.cs">
-      <DependentUpon>SingleApartmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tActivityCart.cs">
@@ -1434,11 +1432,8 @@
     <Content Include="Views\Information\UserCategoryList.cshtml" />
     <Content Include="Views\Shared\Information_Layout.cshtml" />
     <Content Include="Views\Room\BookingInfo.cshtml" />
-    <Content Include="Views\Room\ListAllRooms.cshtml" />
     <Content Include="Views\Room\ListRoomDetail.cshtml" />
     <Content Include="Views\Room\PayInfo.cshtml" />
-    <Content Include="Views\Room\Searching.cshtml" />
-    <Content Include="Views\Room\_PartialSearchResult.cshtml" />
     <Content Include="Views\Shared\Room\_LayoutRoom.cshtml" />
     <Content Include="Views\Activity\CartView.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
@@ -1465,7 +1460,6 @@
     <Content Include="Views\Member\List.cshtml" />
     <Content Include="Views\Member\LogIn.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
-    <Content Include="Views\Room\ListAllRoomStyle.cshtml" />
     <Content Include="Views\BackInformation\BackList.cshtml" />
     <Content Include="Views\BackInformation\BackListPaging.cshtml" />
     <Content Include="Views\BackInformation\InfoCategoryList.cshtml" />
@@ -1492,6 +1486,7 @@
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
+    <Content Include="Views\Room\RoomCheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
