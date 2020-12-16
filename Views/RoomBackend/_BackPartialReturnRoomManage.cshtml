@@ -67,8 +67,8 @@
             </div>
 
 
-            <table id="abtroomtable" style="width:1200px; margin:10px auto;  ">
-                <tr style="background-color:lightblue; text-align:center; font-size:20px;">
+            <table id="abtroomtable" style="width:1200px; margin:10px auto; padding:10px;  ">
+                <tr style="background-color:darkgray; text-align:center; font-size:20px; ">
 
                     <th>
                         @Html.DisplayNameFor(model => model.roomname)
@@ -81,7 +81,7 @@
                         @Html.DisplayNameFor(model => model.roomtype)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.entity_room.RoomStyle.RoomStyleName)
+                        房間風格
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.rent)
@@ -123,7 +123,7 @@
                         </td>
 
                         <td>
-                            NT @ViewBag.TotalRent
+                            NT @Html.DisplayFor(modelItem => item.rent)
 
 
                         </td>
@@ -135,8 +135,8 @@
                             @Html.DisplayFor(modelItem => item.floor)
                         </td>
                         <td>
-                            @Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |
-                            @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary" }) |
+                            @*@Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |*@
+                            @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary", style = "background-color:#5bc0de; border-color:#5bc0de;" }) |
                             @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>

@@ -1,0 +1,66 @@
+﻿@model sln_SingleApartment.Models.Lease
+
+@{
+    ViewBag.Title = "BackLeaseDelete";
+    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+}
+
+<h2>BackLeaseDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Lease</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonalRent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonalRent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.RoomName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tMember.fMemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tMember.fMemberName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

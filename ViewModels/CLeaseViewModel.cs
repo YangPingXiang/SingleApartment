@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using sln_SingelApartment.ViewModels;
@@ -22,9 +23,11 @@ namespace sln_SingelApartment.ViewModels
         public string roomname { get { return this.entity_lease.Room.RoomName; } }
 
         [DisplayName("租約開始日")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年 MM月 dd日}")]
         public DateTime? startdate { get { return this.entity_lease.StartDate; } }
 
         [DisplayName("租約到期日")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年 MM月 dd日}")]
         public DateTime? expirydate { get { return this.entity_lease.ExpiryDate; } }
 
         [DisplayName("會員編號")]

@@ -440,6 +440,20 @@ namespace tryTemplete_Room.Controllers
             return PartialView("_BackPartialLeaseKeyword");
         }
 
+
+        public ActionResult BackLeaseDelete(string id)
+        {
+            Lease l = dbSA.Lease.FirstOrDefault(t => t.ID.ToString() == id);
+            if (l != null)
+            {
+                dbSA.Lease.Remove(l);
+                dbSA.SaveChanges();
+
+                return RedirectToAction("BackRoomManage");
+            }
+            return View(l);
+        }
+
         public ActionResult BackPartialGOtoRoomstyle()
         {
             var table = from t in (new SingleApartmentEntities()).RoomStyle select t;
