@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,27 +13,36 @@ namespace sln_SingelApartment.ViewModels
     {
         public Lease entity_lease { get; set; }
 
-        [DisplayName("åˆç´„åºè™Ÿ")]
+        [DisplayName("¦X¬ù§Ç¸¹")]
         public int? leaseID { get { return this.entity_lease.ID; } }
 
-        [DisplayName("æˆ¿é–“ä»£è™Ÿ")]
+        [DisplayName("©Ğ¶¡¥N¸¹")]
         public int? roomID { get { return this.entity_lease.RoomID; } }
 
-        [DisplayName("æˆ¿è™Ÿ")]
+        [DisplayName("©Ğ¸¹")]
         public string roomname { get { return this.entity_lease.Room.RoomName; } }
-
-        [DisplayName("ç§Ÿç´„é–‹å§‹æ—¥")]
-        [DisplayFormat(DataFormatString = "{0:yyyyå¹´ MMæœˆ ddæ—¥}")]
+        [DisplayName("ç§Ÿç??‹å???)]
+        [DisplayFormat(DataFormatString = "{0:yyyyå¹?MM??dd?¥}")]
         public DateTime? startdate { get { return this.entity_lease.StartDate; } }
 
-        [DisplayName("ç§Ÿç´„åˆ°æœŸæ—¥")]
-        [DisplayFormat(DataFormatString = "{0:yyyyå¹´ MMæœˆ ddæ—¥}")]
+        [DisplayName("ç§Ÿç??°æ???)]
+        [DisplayFormat(DataFormatString = "{0:yyyyå¹?MM??dd?¥}")]
+
+        [DisplayName("¯²¬ù¶}©l¤é")]
+        public DateTime? startdate { get { return this.entity_lease.StartDate; } }
+
+        [DisplayName("¯²¬ù¨ì´Á¤é")]
+
         public DateTime? expirydate { get { return this.entity_lease.ExpiryDate; } }
 
-        [DisplayName("æœƒå“¡ç·¨è™Ÿ")]
+        [DisplayName("·|­û½s¸¹")]
         public int? memberID { get { return this.entity_lease.MemberID; } }
 
-        [DisplayName("æˆ¿å®¢ç§Ÿé‡‘")]
+
+        [DisplayName("¯²ª÷")]
+        public int? rent { get { return this.entity_lease.Room.Rent; } }
+        [DisplayName("©Ğ«È¯²ª÷")]
         public int? personalrent { get { return this.entity_lease.PersonalRent;  } }
+
     }
 }
