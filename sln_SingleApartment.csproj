@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -769,6 +769,7 @@
     <Content Include="Content\HomePage\images\pic04.jpg" />
     <Content Include="Content\HomePage\images\pic05.jpg" />
     <Content Include="Content\HomePage\images\ ?~ r  ] p7.png" />
+    <Content Include="Content\HomePage\images\窩居字體設計7.png" />
     <Content Include="Content\HomePage\js\jquery.min.js" />
     <Content Include="Content\HomePage\js\jquery.scrolly.min.js" />
     <Content Include="Content\HomePage\js\main.js" />
@@ -1234,6 +1235,13 @@
     <Content Include="Content\Room\images\roomstyle\ _ ? -1.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -1.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\北歐風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
@@ -1255,6 +1263,22 @@
     <Content Include="Content\Room\images\room\ ? 102-3.jpg" />
     <Content Include="Content\Room\images\room\ ? 102.jpg" />
     <Content Include="Content\Room\images\room\ ? 103.jpg" />
+    <Content Include="Content\Room\images\room\房型_北歐風雙人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_單身套房.jpg" />
+    <Content Include="Content\Room\images\room\房型_工業風三人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨家庭房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨甜蜜套房.jpg" />
+    <Content Include="Content\Room\images\room\房間101-1.jpg" />
+    <Content Include="Content\Room\images\room\房間101-2.jpg" />
+    <Content Include="Content\Room\images\room\房間101-3.jpg" />
+    <Content Include="Content\Room\images\room\房間101-4.jpg" />
+    <Content Include="Content\Room\images\room\房間101-5.jpg" />
+    <Content Include="Content\Room\images\room\房間101.jpg" />
+    <Content Include="Content\Room\images\room\房間102-1.jpg" />
+    <Content Include="Content\Room\images\room\房間102-2.jpg" />
+    <Content Include="Content\Room\images\room\房間102-3.jpg" />
+    <Content Include="Content\Room\images\room\房間102.jpg" />
+    <Content Include="Content\Room\images\room\房間103.jpg" />
     <Content Include="Content\Room\images\services\services1.jpg" />
     <Content Include="Content\Room\images\services\services2.jpg" />
     <Content Include="Content\Room\images\services\services3.jpg" />
@@ -1489,12 +1513,10 @@
     <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
     <Content Include="Views\RoomBackend\BackImageGalleryforRoomStyle.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Content\Room\images\roomstyle\" />
     <Folder Include="Views\Back\" />
   </ItemGroup>
   <ItemGroup>
