@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -181,6 +181,7 @@
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
+    <Compile Include="Models\CLease.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
@@ -1426,11 +1427,8 @@
     <Content Include="Views\Information\UserCategoryList.cshtml" />
     <Content Include="Views\Shared\Information_Layout.cshtml" />
     <Content Include="Views\Room\BookingInfo.cshtml" />
-    <Content Include="Views\Room\ListAllRooms.cshtml" />
     <Content Include="Views\Room\ListRoomDetail.cshtml" />
     <Content Include="Views\Room\PayInfo.cshtml" />
-    <Content Include="Views\Room\Searching.cshtml" />
-    <Content Include="Views\Room\_PartialSearchResult.cshtml" />
     <Content Include="Views\Shared\Room\_LayoutRoom.cshtml" />
     <Content Include="Views\Activity\CartView.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
@@ -1482,6 +1480,7 @@
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
+    <Content Include="Views\Room\RoomCheckOut.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialGotoLease.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomEdit.cshtml" />
     <Content Include="Views\RoomBackend\BackListRoomStylePic.cshtml" />
@@ -1490,6 +1489,7 @@
     <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
     <Content Include="Views\RoomBackend\BackImageGalleryforRoomStyle.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
