@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1" ZoomLevel="29">
+      <Diagram DiagramId="2285fd5c17894f1fb6287c07bf220d13" Name="Diagram1" ZoomLevel="82">
         <AssociationConnector Association="SingleApartmentModel.FK_ProductPictures_Product" />
         <EntityTypeShape EntityType="SingleApartmentModel.Activity" Width="1.5" PointX="6" PointY="15.125" />
         <EntityTypeShape EntityType="SingleApartmentModel.ActivityMainCategory" Width="1.5" PointX="1.5" PointY="13.375" />
@@ -36,7 +36,6 @@
         <EntityTypeShape EntityType="SingleApartmentModel.RoomInformation" Width="1.5" PointX="6" PointY="20.25" />
         <EntityTypeShape EntityType="SingleApartmentModel.RoomStyle" Width="1.5" PointX="1.5" PointY="4.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.SubActivity" Width="1.5" PointX="8.25" PointY="23.375" />
-        <EntityTypeShape EntityType="SingleApartmentModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.tActivityCart" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="SingleApartmentModel.tMember" Width="1.5" PointX="0.75" PointY="18.25" />
         <AssociationConnector Association="SingleApartmentModel.FK_Activity_ActivitySubCategory" />

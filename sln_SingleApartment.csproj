@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -48,7 +48,11 @@
     <Reference Include="AllPay.Payment.Integration">
       <HintPath>..\..\..\Desktop\ ?s     M D(12.6)\AllPay.Payment.Integration.dll</HintPath>
     </Reference>
-    <Reference Include="ECPay.Payment.Integration">
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ECPay.Payment.Integration, Version=1.0.0.7, Culture=neutral, PublicKeyToken=afb33c1e6a3b1bbd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -175,6 +179,7 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
+    <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CLease.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
@@ -1072,6 +1077,7 @@
     <Content Include="Content\Room\css\default.css" />
     <Content Include="Content\Room\css\flexslider.css" />
     <Content Include="Content\Room\css\font-awesome.min.css" />
+    <Content Include="Content\Room\css\jquery.fancybox.css" />
     <Content Include="Content\Room\css\materialdesignicons.min.css" />
     <Content Include="Content\Room\css\owl.carousel.css" />
     <Content Include="Content\Room\css\owl.theme.css" />
@@ -1285,6 +1291,7 @@
     <Content Include="Content\Room\js\bootstrap.min.js" />
     <Content Include="Content\Room\js\isotope.pkgd.min.js" />
     <Content Include="Content\Room\js\jquery.counterup.min.js" />
+    <Content Include="Content\Room\js\jquery.fancybox.js" />
     <Content Include="Content\Room\js\jquery.isotope.js" />
     <Content Include="Content\Room\js\jquery.magnific-popup.js" />
     <Content Include="Content\Room\js\lettering.js" />
@@ -1397,6 +1404,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mousewheel.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1487,6 +1495,15 @@
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
     <Content Include="Views\Room\RoomCheckOut.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGotoLease.cshtml" />
+    <Content Include="Views\RoomBackend\BackRoomEdit.cshtml" />
+    <Content Include="Views\RoomBackend\BackListRoomStylePic.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialReturnRoomManage.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialLeaseKeyword.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
+    <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
+    <Content Include="Views\RoomBackend\BackImageGalleryforRoomStyle.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,27 +3,25 @@
 @model IEnumerable<sln_SingelApartment.ViewModels.CRoomViewModel>
 
 @{
-    ViewBag.Title = "BackRoomManage";
-    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+    ViewBag.Title = "_BackPartialReturnRoomManage";
+    Layout = null;
 }
 
 <body>
 
-    <div style=" margin:50px 80px 50px 80px; padding:40px;">
+    
         <div style="float:left;">
-            <div style="float:left;width:70px; margin-top:75px;">
-                
-                <button id="btnCheckRoom" type="button" class="btn btn-group" style="margin-bottom:10px;">
-                    房間總表
-                </button>
+            @*<div style="float:left;width:70px; margin-top:75px;">
                 <button id="btnCheckLease" type="button" class="btn btn-group" style="margin-bottom:10px;">
                     合約總表
                 </button>
                 <button id="btnCheckRoomtype" type="button" class="btn btn-group" style="margin-bottom:10px;">
                     房型總表
                 </button>
-                
-            </div>
+                <button id="btnCheckRoom" type="button" class="btn btn-group" style="margin-bottom:10px;">
+                    房間總表
+                </button>
+            </div>*@
 
         </div>
         <div id="abttables">
@@ -69,8 +67,8 @@
             </div>
 
 
-            <table id="abtroomtable" style="width:1200px; margin:10px auto; padding:10px;  ">
-                <tr style="background-color:darkgray; text-align:center; font-size:20px; ">
+            <table id="abtroomtable" style="width:1200px; margin:10px auto;  ">
+                <tr style="background-color:lightblue; text-align:center; font-size:20px;">
 
                     <th>
                         @Html.DisplayNameFor(model => model.roomname)
@@ -83,7 +81,7 @@
                         @Html.DisplayNameFor(model => model.roomtype)
                     </th>
                     <th>
-                        房間風格
+                        @Html.DisplayNameFor(model => model.entity_room.RoomStyle.RoomStyleName)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.rent)
@@ -137,8 +135,8 @@
                             @Html.DisplayFor(modelItem => item.floor)
                         </td>
                         <td>
-                            @*@Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |*@
-                            @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary" , style= "background-color:#5bc0de; border-color:#5bc0de;" }) |
+                            @Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |
+                            @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary" }) |
                             @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>
@@ -150,88 +148,6 @@
             </div>
 
         </div>
-    </div>
-
-    <script>
-        function SearchLeaseByKeyword(keyword) {
-            $.ajax({
-                url: "@Url.Action("BackPartialLeaseKeyword")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
-            })
-        }
-
-        function SearchRoomByRoomName(keyword) {
-            $.ajax({
-                url: "@Url.Action("BackPartialKeyWordResult")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
-            })
-        }
-        $(document).ready(function () {
-            
-            $('.txtkeybox').on("keydown", function (event) {
-                if (event.key === "Enter") {
-                    let k = $("#txtkeybox_b").val() + $("#txtkeybox_r").val() + $("#txtkeybox_mn").val();
-                    console.log( 'key down')
-                    console.log(k);
-                    SearchRoomByRoomName(k);
-                    $("#abtroomtable").fadeOut();
-                    $("#abtroomtable_pagelist").fadeOut();
-                } // Handle press
-
-            })
-
-            $('#abtroomtable').on("click", ".btn-danger", function () {
-                $(this).parents("tr").remove();
-            });
-
-            $('#btnAdd').click(function () {
-                $('table').append("<tr><td>new</td><td>new</td><td>new</td><td>new</td><td>new</td><td>new</td><td><a href='#' class='btn btn-info'>編輯</a><a href='#' class='btn btn-primary' style='margin-left:20px;'>詳細資料</a><a href='#' class='btn btn-danger' style='margin-left:20px;'>刪除</a></td></tr>");
-            });
-
-            $('#btnCheckLease').on("click", function () {
-                console.log("DDDD")
-                $.ajax({
-                    url: "@Url.Action("BackPartialGotoLease")",
-                    dataType: "html",
-                    success: function (data) {
-                        
-                        $('#origintable').fadeOut();
-                        $('#abttables').html(data);
-                        //$('#abttables').fadeIn();
-                    }
-                })
-            })
-
-            $('#btnCheckRoomtype').on("click", function () {
-                console.log("AA")
-                $.ajax({
-                    url: "@Url.Action("BackPartialGOtoRoomstyle")",
-                    dataType: "html",
-                    success: function (data) {
-                        $('#origintable').fadeOut();
-                        $('#abttables').fadeIn().html(data);
-                    }
-                })
-
-            })
-
-            $('#btnCheckRoom').on("click", function () {
-             
-                $.ajax({
-                    url: "@Url.Action("BackPartialReturnRoomManage")",
-                    dataType: "html",
-                    success: function (data) {
-                        $('#abttables').fadeOut();
-                        $('#origintable').fadeOut();
-                        $('#backorigin').fadeIn().html(data);
-                    }
-                })
-            })
-        });
-
-
-    </script>
+   
 
 </body>

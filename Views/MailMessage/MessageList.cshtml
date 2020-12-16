@@ -15,6 +15,14 @@
     else
     {
         Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+
+
+        //modify by Jony 109-12-14 有登入會自動顯示姓名
+        <script>
+            $(function() {
+                $("#id_guestname").val('@db.fMemberName');
+            });
+        </script>
     }
 
 
@@ -365,4 +373,3 @@
         </script>
     }
 }
-       

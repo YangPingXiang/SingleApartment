@@ -53,21 +53,31 @@
 
             </nav>
 
-            @RenderBody()
+            <div style="min-height:75%">
+                @RenderBody()
+            </div>
 
             <!-- Footer -->
             <footer id="footer">
                 <div class="inner">
                     <h2>聯絡我們</h2>
                     <ul class="actions">
-                        <li><span class="icon fa-phone"></span> <a>(02)6631-8168</a></li>
-                        <li><span class="icon fa-envelope"></span> <a>singleapart@gmail.com</a></li>
-                        <li><span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓</li>
+                        <li>
+                            <span class="icon fa-phone"></span>
+                            <a>(02)6631-8168</a>
+                        </li>
+                        <li>
+                            <span class="icon fa-envelope"></span>
+                            <a>singleapart@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="icon fa-map-marker"></span> 06台北市大安區復興南路一段390號2樓
+                        </li>
                     </ul>
                 </div>
                 <!--<div class="copyright">
-            &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
-        </div>-->
+                    &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+                </div>-->
             </footer>
 
             <script type="text/javascript">
@@ -97,4 +107,12 @@
     </html>
 
 }
+else
+{
+    RenderBody();
+    <H1>
+        <a href="@Url.Action("Login","Member")">請先登入!</a>
+    </H1>
+}
+
 }

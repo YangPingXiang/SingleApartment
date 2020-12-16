@@ -39,56 +39,17 @@
     </script>*@
 <!-- slider-section-start -->
 <section class="slider-main-area">
-    
+
     <div class="main-slider an-si">
         <div class="bend niceties preview-2 hm-ver-1">
             <div id="ensign-nivoslider-2" class="slides">
                 <img src="~/Content/Product/img/slider/1.png" alt="" title="#slider-direction-3" />
-                <img src="~/Content/Product/img/slider/2.png" alt="" title="#slider-direction-1" />
-            </div>
-            <!-- direction 1 -->
-            <div id="slider-direction-3" class="t-cn slider-direction Builder">
-                <div class="slide-all">
-                    <!-- layer 1 -->
-                    <div class="layer-1">
-                        <h2 class="title5">new collection</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <h2 class="title6">Men’s Fashion</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <p class="title0">Save Up To 40% Off</p>
-                    </div>
-                    <!-- layer 3 -->
-                    <div class="layer-3">
-                        <a class="min1" href="#">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            <div id="slider-direction-1" class="t-cn slider-direction Builder">
-                <div class="slide-all slide2">
-                    <!-- layer 1 -->
-                    <div class="layer-1">
-                        <h2 class="title5">new collection</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <h2 class="title6">Women’s Fashion</h2>
-                    </div>
-                    <!-- layer 2 -->
-                    <div class="layer-2">
-                        <p class="title0">Save Up To 40% Off</p>
-                    </div>
-                    <!-- layer 3 -->
-                    <div class="layer-3">
-                        <a class="min1" href="#">Shop Now</a>
-                    </div>
-                </div>
+                @*<img src="~/Content/Product/img/slider/2.png" alt="" title="#slider-direction-1" />*@
             </div>
         </div>
     </div>
+
+
 </section>
 <!-- #region 熱門商品-->
 <!-- new-products section start -->
@@ -123,13 +84,13 @@
                 <div id="tab-carousel-1" class="re-owl-carousel owl-carousel product-slider owl-theme">
                     @{ foreach (var item in Model.product.Where(Q => Q.Discontinued == "N"))
                         {
-                           
+
                             string quickview = "quick-view" + item.ProductID.ToString();
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a>
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)"  width="200px" height="200px" />
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -140,31 +101,31 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="AddToCart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                      
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                         @*加入購物車*@
                                     </div>
                                 </div>
-                                
-                            </div>
-                        <!-- quick view end -->
 
-                       } }
+                            </div>
+                            <!-- quick view end -->
+
+                        } }
                 </div>
             </div>
-            
+
             <!-- #endregion -->
             <!-- #region 分類1(衣服)-->
             <div class="tab-pane  fade in" id="clothings">
                 <div id="tab-carousel-2" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 1).Where(p=>p.Discontinued=="N"))
-                      {
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 1).Where(p => p.Discontinued == "N"))
+                        {
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -175,8 +136,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -196,8 +157,8 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -208,8 +169,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -221,15 +182,15 @@
             <!-- #region 分類3(包包) -->
             <div class="tab-pane  fade in" id="bags">
                 <div id="tab-carousel-4" class="owl-carousel product-slider owl-theme">
-                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID== 3).Where(p => p.Discontinued == "N"))
+                    @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 3).Where(p => p.Discontinued == "N"))
                         {
 
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -240,8 +201,8 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                      
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -256,13 +217,12 @@
                 <div id="tab-carousel-5" class="owl-carousel product-slider owl-theme">
                     @{foreach (var item in Model.product.Where(r => r.MainCategoryID == 4).Where(p => p.Discontinued == "N"))
                         {
-                            
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" />
-                                            <img class="secondary-image" alt="Product Title" src="~/Content/Product/img/products/11.jpg">
+                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
+
                                         </a>
                                     </div>
                                     <div class="product-dsc">
@@ -273,12 +233,12 @@
                                     </div>
                                     <div class="actions-btn">
                                         <a href="#" data-placement="top" data-target="#quick-view" data-trigger="hover" data-toggle="modal" data-original-title="Quick View"><i class="fa fa-eye"></i></a>
-                                        <a data-placement="top" data-toggle="tooltip" href="#" data-original-title="Add To Wishlist"><i class="fa fa-heart"></i></a>
-                                        <a href="Addtosession/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        
+                                        <a name="@item.ProductID" onclick="AddToCart()" data-toggle="tooltip" data-placement="top" title="加到購物車"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                 </div>
                             </div>
-                        }
+                       }
                     }
                 </div>
             </div>
@@ -304,8 +264,8 @@
         </div>
         <div class="row">
             <div id="new-products" class="owl-carousel product-slider owl-theme">
-                @foreach(var item in Model.product.Where(Q=>Q.Discontinued=="Y"))
-                 {
+                @foreach (var item in Model.product.Where(P => P.Discontinued == "Y").Where(p => p.entity.Activity.EndTime <= DateTime.Now))
+                {
                     <div class="col-xs-12">
                         <div class="single-product">
                             <div class="product-img">
@@ -313,7 +273,7 @@
                                     <span>OVER</span>
                                 </div>
                                 <a href="#">
-                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px"/>
+                                    <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                 </a>
                             </div>
                             <div class="product-dsc">
@@ -331,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                 }
+                }
             </div>
         </div>
     </div>
@@ -343,7 +303,7 @@
     <div class="container">
         <div class="row">
             <div id="view-gallery" class="owl-carousel product-slider owl-theme">
-                @foreach (var item in Model.product.Where(p=>p.Discontinued=="N"))
+                @foreach (var item in Model.product.Where(p => p.Discontinued == "N"))
                 {
                     <!-- single-product item end -->
                     <div class="col-xs-12">
@@ -359,13 +319,13 @@
                                                 <div class="quick-image">
                                                     <div class="single-quick-image tab-content text-center">
                                                         <div class="tab-pane  fade in active" id="sin-pro-5">
-                                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="" />
+                                                            <img src="@DisplayImage(item.prodpic.ProductPicture)" width="200px" height="200px" />
                                                         </div>
                                                     </div>
                                                     <div class="quick-thumb">
                                                         <div class="nav nav-tabs">
                                                             <ul>
-                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" /> </a></li>
+                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" width="200px" height="200px" /> </a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -413,13 +373,12 @@
                                                                 <div class="col-sm-6">
                                                                     <div class="por-dse clearfix">
                                                                         <ul class="other-btn">
-                                                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-refresh"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="por-dse add-to">
-                                                                        <a href="Addtosession/@item.ProductID">加到購物車</a>
+                                                                        <a name="@item.ProductID" onclick="AddToCart()" >加到購物車</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -436,8 +395,45 @@
                     <!-- single-product item end -->
                 }
             </div>
+
         </div>
     </div>
 </div>
 <!-- quick view end -->
 <!-- #endregion -->
+
+<script>
+    @* 加到最愛 *@
+    function AddToFavoriteList(MemberID) {
+        var pdID = $(event.currentTarget).prop("name");
+        $.ajax({
+            url: '@Url.Action("AddToFavorite", "Product")',
+            dataType: 'json',
+            data: JSON.stringify({
+                MemberID: MemberID,
+                ProductID: pdID
+            }),
+            contentType: 'application/json',
+            type: 'POST',
+            success: function (data) {
+                window.alert(JSON.parse(data).ans);
+            }
+        });
+    }
+    @*加到購物車*@
+    function AddToCart() {
+        var pdID = $(event.currentTarget).prop("name");
+        $.ajax({
+            url: '@Url.Action("AddToCart", "Product")',
+            dataType: 'html',
+            data: {
+                ProductID: pdID,
+            },
+            type: 'POST',
+            success: function (data) {
+                window.alert("已加入購物車！");
+                $(".drop-cart").html(data);
+            }
+        });
+    }
+</script>

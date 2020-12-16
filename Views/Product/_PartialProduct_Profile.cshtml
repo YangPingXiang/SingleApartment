@@ -64,7 +64,7 @@
         </div>
     </div>
 
-@Html.PagedListPager(Model, page => Url.Action("PartialProductTabPane", new { page = page, MemberID = ViewBag.MemberID, pageSize = ViewBag.pageSize }),
+@Html.PagedListPager(Model, page => Url.Action("PartialProductProfile", new { page = page, MemberID = ViewBag.MemberID, pageSize = ViewBag.pageSize, KeyWord = ViewBag.KeyWord, MainCategory = ViewBag.MainCategory, SubCategory = ViewBag.SubCategory, firstprice = ViewBag.firstprice, lastprice = ViewBag.lastprice }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
     new AjaxOptions()
     {
