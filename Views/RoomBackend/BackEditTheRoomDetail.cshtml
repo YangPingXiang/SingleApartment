@@ -1,127 +1,135 @@
-﻿@model List<sln_SingelApartment.ViewModels.CRoomViewModel>
+﻿@model sln_SingleApartment.Models.CImage
 
 @{
     ViewBag.Title = "BackEditTheRoomDetail";
     Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
 }
 
-<body>
+
+@functions {
+
+}
+
+@using (Html.BeginForm("BackEditTheRoomDetail", "RoomBackend", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <body>
 
 
 
+        @*<form method="post" enctype="multipart/form-data">*@
 
-    @using (Html.BeginForm())
-    {
+
         @Html.AntiForgeryToken()
 
 
 
         <div class="form-horizontal" style=" width:1000px; margin:0 auto; border-left:3px solid #90c2e7; border-right:3px solid #90c2e7;">
 
-            @foreach (var item in Model)
-            {
-                <h2 style="margin-left:150px;"> 編輯 @Html.DisplayFor(modelItem => item.roomname) 房間 </h2>
-            }
+            @*@foreach (var item in Model)
+                {
+                    <h2 style="margin-left:150px;"> 編輯 @Html.DisplayFor(modelItem => item.roomname) 房間 </h2>
+                }*@
 
             <br>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.FirstOrDefault().roomID)
+            @Html.HiddenFor(model => model.roomID)
 
 
             @{
-                var filename = Model.FirstOrDefault().entity_room.RoomStyle.RoomStyleName + "-1.jpg";
+                //var filename = Model.FirstOrDefault().entity_room.RoomStyle.RoomStyleName + "-1.jpg";
             }
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().entity_room.Picture.FirstOrDefault().RoomStylePicture, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.entity_room.Picture.FirstOrDefault().RoomStylePicture, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    <img src="~/Content/Room/images/roomstyle/@filename" alt="Alternate Text" />
-                    <input type="file" name="name" value="瀏覽照片..." />
+                    @*<img src="~/Content/Room/images/roomstyle/@filename"  />*@
+                    <input type="file" name="mypic" value="瀏覽照片..." />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().roomname, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.roomname, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().roomname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().roomname, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.roomname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.roomname, "", new { @class = "text-danger" })
                 </div>
             </div>
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().roomtype, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.roomtype, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().roomtype, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().roomtype, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.roomtype, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.roomtype, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().entity_room.RoomStyle.RoomStyleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.entity_room.RoomStyle.RoomStyleName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().entity_room.RoomStyle.RoomStyleName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().entity_room.RoomStyle.RoomStyleName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.entity_room.RoomStyle.RoomStyleName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.entity_room.RoomStyle.RoomStyleName, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().entity_room.BuildCase.BuildCaseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.entity_room.BuildCase.BuildCaseName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().entity_room.BuildCase.BuildCaseName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().entity_room.BuildCase.BuildCaseName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.entity_room.BuildCase.BuildCaseName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.entity_room.BuildCase.BuildCaseName, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().description, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().description, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().rent, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.rent, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().rent, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().rent, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.rent, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rent, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().squarefootage, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.squarefootage, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().squarefootage, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().squarefootage, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.squarefootage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.squarefootage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.entity_room.RoomFacilities.FirstOrDefault().Facility.FacilityName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    @foreach (var i in Model.entity_room.RoomFacilities.Where(p=>p.FacilityID))
+                    {
+                        <div class="col-md-10" style="width:150px;">
+                            @Html.EditorFor(model => i.Facility.FacilityName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => i.Facility.FacilityName, "", new { @class = "text-danger" })
+                        </div>
+                    }
+
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.floor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px;">
+                    @Html.EditorFor(model => model.floor, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.floor, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().entity_room.RoomFacilities.FirstOrDefault().Facility.FacilityName, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                @foreach (var i in Model.FirstOrDefault().entity_room.RoomFacilities)
-                {
-                    <div class="col-md-10" style="width:150px;">
-                        @Html.EditorFor(model => i.Facility.FacilityName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => i.Facility.FacilityName, "", new { @class = "text-danger" })
-                    </div>
-                }
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().floor, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10" style="width:300px;">
-                    @Html.EditorFor(model => model.FirstOrDefault().floor, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstOrDefault().floor, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10" >
-
+                <div class="col-md-offset-2 col-md-10">
+                    <p>@Model.roomID</p>
+                    <input type="hidden" value="@Model.roomID" name="roomID" />
                     <input type="submit" value="確定儲存" class="btn btn-default" style="float:right;  margin-right:15px;" />
                     <input type="button" value="回到前一頁" class="btn btn-default" onclick="history.back()" style="float:right; margin-right:15px;" />
 
@@ -130,8 +138,8 @@
 
             </div>
         </div>
-    }
+        @*</form>*@
 
 
-
-</body>
+    </body>
+}
