@@ -39,7 +39,27 @@
                         <span style="font-size:16px" id="condition">全部</span>
                         @*<a id="allpd" style="font-size:16px">全部商品</a>*@
                     </div>
-                    
+                    @using (Html.BeginForm("shop", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="shop-one re-shop-one">
+                            <h3 class="wg-title2">價格區間</h3>
+                            <div class="widget shop-filter">
+                                <div class="info_widget">
+                                    <div class="price_filter">
+                                        <div id="slider-range" onchange="SearchProductsByPrice()"></div>
+                                        <div id="amount">
+
+                                            <input type="text" name="first_price" class="first_price" onchange="SearchProductsByPrice()" />
+                                            <input type="text" name="last_price" class="last_price" onchange="SearchProductsByPrice()" />
+                                            <div style="margin-top:15px"></div>
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <div class="shop-one">
                         <h3 id="allpd" class="wg-title2">全部商品</h3>
                         <span>／</span>
@@ -70,15 +90,13 @@
                     @using (Html.BeginForm("shop", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="shop-one re-shop-one">
-                            <h3 class="wg-title2">價格區間</h3>
+                            <h3 class="wg-title2">圖片搜尋</h3>
                             <div class="widget shop-filter">
                                 <div class="info_widget">
                                     <div class="price_filter">
-                                        <div id="slider-range" onchange="SearchProductsByPrice()"></div>
+                                       
                                         <div id="amount">
 
-                                            <input type="text" name="first_price" class="first_price" onchange="SearchProductsByPrice()" />
-                                            <input type="text" name="last_price" class="last_price" onchange="SearchProductsByPrice()" />
                                             <div style="margin-top:15px"></div>
                                             <input type="file" name="imgPhoto" style="display:inline" />
                                             <button class="button-shop" type="submit"><i class="fa fa-search search-icon"></i></button>

@@ -34,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -181,6 +183,7 @@
     <Compile Include="Models\CDictionary.cs" />
     <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
+    <Compile Include="Models\CLease.cs" />
     <Compile Include="Models\CRoomBooking.cs" />
     <Compile Include="Models\CRoomResponseModel.cs" />
     <Compile Include="Models\CUser.cs" />
@@ -768,6 +771,7 @@
     <Content Include="Content\HomePage\images\pic04.jpg" />
     <Content Include="Content\HomePage\images\pic05.jpg" />
     <Content Include="Content\HomePage\images\ ?~ r  ] p7.png" />
+    <Content Include="Content\HomePage\images\窩居字體設計7.png" />
     <Content Include="Content\HomePage\js\jquery.min.js" />
     <Content Include="Content\HomePage\js\jquery.scrolly.min.js" />
     <Content Include="Content\HomePage\js\main.js" />
@@ -777,6 +781,12 @@
     <Content Include="Content\img\ ?~ r  ] p3.png" />
     <Content Include="Content\img\ ?~ r  ] p6.png" />
     <Content Include="Content\img\ ?~ r  ] p7.png" />
+    <Content Include="Content\img\窩居字體設計.png" />
+    <Content Include="Content\img\窩居字體設計3.png" />
+    <Content Include="Content\img\窩居字體設計6.png" />
+    <Content Include="Content\img\窩居字體設計7.png" />
+    <Content Include="Content\img\頭 %281%29.png" />
+    <Content Include="Content\img\頭.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
@@ -1094,6 +1104,8 @@
     <Content Include="Content\Room\css\shortcode\video.css" />
     <Content Include="Content\Room\css\style.css" />
     <Content Include="Content\Room\css\style_web.css" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.svg" />
     <Content Include="Content\Room\forSearch\css\bootstrap.min.css" />
     <Content Include="Content\Room\forSearch\css\datepicker.css" />
     <Content Include="Content\Room\forSearch\css\font-awesome.css" />
@@ -1217,6 +1229,7 @@
     <Content Include="Content\Room\images\logo\logo.png" />
     <Content Include="Content\Room\images\logo\pay-card.png" />
     <Content Include="Content\Room\images\logo\ ?~ r  ] p7.png" />
+    <Content Include="Content\Room\images\logo\窩居字體設計7.png" />
     <Content Include="Content\Room\images\map-marker.png" />
     <Content Include="Content\Room\images\news\item2\n-10.jpg" />
     <Content Include="Content\Room\images\news\item2\n-11.jpg" />
@@ -1233,6 +1246,13 @@
     <Content Include="Content\Room\images\roomstyle\ _ ? -1.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -1.jpg" />
     <Content Include="Content\Room\images\roomstyle\ ?? -2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\北歐風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\地中海風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\夢幻風-2.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-1.jpg" />
+    <Content Include="Content\Room\images\roomstyle\工業風-2.jpg" />
     <Content Include="Content\Room\images\room\roob-tab.jpg" />
     <Content Include="Content\Room\images\room\room1.jpg" />
     <Content Include="Content\Room\images\room\room2.jpg" />
@@ -1254,6 +1274,22 @@
     <Content Include="Content\Room\images\room\ ? 102-3.jpg" />
     <Content Include="Content\Room\images\room\ ? 102.jpg" />
     <Content Include="Content\Room\images\room\ ? 103.jpg" />
+    <Content Include="Content\Room\images\room\房型_北歐風雙人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_單身套房.jpg" />
+    <Content Include="Content\Room\images\room\房型_工業風三人房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨家庭房.jpg" />
+    <Content Include="Content\Room\images\room\房型_溫馨甜蜜套房.jpg" />
+    <Content Include="Content\Room\images\room\房間101-1.jpg" />
+    <Content Include="Content\Room\images\room\房間101-2.jpg" />
+    <Content Include="Content\Room\images\room\房間101-3.jpg" />
+    <Content Include="Content\Room\images\room\房間101-4.jpg" />
+    <Content Include="Content\Room\images\room\房間101-5.jpg" />
+    <Content Include="Content\Room\images\room\房間101.jpg" />
+    <Content Include="Content\Room\images\room\房間102-1.jpg" />
+    <Content Include="Content\Room\images\room\房間102-2.jpg" />
+    <Content Include="Content\Room\images\room\房間102-3.jpg" />
+    <Content Include="Content\Room\images\room\房間102.jpg" />
+    <Content Include="Content\Room\images\room\房間103.jpg" />
     <Content Include="Content\Room\images\services\services1.jpg" />
     <Content Include="Content\Room\images\services\services2.jpg" />
     <Content Include="Content\Room\images\services\services3.jpg" />
@@ -1266,6 +1302,10 @@
     <Content Include="Content\Room\images\services\        ?   .jpg" />
     <Content Include="Content\Room\images\services\ ?K H q ?~  .jpg" />
     <Content Include="Content\Room\images\services\  N j w ?   .jpg" />
+    <Content Include="Content\Room\images\services\城市西門快捷窩.jpg" />
+    <Content Include="Content\Room\images\services\心醉信義忘憂窩.jpg" />
+    <Content Include="Content\Room\images\services\慢活文山雲景窩.jpg" />
+    <Content Include="Content\Room\images\services\綠意大安森活窩.jpg" />
     <Content Include="Content\Room\images\staff\about.jpg" />
     <Content Include="Content\Room\images\staff\client1.jpg" />
     <Content Include="Content\Room\images\staff\staff1.jpg" />
@@ -1380,7 +1420,27 @@
     <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Room\fonts\FontAwesome.otf" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.eot" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.ttf" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.woff" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.eot" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.woff" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile4.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1426,11 +1486,8 @@
     <Content Include="Views\Information\UserCategoryList.cshtml" />
     <Content Include="Views\Shared\Information_Layout.cshtml" />
     <Content Include="Views\Room\BookingInfo.cshtml" />
-    <Content Include="Views\Room\ListAllRooms.cshtml" />
     <Content Include="Views\Room\ListRoomDetail.cshtml" />
     <Content Include="Views\Room\PayInfo.cshtml" />
-    <Content Include="Views\Room\Searching.cshtml" />
-    <Content Include="Views\Room\_PartialSearchResult.cshtml" />
     <Content Include="Views\Shared\Room\_LayoutRoom.cshtml" />
     <Content Include="Views\Activity\CartView.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
@@ -1482,6 +1539,7 @@
     <Content Include="Views\Product\_PartialONEOrder.cshtml" />
     <Content Include="Views\MailMessage\CKEditorShow.cshtml" />
     <Content Include="Views\MailMessage\MessageList.cshtml" />
+    <Content Include="Views\Room\RoomCheckOut.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialGotoLease.cshtml" />
     <Content Include="Views\RoomBackend\BackRoomEdit.cshtml" />
     <Content Include="Views\RoomBackend\BackListRoomStylePic.cshtml" />
@@ -1495,8 +1553,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
-    <Folder Include="Content\Room\images\roomstyle\" />
     <Folder Include="Views\Back\" />
   </ItemGroup>
   <ItemGroup>
@@ -1525,16 +1581,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50321</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44332/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

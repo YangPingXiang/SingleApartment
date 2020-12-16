@@ -12,7 +12,7 @@
             if (!$("#formBoking").valid()) {
                 return;
             }
-            
+
             AddBookingInfo();
 
         });
@@ -20,7 +20,7 @@
 
     function AddBookingInfo() {
         var objBookingInfo = {
-            MemberId : $("#txtMemberID").val(),
+            MemberId: $("#txtMemberID").val(),
             RoomID: $("#txtRoomID").val(),
             StartTime: $("#StartTime").val(),
             EndTime: $("#EndTime").val()
@@ -42,8 +42,11 @@
             data: objBookingInfo,
             success: function (data) {
                 if (data.success === true) {
+
+                    showHtmlSendmail();
                     alert(data.message);
                     window.location = "/Room/MyRoom"
+
                 }
 
             },
@@ -138,23 +141,35 @@
                                             }
                                         </select>*@
                                 </div>
-                                @*<div class="booking-comment fix">
-                                        <textarea placeholder="comment"></textarea>
-                                    </div>*@
+
+
                                 <div class="submit-form mt-25">
-                                    @*@foreach (var a in Model.roomStyleViewModels)
-                                        {
-                                            <a href="~/Room/PayInfo/@a.ID">前往付款頁面</a>
-                                        }*@
-
-                                   <button id="btnSave" type="button" onclick="AddBookingInfo();">提交</button>
-                                   @*<input type="submit" id="btnSave" value="提交" onclick="location.href='http://localhost:44332/Room/MyRoom'">*@
-
+                                    <button id="btnSave" type="button" onclick="AddBookingInfo();">提交</button>
                                 </div>
+
+
+
+
                             </form>
+
+                            <div style="width:800px" id="div_editor">
+                                <textarea id="editor1" name="editor1" hidden>
+                                        您好，您的訂房已經成功！可前往我的房間查看詳細內容
+                                </textarea>
+                            </div>
+
+                            @*<div>
+                                <!--Button鍵
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
+                                        <input id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />
+                                        <input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />
+                                    </div>
+                                </div>
+                            </div>-->*@
+
                         </div>
-
-
                     </div>
                 </div>
 
@@ -207,10 +222,41 @@
         </div>
     </div>
 
-    <script>
-
-    </script>
-
 }
-<!--room booking start-->
-<!--room booking end-->
+
+<script type="text/javascript">
+
+    function SendMailData(p_data) {
+
+        $.ajax({
+            contentType: 'application/json',
+            url: "/Room/RoomSendMail",
+            type: "POST",
+            data: JSON.stringify({
+                  strHtml: p_data
+                //p_priority: f_priority,  //傳遞參數
+                //p_data: f_data
+            }),
+            success: function (data) {
+                console.log(data); //可先測試程式有無載入
+                //$("#id_result").html(data);
+                $("#id_result").html(data);
+            }
+        });
+    }
+
+    function showHtmlSendmail() {
+        //alert("hellooooooo");
+        //取得編輯後的格式
+        //var content = CKEDITOR.instances.editor1.getData();
+        let strHtml = $("#editor1").val();
+
+        var content = strHtml;
+        //var content = CKEDITOR.instances["editor1"].getData();
+        console.log(content);
+
+        //執行發送 mail
+        SendMailData(strHtml);
+    }
+
+</script>

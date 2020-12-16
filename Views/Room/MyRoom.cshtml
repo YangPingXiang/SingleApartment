@@ -8,54 +8,195 @@
 }
 
 
-<section class="wrapper" style="padding:3em">
-    <div class="inner">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        房間編號
-                    </th>
-                    <th>
-                        房間名稱
-                    </th>
-                    <th>
-                        合約開始日
-                    </th>
-                    <th>
-                        合約到期日
-                    </th>
-                    <th>
-                        租金
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Pre Loader
+    ============================================ -->
+    <div class="preloader">
+        <div class="loading-center">
+            <div class="loading-center-absolute">
+                <div class="object object_one"></div>
+                <div class="object object_two"></div>
+                <div class="object object_three"></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="hotel-feature pt-80 white_bg">
+            <div class="container">
                 @foreach (var item in Model.leaseViewModels)
                 {
-                    <tr>
-                        <td>
-                            @item.entity_lease.Room.ID
-                        </td>
-                        <td>
-                            @item.entity_lease.Room.RoomName
-                        </td>
-                        <td>
-                            @item.entity_lease.StartDate
-                        </td>
-                        <td>
-                            @item.entity_lease.ExpiryDate
-                        </td>
-                        <td>
-                            @item.entity_lease.Room.Rent / 月
-                        </td>
-                        <td>
-                            <a href="~/Room/PayInfo">前往繳費</a>
-                        </td>
-                    </tr>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="clear:right; ">
+                            <div class="feature-desc text-left">
+                                <form method="post">
+                                    <div class="section-title mb-30">
+                                        <h2 id="roomstylename">
+                                            @item.entity_lease.Room.RoomName
+
+
+                                            <input id="leaseId" type="hidden" value="@item.leaseID" name="roomstyleid" />
+
+                                        </h2>
+
+                                        <a href="~/Room/RoomCheckOut">
+                                            <input class="submit-form" type="button" id="book" value="繳房租" style="width:100px; float:right;" />
+                                        </a>
+
+                                        <p>
+                                            房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。房型簡介。
+                                        </p>
+                                    </div>
+
+                                    <div class="feature-item">
+                                        <ul>
+                                            <li>
+                                                <span>1.</span> 坪數：@Html.DisplayFor(modelItem => item.entity_lease.Room.SquareFootage)
+                                            </li>
+                                            <li>
+                                                <span>2.</span> 建案：@Html.DisplayFor(modelItem => item.entity_lease.Room.BuildCase.BuildCaseName)
+                                            </li>
+                                            <li>
+                                                <span>3.</span> 地址：@Html.DisplayFor(modelItem => item.entity_lease.Room.BuildCase.Address)
+                                            </li>
+
+                                            <li>
+                                                <span>4.</span>種類： @Html.DisplayFor(modelItem => item.entity_lease.Room.RoomType)
+                                            </li>
+                                            <li>
+                                                <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_lease.Room.Rent)
+                                            </li>
+                                            @*<li>
+                                                <span>6.</span> 設備：
+                                            </li>*@
+                                            @*@foreach (var i in Model.facilityViewModels)
+                                            {
+                                                <li style="margin-left:50px">
+                                                    @i.facilityName
+                                                </li>
+
+
+                                            }*@
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="">
+
+                                        <hr>
+
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6" @*style="border:2px dashed black;"*@>
+                            <div class="feature-img-tab">
+                                <div class="feature-tab-desc">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="feature1">
+                                            <div class="feature-tab-inner">
+                                                <img src="~/Content/Room/images/room/房間101-1.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="feature2">
+                                            <div class="feature-tab-inner">
+                                                <img src="~/Content/Room/images/room/房間101-2.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-tab-item">
+                                    <ul class="nav" role="tablist">
+                                        <li class="active">
+                                            <a href="#feature1" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-3.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-4.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#feature2" data-toggle="tab"><img src="~/Content/Room/images/room/房間101-5.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mycontainer" style="border:2px solid lightblue; width:300px; background-color:lightblue; margin:10px auto;">
+
+                    </div>
+
+
+
                 }
-            </tbody>
-        </table>
+
+            </div>
+        </div>
+        <!--Room Detail end-->
+
+
+
+
     </div>
-</section>
+
+
+
+
+</body>
+
+
+@*<section class="wrapper" style="padding:3em">
+        <div class="inner">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            房間編號
+                        </th>
+                        <th>
+                            房間名稱
+                        </th>
+                        <th>
+                            合約開始日
+                        </th>
+                        <th>
+                            合約到期日
+                        </th>
+                        <th>
+                            租金
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.leaseViewModels)
+                    {
+                        <tr>
+                            <td>
+                                @item.entity_lease.Room.ID
+                            </td>
+                            <td>
+                                @item.entity_lease.Room.RoomName
+                            </td>
+                            <td>
+                                @item.entity_lease.StartDate
+                            </td>
+                            <td>
+                                @item.entity_lease.ExpiryDate
+                            </td>
+                            <td>
+                                @item.entity_lease.Room.Rent / 月
+                            </td>
+                            <td>
+                                <a href="~/Room/RoomCheckOut">前往繳費</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>*@
 
