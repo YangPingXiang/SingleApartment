@@ -34,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -779,6 +781,12 @@
     <Content Include="Content\img\ ?~ r  ] p3.png" />
     <Content Include="Content\img\ ?~ r  ] p6.png" />
     <Content Include="Content\img\ ?~ r  ] p7.png" />
+    <Content Include="Content\img\窩居字體設計.png" />
+    <Content Include="Content\img\窩居字體設計3.png" />
+    <Content Include="Content\img\窩居字體設計6.png" />
+    <Content Include="Content\img\窩居字體設計7.png" />
+    <Content Include="Content\img\頭 %281%29.png" />
+    <Content Include="Content\img\頭.png" />
     <Content Include="Content\LogIn\assests\css\bootstrap.css" />
     <Content Include="Content\LogIn\assests\css\default.css" />
     <Content Include="Content\LogIn\assests\css\flexslider.css" />
@@ -1096,6 +1104,8 @@
     <Content Include="Content\Room\css\shortcode\video.css" />
     <Content Include="Content\Room\css\style.css" />
     <Content Include="Content\Room\css\style_web.css" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.svg" />
     <Content Include="Content\Room\forSearch\css\bootstrap.min.css" />
     <Content Include="Content\Room\forSearch\css\datepicker.css" />
     <Content Include="Content\Room\forSearch\css\font-awesome.css" />
@@ -1219,6 +1229,7 @@
     <Content Include="Content\Room\images\logo\logo.png" />
     <Content Include="Content\Room\images\logo\pay-card.png" />
     <Content Include="Content\Room\images\logo\ ?~ r  ] p7.png" />
+    <Content Include="Content\Room\images\logo\窩居字體設計7.png" />
     <Content Include="Content\Room\images\map-marker.png" />
     <Content Include="Content\Room\images\news\item2\n-10.jpg" />
     <Content Include="Content\Room\images\news\item2\n-11.jpg" />
@@ -1291,6 +1302,10 @@
     <Content Include="Content\Room\images\services\        ?   .jpg" />
     <Content Include="Content\Room\images\services\ ?K H q ?~  .jpg" />
     <Content Include="Content\Room\images\services\  N j w ?   .jpg" />
+    <Content Include="Content\Room\images\services\城市西門快捷窩.jpg" />
+    <Content Include="Content\Room\images\services\心醉信義忘憂窩.jpg" />
+    <Content Include="Content\Room\images\services\慢活文山雲景窩.jpg" />
+    <Content Include="Content\Room\images\services\綠意大安森活窩.jpg" />
     <Content Include="Content\Room\images\staff\about.jpg" />
     <Content Include="Content\Room\images\staff\client1.jpg" />
     <Content Include="Content\Room\images\staff\staff1.jpg" />
@@ -1405,7 +1420,27 @@
     <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Room\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Room\fonts\FontAwesome.otf" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Content\Room\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.eot" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.ttf" />
+    <Content Include="Content\Room\fonts\Montserrat-Light.woff" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.eot" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\Room\fonts\Montserrat-SemiBold.woff" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile4.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1516,7 +1551,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
     <Folder Include="Views\Back\" />
   </ItemGroup>
   <ItemGroup>
@@ -1545,16 +1579,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50321</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44332/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
