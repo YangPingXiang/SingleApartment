@@ -393,12 +393,12 @@ namespace sln_SingleApartment.Controllers
 
                         }
 
-                        else if (y.acstates != "活動時間已過")
-                        {
-                            nIDbuffer = ParticipantID[j];
-                            Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
-                            acSt.Status = "可參加";
-                        }
+                        //else if (y.acstates != "活動時間已過")
+                        //{
+                        //    nIDbuffer = ParticipantID[j];
+                        //    Activity acSt = db.Activity.FirstOrDefault(p => p.ActivityID == nIDbuffer);
+                        //    acSt.Status = "可參加";
+                        //}
 
                     }
 
@@ -408,36 +408,36 @@ namespace sln_SingleApartment.Controllers
             db.SaveChanges();//db SaveChange
 
             #region 人數已滿下架活動
-            List<int> MemberIDList = new List<int>();
-            List<string> MemberfActivityMessageList = new List<string>();
-            tMember tMember = new tMember();
-            var membermessage = from mbmsg in db.tMember
-                                select new { MbID = mbmsg.fMemberId, MbMessage = mbmsg.fActivityMessage };
-            foreach (var m in membermessage)
-            {
-                MemberIDList.Add(m.MbID);
-                MemberfActivityMessageList.Add(m.MbMessage);
-            }
+            //List<int> MemberIDList = new List<int>();
+            //List<string> MemberfActivityMessageList = new List<string>();
+            //tMember tMember = new tMember();
+            //var membermessage = from mbmsg in db.tMember
+            //                    select new { MbID = mbmsg.fMemberId, MbMessage = mbmsg.fActivityMessage };
+            //foreach (var m in membermessage)
+            //{
+            //    MemberIDList.Add(m.MbID);
+            //    MemberfActivityMessageList.Add(m.MbMessage);
+            //}
           
-            #endregion
-            #region 活動時間已過下架活動
-            for (int me = 0; me < MemberIDList.Count; me++)
-            {
-                if (MemberfActivityMessageList[me] == "TRUE")
-                {
-                    var statusendtime = (from u in db.Activity
-                                         where u.Status == "活動時間已過"
-                                         select u.ActivityID).ToList();
-                    for (int sst = 0; sst < statusendtime.Count; sst++)
-                    {
-                        bool flag;
-                        CInformationFactory infactory = new CInformationFactory();
+            //#endregion
+            //#region 活動時間已過下架活動
+            //for (int me = 0; me < MemberIDList.Count; me++)
+            //{
+            //    if (MemberfActivityMessageList[me] == "TRUE")
+            //    {
+            //        var statusendtime = (from u in db.Activity
+            //                             where u.Status == "活動時間已過"
+            //                             select u.ActivityID).ToList();
+            //        for (int sst = 0; sst < statusendtime.Count; sst++)
+            //        {
+            //            bool flag;
+            //            CInformationFactory infactory = new CInformationFactory();
 
-                        int p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
-                        flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
-                    }
-                }
-            }
+            //            int p_source_id = statusendtime[sst];   //可能是訂單號碼, 房號 ..
+            //            flag = infactory.Add(MemberIDList[me], 200, p_source_id, 20070);
+            //        }
+            //    }
+            //}
             #endregion
 
             List<CActivity> list = new List<CActivity>();
@@ -646,6 +646,9 @@ namespace sln_SingleApartment.Controllers
         [HttpPost]
         public ActionResult Edit(Activity tb)
         {
+            CMember member = Session[CDictionary.welcome] as CMember;
+            if (member == null) { return RedirectToAction("Login", "Member"); }
+            int memberID = member.fMemberId;
             SingleApartmentEntities db = new SingleApartmentEntities();
             Activity table = db.Activity.FirstOrDefault(p => p.ActivityID ==tb.ActivityID );
             if (table != null)
@@ -715,8 +718,15 @@ namespace sln_SingleApartment.Controllers
                 //db.Activity.Add(activity);
                 db.SaveChanges();
             }
+           if(memberID==3)
+            {
+                return RedirectToAction("Back_List");
+            }
+           else
+            {
+                return RedirectToAction("List");
+            }
            
-           return RedirectToAction("List");
         }
 
         // GET: Delete
