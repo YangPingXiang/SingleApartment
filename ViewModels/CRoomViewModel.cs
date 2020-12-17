@@ -47,6 +47,12 @@ namespace sln_SingelApartment.ViewModels
 
         [DisplayName("描述")]
         public string description { get { return this.entity_room.Description; } }
+
+        public HttpPostedFileBase mypic { get; set; }
+
+        [DisplayName("房型照片")]
+        public string roompic { get; set; }
+
     }
 
 

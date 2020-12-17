@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,8 +17,10 @@ namespace sln_SingleApartment.ViewModel
         [DisplayName("會員編號")]
         public int MemberID { get { return this.order_entity.MemberID; } }
         [DisplayName("訂單日期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public System.DateTime OrderDate { get { return this.order_entity.OrderDate; } }
         [DisplayName("到貨日期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public Nullable<System.DateTime> ArrivedDate { get { return this.order_entity.ArrivedDate; } }
         [DisplayName("訂單狀態")]
         public string OrderStatus { get { return this.order_entity.OrderStatus.OrderStatusName; } }

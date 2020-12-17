@@ -86,7 +86,7 @@
                     </div>
 
                     <!--性別-->
-                    <div class="form-group">
+                    @*<div class="form-group">
                         @Html.LabelFor(model => model.fSex, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <select id="fSex" name="fSex" class="form-control">
@@ -96,26 +96,26 @@
                                 <option value="第三性">第三性</option>
                             </select>
                         </div>
-                    </div>
+                    </div>*@
 
                     <!--生日-->
-                    <div class="form-group">
+                    @*<div class="form-group">
                         @Html.LabelFor(model => model.fBirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.fBirthDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.fBirthDate, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                    </div>*@
 
                     <!--薪水-->
                     <div class="form-group">
                         @Html.LabelFor(model => model.fSalary, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <select id="fSalart" name="fSalart" class="form-control">
+                            <select id="fSalary" name="fSalary" class="form-control">
                                 <option value="0" style="display:none">請選擇薪水...</option>
-                                <option value="1">小於(等於)50萬</option>
-                                <option value="2">50-100萬</option>
-                                <option value="3">大於50萬</option>
+                                <option value="小於(等於)50萬">小於(等於)50萬</option>
+                                <option value="50-100萬">50-100萬</option>
+                                <option value="大於100萬">大於100萬</option>
 
                             </select>
                         </div>
@@ -127,23 +127,23 @@
                         <div class="col-md-10">
                             <select id="fCareer" name="fCareer" class="form-control">
                                 <option value="0" style="display:none">請選擇職業...</option>
-                                <option value="1">經營/人資類</option>
-                                <option value="2">行政/總務/法務類</option>
-                                <option value="3">行銷/企劃/專案管理類</option>
-                                <option value="4">客服/門市/業務/貿易類</option>
-                                <option value="5">餐飲/旅遊/美容美髮類</option>
-                                <option value="6">資訊軟體系統類</option>
-                                <option value="7">操作/技術/維修類</option>
-                                <option value="8">資材/物流/運輸類</option>
-                                <option value="9">營建/製圖類</option>
-                                <option value="10">傳播藝術/設計類</option>
-                                <option value="11">文字/傳媒工作類</option>
-                                <option value="12">醫療/保健服務類</option>
-                                <option value="13">學術/教育/輔導類</option>
-                                <option value="14">研發相關類</option>
-                                <option value="15">生產製造/品管/環衛類</option>
-                                <option value="16">軍警消/保全類</option>
-                                <option value="17">財會/金融專業類</option>
+                                <option value="經營/人資類">經營/人資類</option>
+                                <option value="行政/總務/法務類">行政/總務/法務類</option>
+                                <option value="行銷/企劃/專案管理類">行銷/企劃/專案管理類</option>
+                                <option value="客服/門市/業務/貿易類">客服/門市/業務/貿易類</option>
+                                <option value="餐飲/旅遊/美容美髮類">餐飲/旅遊/美容美髮類</option>
+                                <option value="資訊軟體系統類">資訊軟體系統類</option>
+                                <option value="操作/技術/維修類">操作/技術/維修類</option>
+                                <option value="資材/物流/運輸類">資材/物流/運輸類</option>
+                                <option value="營建/製圖類">營建/製圖類</option>
+                                <option value="傳播藝術/設計類">傳播藝術/設計類</option>
+                                <option value="文字/傳媒工作類">文字/傳媒工作類</option>
+                                <option value="醫療/保健服務類">醫療/保健服務類</option>
+                                <option value="學術/教育/輔導類">學術/教育/輔導類</option>
+                                <option value="研發相關類">研發相關類</option>
+                                <option value="生產製造/品管/環衛類">生產製造/品管/環衛類</option>
+                                <option value="軍警消/保全類">軍警消/保全類</option>
+                                <option value="財會/金融專業類">財會/金融專業類</option>
                             </select>
 
                         </div>
@@ -154,13 +154,13 @@
                         @Html.LabelFor(model => model.fActivityMessage, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <select id="fActivityMessage" name="fActivityMessage" class="form-control">
-                                <option value="0" style="display:none">請選擇欲接收活動訊息種類...</option>
-                                <option value="1">娛樂類</option>
-                                <option value="2">知識類</option>
-                                <option value="3">技藝類</option>
+                                <option value="0" style="display:none">是否願意接受窩居活動訊息?</option>
+                                <option value="TRUE">是的，我願意接受窩居的相關訊息。</option>
+                                <option value="False">不了，暫時先不用。</option>
+                                @*<option value="3">技藝類</option>
                                 <option value="4">健身類</option>
                                 <option value="5">休憩類</option>
-                                <option value="6">社會類</option>
+                                <option value="6">社會類</option>*@
 
                             </select>
                         </div>

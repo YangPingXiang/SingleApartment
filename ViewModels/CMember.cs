@@ -45,7 +45,7 @@ namespace sln_SingleApartment.ViewModels
         public string fSex { get; set; }
 
         [DisplayName("出生日期")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> fBirthDate { get; set; }
 

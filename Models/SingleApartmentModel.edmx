@@ -206,7 +206,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="RoomID" Type="int" />
-          <Property Name="RoomStylePicture" Type="varbinary(max)" />
+          <Property Name="RoomStylePicture" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -274,7 +274,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MemberID" Type="int" />
           <Property Name="RoomID" Type="int" />
         </EntityType>
@@ -1325,7 +1325,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="RoomID" Type="Int32" />
-          <Property Name="RoomStylePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoomStylePicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_Picture_Room" FromRole="Picture" ToRole="Room" />
         </EntityType>
         <EntityType Name="Product">
@@ -1412,7 +1412,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MemberID" Type="Int32" />
           <Property Name="RoomID" Type="Int32" />
           <NavigationProperty Name="Room" Relationship="SingleApartmentModel.FK_RoomFavorite_Room" FromRole="RoomFavorite" ToRole="Room" />

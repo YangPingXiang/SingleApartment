@@ -63,11 +63,12 @@
             {
                 <tr style="text-align:center; ">
 
-                    @{
+                    @*@{
                         var filename = item.entity_room.RoomStyle.RoomStyleName + "-1.jpg";
-                    }
+                    }*@
                     <td>
-                        <img class="pimg" src="~/Content/Room/images/roomstyle/@filename" alt="Alternate Text" style="width:300px; height:250px;" />
+                        
+                        <img class="pimg" src="@item.entity_room.Picture.FirstOrDefault().RoomStylePicture" alt="Alternate Text" style="width:300px; height:250px;" />
                     </td>
 
                     <td>
@@ -85,12 +86,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
                     </td>
-                    <td>
+                    @*<td>
                         @foreach (var i in item.entity_room.RoomFacilities)
                         {
                             @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
                         }
-                    </td>
+                    </td>*@
 
 
 
