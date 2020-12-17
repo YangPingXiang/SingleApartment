@@ -8,6 +8,7 @@ using sln_SingleApartment.ViewModels;
 using sln_SingleApartment.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 namespace tryTemplete_Room.Controllers
 {
@@ -454,20 +455,40 @@ namespace tryTemplete_Room.Controllers
             return PartialView("_BackPartialGOtoRoomstyle");
         }
 
-        public ActionResult BackListRoomStylePic(string id)
+        //public ActionResult BackListRoomStylePic(string id)
+        //{
+        //    List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
+
+        //    var table = dbSA.RoomStyle.Where(x => x.ID.ToString() == id);
+
+        //    foreach(var item in table)
+        //    {
+        //        roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
+
+        //    }
+
+        //    return View(roomstyle_VM_lt);
+        //}
+
+
+        //image gallery 
+        public ActionResult BackImageGalleryforRoomStyle(/*string id*/)
         {
-            List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
 
-            var table = dbSA.RoomStyle.Where(x => x.ID.ToString() == id);
+            //var style = dbSA.RoomStyle.Where(t => t.ID.ToString() == id);
 
-            foreach(var item in table)
+            var imageModel = new CImageGallery();
+            var imageFiles = Directory.GetFiles(Server.MapPath("~/Content/Room/images/roomstyle/"));
+
+
+            foreach (var item in imageFiles)
             {
-                roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-
+                imageModel.ImageList.Add(Path.GetFileName(item));
             }
+            return View(imageModel);
 
-            return View(roomstyle_VM_lt);
         }
+
 
     }
 }

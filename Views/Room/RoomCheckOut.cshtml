@@ -1,26 +1,12 @@
-﻿
-@model List<sln_SingleApartment.ViewModels.COrderDetailsViewModel>
+﻿@model List<sln_SingelApartment.ViewModels.CLeaseViewModel>
 
 @{
-    ViewBag.Title = "CheckOut";
-    Layout = "~/Views/Shared/Product/_LayoutPageIndex.cshtml";
-}
-@functions
-   {
-    public string DisplayImage(byte[] imageData)
-    {
-        string imageSrc = null;
-        if (imageData != null)
-        {
-            string base64Str = Convert.ToBase64String(imageData);
-            imageSrc = "data:img/jpg;base64," + base64Str;
-        }
-        return imageSrc;
-    }
+    ViewBag.Title = "RoomCheckOut";
+    Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
 <!-- pages-title-start -->
-<section class="contact-img-area">
+@*<section class="contact-img-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -31,7 +17,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!-- pages-title-end -->
 <!-- checkout content section start -->
 <div class="checkout-area">
@@ -43,10 +29,10 @@
                 <div class="text">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active ano complete">
+                        <!--<li role="presentation" class="active ano complete">
                             <a href="#home" aria-controls="home" role="tab" data-toggle="tab"></a>
-                            <span>填寫資料</span>@*11/28新增*@
-                        </li>
+                            <span>填寫資料</span>-->@*11/28新增*@
+                        <!--</li>-->
                         <li role="presentation" class="ano ">
                             <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"></a>
                             <span>付款方式</span>@*11/28新增*@
@@ -58,45 +44,45 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
+                        <!--<div role="tabpanel" class="tab-pane active" id="home">
                             <div class="row">
                                 <form action="#">
                                     <div class="checkbox-form">
                                         <div class="col-md-12">
                                             <h3 class="checkbox9">填寫資料</h3>
-                                        </div>
+                                        </div>-->
 
 
                                         @*@*會員姓名*@
-                                        <div class="col-md-6">
+                                        <!--<div class="col-md-6">
                                             <div class="di-na bs">
                                                 <label class="l-contact">
                                                     姓名:
                                                     <em>*</em>
                                                 </label>
-                                                <input class="form-control" type="text" required name="TXTMEMBERNAME" @*name="name"*@>
+                                                <input class="form-control" type="text" required name="TXTMEMBERNAME"--> @*name="name"*@<!-->
                                             </div>
-                                        </div>
+                                        </div>-->
                                         @*會員信箱*@
-                                        <div class="col-md-6">
+                                        <!--<div class="col-md-6">
                                             <div class="di-na bs">
                                                 <label class="l-contact">
                                                     會員信箱
                                                     <em>*</em>
                                                 </label>
-                                                <input class="form-control" type="email" required name="TXTPHONE" @*name="name"*@>
+                                                <input class="form-control" type="email" required name="TXTPHONE"--> @*name="name"*@<!-->
                                             </div>
-                                        </div>
+                                        </div>-->
                                         @*手機號碼*@
-                                        <div class="col-md-6">
+                                        <!--<div class="col-md-6">
                                             <div class="di-na bs">
                                                 <label class="l-contact">
                                                     會員手機號碼
                                                     <em>*</em>
                                                 </label>
-                                                <input class="form-control" type="tel" required name="TXTEMAIL" @*name="name"*@>
+                                                <input class="form-control" type="tel" required name="TXTEMAIL"--> @*name="name"*@<!-->
                                             </div>
-                                        </div>
+                                        </div>-->
                                         @*@*房號*@
                                         @*<div class="col-md-12">
                                                 <label class="l-contact">
@@ -125,19 +111,18 @@
                                             </div>*@
 
 
-                                    </div>
+                                    <!--</div>
                                 </form>
                             </div>
                             <div class="row">
 
                                 <div class="col-md-12 text-center">
                                     <p class="checkout-coupon">
-                                        <input type="submit" value="下一步" onclick="tonext()">
-                                        
+                                        <input type="submit" value="CONTINUE">
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         @*================================================================================================*@
                         @*付款方式*@
                         <div role="tabpanel" class="tab-pane" id="profile">
@@ -170,20 +155,25 @@
                                                     <input id="payment_method_1" class="input-radio" type="radio" value="歐付寶" checked="checked" name="payment_method">
                                                     <label for="payment_method_1"> 歐付寶 </label>
                                                     <div class="payment_box payment_method_bacs">
-                                                        <p>歐付寶提供多元的快速收款及付款服務！讓您手機即是錢包，出門在外購物秒付，只帶手機就能輕鬆消費</p>
+                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                                                     </div>
                                                 </div>
                                                 <div class="pay-top sin-payment">
                                                     <input id="payment_method_2" class="input-radio" type="radio" value="綠界科技" name="payment_method">
                                                     <label for="payment_method_2"> 綠界科技  </label>
                                                     <div class="payment_box payment_method_bacs">
-                                                        <p>綠界科技Ecpay是第三方支付領導品牌，提供金流、物流、電子發票、 跨境電商、資安聯防一站購足服務</p>
+                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                                     </div>
                                                 </div>
-                                                
+                                                <div class="pay-top sin-payment">
+                                                    <input id="payment_method_3" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                                    <label for="payment_method_3">PayPal <img alt="" src="img/icon-img/44.png"><a href="#">What is PayPal?</a></label>
+                                                    <div class="payment_box payment_method_bacs">
+                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-row place-order">
-                                                
                                                 <input class="button alt" type="submit" value="下訂">
                                             </div>
                                         </div>
@@ -208,31 +198,32 @@
                     </div>
                     @foreach (var item in Model)
                     {
-                        string pic = item.ProductID.ToString() + ".jpg";
+                        //string pic = item.ProductID.ToString() + ".jpg";
                         <div class="ro-body">
                             <div class="ro-item">
-                                <div class="ro-image">
+                                @*<div class="ro-image">
                                     <a href="#">
                                         <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="">
                                     </a>
                                 </div>
-                                <div>
+                                <div>*@
                                     <div class="tb-beg">
-                                        <a href="#">@item.ProductName</a>
+                                        <a href="#">@item.entity_lease.Room.RoomName</a>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="ro-price">
-                                        <span class="amount">@item.ProductPrice 元</span>
+                                        <span class="amount">@item.rent 元</span>
                                     </div>
-                                    <div class="ro-quantity">
+                                    @*<div class="ro-quantity">
                                         <strong class="product-quantity">X  @item.Quantity</strong>
-                                    </div>
-                                    <div class="product-total">
+                                    </div>*@
+                                    @*<div class="product-total">
                                         <span class="amount">@item.TotalPrice 元</span>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
+                            <div>
                         </div>
                     }
 
@@ -242,7 +233,7 @@
                                 總計
                                 <span>
                                     <strong>
-                                        <span class="amount">@Model.Sum(p => p.TotalPrice)</span>
+                                        <span class="amount">@Model.Sum(p => p.rent)</span>
                                     </strong>
                                 </span>
                             </p>
@@ -256,10 +247,3 @@
     </div>
 </div>
 <!-- checkout  content section end -->
-<script>
-    function tonext() {
-        $('.nav-tabs').children().eq(1).addClass("active").siblings().removeClass("active");
-        $('#profile').addClass("active").siblings().removeClass("active");
-       
-    }
-</script>
