@@ -45,7 +45,7 @@
         <nav class="left">
             @*<a href="#menu"><span>Menu</span></a>*@
         </nav>
-        <a href="../Member/HomePage" class=""><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+        <a href="../Member/Home" class=""><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
 
         <nav style="margin-top:20px" class="right">
             @*<a href="../Member/LogIn" class="button alt">Log in</a>*@
@@ -56,7 +56,7 @@
     <div class="wrapper" style="width:105em;margin:auto">
 
         <h1 style="color:#a2c4c9;text-align:center;">管理住戶列表</h1>
-        <div class="nav" style="margin-bottom:20px">
+        @*<div class="nav" style="margin-bottom:20px">
             <ul>
                 <li>
                     <button style="background-color:steelblue;float:right">
@@ -70,19 +70,19 @@
 
             </ul>
 
-        </div>
+        </div>*@
 
 
         <table class="table" style="border:2px #97CBFF solid;padding:5px;" rules="all">
             <tr>
                 <th>
                     @*@Html.DisplayNameFor(model => model.fMemberId)*@
-                    活動ID
+                    會員ID
                 </th>
 
                 <th>
                     @*@Html.DisplayNameFor(model => model.fMemberName)*@
-                    活動名稱
+                    會員名稱
                 </th>
                 <th>
                     @*@Html.DisplayNameFor(model => model.fAccount)*@
@@ -90,11 +90,11 @@
                 </th>
                 <th>
                     @*@Html.DisplayNameFor(model => model.fPassword)*@
-                    會員密碼
+                    密碼
                 </th>
                 <th>
                     @*@Html.DisplayNameFor(model => model.fEmail)*@
-                    會員信箱
+                    信箱
                 </th>
                 <th>
                     @*@Html.DisplayNameFor(model => model.fPhone)*@
