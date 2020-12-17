@@ -304,84 +304,57 @@ namespace tryTemplete_Room.Controllers
             return PartialView("_BackPartialaAbtRoom");
         }
 
-        public ActionResult BackEditTheRoomDetail(string id)
+        public ActionResult BackEditTheRoomDetail(int id)
         {
 
-            var table = dbSA.Room.Where(x => x.ID.ToString() == id);
+            Room r = dbSA.Room.Where(t => t.ID == id).FirstOrDefault(); //(new SingleApartmentEntities()).Room.FirstOrDefault(t => t.ID.ToString() == id);
+                                                                        // RoomFacilities f = dbSA.RoomFacilities.Where(t => t.RoomID == id).FirstOrDefault();
+            CImage image_VM = new CImage();
+            image_VM.roomID = id;
+            image_VM.roomname = r.RoomName;
+            image_VM.roomtype = r.RoomType;
+            image_VM.floor = r.Floor;
+            image_VM.rent = r.Rent;
+            image_VM.squarefootage = r.SquareFootage;
+            //f.Facility.FacilityName = r.RoomFacilities.FirstOrDefault().Facility.FacilityName; //  f.Facility.FacilityName ;
 
-
-            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-
-            foreach (var item in table)
-            {
-                room_VM_lt.Add(new CRoomViewModel() { entity_room = item });
-
-            }
-
-            return View(room_VM_lt);
-        }
-        [HttpPost]
-        public ActionResult BackEditTheRoomDetail ( Room r)
-        {
-
-            Room room = dbSA.Room.FirstOrDefault(t => t.ID == r.ID);
-            
-            if(room != null)
-            {
-                room.RoomName = r.RoomName;
-                room.RoomType = r.RoomType;
-                //room.RoomStyleID = r.RoomStyleID;
-                //room.BuildCase.BuildCaseName = r.BuildCase.BuildCaseName;
-                room.Description = r.Description;
-                room.SquareFootage = r.SquareFootage;
-                room.Rent = r.Rent;
-
-                dbSA.SaveChanges();
-            }
-            return RedirectToAction("BackRoomManage");
-        }
-
-        //修改房間
-        public ActionResult BackRoomEdit( string id )
-        {
-            Room r = (new SingleApartmentEntities()).Room.FirstOrDefault(t=> t.ID.ToString() == id);
             if (r == null)
                 RedirectToAction("BackRoomManage");
-            return View(r);
+            return View(image_VM);
         }
 
         [HttpPost]
-        public ActionResult BackRoomEdit(Room r)
+        public ActionResult BackEditTheRoomDetail(CImage r)
         {
-            SingleApartmentEntities dbSA = new SingleApartmentEntities();
 
-            #region 不確定
-            //var m = from tr in dbSA.Room
-            //        join tm in dbSA.tMember
-            //        on tr.Lease.FirstOrDefault().tMember.fMemberId equals tm.fMemberId
-            //        select new { member = tm.fMemberName };
-            //List<string> list = new List<string>();
+            Room room = dbSA.Room.Where(t => t.ID == r.roomID).FirstOrDefault();
 
-            //foreach (var item in m)
-            //{
-            //    list.Add(new CRoomViewModel() { entity_room = item.member });
+           
 
-            //}
-            #endregion 
-
-            Room room = dbSA.Room.FirstOrDefault(t => t.ID == r.ID);
-            if (room != null  )
+            if (room != null)
             {
-                room.RoomName = r.RoomName;
-                room.RoomType = r.RoomType;
-                room.Floor = r.Floor;
-                room.Rent = r.Rent;
-                room.SquareFootage = r.SquareFootage;
+
+                int index = r.mypic.FileName.IndexOf(".");
+                string extention = r.mypic.FileName.Substring(index, r.mypic.FileName.Length - index);
+                string photoName = Guid.NewGuid().ToString() + extention;
+                r.entity_room = room;
+                r.entity_room.Picture.FirstOrDefault().RoomStylePicture = "/Content/" + photoName;
+                r.mypic.SaveAs(Server.MapPath("/Content/") + photoName);
+
+                room.RoomName = r.roomname;
+                room.RoomType = r.roomtype;
+
+                //room.BuildCase.BuildCaseName = r.BuildCase.BuildCaseName;
+                room.Description = r.description;
+                room.SquareFootage = r.squarefootage;
+                room.Rent = r.rent;
+
+                Picture picture = new Picture();
+                picture.RoomStylePicture = r.entity_room.Picture.FirstOrDefault().RoomStylePicture;
+                picture.RoomID = r.roomID;
 
                 dbSA.SaveChanges();
             }
-            
-
             return RedirectToAction("BackRoomManage");
         }
 
@@ -440,6 +413,20 @@ namespace tryTemplete_Room.Controllers
             return PartialView("_BackPartialLeaseKeyword");
         }
 
+
+        public ActionResult BackLeaseDelete(string id)
+        {
+            Lease l = dbSA.Lease.FirstOrDefault(t => t.ID.ToString() == id);
+            if (l != null)
+            {
+                dbSA.Lease.Remove(l);
+                dbSA.SaveChanges();
+
+                return RedirectToAction("BackRoomManage");
+            }
+            return View(l);
+        }
+
         public ActionResult BackPartialGOtoRoomstyle()
         {
             var table = from t in (new SingleApartmentEntities()).RoomStyle select t;
@@ -454,23 +441,7 @@ namespace tryTemplete_Room.Controllers
 
             return PartialView("_BackPartialGOtoRoomstyle");
         }
-
-        //public ActionResult BackListRoomStylePic(string id)
-        //{
-        //    List<CRoomStyleViewModel> roomstyle_VM_lt = new List<CRoomStyleViewModel>();
-
-        //    var table = dbSA.RoomStyle.Where(x => x.ID.ToString() == id);
-
-        //    foreach(var item in table)
-        //    {
-        //        roomstyle_VM_lt.Add(new CRoomStyleViewModel() { entity_roomstyle = item });
-
-        //    }
-
-        //    return View(roomstyle_VM_lt);
-        //}
-
-
+        
         //image gallery 
         public ActionResult BackImageGalleryforRoomStyle(/*string id*/)
         {

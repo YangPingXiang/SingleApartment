@@ -181,6 +181,7 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
+    <Compile Include="Models\CImage.cs" />
     <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
     <Compile Include="Models\CLease.cs" />
@@ -1566,8 +1567,12 @@
     <Content Include="Views\RoomBackend\_BackPartialGOtoRoomstyle.cshtml" />
     <Content Include="Views\RoomBackend\_BackPartialaAbtRoom.cshtml" />
     <Content Include="Views\RoomBackend\BackImageGalleryforRoomStyle.cshtml" />
+
+    <Content Include="Views\RoomBackend\BackLeaseDelete.cshtml" />
+
     <Content Include="Views\Shared\PowerBI.cshtml" />
     <Content Include="Views\Activity\PowerBI.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
