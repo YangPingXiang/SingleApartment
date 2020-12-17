@@ -14,6 +14,6 @@ namespace sln_SingelApartment.ViewModels
 
         //需要的資料
         [DisplayName("房型照片")]
-        public byte[] roompicture { get { return this.entity_picture.RoomStylePicture; } }
+        public string roompicture { get { return this.entity_picture.RoomStylePicture; } }
     }
 }

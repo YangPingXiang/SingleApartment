@@ -272,8 +272,7 @@ namespace tryTemplete_Room.Controllers
 
 
             List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-            ;
-
+           
             foreach (var item in table)
             {
                 room_VM_lt.Add(new CRoomViewModel() { entity_room = item });

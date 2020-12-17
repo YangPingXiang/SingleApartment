@@ -442,6 +442,7 @@ namespace sln_SingleApartment.Controllers
 
             List<CActivity> list = new List<CActivity>();
             foreach (Activity p in table)
+
                 list.Add(new CActivity() { entity = p });
 
             return View(list);
@@ -926,6 +927,11 @@ namespace sln_SingleApartment.Controllers
             {
                 return new JsonResult { Data = new { status = false } };
             }
+        }
+
+        public ActionResult PowerBI()
+        {
+            return View();
         }
     }
 }

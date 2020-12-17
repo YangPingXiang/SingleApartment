@@ -21,18 +21,13 @@ namespace sln_SingelApartment.ViewModels
 
         [DisplayName("©Ð¸¹")]
         public string roomname { get { return this.entity_lease.Room.RoomName; } }
-        [DisplayName("ç§Ÿç??‹å???)]
-        [DisplayFormat(DataFormatString = "{0:yyyyå¹?MM??dd?¥}")]
-        public DateTime? startdate { get { return this.entity_lease.StartDate; } }
-
-        [DisplayName("ç§Ÿç??°æ???)]
-        [DisplayFormat(DataFormatString = "{0:yyyyå¹?MM??dd?¥}")]
 
         [DisplayName("¯²¬ù¶}©l¤é")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? startdate { get { return this.entity_lease.StartDate; } }
 
         [DisplayName("¯²¬ù¨ì´Á¤é")]
-
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? expirydate { get { return this.entity_lease.ExpiryDate; } }
 
         [DisplayName("·|­û½s¸¹")]
