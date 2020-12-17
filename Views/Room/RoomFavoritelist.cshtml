@@ -1,6 +1,6 @@
 ﻿@*@using PagedList;
-    @using PagedList.Mvc;
-    @model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>*@
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>*@
 
 @model  List<sln_SingleApartment.ViewModels.CRoomFavorite>
 
@@ -10,7 +10,7 @@
 }
 
 <body>
-    <h3 style="margin-top:20px; margin-left:550px"> 我的最愛 房間資訊 </h3>
+    <h3 style="margin-left:150px;"> 我的最愛 房間資訊 </h3>
 
     <div style=" width:1000px; margin:30px auto;">
 
@@ -44,12 +44,6 @@
                     樓層
                     @*@Html.DisplayNameFor(model => model.floor)*@
                 </th>
-                <th>
-                    查看...
-                </th>
-                <th>
-                    編輯                   
-                </th>
             </tr>
 
             @foreach (var item in Model)
@@ -63,8 +57,7 @@
                     <td>
                         @foreach (var i in item.entity_RoomFavorite.Room.RoomFacilities)
                         {
-                            @Html.DisplayFor(modelItem => i.Facility.FacilityName)
-                            <br>
+                            @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
                         }
                     </td>
                     <td>
@@ -84,10 +77,9 @@
                         @Html.DisplayFor(modelItem => item.Room.Floor)
                     </td>
                     <td>
-                        <a href="~/Room/ListRoomDetail/@item.RoomID">查看房間</a>
-                    </td>
-                    <td>
-                        @Html.ActionLink("刪除", "DeleteRoomFavorite", new { id = item.RoomID })
+                        @*@Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
+
+                            @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })*@
                     </td>
                 </tr>
             }

@@ -17,19 +17,17 @@
         <form method="post">
 
             <ul class="list">
-                <li style="font-weight:800; float:left; margin-top:12px; width:100px; ">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px; ">
                     建案：
                 </li>
                 @foreach (var item in Model.buildcaseViewModels)
                 {
-                    <li>
-                        <a href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a>
-                    </li>
+                    <li><a href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a></li>
                 }
             </ul>
 
             <ul class="list">
-                <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     類型：
                 </li>
                 <li>
@@ -47,7 +45,7 @@
             </ul>
 
             <ul class="list">
-                <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     租金：
                 </li>
                 <li>
@@ -71,7 +69,7 @@
 
 
             <ul class="list">
-                <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
                     風格：
                 </li>
                 @foreach (var item in Model.roomStyleViewModels)
@@ -108,12 +106,12 @@
             <div class="our-room-show">
                 <div class="row">
                     <div class="carousel-list">
-                        @foreach (var item in Model.roomViewModels.Take(9))
+                        @foreach (var item in Model.roomViewModels)
                         {
                             <div class="col-md-4">
                                 <div class="single-room">
                                     <div class="room-img">
-                                        <a href="#"><img src="~/Content/Room/images/roomstyle/工業風-1.jpg" alt=""></a>
+                                        <a href="#"><img src="~/Content/Room/images/room/room1.jpg" alt=""></a>
                                     </div>
                                     <div class="room-desc">
                                         <div class="room-name">
