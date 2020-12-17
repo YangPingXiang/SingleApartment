@@ -332,7 +332,8 @@ namespace sln_SingelApartment.Controllers
         {
 
             CMember member = Session[CDictionary.welcome] as CMember;
-
+            if (member == null) { return RedirectToAction("Login", "Member"); }
+            
             var model = new CRoomBooking();
 
             model.RoomId = id;
@@ -362,7 +363,7 @@ namespace sln_SingelApartment.Controllers
             CInformationFactory x = new CInformationFactory();
             x.Add(objBookingInfo.MemberId, 400, objBookingInfo.RoomId, 40020);
 
-            return Json(data: new { message = "Booking is successfully", success = true }, behavior: JsonRequestBehavior.AllowGet);
+            return Json(data: new { message = "您的租房已成功！", success = true }, behavior: JsonRequestBehavior.AllowGet);
 
             //return Json(new { data = model });
 
