@@ -1,49 +1,90 @@
-﻿@model  List<sln_SingleApartment.ViewModels.CRoomFavorite>
+﻿@*@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>*@
+
+@model  List<sln_SingleApartment.ViewModels.CRoomFavorite>
 
 @{
     ViewBag.Title = "RoomFavoritelist";
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
-<session class="wrapper" style="padding:3em">
-    <div class="inner">
-        <table class="table">
-            <thead>
+<body>
+    <h3 style="margin-left:150px;"> 我的最愛 房間資訊 </h3>
+
+    <div style=" width:1000px; margin:30px auto;">
+
+        <table class="table" style=" margin:10px auto; width:800px; ">
+            <tr style="background-color:#afd0e7; ">
+
+                <th>
+                    房間名稱
+                    @*@Html.DisplayNameFor(model => model.roomname)*@
+                </th>
+                <th>
+                    房間設備
+                </th>
+                <th>
+                    房型
+                    @*@Html.DisplayNameFor(model => model.roomtype)*@
+                </th>
+
+                <th>
+                    租金
+                    @*@Html.DisplayNameFor(model => model.rent)*@
+                </th>
+                <th>
+                    建案名稱
+                </th>
+                <th>
+                    坪數
+                    @*@Html.DisplayNameFor(model => model.squarefootage)*@
+                </th>
+                <th>
+                    樓層
+                    @*@Html.DisplayNameFor(model => model.floor)*@
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        房間編號
-                    </th>
-                    <th>
-                        房間名稱
-                    </th>
-                    <th>
-                        建案
-                    </th>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.RoomName)
+                    </td>
+
+                    <td>
+                        @foreach (var i in item.entity_RoomFavorite.Room.RoomFacilities)
+                        {
+                            @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.RoomType)
+                    </td>
+
+                    <td>
+                        NT @Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.Rent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.BuildCase.BuildCaseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.SquareFootage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.Floor)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
+
+                            @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
                 </tr>
-            </thead>
-            
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @item.RoomID
-                        </td>
-                        <td>
-                            @item.Room.RoomName
-                        </td>
-                        <td>
-                            @item.Room.BuildCase.BuildCaseName
-                        </td>
-                        <td>
-                            @Html.ActionLink("刪除", "DeleteRoomFavorite", new { id = item.RoomID })
+            }
 
-                        </td>
-                    </tr>
-                }
-
-            </tbody>
         </table>
     </div>
-</session>
+</body>
 
