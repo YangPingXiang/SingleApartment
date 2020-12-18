@@ -5,46 +5,51 @@
     int count = 0;
     Layout = "~/Views/Shared/Back_Layout.cshtml";
 }
-   
-    @*<h2>活動列表</h2>*@
-    <section id="main" class="wrapper" style="padding:3em">
-        <!--style="border:solid 1px;border-color:black"-->
-        <div class="inner">
-            <header class="align-center">
-                <h1 style="font-size:2em;font-weight:700;line-height:1.3">活動列表</h1>
-            </header>
-            @using (Html.BeginForm())
-            {
-                <label class="form-group">
 
+@*<h2>活動列表</h2>*@
+<section id="main" class="wrapper" style="padding:3em">
+    <!--style="border:solid 1px;border-color:black"-->
+    <div style="width:1200px;margin:0 auto;">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">活動列表</h1>
+        </header>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @*<label class="form-group">*@
+            <div class="row">
+                <div class="col">
+                    <h4>關鍵字</h4>
+                </div>
+                <div class="col">
                     @Html.TextBox("txtKey")
-
+                </div>
+                <div class="col">
                     <input type="submit" value="查詢" class="btn btn-default" />
-                    @*@Html.DropDownList("subName")*@
+                </div>
+                @*@Html.DropDownList("subName")*@
+                @*<input type="" name="Namelist" />*@
+            </div>
+            @*</label>*@
+        }
 
-                    @*<input type="" name="Namelist" />*@
-
-                </label>
-
-            }
-
-            <label>
-                @*@Html.ActionLink("新增活動", "Create")*@
-                <a href="~/Activity/Create" class="btn btn-primary">新增活動</a>
-            </label>
-            <label>
-                <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
-                @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
-            </label>
-            <br />
-            <br />
-            <table class="table">
-                <tr>
-                    <th>
+        <label>
+            @*@Html.ActionLink("新增活動", "Create")*@
+            <a href="~/Activity/Create" class="btn btn-primary">新增活動</a>
+        </label>
+        <label>
+            <a href="~/Activity/CartView" class="btn btn-info">查看參加的活動</a>
+            @*@Html.ActionLink("查看參加的活動", "Joined_List")*@
+        </label>
+        <br />
+        <br />
+        <table class="alt" style="margin-top:10px">
+            <thead>
+                <tr style="font-size:18px">
+                    <th style="width:60px">
                         @Html.DisplayNameFor(model => model.ActivityID)
                     </th>
-
-                    <th>
+                    <th style="width:100px">
                         @Html.DisplayNameFor(model => model.SubCategoryDetailID)
                     </th>
 
@@ -60,85 +65,114 @@
                         @Html.DisplayNameFor(model => model.EndTime)
                     </th>
 
-                    <th>
+                    <th style="width:80px">
                         @*@Html.DisplayNameFor(model => model.MemberID)*@
-                        活動發起人
+                        發起人
                     </th>
 
                     <th>
                         @Html.DisplayNameFor(model => model.MeetingPoint)
                     </th>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.PeopleCount)
+                    <th style="width:60px">
+                        人數
+                        @*@Html.DisplayNameFor(model => model.PeopleCount)*@
                     </th>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.Note)
-                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Note)
+                        </th>*@
 
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
                     <th></th>
                 </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr style="font-size:16px">
+                    <td>
+                        @count
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.MemberID)*@
+                        @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MeetingPoint)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PeopleCount)
+                    </td>
 
-                @foreach (var item in Model)
-                {
-                    count++;
-                    <tr>
-                        <td>
-                            @count
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ActivityName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndTime)
-                        </td>
-                        <td>
-                            @*@Html.DisplayFor(modelItem => item.MemberID)*@
-                            @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MeetingPoint)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PeopleCount)
-                        </td>
-
-                        <td>
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.Note)
-                        </td>
+                        </td>*@
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                        <td>
-                            @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })|
-                            @{
-                                if (item.Status == "可參加")
-                                {
-                                    @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
-                                }
-                                else
-                                {
-                                    @("加入")
-                                }
-                            }
-                            |
-                            @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
-                        </td>
-                    </tr>
-                }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td style="width:140px">
+                        <button onclick="showTable(this,'@item.Note', @item.ActivityID)" style="height:unset;background-color:transparent;padding:0; width:40px; text-align:center" flag="true">訊息</button> |
+                        @Html.ActionLink("修改", "Edit", new { id = item.ActivityID }, new { @class = "btn" })
 
-            </table>
-        </div>
-    </section>
-  
+                        
+                        @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>
+
+<script>
+    //使用這按下[訊息]鈕, 預設flag="true"
+    function showTable(obj, p_message, p_id) {
+        //$("tr").after("<u>Hello</u>")   //ok的語法
+        //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
+
+        var str_f = "<tr style='font-size:16px'><td rowspan='2'>備註</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
+            "<td class='td_id'></td></tr>" +
+            "<tr style='font-size:16px'><td> <button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
+            "</td ></tr >";
+
+        //$(obj).attr('disabled', true);    //失效
+        //console.log('修改前'+ $(obj).attr('flag'));
+        ////$(obj).attr('flag', 'false');
+        //console.log('修改後' + $(obj).attr('flag'));
+
+        if ($(obj).attr('flag') == 'true') {
+            $(obj).parents("tr").after(str_f); //動態加入 訊息資料tr
+            $(obj).text("收合");
+            //table tr 已讀則將此row的底色改為淺藍色
+            //$(obj).parent().parent().css('background-color', '#EEF9FC'); // "#E6F5FA");
+            $(obj).attr('flag', 'false');  //改成 false
+
+        }
+        else {
+            $(obj).parent().parent().next().remove(); //刪除下面第一個 tr
+            $(obj).parent().parent().next().remove(); //刪除下面第二個 tr
+
+            $(obj).text("訊息");
+            $(obj).attr('flag', 'true');  //改成 false
+
+            //$(obj).parent().parent().css('font-weight', 'bold')
+            //$(obj).parent().parent().css('color', '#46b8da')
+        }
+    }
+</script>

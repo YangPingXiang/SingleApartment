@@ -17,9 +17,9 @@
 <input id="id_read_yn" type="hidden" value="@ViewBag.Read_YN" />
 @*存放暫存資料*@
 
-<table class="alt table-hover">
+<table class="alt">
     <thead>
-        <tr>
+        <tr style="font-size:18px">
             <th style="font-size:unset">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().InformationID)
             </th>
@@ -39,8 +39,7 @@
                 優先等級
             </th>
             <th style="font-size:unset;text-align:right">
-            </th>
-            <th style="font-size:unset"></th>
+
         </tr>
     </thead>
     @*<tr hidden>
@@ -68,8 +67,8 @@
 
         //todo:ok 已讀則將此row的底色改為淺藍色
 
-        <tr>
-            <td width="80">
+        <tr style="font-size:16px">
+            <td >
                 @Html.DisplayFor(modelItem => item.InformationID)
             </td>
             <td>
