@@ -45,6 +45,7 @@
                     @Html.DropDownList("acName", null, "")
                 </label>
                 <label style="float:right;margin-top:2em">
+                    <input type="hidden" name="page" value="1" />
                     <input style="line-height:2.5em;padding:0em;width:150px;height:50px;font-size:20px;font-weight:500;" type="submit" value="查 詢" />
 
                 </label>
@@ -259,7 +260,8 @@
 
         }
 
-        @Html.PagedListPager(Model, Page => Url.Action("List", new { Page }))
+        @Html.PagedListPager(Model, Page => Url.Action("List", new { page = Page, subName = ViewBag.V_SubName }))
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -476,4 +478,10 @@
         $("#exampleModal2").modal('hide');
     })
 
+        //109-12-17 一啟動即執行
+    $(function () {
+        //console.log($("#id_OrderType").val());
+        //這一行很重要
+        $("#subName").val("@ViewBag.V_SubName");
+    });
 </script>
