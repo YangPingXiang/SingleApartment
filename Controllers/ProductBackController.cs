@@ -137,7 +137,7 @@ namespace sln_SingleApartment.Controllers
         }
         //==========================================================
         //商城後台上架商品
-        public ActionResult CreateAllProduct()
+        public ActionResult CreatAllProduct()
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             //=====================================================================
@@ -152,7 +152,7 @@ namespace sln_SingleApartment.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateAllProduct(HttpPostedFileBase imgPhoto, Product p, string SUBNAME)
+        public ActionResult CreatAllProduct(HttpPostedFileBase imgPhoto, Product p, string SUBNAME)
         {
             /*新增照片*/
             SingleApartmentEntities db = new SingleApartmentEntities();

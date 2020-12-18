@@ -2,90 +2,140 @@
 
 @{
     ViewBag.Title = "CreatAllProduct";
-    Layout = "~/Views/Shared/Back_Layout.cshtml";
+    Layout = "~/Views/Shared/NewBack_Layout.cshtml";
 }
 
 
 
-<h2>後台商品上架</h2>
 
-
-@using (Html.BeginForm("CreateAllProduct","ProductBack", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateAllProduct", "ProductBack", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-     
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
 
-        <p class="control-label col-md-2">商品類別</p>
-        <div class="col-md-10">
-            @Html.DropDownList("SUBNAME", null, "", htmlAttributes: new { @class = "control-label col-md-10" })
+    <h2>後台商品上架</h2>
+    <div id="typing">
+        <div class="form-horizontal">
+
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+
+                <p class="control-label col-md-2 mytitle ">商品類別</p>
+
+                <div class="col-md-10">
+                    @Html.DropDownList("SUBNAME", null, "", htmlAttributes: new { @class = "txtbox control-label col-md-10" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "txtbox form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = " control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "txtbox form-control" } })
+                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sales, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sales, new { htmlAttributes = new { @class = "txtbox form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sales, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "txtbox form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "txtbox form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*//上傳照片*@
+            @*//============================================*@
+            <div class="mytitle" style="float:left; margin-left:100px; margin-right:15px;">
+                照片上傳
+            </div>
+            <input type="file" name="imgPhoto" style="margin-left:120px; " />
+
+
+            @*//=============================================*@
+
+
+            <div id="btns" class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    @Html.ActionLink("回到上一頁", "ProductList", null, new { @class = "btn btn-default mybtn" , @onclick="history.back()" })
+                    <input type="submit" value="確定新增商品" class="btn btn-default" />
+
+                </div>
+
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-        </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Sales, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Sales, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Sales, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    @*//上傳照片*@
-    @*//============================================*@
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-        </div>
-        <input type="file" name="imgPhoto" />
-    </div>
-    @*//=============================================*@
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
+<script>
+    $(function () {
+        $('h2').css({
+            "margin-bottom": "25px",
+            "margin-top": "35px",
+            "text-align":"center"
+
+        })
+
+        $("#typing").css({
+
+            "width": "1100px",
+            "margin": "0 auto",
+            "padding-left": "200px"
+        })
+
+        $('.txtbox').css({
+            "width": "350"
+        })
+
+
+        $('.mytitle').css({
+            "color": "#727a82",
+            "font-weight": "600"
+        })
+
+        $('#btns').css({
+            "margin-top":"40px"
+        })
+
+        $('.mybtn').css({
+
+            "float": "left",
+            "margin-right": "10px",
+            "background-color": "#f6755e",
+            "border-color": "#f6755e",
+            "text-decoration": "none",
+            "color": "white",
+            "line-height":"2.7em"
+        })
+
+    })
+</script>
