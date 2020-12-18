@@ -137,7 +137,7 @@ namespace sln_SingleApartment.Controllers
         }
         //==========================================================
         //商城後台上架商品
-        public ActionResult CreatAllProduct()
+        public ActionResult CreateAllProduct()
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             //=====================================================================
