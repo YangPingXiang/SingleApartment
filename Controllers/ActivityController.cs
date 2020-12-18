@@ -17,12 +17,14 @@ namespace sln_SingleApartment.Controllers
     public class ActivityController : Controller
     {
         // GET: List
-        public ActionResult List(string newActivity,int page = 1)
+        public ActionResult List(string subName,string newActivity,int page = 1)
         {
             SingleApartmentEntities db = new SingleApartmentEntities();
             Message message = new Message();
 
+            int pageSize = 5;
             
+            int currentpage = page < 1 ? 1 : page;
             //ViewBag.MessageID = message.MemberID;
             //ViewBag.GuestName = message.GuestName;
             //ViewBag.MessageSubject = message.MessageSubject;
@@ -39,45 +41,49 @@ namespace sln_SingleApartment.Controllers
             //ViewBag.MemberID = user.fMemberId;
             #endregion
 
-
+            //ViewBag.NewActivity = newActivity;
+            //string search = acName;
             string search = Request.Form["acName"];
-            string searchac = Request.Form["subName"];
+
+            string searchac = subName;     // Request.Form["subName"];
+            ViewBag.V_SubName = subName;   // Request.Form["subName"];
+
             IEnumerable<Activity> table = null;
             List<CActivity> list = new List<CActivity>();
             if (newActivity == "查看最新活動")
             {
                 var newaclistt = (from p in db.Activity
-                             orderby p.ActivityID descending
-                             select p).Take(5).ToList();
+                                  orderby p.ActivityID descending
+                                  select p).Take(5).ToList();
                 table = newaclistt;
+
+            }
+            else if (string.IsNullOrEmpty(search) && string.IsNullOrEmpty(searchac))
+            {
+                table = from p in db.Activity
+                       
+                        select p;
+            }
+            else if (searchac != "")
+            {
+                table = from p in db.Activity
+                        orderby p.ActivityID descending
+                        where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                        select p;
+            }
+            else if (search != "")
+            {
+                table = from p in db.Activity
+                        where p.ActivityName.Contains(search)
+                        select p;
             }
             else
             {
-
-                if (string.IsNullOrEmpty(search) && string.IsNullOrEmpty(searchac))
-                {
-                    table = from p in db.Activity
-                            select p;
-                }
-                else if (searchac != "")
-                {
-                    table = from p in db.Activity
-                            where p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
-                            select p;
-                }
-                else if (search != "")
-                {
-                    table = from p in db.Activity
-                            where p.ActivityName.Contains(search)
-                            select p;
-                }
-                else
-                {
-                    table = from p in db.Activity
-                            where p.ActivityName.Contains(search) && p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
-                            select p;
-                }
+                table = from p in db.Activity
+                        where p.ActivityName.Contains(search) && p.ActivitySubCategory.ActivitySubCategoryName.Contains(searchac)
+                        select p;
             }
+            
 
             //下拉式選單
             #region SubCategoryName
@@ -272,8 +278,7 @@ namespace sln_SingleApartment.Controllers
             
             foreach (Activity p in table)
                 list.Add(new CActivity() { entity = p });
-            int pageSize = 5;
-            int currentpage = page < 1 ? 1 : page;
+            
             var pagelist = list.ToPagedList(currentpage, pageSize);
             return View(pagelist);
 
