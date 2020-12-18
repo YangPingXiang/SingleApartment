@@ -30,9 +30,13 @@
                             <!--我不是機器人-->
                             <div>
                                 <div class="g-recaptcha" data-sitekey="6Ldd8wEaAAAAAIm2714PGW1zYIfX4BenxZ3wrm13"></div>
-                                <div class="form-group">
+                                @*<div>
+                                              @Html.RecaptchaV2("6LdQaxATAAAAAB7UuxNH4lIoC_0wcJE3scx-QJ5v")
+                                    
+                                </div>*@
+                                @*<div class="form-group">
                                     @Html.MathCaptcha()
-                                </div>
+                                </div>*@
                             </div>
         
                             <label class="button">
@@ -48,7 +52,8 @@
                                 </li>
                             </ul>
                             <div style="display:inline; margin-left:13.5em;font-size:18px;">
-                                <input type="button" value="快速登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="Bob登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="Eva登入" onclick="veryFastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                                 <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                             </div>
 
@@ -77,6 +82,10 @@
         $("#account").val("admin");
         $("#pwd").val("admin");
     }
+    function veryFastLogin() {
+        $("#account").val("Eva04");
+        $("#pwd").val("Eva04");
+    }
 </script>
 
 <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()"
@@ -84,8 +93,12 @@
 
 <script type="text/javascript">
    //google
-    let Google_appId = "939804967327-o1ltm8bkp3m31v16tpmuthrg5g1psutk.apps.googleusercontent.com";
+    //localhost
+    //let Google_appId = "939804967327-o1ltm8bkp3m31v16tpmuthrg5g1psutk.apps.googleusercontent.com";
+    //http:localhost:1080
+    let Google_appId = "939804967327-uk5ka6s2kl2r2bpq8u5mvpkbp22j85b0.apps.googleusercontent.com";
     function HandleGoogleApiLibrary() {
+    
         // Load "client" & "auth2" libraries
         gapi.load('client:auth2', {
             callback: function () {
