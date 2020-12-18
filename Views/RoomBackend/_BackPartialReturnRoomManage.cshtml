@@ -44,19 +44,19 @@
                 <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
                 @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_mn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-                <select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:40px; font-weight:500;width:200px;  ">
+                @*<select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:40px; font-weight:500;width:200px;  ">
 
                     <option value="999">選擇查詢方式...</option>
                     <option value="100">依建案分類</option>
                     <option value="200">依樓層分類</option>
                     <option value="400">依房型類型內容分類</option>
 
-                </select>
-                <div style="margin-left:150px;">
+                </select>*@
+                @*<div style="margin-left:150px;">
                     <button id="btnAdd" type="button" class="btn btn-info" style="margin-top:20px; height:50px;">
                         新增房間
                     </button>
-                </div>
+                </div>*@
 
             </div>
 
@@ -68,7 +68,7 @@
 
 
             <table id="abtroomtable" style="width:1200px; margin:10px auto; padding:10px;  ">
-                <tr style="background-color:darkgray; text-align:center; font-size:20px; ">
+                <tr style=" text-align:center; font-size:20px; ">
 
                     <th>
                         @Html.DisplayNameFor(model => model.roomname)
