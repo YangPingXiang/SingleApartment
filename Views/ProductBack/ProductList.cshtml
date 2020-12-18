@@ -1,47 +1,57 @@
 ﻿@model IEnumerable<sln_SingleApartment.Models.Product>
 
-    @{
-        ViewBag.Title = "ProductList";
-        Layout = "~/Views/Shared/Back_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/NewBack_Layout.cshtml";
+}
 
-    @functions
+@functions
    {
-        public string DisplayImage(byte[] imageData)
+    public string DisplayImage(byte[] imageData)
+    {
+        string imageSrc = null;
+        if (imageData != null)
         {
-            string imageSrc = null;
-            if (imageData != null)
-            {
-                string base64Str = Convert.ToBase64String(imageData);
-                imageSrc = "data:img/jpg;base64," + base64Str;
-            }
-            return imageSrc;
+            string base64Str = Convert.ToBase64String(imageData);
+            imageSrc = "data:img/jpg;base64," + base64Str;
         }
+        return imageSrc;
     }
+}
 
-    <h2>後臺管理商品列表</h2>
-     @using (Html.BeginForm())
-     {
-        <div class="form-group">
-            <div class="col-md-offset-0 col-md-10">
-
-                @Html.TextBox("txtKeyword")
-                <input type="submit" value="查詢" class="btn btn-default" />
+<div id="productinfo" class="row">
 
 
+    @using (Html.BeginForm())
+    {
+        <div id="topbar" class="form-group align-center">
+
+            <h2>後臺管理商品列表</h2>
+
+
+            <div style="position:relative;">
+
+                @Html.TextBox("txtKeyword", "搜尋關鍵字...", new { @style = "color:lightgry; float:left; width:350px; margin-right:5px;" })
+
+                <button type="submit" value="查詢" style="float:left; width:20px; background-color:#ff8c61; border-color:transparent; line-height:2em; padding-left:30px; margin-right:10px; margin-left:10px;">
+                    <i class="fa fa-search" style="color:black; width:20px"></i>
+                </button>
+
+                @Html.ActionLink("新增上架商品", "CreatAllProduct", "ProductBack", new { }, new { @class = " btn btn-primary ", @style = "background-color:#5bc0de; border-color:#5bc0de; text-decoration:none; line-height:3.2em; float:left;" })
             </div>
+
+
+
 
         </div>
 
-      }
-    <p>
-        @Html.ActionLink("新增上架商品", "CreateAllProduct")
-    
-    </p>
+    }
+
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductSubCategoryID)
+                商品序號
+                @*@Html.DisplayNameFor(model => model.ProductSubCategoryID)*@
             </th>
             <th>
                 商品名稱
@@ -69,9 +79,11 @@
                     @Html.DisplayFor(modelItem => item.ProductSubCategoryID)
                 </td>
                 <td>
+                    <img src="@DisplayImage(item.ProductPictures.FirstOrDefault().ProductPicture)" width="100" />
+
                     @Html.DisplayFor(modelItem => item.ProductName)
 
-                    <img src="@DisplayImage(item.ProductPictures.FirstOrDefault().ProductPicture)" width="100px" />
+
 
                 </td>
                 <td>
@@ -87,11 +99,57 @@
                     @Html.DisplayFor(modelItem => item.Stock)
                 </td>
                 <td>
-                    @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { onclick = "return confirm('確定修改商品嗎?')" }) |
+                    @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { onclick = "return confirm('確定修改商品嗎?')" , @class = "btn btn-primary ebtn" })
 
                     @*@Html.ActionLink("刪除", "Delete", new { id = item.ProductID}, new { onclick = "return confirm('確定刪除商品?')" })*@
                 </td>
             </tr>
-         }
+        }
 
     </table>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('table').css({
+            "width": "1100px",
+            "margin": "0px auto",
+            "padding": "10px",
+            "text-align": "center",
+
+        })
+        $('th').css({
+            "text-align": "center"
+        })
+
+        $('h2').css({
+            "margin-bottom": "25px",
+            "margin-top": "35px",
+
+        })
+
+        $('#topbar').css({
+            "width":"1100px"
+        })
+
+        $('form').css({
+            "padding": "0px"
+        })
+
+        $('#productinfo').css({
+
+            "margin": "0 auto",
+            "width": "1100px",
+            "margin-buttom": "20px"
+        })
+
+        $('.ebtn').css({
+            "text-decoration": "none",
+            "line-height":"2em"
+        })
+
+
+
+
+    })
+</script>
