@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "BackEditTheRoomDetail";
-    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
+    Layout ="~/Views/Shared/NewBack_Layout.cshtml";
 }
 
 
@@ -41,9 +41,11 @@
             }
 
             <div class="form-group">
-                @Html.LabelFor(model => model.entity_room.Picture.FirstOrDefault().RoomStylePicture, htmlAttributes: new { @class = "control-label col-md-2" })
+               
+                @*@Html.LabelFor(model => model.entity_room.Picture.FirstOrDefault().RoomStylePicture, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10" style="width:300px;">
                     @*<img src="~/Content/Room/images/roomstyle/@filename"  />*@
+                    房型風格照片
                     <input type="file" name="mypic" value="瀏覽照片..." />
                 </div>
             </div>
