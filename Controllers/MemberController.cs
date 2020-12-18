@@ -91,11 +91,11 @@ namespace sln_SingleApartment.Controllers
         public ActionResult LogIn(CLogIn login, FormCollection form)
         {
 
-            if (!this.IsCaptchaValid(""))
-            {
-                ViewBag.ErrorMessage = "會不會算數?";
-                return View("LogIn", login);
-            }
+            //if (!this.IsCaptchaValid(""))
+            //{
+            //    ViewBag.ErrorMessage = "會不會算數?";
+            //    return View("LogIn", login);
+            //}
 
             login.txtAccount = Request.Form["txtaccount"];
             login.txtPassword = Request.Form["txtpwd"];

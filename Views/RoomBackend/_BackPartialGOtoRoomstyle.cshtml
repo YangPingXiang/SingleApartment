@@ -1,33 +1,11 @@
 ﻿@using PagedList.Mvc;
 @using PagedList;
 @model IEnumerable<sln_SingelApartment.ViewModels.CRoomStyleViewModel>
-@{
-    ViewBag.Title = "_BackPartialGOtoRoomstyle";
-    Layout = null ;
-}
 
-<body>
     <div style="margin-left:250px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
-        @*<h3 style="margin-bottom:35px; text-align:center; ">查詢條件</h3>
-        <span style="margin-left:60px; font-weight:500;">建案代號</span>
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_b", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-        <span style=" margin-left:15px; font-weight:500;"> 房號</span>
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_r", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-        <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_mn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-
-        <div style="margin-left:150px;">
-            <button id="btnAdd" type="button" class="btn btn-info" style="margin-top:20px; height:50px;">
-                新增風格
-            </button>
-        </div>*@
+       
         <h3>房型總表</h3>
     </div>
-
-
 
     <div id="title">
         
@@ -71,30 +49,6 @@
     @*<div id="abtleasetable_pagelist" style="float:inherit; margin-left:480px;">
             @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
         </div>*@
-
-    <script>
-         function SearchRoomByRoomName(keyword) {
-            $.ajax({
-                url: "@Url.Action("BackPartialGotoLease")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
-            })
-        }
-        $(document).ready(function () {
-
-            $('.txtkeybox').on("keydown", function (event) {
-                if (event.key === "Enter") {
-                    let k = $("#txtkeybox_b").val() + $("#txtkeybox_r").val() + $("#txtkeybox_mn").val();
-                    console.log( 'key down')
-                    console.log(k);
-                    SearchRoomByRoomName(k);
-                    $("#abtleasetable").fadeOut();
-                    $("#abtleasetable_pagelist").fadeOut();
-                } // Handle press
-
-            })
-    </script>
-</body>
 
 
 
