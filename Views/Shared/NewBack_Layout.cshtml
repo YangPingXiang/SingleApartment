@@ -9,43 +9,29 @@
         <!DOCTYPE html>
         <html>
         <head>
+            <title>窩居公寓</title>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-            @*<title>@ViewBag.Title - My ASP.NET Application</title>
-                <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
-
-            <link rel="stylesheet" href="~/Content/Homepage/assets/css/main.css" />
-            <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
             <link href="~/Content/PagedList.css" rel="stylesheet" />
+            <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="~/Content/HomePage/assets/css/main.css" rel="stylesheet" />
 
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-            <script src="~/Scripts/bootstrap.min.js"></script>
-            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>  @*分頁檔使用*@
-            @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
-
-            <script src="~/Scripts/jquery.validate.min.js"></script>
-            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-            <script src="~/Content/Homepage/js/jquery.min.js"></script>
-            <script src="~/Content/Homepage/js/jquery.scrolly.min.js"></script>
-            <script src="~/Content/Homepage/js/skel.min.js"></script>
-            <script src="~/Content/Homepage/js/util.js"></script>
-            <script src="~/Content/Homepage/js/main.js"></script>
         </head>
-
-        <body class="subpage">
-
+        <body>
+            <script src="~/Content/HomePage/js/jquery.min.js"></script>
+            <script src="~/Content/HomePage/js/jquery.scrolly.min.js"></script>
             <!-- Header -->
             <header id="header">
                 <nav class="left">
                     <a href="#menu"><span>Menu</span></a>
                 </nav>
-                <a href="#" class="logo"><img src="~/Content/Homepage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
-                <nav class="right" style="margin-top:20px">
+                <a href="#" class="logo"><img src="~/Content/HomePage/images/窩居字體設計7.png" width="200" style="margin-top:20px"></a>
+                <nav class="right " style="margin-top:20px">
                     <a href="@Url.Action("LogOut","Member")" class="button alt">Log Out</a>
                 </nav>
+
             </header>
+
 
             <!-- Menu -->
             <nav id="menu">
@@ -60,7 +46,7 @@
             <!-- Footer -->
             <footer id="footer">
                 <div class="inner">
-                    <h2>聯絡我們</h2>
+                    <h2 style="margin-bottom:20px">聯絡我們</h2>
                     <ul class="actions">
                         <li>
                             <span class="icon fa-phone"></span>
@@ -75,10 +61,17 @@
                         </li>
                     </ul>
                 </div>
-                <!--<div class="copyright">
-                    &copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
-                </div>-->
+
             </footer>
+            @RenderSection("scripts", required: false)
+
+            <!-- Scripts -->
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+            <script src="~/Content/HomePage/js/util.js"></script>
+            <script src="~/Content/HomePage/js/skel.min.js"></script>
+            <script src="~/Content/HomePage/js/main.js"></script>
 
             <script type="text/javascript">
 
@@ -101,11 +94,9 @@
             }
         });
 
-
-
             </script>
-
         </body>
+
     </html>
 
 }

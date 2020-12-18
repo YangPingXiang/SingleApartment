@@ -22,10 +22,9 @@
 <!-- Main -->
 <section id="main" class="wrapper" style="padding:2em">
     <!--style="border:solid 1px;border-color:black"-->
-    <div class="inner">
+    @*<div class="inner">*@
         <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">訊息管理(後台)</h1>
-            @*<div id="timer"></div>*@
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">訊息管理(後台)</h1>            
         </header>
         @*=================================================================*@
         <p>
@@ -33,8 +32,8 @@
         </p>
         @*=================================================================*@
         @*<h4>Alternate</h4>*@
-
-        <div class="row" style="margin-bottom:10px;margin-top:30px">
+        <br />
+        <div class="row" style="margin-bottom:10px;margin-top:30px;width:1200px;margin:10px auto;">
             @*style="border: 2px green solid"*@
             <div class="col" style="width:160px">
                 <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
@@ -55,7 +54,7 @@
             </div>
 
         </div>
-        <div class="row" style="margin-top:10px;margin-bottom:15px;">
+        <div class="row" style="margin-top:10px;margin-bottom:15px;width:1200px;margin:0 auto;">
             <div class="col" style="margin-left:160px">
                 <span style="font-weight:500">2.系統分類</span>
                 @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
@@ -68,7 +67,8 @@
                 <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>
             </div>
         </div>
-        <div>
+        <br />
+        <div style="width:1200px;margin:0 auto;">
             @*style="width:1000px;margin-left:50px"   todo *@
             <div id="container" class="table-wrapper">
                 @*要分頁的table*@
@@ -79,7 +79,7 @@
 
         @*=================================================================*@
         @*<p> Aenean iaculis, neque sed preti</p>*@
-    </div>
+    @*</div>*@
 </section>
 
 <!-- Footer -->
@@ -226,9 +226,9 @@
             //$("tr").after("<u>Hello</u>")   //ok的語法
             //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
 
-            var str_f = "<tr><td rowspan='2'>訊息內容</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
+            var str_f = "<tr style='font-size:16px'><td rowspan='2'>訊息內容</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
                 "<td class='td_id'></td></tr>" +
-                "<tr><td> <button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
+                "<tr style='font-size:16px'><td> <button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
                 "</td ></tr >";
 
             //$(obj).attr('disabled', true);    //失效
@@ -240,7 +240,7 @@
                 $(obj).parents("tr").after(str_f); //動態加入 訊息資料tr
                 $(obj).text("收合");
                 //table tr 已讀則將此row的底色改為淺藍色
-                $(obj).parent().parent().css('background-color', '#EEF9FC'); // "#E6F5FA");
+                //$(obj).parent().parent().css('background-color', '#EEF9FC'); // "#E6F5FA");
                 $(obj).attr('flag', 'false');  //改成 false
 
             }

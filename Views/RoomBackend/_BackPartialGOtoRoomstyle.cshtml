@@ -13,7 +13,7 @@
   
 
     <table id="abtleasetable" style="width:1000px; margin:10px auto; ">
-        <tr style="background-color:lightblue; text-align:center;">
+        <tr style="text-align:center;">
 
             <th>
                 風格序號
@@ -39,7 +39,7 @@
               
 
                 <td>
-                    @Html.ActionLink("瀏覽圖片", "BackImageGalleryforRoomStyle", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("瀏覽圖片", "BackImageGalleryforRoomStyle", new { id = item.ID }, new { @class = "btn btn-primary" , style = "background-color:#5bc0de; border-color:#5bc0de;" }) |
                     @Html.ActionLink("刪除房型", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
                 </td>
             </tr>

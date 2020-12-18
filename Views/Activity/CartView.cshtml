@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "CartView";
     Layout = "~/Views/Shared/Information_Layout.cshtml";
-    
+
 }
 
 <h2>您所選擇參加的活動</h2>
@@ -19,9 +19,9 @@
 
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.SubCategoryDetailID)
-            </th>*@
+        <th>
+            @Html.Hidden("fJoinedId")
+        </th>
 
         <th>
             @Html.DisplayNameFor(model => model.fAvtivityName)
