@@ -21,14 +21,13 @@ namespace sln_SingelApartment.ViewModels
 
         [DisplayName("房號")]
         public string roomname { get { return this.entity_lease.Room.RoomName; } }
-       
 
         [DisplayName("租約開始日")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd/")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? startdate { get { return this.entity_lease.StartDate; } }
 
         [DisplayName("租約到期日")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd/")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? expirydate { get { return this.entity_lease.ExpiryDate; } }
 
         [DisplayName("會員編號")]
