@@ -82,7 +82,7 @@
                                             }
                                         </ol>
                                     </li>
-                                }
+                                                }
                             }
 
                         </ul>
@@ -109,73 +109,35 @@
                         </div>
                     }
                     <!-- #region Bestseller & 下面那ㄍ圖-->
-
+                    <br/>
                     <div class="top-shop-sidebar an-shop">
-                        <h3 class="wg-title">BEST SELLER</h3>
+                        <h3 class="wg-title">銷售冠軍</h3>
                         <ul>
-                            <li class="b-none">
-                                <div class="tb-recent-thumbb">
-                                    <a href="">
-                                        <img class="attachment" src="~/Content/Product/img/products/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="tb-recentb">
-                                    <div class="tb-beg">
-                                        <a href="#">Lambskin Shoe</a>
-                                    </div>
-                                    <div class="tb-product-price font-noraure-3">
-                                        <span class="amount">$180.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="b-none">
-                                <div class="tb-recent-thumbb">
-                                    <a href="">
-                                        <img class="attachment" src="~/Content/Product/img/products/2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="tb-recentb">
-                                    <div class="tb-beg">
-                                        <a href="#">Luxury Leather Bag</a>
-                                    </div>
-                                    <div class="tb-product-price font-noraure-3">
-                                        <span class="amount2 ana">$170.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="b-none agn">
-                                <div class="tb-recent-thumbb">
-                                    <a href="">
-                                        <img class="attachment" src="~/Content/Product/img/products/3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="tb-recentb">
-                                    <div class="tb-beg">
-                                        <a href="#">Vintage Glasses</a>
-                                    </div>
-                                    <div class="tb-product-price font-noraure-3">
-                                        <span class="amount2 ana">$170.00</span>
-                                    </div>
-                                </div>
-                            </li>
+                            @{
+                                foreach (var item in Model.product.OrderByDescending(r => r.Sales).Take(3))
+                                {
+                                    <li class="b-none">
+                                        <div class="tb-recent-thumbb">
+                                            <a href="">
+                                                <img class="attachment" src="@DisplayImage(item.prodpic.ProductPicture)" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="tb-recentb">
+                                            <div class="tb-beg">
+                                                <a href="#">@item.ProductName</a>
+                                            </div>
+                                            <div class="tb-product-price font-noraure-3">
+                                                <span class="amount">$ @item.UnitPrice</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+
+
                         </ul>
                     </div>
 
-
-                    <div class="ro-info-box-wrap tpl3 st">
-                        <div class="tb-image">
-                            <img src="~/Content/Product/img/products/4.jpg" alt="">
-                        </div>
-                        <div class="tb-content">
-                            <div class="tb-content-inner an-inner">
-                                <h5>居家商品</h5>
-                                <h3>MID SEASON SALE</h3>
-                                <h6>
-                                    <a href="#">SHOP NOW</a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
                     <!-- #endregion -->
                 </div>
             </div>

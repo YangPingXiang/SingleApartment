@@ -2,37 +2,6 @@
 @using PagedList;
 
 @model IEnumerable<sln_SingelApartment.ViewModels.CLeaseViewModel>
-@{
-    ViewBag.Title = "_BackPartialGotoLease";
-    Layout = null;
-}
-
-
-
-<body>
-    <div style="margin-left:250px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
-        <h2 style="margin-bottom:35px; text-align:center; ">查詢條件</h2>
-        <h3 style="color:#1170b6; margin-left:60px;">以下條件擇一即可</h3>
-        <span style="margin-left:60px; font-weight:500;">建案代號</span>
-
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lb", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-        <span style=" margin-left:15px; font-weight:500;"> 房號</span>
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lr", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-        <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
-        @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_lmn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
-
-       
-
-    </div>
-
-
-
-    <div id="keyresult">
-
-    </div>
-
 
     <table id="abtleasetable" style="width:1200px; margin:10px auto; ">
         <tr style="background-color:darkgray; text-align:center; font-size:20px;">
@@ -51,6 +20,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.expirydate)
+                <a onclick="OrderByExDate()" id="Myicon" style="color:black;"></a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.personalrent)
@@ -64,70 +34,74 @@
         @foreach (var item in Model)
         {
 
-        <tr style="font-size:18px; font-weight:400;">
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.leaseID)
-            </td>
+            <tr style="font-size:18px; font-weight:400;">
 
-            <td>
-                @Html.DisplayFor(model => item.entity_lease.Room.RoomName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.entity_lease.tMember.fMemberName)
+                <td>
+                    @Html.DisplayFor(modelItem => item.leaseID)
+                </td>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startdate)
-            </td>
+                <td>
+                    @Html.DisplayFor(model => item.entity_lease.Room.RoomName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.entity_lease.tMember.fMemberName)
 
-            <td>
-                @Html.DisplayFor(modelItem => item.expirydate)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.startdate)
+                </td>
 
-            <td>
-                NT @Html.DisplayFor(modelItem => item.entity_lease.Room.Rent)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.expirydate)
+                </td>
 
-            <td>
-                @Html.ActionLink("編輯合約", "BackLeaseEdit", new { id = item.leaseID }, new { @class = " btn btn-info" }) |
+                <td>
+                    NT @Html.DisplayFor(modelItem => item.entity_lease.Room.Rent)
+                </td>
 
-                @Html.ActionLink("刪除合約", "BackLeaseDelete", "RoomBackend", new { id = item.leaseID }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+                <td>
+                    @Html.ActionLink("編輯合約", "BackLeaseEdit", new { id = item.leaseID }, new { @class = " btn btn-info" }) |
+
+                    @Html.ActionLink("刪除合約", "BackLeaseDelete", "RoomBackend", new { id = item.leaseID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
         }
 
     </table>
-    <div id="abtleasetable_pagelist" style="float:inherit; margin-left:480px;">
-        @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackPartialGotoLease", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    <div id="abtroomtable_pagelist" style="float:inherit; margin-left:480px;">
+
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("BackPartialGotoLease", new { page = page, keyword = ViewBag.keyword, Cname = ViewBag.Cname, Order = ViewBag.Order }),
+  PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+  new AjaxOptions()
+  {
+      HttpMethod = "Get",
+      InsertionMode = InsertionMode.Replace,
+      UpdateTargetId = "abttables",
+  }
+  ))
+
     </div>
 
     <script>
-        function SearchLeaseByKeyword(keyword) {
-            $.ajax({
-                url: "@Url.Action("BackPartialLeaseKeyword")",
-                url: "@Url.Action("BackPartialLeaseKeyword")",
-                url: "@Url.Action("BackPartialLeaseKeyword")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
-            })
+        $(function () {
+            @{if (ViewBag.Order == "ExpiryDateD")
+                {
+                    @:$('#Myicon').html('<i class="fa fa-angle-down" width="40"></i>');
+                }
+                else
+                {
+                    @:$('#Myicon').html('<i class="fa fa-angle-up" width="40"></i>');
+                }
+            }
+        });
+        function OrderByExDate() {
+
+            $('#OrderCondition').val($('#OrderCondition').val() == "ExpiryDateD" ? "ExpiryDateA" : "ExpiryDateD");
+
+            let k = $("#txtkeybox_b").val();
+            let n = $("#txtkeybox_mn").val();
+            SearchLeaseByKeyword(k, n);
+
         }
-        $(document).ready(function () {
-
-
-
-            $('.txtkeybox').on("keydown", function (event) {
-                if (event.key === "Enter") {
-                    let k = $("#txtkeybox_lb").val() + $("#txtkeybox_lr").val() + $("#txtkeybox_lmn").val();
-                    console.log( 'key down')
-                    console.log(k);
-                    SearchRoomByRoomName(k);
-                    $("#abtroomtable").fadeOut();
-                    $("#abtroomtable_pagelist").fadeOut();
-                } // Handle press
-
-            })
-
     </script>
-</body>
 
