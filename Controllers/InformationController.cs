@@ -7,18 +7,130 @@ using System.Web.Mvc;
 using PagedList;      //使用PagedList套件必須引用此命名空間
 using sln_SingleApartment.Models;
 using sln_SingleApartment.ViewModels;
+using Newtonsoft.Json;
 
 namespace sln_SingleApartment.Controllers
 {
     public class InformationController : Controller
     {
+        //新訊息 已讀/未讀分類
+        public JsonResult GetActivityNotify_ReadYN()
+        {
+            //todo:
+            //int memberID = 1;
+
+            CMember member = Session[CDictionary.welcome] as CMember;
+
+            try
+            {
+                if (member != null)
+                {
+                    List<InformationContent> list = new List<InformationContent>();
+
+                    int memberID = member.fMemberId;
+                    SingleApartmentEntities db = new SingleApartmentEntities();
+                    IEnumerable<Information> ac = null;
+                    ac = db.Information.AsEnumerable().Where(p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 900, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.Read_YN == "Y" && p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 100, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.Read_YN == "N" && p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 200, ContentName = ac.Count().ToString() });
+
+                    List<string> str = new List<string>();
+                    foreach (var item in list)
+                    {
+                        string i = JsonConvert.SerializeObject(item);
+                        str.Add(i);
+                    }
+                    var ans = JsonConvert.SerializeObject(str);
+                    return Json(ans);
+                }
+                else
+                {
+                    return Json("fail");
+                }
+            }
+            catch
+            {
+                return Json("fail");
+            }
+        }
+
+        //新訊息 內容分類
+        [HttpPost]
+        public JsonResult GetActivityNotify_ContentCategory()
+        {
+            //todo:
+            //int memberID = 1;
+
+            CMember member = Session[CDictionary.welcome] as CMember;
+
+            try
+            {
+                if (member != null)
+                {
+                    List<InformationContent> list = new List<InformationContent>();
+
+                    int memberID = member.fMemberId;
+                    SingleApartmentEntities db = new SingleApartmentEntities();
+                    IEnumerable<Information> ac = null;
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 20010 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 20010, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 20030 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 20030, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 20040 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 20040, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 30010 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 30010, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 30020 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 30020, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 40010 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 40010, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 40020 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 40020, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 40030 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 40030, ContentName = ac.Count().ToString() });
+
+                    ac = db.Information.AsEnumerable().Where(p => p.InformationSource == 40040 && p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
+                    list.Add(new InformationContent() { ContentID = 40040, ContentName = ac.Count().ToString() });
+
+                    List<string> str = new List<string>();
+                    foreach (var item in list)
+                    {
+                        string i = JsonConvert.SerializeObject(item);
+                        str.Add(i);
+                    }
+                    var ans = JsonConvert.SerializeObject(str);
+                    return Json(ans);
+                }
+                else
+                {
+                    return Json("fail");
+                }
+            }
+            catch
+            {
+                return Json("fail");
+            }
+        }
+
         public string GetNewActivityNotify()
         {
             //todo:
             //int memberID = 1;
 
             CMember member = Session[CDictionary.welcome] as CMember;
-           
+
             string result = "0";
             try
             {
@@ -27,7 +139,7 @@ namespace sln_SingleApartment.Controllers
                     int memberID = member.fMemberId;
                     SingleApartmentEntities db = new SingleApartmentEntities();
                     IEnumerable<Information> ac = db.Information.AsEnumerable()
-                     .Where(p=>p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd"));
+                     .Where(p=>p.MemberID == memberID && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.Status != "User_Deleted" && p.Status != "Admin_Deleted");
                     result= ac.Count().ToString();
                 }
                 return result;
@@ -36,7 +148,6 @@ namespace sln_SingleApartment.Controllers
             {
                 return result;
             }
-
         }
 
         public string GetInfoContent()
@@ -253,14 +364,18 @@ namespace sln_SingleApartment.Controllers
                 }
                 else if (p_query_type == "500")
                 {//500 = 依當日新訊息
-                    myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd");
+                    if (p_data == "N")
+                        myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd");
+                    else
+                        myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.InformationDate.ToString("yyyy-MM-dd") == DateTime.Today.ToString("yyyy-MM-dd") && p.InformationSource == Convert.ToInt32(p_data);
                 }
                 else
                 {   //no use
                     //myWhere = p => p.MemberID == memberID && p.Status != "User_Deleted" && p.Status != "Admin_Deleted" && p.Read_YN == p_read_yn && p.Priority == p_priority;                
                 }
                 //modify by Jony 1091208 增加 .OrderBy(a=>a.InformationID)
-                table = db.Information.Where(myWhere).OrderBy(a=>a.InformationID);
+                //modify by Jony 1091218 增加 .OrderByDescending(a=>a.InformationID)
+                table = db.Information.Where(myWhere).OrderByDescending(a=>a.InformationID);
 
                 //    myWhere = p => p.InformationContent.Contains(keyword) && p.Status != "User_Deleted" && p.Status != "Admin_Deleted";
                 //    table = db.Information.Where(myWhere);
