@@ -18,20 +18,37 @@
     {
         z += x.ProductName + " ";
     }
+    <head>
+        <style>
+            p {
+                font-family: 'Adobe Fan Heiti Std';
+            }
 
+            .inner {
+                margin: 0 auto;
+                max-width: 55em;
+            }
+
+            .Boxsize {
+                width: 330px;
+                height: 310px;
+                padding: 15px;
+                border-radius: 8px;
+                background-color: lightsalmon;
+            }
+        </style>
+    </head>
     <body class="subpage">
         <!-- Main -->
         <section id="main" class="wrapper">
             <div class="inner">
                 <header class="align-center">
                     <h1> 窩的資訊 </h1>
-                    <br />
-                    <p>個人資料|聯絡資料|租房|活動|訊息</p>
+
+                    <p style="font-size:20px;margin-bottom:30px">個人資料|聯絡資料|租房|活動|訊息</p>
                 </header>
-                <div class="image fit">
-
-                    <img src="~/Content/HomePage/images/pic05.jpg" alt="窩的相片" />
-
+                <div class="Boxsize" style="margin-left:18em">
+                    <img style="display:inline" src="@Model.t.fImage" width="300" height="280" />
                 </div>
 
                 <h3 style="font-size:2em"> 個人資料 </h3>
@@ -69,12 +86,12 @@
                     </tr>
 
                     @*@foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@db.fAccount</td>
+            {
+                <tr>
+                    <td>@db.fAccount</td>
 
-                            </tr>
-                        }*@
+                </tr>
+            }*@
                 </table>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'></table>
             </div>
@@ -96,18 +113,24 @@
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
                     <tr>
                         <td rowspan="1" style="font-size:20px;font-weight:700">房號</td>
-                        <td>@if (Model.r != null)
-                        {@Model.r.RoomName}</td>
+                        <td>
+                            @if (Model.r != null)
+                            {@Model.r.RoomName}
+                        </td>
                     </tr>
                     <tr>
                         <td rowspan="1" style="font-size:20px;font-weight:700">房型</td>
-                        <td>@if (Model.r != null)
-                        {@Model.rs.RoomStyleName}</td>
+                        <td>
+                            @if (Model.r != null)
+                            {@Model.rs.RoomStyleName}
+                        </td>
                     </tr>
                     <tr>
                         <td rowspan="1" style="font-size:20px;font-weight:700">租金/每期</td>
-                        <td>@if (Model.r != null)
-                        {@Model.r.Rent}</td>
+                        <td>
+                            @if (Model.r != null)
+                            {@Model.r.Rent}
+                        </td>
                     </tr>
                 </table>
             </div>

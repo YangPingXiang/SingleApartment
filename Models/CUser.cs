@@ -219,11 +219,11 @@ namespace sln_SingleApartment.Models
                         orderDetail.Quantity = item.txtQuantity;
                         //同步修改庫存
                         db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().Stock -= item.txtQuantity;
+                        db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().Sales += item.txtQuantity;
                         orderDetail.ProductName = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().ProductName;
                         orderDetail.UnitPrice = db.Product.Where(r => r.ProductID == item.txtProductID).FirstOrDefault().UnitPrice;
                         totalPrice += item.txtQuantity * orderDetail.UnitPrice;
                         order.OrderDetails.Add(orderDetail);
-                        
                     }
                     catch (Exception)
                     {

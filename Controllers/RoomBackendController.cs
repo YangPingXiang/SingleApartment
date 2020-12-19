@@ -195,75 +195,34 @@ namespace tryTemplete_Room.Controllers
 
         #endregion
 
-
         public ActionResult BackRoomManage(int page = 1, int pageSize = 10)
         {
-          
-            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-           
-
-            var r = dbSA.Room.OrderBy(x => x.ID);
-            
-            //int total_rent = 0;
-            foreach (Room item in r)
-            {
-                room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
-               
-            }
-            
-            #region 關於totalrent
-            //List<CLeaseViewModel> lease_VM_lt = new List<CLeaseViewModel>();
-            //var l = dbSA.Lease.Where(x => x.ExpiryDate > DateTime.Now);
-            //foreach (Lease item in l)
-            //{
-            //    lease_VM_lt.Add(new CLeaseViewModel() { entity_lease = item });
-            //    total_rent += item.PersonalRent == null ? 0 : (int)item.PersonalRent;
-            //}
-
-            //ViewBag.TotalRent = total_rent;
-            #endregion
-
-            IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
-
-            return View(query);
+            return View();
         }
 
-        public ActionResult BackPartialReturnRoomManage(int page = 1, int pageSize = 10)
+        public ActionResult BackPartialReturnRoomManage(int page = 1, int pageSize = 10, string keyword = null, string Cname = null)
         {
             List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-
-
-            var r = dbSA.Room.OrderBy(x => x.ID);
-
+            IQueryable<Room> r;
+            if (String.IsNullOrEmpty(keyword))
+                r = dbSA.Room;
+            else
+                r = dbSA.Room.Where(o => o.RoomName.Contains(keyword));
+            if (!String.IsNullOrEmpty(Cname))
+                r = r.Where(o => (o.Lease.Where(k => k.tMember.fMemberName.Contains(Cname))).Count() != 0);
             //int total_rent = 0;
             foreach (Room item in r)
             {
                 room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
-
             }
 
             IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
             ViewData.Model = query;
+            ViewBag.keyword = keyword;
+            ViewBag.Cname = Cname;
             return PartialView("_BackPartialReturnRoomManage");
         }
       
-        public ActionResult BackPartialKeyWordResult(string keyword ,int page = 1, int pageSize = 10)
-        {
-            List<CRoomViewModel> room_VM_lt = new List<CRoomViewModel>();
-
-
-            var r = dbSA.Room.Where(x => x.RoomName.Contains(keyword)|| x.Lease.FirstOrDefault().tMember.fMemberName.Contains(keyword)).OrderBy(x=> x.RoomName);
-            var test = r.ToList();
-            foreach (Room item in r)
-            {
-                room_VM_lt.Add((new CRoomViewModel() { entity_room = item }));
-            }
-
-            IPagedList<CRoomViewModel> query = room_VM_lt.ToPagedList(page, pageSize);
-            ViewData.Model = query;
-            return PartialView("_BackPartialKeyWordResult");
-        }
-
 
         public ActionResult BackRoomDetail(string id)
         {
@@ -358,21 +317,32 @@ namespace tryTemplete_Room.Controllers
         }
 
 
-        public ActionResult BackPartialGotoLease(int page = 1, int pageSize = 10)
+        public ActionResult BackPartialGotoLease(int page = 1, int pageSize = 10, string keyword = null, string Cname = null, string Order = null)
         {
-            var table = from t in (new SingleApartmentEntities()).Lease select t;
+            IQueryable<Lease> table;
+            if (String.IsNullOrEmpty(keyword))
+                table = from t in (new SingleApartmentEntities()).Lease select t;
+            else
+                table = from t in (new SingleApartmentEntities()).Lease where t.Room.RoomName.Contains(keyword) select t;
 
-            List<CLeaseViewModel> lt_lease_lt = new List<CLeaseViewModel>();
+            if (!String.IsNullOrEmpty(Cname))
+                table = table.Where(r => r.MemberID != null && r.tMember.fMemberName.Contains(Cname));
+            if (!String.IsNullOrEmpty(Order)&& Order== "ExpiryDateD")
+                table = table.OrderByDescending(x => x.ExpiryDate);
+            else if (!String.IsNullOrEmpty(Order) && Order == "ExpiryDateA")
+                table = table.OrderBy(x => x.ExpiryDate);
+            List < CLeaseViewModel > lt_lease_lt = new List<CLeaseViewModel>();
             
             foreach (Lease item in table)
             {
                 lt_lease_lt.Add((new CLeaseViewModel() { entity_lease = item }));
                 
             }
-            
             IPagedList<CLeaseViewModel> query = lt_lease_lt.ToPagedList(page, pageSize);
             ViewData.Model = query;
-
+            ViewBag.keyword = keyword;
+            ViewBag.Cname = Cname;
+            ViewBag.Order = Order;
             return PartialView("_BackPartialGotoLease");
 
             #region total rent 
@@ -393,23 +363,6 @@ namespace tryTemplete_Room.Controllers
             //int personalrent = (int)(rent.FirstOrDefault()) * total;
             #endregion
             
-        }
-
-        public ActionResult BackPartialLeaseKeyword(string keyword, int page = 1, int pageSize = 10)
-        {
-            var table = from t in (new SingleApartmentEntities()).Lease.Where(x => x.Room.RoomName.Contains(keyword) || x.tMember.fMemberName.Contains(keyword) ) select t;
-
-            List<CLeaseViewModel> lt_lease_lt = new List<CLeaseViewModel>();
-
-            foreach (Lease item in table)
-            {
-                lt_lease_lt.Add((new CLeaseViewModel() { entity_lease = item }));
-            }
-
-            IPagedList<CLeaseViewModel> query = lt_lease_lt.ToPagedList(page, pageSize);
-            ViewData.Model = query;
-
-            return PartialView("_BackPartialLeaseKeyword");
         }
 
 

@@ -17,25 +17,25 @@
 <input id="id_read_yn" type="hidden" value="@ViewBag.Read_YN" />
 @*存放暫存資料*@
 
-<table class="alt table-hover">
+<table class="alt">
     <thead>
-        <tr>
-            <th style="font-size:unset">
+        <tr style="font-size:16px">
+            <th style="font-size:unset;width:100px">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().InformationID)
             </th>
-            <th style="font-size:unset">
+            <th style="font-size:unset;width:100px">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().InformationDate)
             </th>
-            <th style="font-size:unset">
+            <th style="font-size:unset;width:100px">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().InformationCategoryName)
             </th>
-            <th style="font-size:unset">
+            <th style="font-size:unset;width:100px">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().UserCategoryName)
             </th>
-            <th style="font-size:unset">
+            <th style="font-size:unset;width:100px">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().DocumentID)
             </th>
-            <th style="font-size:unset">
+            <th style="font-size:unset;width:100px">
                 優先等級
             </th>
             <th style="font-size:unset;text-align:right">
@@ -68,33 +68,33 @@
         //todo:ok 已讀則將此row的底色改為淺藍色
         if (item.Read_YN == "Y")
         {
-            strTR = "background-color:#EEF9FC";
+            strTR = "font-size:15px;background-color:#EEF9FC";
         }
         else
         {
-            strTR = "";
+            strTR = "font-size:15px;";
         }
     <tr style="@strTR">
-        <td width="80">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => item.InformationID)
         </td>
-        <td>
+        <td style="width:100px">
             @item.InformationDate.ToString("yyyy/MM/dd")
             @*@Html.DisplayFor(modelItem => item.InformationDate)*@
         </td>
-        <td width="78">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => item.InformationCategoryName)
         </td>
-        <td width="78">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => item.UserCategoryName)  
         </td>
-        <td width="78">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => item.DocumentID)
         </td>
-        <td width="78">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => strPriority)
         </td>
-        <td width="220">
+        <td>
             @*;background-color:transparent;color:#428bca;*@
             <button onclick="showTable(this,'@item.InformationContent', @item.InformationID, '@item.InformationSourceName')" class="btn" style="height:unset;background-color:#8ddd59" flag="true">訊息</button> |
             @*@Html.ActionLink("刪除", "Delete", new { id = item.InformationID }, new { @class = "btn btn-info", onclick = "updateDeleteMsg(" + item.InformationID + ");" })*@

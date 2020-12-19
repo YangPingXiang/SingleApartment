@@ -8,6 +8,7 @@ using sln_SingleApartment.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using CaptchaMvc.HtmlHelpers;
+using Newtonsoft.Json.Linq;
 
 namespace sln_SingleApartment.Controllers
 {
@@ -19,7 +20,7 @@ namespace sln_SingleApartment.Controllers
         public ActionResult List()
         {
             var table = from p in db.tMember
-                        orderby p.fLeave
+                        //orderby p.fLeave
                         select p;
             //List<CMemberRegister> list = new List<CMemberRegister>();
             //foreach (tMember p in table)
@@ -91,21 +92,25 @@ namespace sln_SingleApartment.Controllers
         public ActionResult LogIn(CLogIn login, FormCollection form)
         {
 
-            if (!this.IsCaptchaValid(""))
-            {
-                ViewBag.ErrorMessage = "會不會算數?";
-                return View("LogIn", login);
-            }
+            //if (!this.IsCaptchaValid(""))
+            //{
+            //    ViewBag.ErrorMessage = "會不會算數?";
+            //    return View("LogIn", login);
+            //}
 
             login.txtAccount = Request.Form["txtaccount"];
             login.txtPassword = Request.Form["txtpwd"];
             CMember cm = (new CMember_Factory()).isAuthticated(login.txtAccount, login.txtPassword);
-            var isVerify = new GoogleReCaptcha().GetCaptchaResponse(form["g-recaptcha-response"]);
+            var client = new System.Net.WebClient();
+            var s = form["g-recaptcha-response"];
+            var googleReply = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", "6Lc0YQwaAAAAADHlm1si34fV_VD70AEuEN-4-A8j", s));
+            dynamic Json = JObject.Parse(googleReply);
+            var isVerify = Json.success;
 
 
             if (cm != null)
             {
-                if (isVerify)
+                if (isVerify=="false")
                 {
                     ViewBag.ErrorMessage = "證明你是人類";
                     return View("LogIn", login);
@@ -236,13 +241,13 @@ namespace sln_SingleApartment.Controllers
             c.fRoomId = table.fRoomId;
             c.fPhone = table.fPhone;
             c.fAge = table.fAge;
-            c.fSex = table.fSex;
-            c.fBirthDate = table.fBirthDate;
+            //c.fSex = table.fSex;
+            //c.fBirthDate = table.fBirthDate;
             c.fSalary = table.fSalary;
             c.fCareer = table.fCareer;
             c.fImage = table.fImage;
             c.fLeave = table.fLeave;
-            c.fRole = table.fRole;
+            //c.fRole = table.fRole;
             return View(c);
         }
 
@@ -270,8 +275,8 @@ namespace sln_SingleApartment.Controllers
                 table.fRoomId = cm.fRoomId;
                 table.fPhone = cm.fPhone;
                 table.fAge = cm.fAge;
-                table.fSex = cm.fSex;
-                table.fBirthDate = cm.fBirthDate;
+                //table.fSex = cm.fSex;
+                //table.fBirthDate = cm.fBirthDate;
                 table.fSalary = cm.fSalary;
                 table.fCareer = cm.fCareer;
                 if (cm.fImage != null)
@@ -279,7 +284,7 @@ namespace sln_SingleApartment.Controllers
                     table.fImage = cm.fImage;
                 }
                 table.fLeave = cm.fLeave;
-                table.fRole = cm.fRole;
+                //table.fRole = cm.fRole;
                 //-------------------------------------
                 db.SaveChanges();
 
@@ -317,17 +322,37 @@ namespace sln_SingleApartment.Controllers
             }
 
             //Activity
-            var ta = db.Activity.Where(a => a.MemberID == me.fMemberId).ToList();
-            //var z = db.Activity.Where(a => a.MemberID == me.fMemberId).FirstOrDefault();
-            
 
-            List<Activity> activities = new List<Activity>();
-            foreach(var ac in ta)
-            {
-                activities.Add(ac);
-                
-            }
-            cm.atv = activities;
+            //var z = db.Activity.Where(a => a.MemberID == me.fMemberId).FirstOrDefault();
+            var ta = db.Activity.Where(a => a.MemberID == me.fMemberId).ToList();
+            //var ta = (from p in db.Activity
+            //          from m in db.Participant
+            //          where p.ActivityID == m.ActivityID && m.MemberID == me.fMemberId
+            //          select p).ToList();
+
+            //var ta1 =db.Activity.Where(p=> p.MemberID == me.fMemberId).ToList();
+
+            var ta2 = (from m in db.Participant
+                       where m.MemberID == me.fMemberId
+                       select m).ToList();
+
+            //List<Participant> pa = new List<Participant>();
+            //foreach(var i in ta)
+            //{
+            //    var p = db.Participant.Where(s => s.ActivityID == i.ActivityID).ToList();
+            //    if (p != null)
+            //    {
+            //        foreach(var v in p)
+            //        {
+            //            pa.Add(v);
+            //        }
+            //    }
+            //    //activities.Add(ac);
+
+            //}
+
+            cm.part = ta2;
+
 
             List<Product> products = new List<Product>();
             foreach (var i  in ta)

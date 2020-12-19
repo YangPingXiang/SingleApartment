@@ -11,8 +11,8 @@
 
     <div style=" margin:50px 80px 50px 80px; padding:40px;">
         <div style="float:left;">
-            <div style="float:left;width:70px; margin-top:75px;">
-                
+            <div id="categorybtns" style="float:left;width:70px; margin-top:75px;">
+
                 <button id="btnCheckRoom" type="button" class="btn btn-group" style="margin-bottom:10px;">
                     房間總表
                 </button>
@@ -22,216 +22,156 @@
                 <button id="btnCheckRoomtype" type="button" class="btn btn-group" style="margin-bottom:10px;">
                     房型總表
                 </button>
-                
+
             </div>
 
         </div>
-        <div id="abttables">
-
-        </div>
-        <div id="backorigin">
-
-        </div>
-        <div id="origintable">
-            <!--如果有時間 做關鍵字的Partial View -->
+        <div>
             <div style="margin-left:250px; margin-bottom:50px; width:1000px;   padding-bottom:20px; ">
                 <h2 style="margin-bottom:35px; text-align:center; ">查詢條件</h2>
                 <h3 style="color:#1170b6; margin-left:60px;">以下條件擇一即可</h3>
-                <span style="margin-left:60px; font-weight:500;">建案代號</span>
-                @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_b", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+                <span style="margin-left:60px; font-weight:500;">房間名稱</span>
+                @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_b", style = "display:inline;width:150px;line-height:3em;height:3em;margin-left:15px;" })
 
-                <span style=" margin-left:15px; font-weight:500;"> 房號</span>
-                @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_r", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
+
 
                 <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
                 @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_mn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-                @*<select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:40px; font-weight:500;width:200px;  ">
+                <select id="txtQueryType" style="display:inline;line-height:3em;height:3em; float:right; margin-right:40px; font-weight:500;width:200px;  ">
 
                     <option value="999">選擇查詢方式...</option>
                     <option value="100">依建案分類</option>
                     <option value="200">依樓層分類</option>
                     <option value="400">依房型類型內容分類</option>
 
-                </select>*@
-                @*<div style="margin-left:150px;">
-                    <button id="btnAdd" type="button" class="btn btn-info" style="margin-top:20px; height:50px;">
-                        新增房間
-                    </button>
-                </div>*@
+                </select>
+
 
             </div>
-
-
-
-            <div id="keyresult">
-
-            </div>
-
-
-            <table id="abtroomtable" style="width:1200px; margin:10px auto; padding:10px;  ">
-                <tr style="text-align:center; font-size:20px; line-height:2; ">
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.roomname)
-                    </th>
-
-                    <th>
-                        房客姓名
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.roomtype)
-                    </th>
-                    <th>
-                        房間風格
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.rent)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.squarefootage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.floor)
-                    </th>
-                    <th>Information</th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
-                    <tr style="font-size:18px; font-weight:400;">
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.roomname)
-                        </td>
-
-
-                        <td>
-                            @foreach (var i in item.entity_room.Lease)
-                            {
-                                @Html.DisplayFor(modelItem => i.tMember.fMemberName)
-                                <br>
-                            }
-
-
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.roomtype)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
-                        </td>
-
-                        <td>
-                            NT @Html.DisplayFor(modelItem => item.rent)
-
-
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.squarefootage)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.floor)
-                        </td>
-                        <td>
-                            @*@Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |*@
-                            @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary", style = "background-color:#5bc0de; border-color:#5bc0de;" })
-                            @*| @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })*@
-                        </td>
-                    </tr>
-                }
-
-            </table>
-            <div id="abtroomtable_pagelist" style="float:inherit; margin-left:480px;">
-                @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-            </div>
-
         </div>
+
+        <div id="myContainer"></div>
+        <div id="abttables"></div>
+        <div id="roomstylelist"></div>
     </div>
 
     <script>
-        function SearchLeaseByKeyword(keyword) {
+
+        $(function () {
+            $('#abttables').hide(); $('#roomstylelist').hide();
+            //載入第一塊
             $.ajax({
-                url: "@Url.Action("BackPartialLeaseKeyword")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
+                url: "@Url.Action("BackPartialReturnRoomManage")",
+                dataType: "html",
+                success: function (data) {
+                    $('#myContainer').html(data);
+                }
             })
-        }
-
-        function SearchRoomByRoomName(keyword) {
+            //載入第二塊
             $.ajax({
-                url: "@Url.Action("BackPartialKeyWordResult")",
-                data: { keyword: keyword },
-                success: function (data) { $("#keyresult").html(data) }
+                url: "@Url.Action("BackPartialGotoLease")",
+                dataType: "html",
+                success: function (data) {
+                    $('#abttables').html(data);
+                }
             })
-        }
-        $(document).ready(function () {
-            
-            $('.txtkeybox').on("keydown", function (event) {
-                if (event.key === "Enter") {
-                    let k = $("#txtkeybox_b").val() + $("#txtkeybox_r").val() + $("#txtkeybox_mn").val();
-                    console.log( 'key down')
-                    console.log(k);
-                    SearchRoomByRoomName(k);
-                    $("#abtroomtable").fadeOut();
-                    $("#abtroomtable_pagelist").fadeOut();
-                } // Handle press
+            //載入第三塊
+            $.ajax({
+                url: "@Url.Action("BackPartialGOtoRoomstyle")",
+                dataType: "html",
+                success: function (data) {
+                    $('#roomstylelist').html(data);
+                }
+             })
 
-            })
-
-            $('#abtroomtable').on("click", ".btn-danger", function () {
-                $(this).parents("tr").remove();
-            });
-
-            $('#btnAdd').click(function () {
-                $('table').append("<tr><td>new</td><td>new</td><td>new</td><td>new</td><td>new</td><td>new</td><td><a href='#' class='btn btn-info'>編輯</a><a href='#' class='btn btn-primary' style='margin-left:20px;'>詳細資料</a><a href='#' class='btn btn-danger' style='margin-left:20px;'>刪除</a></td></tr>");
-            });
-
+            //=====切換顯示範圍======
             $('#btnCheckLease').on("click", function () {
-                console.log("DDDD")
-                $.ajax({
-                    url: "@Url.Action("BackPartialGotoLease")",
-                    dataType: "html",
-                    success: function (data) {
-                        
-                        $('#origintable').fadeOut();
-                        $('#abttables').html(data);
-                        //$('#abttables').fadeIn();
-                    }
-                })
-            })
-
+                $('#myContainer').fadeOut();
+                $('#roomstylelist').fadeOut();
+                $('#abttables').fadeIn();
+            });
             $('#btnCheckRoomtype').on("click", function () {
-                console.log("AA")
-                $.ajax({
-                    url: "@Url.Action("BackPartialGOtoRoomstyle")",
-                    dataType: "html",
-                    success: function (data) {
-                        $('#origintable').fadeOut();
-                        $('#abttables').fadeIn().html(data);
-                    }
-                })
-
+                $('#myContainer').fadeOut();
+                $('#abttables').fadeOut();
+                $('#roomstylelist').fadeIn();
             })
-
             $('#btnCheckRoom').on("click", function () {
-             
-                $.ajax({
-                    url: "@Url.Action("BackPartialReturnRoomManage")",
-                    dataType: "html",
-                    success: function (data) {
-                        $('#abttables').fadeOut();
-                        $('#origintable').fadeOut();
-                        $('#backorigin').fadeIn().html(data);
-                    }
-                })
+                $('#roomstylelist').fadeOut();
+                $('#abttables').fadeOut();
+                $('#myContainer').fadeIn();
             })
+            //=====切換顯示範圍======
+
+
+            $('h2').css({
+                "margin-bottom": "35px",
+                "margin-left": "60px"
+            })
+
+            $('h3').css({
+                "color": "#1170b6",
+                "margin-left": "60px"
+            })
+
+            $('table').css({
+                "width": "1100px",
+                "margin": "0px auto",
+                "margin-left": "310px",
+                "padding": "10px",
+                "text-algin": "center"
+            })
+
+            $('#categorybtns').css({
+                "float": "left",
+                "width": "70px",
+                "margin-top": "75px",
+                "margin-left": "78px"
+            })
+
+
         });
 
 
     </script>
+    <input type="hidden" value="" id="OrderCondition">
+    <script>
+            function SearchLeaseByKeyword(keyword, Cname) {
+                let odCondition = $('#OrderCondition').val();
+                console.log("Infunciton");
+                console.log(odCondition);
+                $.ajax({
+                    url: "@Url.Action("BackPartialGotoLease")",
+                    dataType: "html",
+                    data: { keyword: keyword, Cname: Cname, Order: odCondition },
+                    success: function (data) {
+                        $('#abttables').html(data);
+                        $('#Myicon').html($('#OrderCondition').val() == "ExpiryDateD" ? '<i class="fa fa-angle-down" width="40"></i>' : '<i class="fa fa-angle-up" width="40"></i>');
+                    }
+                })
 
+            }
+            function SearchRoomByKeyword(keyword , Cname) {
+                $.ajax({
+                    url: "@Url.Action("BackPartialReturnRoomManage")",
+                    dataType: "html",
+                    data: { keyword: keyword, Cname: Cname },
+                    success: function (data) {
+                    $('#myContainer').html(data);
+                }
+            })
+            }
+            $(function () {
+                $('.txtkeybox').on("keydown", function (event) {
+                    if (event.key === "Enter") {
+                        let k = $("#txtkeybox_b").val();
+                        let n = $("#txtkeybox_mn").val();
+                        SearchRoomByKeyword(k,n);
+                        SearchLeaseByKeyword(k,n);
+
+                    }
+                })
+            })
+
+    </script>
 </body>
