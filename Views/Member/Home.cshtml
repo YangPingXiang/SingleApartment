@@ -5,15 +5,25 @@
     CMember db = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
     if (db != null)
     {
+<head>
+    <style>
+        p {
+            font-family: 'Adobe Fan Heiti Std';
+        }
 
+        #banner {
+            padding: 14em 0 14em 0;
+        }
+    </style>
+</head>
 <body>
     <!-- Banner -->
     <section id="banner">
         <div class="content">
             <h1>@db.fMemberName，歡迎來到窩居</h1>
-            <p>我們希望這裡成為所有人心目中的理想國</p>
+            <p>我 們 希 望 這 裡 成 為 所 有 人 心 目 中 的 理 想 國 度</p>
             <ul class="actions">
-                <li><a href="#one" class="button scrolly">我們的服務</a></li>
+                <li><a href="#one" class="button scrolly" style="font-family: 'Adobe Fan Heiti Std';">我 們 的 服 務</a></li>
             </ul>
         </div>
     </section>
@@ -57,7 +67,7 @@
                     "希望每個找不到歸屬感、迷失自我的人<br />都能在窩居找到家的感覺"
                 </blockquote>
                 <footer>
-                    <cite class="author">吳哥哭</cite>
+                    <cite class="author">吳哥</cite>
                     <cite class="company">CEO, 窩居</cite>
                 </footer>
             </figure>
@@ -112,15 +122,15 @@
             var el = document.getElementById("isAdmin");
             if (role == "Admin") {
                 el.innerHTML =
-                    '<li><a href="#">首頁</a></li>' +
-                    '<li>@Html.ActionLink("房間管理" , "BackRoomManage" , "RoomBackend") </li>' +
-                    '<li>@Html.ActionLink("商品管理", "ProductList", "ProductBack")</li>' +
-                    '<li>@Html.ActionLink("訂單管理", "BackupOrderList", "ProductBack")</li>' +
-                    '<li>@Html.ActionLink("訊息管理", "BackList", "BackInformation")</li>' +
-                    '<li>@Html.ActionLink("活動管理", "Back_List", "Activity")</li>' +
-                    '<li>@Html.ActionLink("會員管理", "List", "Member")</li >' +
-                    '<li>@Html.ActionLink("數據分析", "PowerBI", "Activity")</li >' +
-                    '<li>@Html.ActionLink("窩居留言板", "MessageList", "MailMessage")</li>';
+                   '<li><a href="#">首 頁</a></li>' +
+                    '<li>@Html.ActionLink("房 間 管 理" , "BackRoomManage" , "RoomBackend") </li>' +
+                    '<li>@Html.ActionLink("商 品 管 理", "ProductList", "ProductBack")</li>' +
+                    '<li>@Html.ActionLink("訂 單 管 理", "BackupOrderList", "ProductBack")</li>' +
+                    '<li>@Html.ActionLink("訊 息 管 理", "BackList", "BackInformation")</li>' +
+                    '<li>@Html.ActionLink("活 動 管 理", "Back_List", "Activity")</li>' +
+                    '<li>@Html.ActionLink("會 員 管 理", "List", "Member")</li >' +
+                    '<li>@Html.ActionLink("數 據 分 析", "PowerBI", "Activity")</li >' +
+                    '<li>@Html.ActionLink("窩 居 留 言 板", "MessageList", "MailMessage")</li>';
             }
         });
     </script>
