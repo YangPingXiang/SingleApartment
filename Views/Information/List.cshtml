@@ -21,203 +21,269 @@
     .button_style {
         height: unset;
         background-color: transparent;
-        color: #428bca
+        color: #428bca;
+        font-size: 15px;
     }
 </style>
 
 <!-- Header -->
 <!-- Menu -->
 <!-- Main -->
-<section id="main" class="wrapper" style="padding:1.5em">
+<section id="main" class="wrapper" style="padding:1em">
     <!--style="border:solid 1px;border-color:black"-->
-    <div class="inner">
-        <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">我的訊息中心</h1>
-            @*<div id="timer"></div>*@
-        </header>
-        @*=================================================================*@
-        <p>
+    @*<div class="inner">*@
+    <header class="align-center">
+        <h1 style="font-size:2em;font-weight:700;line-height:1.3">我的訊息中心</h1>
+        @*<div id="timer"></div>*@
+    </header>
+    @*=================================================================*@
+    <p>
 
-        </p>
-        @*=================================================================*@
-        @*<h4>Alternate</h4>*@
-        @*<table class="alt" style="width:100%;">
-                <tr style="background-color:unset;">
-                    <td style="border-style:none;">
-                        <a id="id_type1" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">系統分類</a>
-                    </td>
-                    <td style="border-style:none;">
-                        <a id="id_type2" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">訊息內容分類</a>
-                    </td>
-                    <td style="border-style:none;">
-                        <a id="id_type3" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">關鍵字</a>
-                    </td>
-                    <td style="border-style:none;">
-                        <a id="id_type4" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">個人分類</a>
-                    </td>
-                </tr>
-            </table>*@
+    </p>
+    @*=================================================================*@
+    @*<h4>Alternate</h4>*@
+    @*<table class="alt" style="width:100%;">
+            <tr style="background-color:unset;">
+                <td style="border-style:none;">
+                    <a id="id_type1" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">系統分類</a>
+                </td>
+                <td style="border-style:none;">
+                    <a id="id_type2" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">訊息內容分類</a>
+                </td>
+                <td style="border-style:none;">
+                    <a id="id_type3" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">關鍵字</a>
+                </td>
+                <td style="border-style:none;">
+                    <a id="id_type4" class="btn" style="font-size:16px" onclick="queryData('Low','Null','999','N');">個人分類</a>
+                </td>
+            </tr>
+        </table>*@
 
-        <div class="row" style="margin-bottom:25px;margin-top:25px;margin-left:1px">
-            <div class="col">
-                <h4>進階查詢：</h4>
-            </div>
-            <div class="col">
-                <button id="id_type2" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('2');">優先等級</button>
-            </div>
-            <div class="col">
-                <button id="id_type3" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('3');">系統分類</button>
-            </div>
-            <div class="col">
-                <button id="id_type4" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('4');">訊息內容分類</button>
-            </div>
-            <div class="col">
-                <button id="id_type5" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('5');">關鍵字</button>
-            </div>
-            <div class="col">
-                <button id="id_type6" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('6');">個人分類</button>
-            </div>
-            <div class="col">
-                <button id="id_type1" class="btn button_style" style="font-size: 15px;" onclick="showTypeDiv('1');">已讀/未讀</button>
-            </div>
-            <div class="col">
-                <button id="id_thisNotify" onclick="queryData('ALL','N','500','N');" class="btn btn-info" style="height:unset;background-color:transparent;color:#428bca">新活動通知</button>
-            </div>
+    <div class="row" style="width:1100px;margin:auto;margin-bottom:25px;margin-top:25px;">
+        <div class="col">
+            <h4 style="margin-left:0.75em">進階查詢：</h4>
         </div>
+        <div class="col">
+            <button id="id_type1" class="btn button_style" style="font-size: 16px;margin-left:35px" onclick="showTypeDiv('1');">已讀/未讀</button>
+        </div>
+        <div class="col">
+            <button id="id_type2" class="btn button_style" style="font-size: 16px;" onclick="showTypeDiv('2');">優先等級</button>
+        </div>
+        <div class="col">
+            <button id="id_type3" class="btn button_style" style="font-size: 16px;" onclick="showTypeDiv('3');">系統分類</button>
+        </div>
+        <div class="col">
+            <button id="id_type4" class="btn button_style" style="font-size: 16px;" onclick="showTypeDiv('4');">訊息內容分類</button>
+        </div>
+        <div class="col">
+            <button id="id_type5" class="btn button_style" style="font-size: 16px;" onclick="showTypeDiv('5');">關鍵字</button>
+        </div>
+        <div class="col">
+            <button id="id_type6" class="btn button_style" style="font-size: 16px;" onclick="showTypeDiv('6');">個人分類</button>
+        </div>
+        <div class="col">
+            <button id="id_type7" onclick="showTypeDiv('7');" class="btn btn-info" style="font-size:16px;height:unset;background-color:transparent;color:#428bca">新活動通知</button>
+        </div>
+    </div>
 
-        <div class="row" style="margin-top:0px;margin-bottom:20px;" hidden="hidden">
-            @*style="border: 2px green solid"*@
-            <div class="col" style="width:160px" hidden="hidden">
-                <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
-                    >
-                    <option value="999">選擇查詢方式</option>
-                    <option value="100">1.依系統分類</option>
-                    <option value="200">2.依個人分類</option>
-                    <option value="400">3.依訊息內容分類</option>
-                    <option value="300">4.依關鍵字</option>
-                    <option value="500">5.依當日新訊息</option>
-                </select>
-            </div>
-            <div class="col" hidden="hidden">
-                <span style="font-weight:500">1.系統分類:</span>
-                @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
-                <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
-            </div>
-            <div class="col" hidden="hidden">
-                @*<span style="font-weight:500">2.個人分類:</span>
+    <div class="row" style="margin-top:0px;margin-bottom:20px;" hidden="hidden">
+        @*style="border: 2px green solid"*@
+        <div class="col" style="width:160px" hidden="hidden">
+            <select id="txtQueryType" style="display:inline;line-height:3em;height:3em">
+                >
+                <option value="999">選擇查詢方式</option>
+                <option value="100">1.依系統分類</option>
+                <option value="200">2.依個人分類</option>
+                <option value="400">3.依訊息內容分類</option>
+                <option value="300">4.依關鍵字</option>
+                <option value="500">5.依當日新訊息</option>
+            </select>
+        </div>
+        <div class="col" hidden="hidden">
+            <span style="font-weight:500">1.系統分類:</span>
+            @*@Html.DropDownList("txtInfoClass", (IEnumerable<SelectListItem>)ViewBag.InforListItem, new { onchange = "select_change();", style = "display:inline;width:250px;line-height:3em;height:3em" })*@
+            <select id="txtSystemCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+        </div>
+        <div class="col" hidden="hidden">
+            @*<span style="font-weight:500">2.個人分類:</span>
                 <select id="txtUserCategory" style="display:inline;width:150px;line-height:3em;height:3em"></select>
                 @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })*@
-            </div>
+        </div>
 
-            @*</div>*@
-            @*<div class="row" style="margin-bottom:15px;margin-top:10px">*@
-            <div class="col" style="margin-left:160px" hidden="hidden">
-                <span style="font-weight:500">3.訊息內容分類:</span>
-                <select id="txtInfoContent" style="display:inline;width:150px;line-height:3em;height:3em"></select>
-            </div>
-            <div class="col">
-                @*<span style="font-weight:500">4.關鍵字: </span>*@
-                @*@Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
+        @*</div>*@
+        @*<div class="row" style="margin-bottom:15px;margin-top:10px">*@
+        <div class="col" style="margin-left:160px" hidden="hidden">
+            <span style="font-weight:500">3.訊息內容分類:</span>
+            <select id="txtInfoContent" style="display:inline;width:150px;line-height:3em;height:3em"></select>
+        </div>
+        <div class="col">
+            @*<span style="font-weight:500">4.關鍵字: </span>*@
+            @*@Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
                 <button onclick="multiQueryData();" class="btn btn-info" style="height:unset;">查詢</button>*@
+        </div>
+    </div>
+    <div class="row" style="width:1100px;margin:0 auto;">
+        @*style="border:2px #46b8da solid;width:150px;border-radius:20px"*@
+        @*=動態區塊2 優先等級======================================================*@
+        <div id="id_divAdvance2" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">優先等級</div>
+            <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
+            <div>
+                <button class="btn button_style" onclick="queryData('High','Null','999','N');">高</button>
+            </div>
+            <div>
+                <button class="btn button_style" onclick="queryData('Normal','Null','999','N');">中</button>
+            </div>
+            <div>
+                <button class="btn button_style" onclick="queryData('Low','Null','999','N');">低</button>
             </div>
         </div>
-        <div class="row">
-            @*style="border:2px #46b8da solid;width:150px;border-radius:20px"*@
-            @*=動態區塊2 優先等級======================================================*@
-            <div id="id_divAdvance2" hidden="hidden" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">優先等級</div>
-                <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
-                <div>
-                    <button class="btn button_style" onclick="queryData('High','Null','999','N');">高</button>
-                </div>
-                <div>
-                    <button class="btn button_style" onclick="queryData('Normal','Null','999','N');">中</button>
-                </div>
-                <div>
-                    <button class="btn button_style" onclick="queryData('Low','Null','999','N');">低</button>
-                </div>
+        @*=動態區塊2 優先等級======================================================*@
+
+        @*=動態區塊1 已讀/未讀======================================================*@
+        <div id="id_divAdvance1" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">已讀/未讀</div>
+            <button id="AA900" class="btn button_style" onclick="clickReadYN_ALL();">全部</button>
+            <div>
+                <button id="AA100" class="btn button_style" onclick="clickReadYN_Y();">已讀</button>
             </div>
-            @*=動態區塊2 優先等級======================================================*@
-            @*=動態區塊1 已讀/未讀======================================================*@
-            <div id="id_divAdvance1" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">已讀/未讀</div>
-                <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
-                <div>
-                    <button class="btn button_style" onclick="queryData('Null','Y','999','N');">已讀</button>
-                </div>
-                <div>
-                    <button class="btn button_style" onclick="queryData('Null','N','999','N');">未讀</button>
-                </div>
+            <div>
+                <button id="AA200" class="btn button_style" onclick="clickReadYN_N();">未讀</button>
             </div>
-            @*=動態區塊1 已讀/未讀======================================================*@
-            @*=動態區塊3 系統分類======================================================*@
-            <div id="id_divAdvance3" hidden="hidden" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">系統分類</div>
-                <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
-                <div>
-                    <button class="btn button_style" onclick="two_multiQueryData('100','100');">產品類</button>
-                </div>
+        </div>
+        @*=動態區塊1 已讀/未讀======================================================*@
+        @*=動態區塊3 系統分類======================================================*@
+        <div id="id_divAdvance3" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">系統分類</div>
+            <button class="btn button_style" style="margin-left:0" onclick="queryData('ALL','N','999','N')">全部</button>
+            <div>
+                <button class="btn button_style" onclick="two_multiQueryData('100','100');">產品類</button>
+            </div>
+            <div>
                 <button class="btn button_style" onclick="two_multiQueryData('100','200');">活動類</button>
+            </div>
+            <div>
                 <button class="btn button_style" onclick="two_multiQueryData('100','300');">團購類</button>
+            </div>
+            <div>
                 <button class="btn button_style" onclick="two_multiQueryData('100','400');">其他類</button>
             </div>
-            @*=動態區塊3 系統分類======================================================*@
+        </div>
+        @*=動態區塊3 系統分類======================================================*@
 
-            @*=動態區塊4 訊息內容分類==================================================*@
-            <div id="id_divAdvance4" hidden="hidden" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息內容分類</div>
-                <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','20010');">新活動上架</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','20030');">發起新活動完成</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','20040');">有新活動可以參加</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','30010');">商品訂單成立</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','30020');">商品訂單取消</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','40010');">關注房加入我的最愛</button>
-                <button class="btn button_style" onclick="two_multiQueryData('400','40020');">訂房成功</button>
-                @*<button class="btn button_style" onclick="two_multiQueryData('400','40010');">付款通知</button>*@
+        @*=動態區塊4 訊息內容分類==================================================*@
+        <div id="id_divAdvance4" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息內容分類</div>
+            <button id="A90000" class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
+            <div>
+                <button id="A20010" class="btn button_style" onclick="two_multiQueryData('400','20010');">新活動上架</button>
             </div>
-            @*=動態區塊4 訊息內容分類==================================================*@
-
-            @*=動態區塊5 關鍵字========================================================*@
-            <div id="id_divAdvance5" hidden="hidden" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">關鍵字</div>
-                <div>
-                    @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
-                </div>
-                <br />
-                <div>
-                    <button onclick="two_multiQueryData('300','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
-                </div>
+            <div>
+                <button id="A20030" class="btn button_style" onclick="two_multiQueryData('400','20030');">發起新活動完成</button>
             </div>
-            @*=動態區塊5 關鍵字========================================================*@
-
-            @*=動態區塊6 個人分類======================================================*@
-            <div id="id_divAdvance6" hidden="hidden" style="width:150px;">
-                <div style="color:#727a82;font-size:1em;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">個人分類</div>
-                <div>
-                    <select id="txtUserCategory" style="display:inline;line-height:3em;height:3em"></select>                    
-                </div>
-                <br />
-                <div>
-                    <button onclick="two_multiQueryData('200','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
-                </div>
-                <br />
-                <div>
-                    @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
-                </div>
+            <div>
+                <button id="A20040" class="btn button_style" onclick="two_multiQueryData('400','20040');">有新活動可以參加</button>
             </div>
-            @*=動態區塊6 個人分類======================================================*@
-            <div style="width:770px">
-                <div id="container" class="table-wrapper">
-                    @*要分頁的table*@
-                    @*要分頁的table*@
-                    @*要分頁的table*@
-                </div>
+            <div>
+                <button id="A30010" class="btn button_style" onclick="two_multiQueryData('400','30010');">商品訂單成立</button>
+            </div>
+            <div>
+                <button id="A30020" class="btn button_style" onclick="two_multiQueryData('400','30020');">商品訂單取消</button>
+            </div>
+            <div>
+                <button id="A40010" class="btn button_style" onclick="two_multiQueryData('400','40010');">關注房加入最愛</button>
+            </div>
+            <div>
+                <button id="A40020" class="btn button_style" onclick="two_multiQueryData('400','40020');">訂房成功</button>
+            </div>
+            <div>
+                <button id="A40030" class="btn button_style" onclick="two_multiQueryData('400','40030');">訂房取消</button>
+            </div>
+            <div>
+                <button id="A40040" class="btn button_style" onclick="two_multiQueryData('400','40040');">空房通知</button>
             </div>
         </div>
-        @*=================================================================*@
-        @*<p> Aenean iaculis, neque sed preti</p>*@
+        @*=動態區塊4 訊息內容分類==================================================*@
+
+        @*=動態區塊5 關鍵字========================================================*@
+        <div id="id_divAdvance5" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">關鍵字</div>
+            <div style="padding-left:0.75em">
+                @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
+            </div>
+            <br />
+            <div style="padding-left:0.75em">
+                <button onclick="two_multiQueryData('300','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
+            </div>
+        </div>
+        @*=動態區塊5 關鍵字========================================================*@
+
+        @*=動態區塊6 個人分類======================================================*@
+        <div id="id_divAdvance6" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">個人分類</div>
+            <div style="padding-left:0.75em">
+                <select id="txtUserCategory" onchange="two_multiQueryData('200','XXXXX');" style="display:inline;line-height:3em;height:3em"></select>
+            </div>
+            <br />
+            <div style="padding-left:0.75em" hidden="hidden" >
+                <button onclick="two_multiQueryData('200','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
+            </div>
+            <br />
+            <div style="padding-left:0.75em">
+                @Html.ActionLink("新增個人分類", "UserCategoryList", null, new { @class = "btn btn-info" })
+            </div>
+        </div>
+        @*=動態區塊6 個人分類======================================================*@
+
+        @*=動態區塊7 最新消息+訊息內容分類==================================================*@
+        <div id="id_divAdvance7" hidden="hidden" style="width:170px;">
+            <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">最新訊息</div>
+            <button id="N90000" class="btn button_style" onclick="queryData('ALL','N','500','N');">全部</button>
+            <div>
+                <button id="N20010" class="btn button_style" onclick="two_multiQueryData('500','20010');">新活動上架</button>
+            </div>
+            <div>
+                <button id="N20030" class="btn button_style" onclick="two_multiQueryData('500','20030');">發起新活動完成</button>
+            </div>
+            <div>
+                <button id="N20040" class="btn button_style" onclick="two_multiQueryData('500','20040');">有新活動可以參加</button>
+            </div>
+            <div>
+                <button id="N30010" class="btn button_style" onclick="two_multiQueryData('500','30010');">商品訂單成立</button>
+            </div>
+            <div>
+                <button id="N30020" class="btn button_style" onclick="two_multiQueryData('500','30020');">商品訂單取消</button>
+            </div>
+            <div>
+                <button id="N40010" class="btn button_style" onclick="two_multiQueryData('500','40010');">關注房加入最愛</button>
+            </div>
+            <div>
+                <button id="N40020" class="btn button_style" onclick="two_multiQueryData('500','40020');">訂房成功</button>
+            </div>
+            <div>
+                <button id="N40030" class="btn button_style" onclick="two_multiQueryData('500','40030');">訂房取消</button>
+            </div>
+            <div>
+                <button id="N40040" class="btn button_style" onclick="two_multiQueryData('500','40040');">空房通知</button>
+            </div>
+        </div>
+
+        <div id="id_divAdvance8" style="width:170px;color:white">
+            空白區塊
+        </div>
+        @*=動態區塊7 最新消息+訊息內容分類==================================================*@
+
+        <div style="width:900px">
+            <div id="container" class="table-wrapper">
+                @*要分頁的table*@
+                @*要分頁的table*@
+                @*要分頁的table*@
+            </div>
+        </div>
     </div>
+    @*=================================================================*@
+    @*<p> Aenean iaculis, neque sed preti</p>*@
+    @*</div>*@
 </section>
 
 <!-- Footer -->
@@ -226,7 +292,7 @@
         //$(function () {
         //    console.log("onload = "+$("#id_priority").val());
         //})
-        
+
         function two_multiQueryData(f_type, f_data) {
             //console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
             //console.log("txtKeyword=" + $("#txtKeyword").val());
@@ -250,7 +316,7 @@
             }
             else if (f_type == "500") {
                 //5.依當日新訊息
-                f_data = "OK";
+                //f_data = "OK";
             }
 
             //重新查詢
@@ -264,6 +330,7 @@
         //    <option value="300">關鍵字</option>
         //    <option value="400">訊息內容分類</option>
         //    <option value="500">當日新訊息</option>
+        //no use
         function multiQueryData() {
             //console.log("txtSystemCategory=" + $("#txtSystemCategory").val());
             //console.log("txtKeyword=" + $("#txtKeyword").val());
@@ -369,11 +436,12 @@
             //$("tr").after("<u>Hello</u>")   //ok的語法
             //$(this).parents("tr").after("<u>Hello</u>") //ok的語法
 
-            var str_f = "<tr><td rowspan='2'>訊息內容</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
+            var str_f = "<tr style='font-size:15px'><td rowspan='2'>訊息內容</td><td colspan='5' rowspan='2'>" + p_message + "</td>" +
                 "<td class='td_id'>訊息內容分類</td></tr>" +
-                "<tr><td>" + p_source + "<button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
+                "<tr style='font-size:15px'><td>" + p_source + "<button onclick='removeTr(this)' hidden style='font-weight:bold;height:unset;border-color:transparent;background-color:transparent;color:#5bc0de'>收合</button>" +
                 "</td ></tr >";
-            console.log(str_f);
+
+            //console.log(str_f);
             //$(obj).attr('disabled', true);    //失效
             //console.log('修改前'+ $(obj).attr('flag'));
             ////$(obj).attr('flag', 'false');
@@ -393,6 +461,7 @@
                     success: function (data) {
                         //$(".td_id").append(data);
                         //console.log(data)
+                        GetCount_ReadYN();  //重讀訊息已讀/未讀筆數
                     }
                 });
             }
@@ -423,6 +492,8 @@
             $("#id_divAdvance4").hide();
             $("#id_divAdvance5").hide();
             $("#id_divAdvance6").hide();
+            $("#id_divAdvance7").hide();
+            $("#id_divAdvance8").hide();
 
             if (p_type == "1") {
                 $("#id_divAdvance1").show();
@@ -442,10 +513,65 @@
             else if (p_type == "6") {
                 $("#id_divAdvance6").show();
             }
+            else if (p_type == "7") {
+
+                queryData('ALL', 'N', '500', 'N');  //查詢最新訊息
+                $("#id_divAdvance7").show();
+            }
         }
 
-        //一啟動馬上執行
-        $(function () {
+        function clickReadYN_ALL() {
+            queryData('ALL', 'N', '999', 'N');
+            GetCount_ReadYN();  //重讀訊息已讀/未讀筆數
+        }
+
+        function clickReadYN_Y() {
+            queryData('Null', 'Y', '999', 'N');
+            GetCount_ReadYN();  //重讀訊息已讀/未讀筆數
+        }
+
+        function clickReadYN_N() {
+            queryData('Null', 'N', '999', 'N');
+            GetCount_ReadYN();  //重讀訊息已讀/未讀筆數
+        }
+
+        function GetCount_ReadYN() {
+            $.ajax({
+                url: "/Information/GetActivityNotify_ReadYN",
+                type: "POST",
+                data: {
+                    //activity_id: id
+                    // AdminContent: p_apply
+                },
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    if (data != "fail") {
+                        //console.log(JSON.parse(data));
+                        var objJson = JSON.parse(data);
+                        //console.log(objJson);
+                        for (var i = 0; i < objJson.length; i++) {
+                            //console.log(JSON.parse(objJson[i]).ContentID);
+                            //console.log(JSON.parse(objJson[i]).ContentName);
+                            if (JSON.parse(objJson[i]).ContentID == "100" && JSON.parse(objJson[i]).ContentName != "0")
+                                $("#AA100").text("已讀(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "200" && JSON.parse(objJson[i]).ContentName != "0")
+                                $("#AA200").text("未讀(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "900" && JSON.parse(objJson[i]).ContentName != "0")
+                                $("#AA900").text("全部(" + JSON.parse(objJson[i]).ContentName + ")");
+                        }
+                    }
+                },
+                error: function () {
+                    alert("There has been an error~");
+                }
+            });
+        }
+
+    //一啟動馬上執行
+    $(function () {
+
+            GetCount_ReadYN();  //重讀訊息已讀/未讀筆數
+
             //第一個 ajax 是List的分頁資料
             $.ajax({
                 type: "POST",
@@ -534,7 +660,9 @@
                         f_data = "新活動通知";  //訊息通知:目前沒有新訊息!
                     else
                         f_data = "您有 " + data + " 筆新訊息!";
-                    $("#id_thisNotify").text(f_data);
+
+                    $("#id_type7").text(f_data);
+                    $("#N90000").text("全部(" + data + ")");   //新訊息全部
                 }
             });
 
@@ -542,7 +670,47 @@
             //    $("#timer").html(new Date().getSeconds());
             //}, 1000)
             //用秒數驗證
-        });
+            
+            $.ajax({
+                 url: "/Information/GetActivityNotify_ContentCategory",
+                type: "POST",
+                data: {
+                    //activity_id: id
+                    // AdminContent: p_apply
+                },
+                success: function (data) {
+                    //console.log(data); //可先測試程式有無載入
+                    if (data != "fail") {
+                        //console.log(JSON.parse(data));
+                        var objJson = JSON.parse(data);
+                        //console.log(objJson);
+                        for (var i = 0; i < objJson.length; i++) {
+                          //console.log(JSON.parse(objJson[i]).ContentID);
+                          //console.log(JSON.parse(objJson[i]).ContentName);
+                            if (JSON.parse(objJson[i]).ContentID == "20010" && JSON.parse(objJson[i]).ContentName !="0")
+                               $("#N20010").text("新活動上架(" + JSON.parse(objJson[i]).ContentName+")");
+                            else if (JSON.parse(objJson[i]).ContentID == "20030" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N20030").text("發起新活動完成(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "20040" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N20040").text("有新活動可以參加(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "30010" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N30010").text("商品訂單成立(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "30020" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N30020").text("商品訂單取消(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "40010" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N40010").text("關注房加入最愛(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "40020" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N40020").text("訂房成功(" + JSON.parse(objJson[i]).ContentName + ")");
+                            else if (JSON.parse(objJson[i]).ContentID == "40030" && JSON.parse(objJson[i]).ContentName != "0")
+                               $("#N40030").text("訂房取消(" + JSON.parse(objJson[i]).ContentName + ")");
+                        }
+                    }
+                },
+                error: function () {
+                    alert("There has been an error~");
+                }
+            });
+    });
 
 </script>
 
