@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
     <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed=" ">
 
-        <div class="login-right" style="background-image: url('../../Content/LogIn/assests/images/02.png');background-size:47em 50em">
+        <div class="login-right" style="background-image: url('../../Content/LogIn/assests/images/02.png');background-size:100em">
             <div class="container" style="background-color:aliceblue;padding:80px 0px 80px 0px;">
                 <h3 style="color:#f6755e">LOGIN</h3>
                 <div class="login-top">
@@ -39,27 +39,29 @@
                                 </div>*@
                             </div>
         
-                            <label class="button">
-                                <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
-                            </label>
-                            <ul class="login-icons">
+                            
+                            <ul class="login-icons"style="margin-top:1em;" >
 
                                 @ViewBag.msg
                                 @ViewBag.Robot
                                 @ViewBag.ErrorMessage
-                                <li>
+                                <li style="margin-right:20em;padding-left:0em;width:43%">
                                     <a href="#" class="go" onclick="GoogleLogin()"><i class="google"></i><span>Google +</span></a>
                                 </li>
                             </ul>
-                            <div style="display:inline; margin-left:13.5em;font-size:18px;">
+                            <label class="button">
+                                <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
+                            </label>
+
+                            <div style="display:inline; margin-left:9em;margin-top:2.5em;font-size:18px;">
                                 <input type="button" value="Bob登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                                 <input type="button" value="Eva登入" onclick="veryFastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
-                                <input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="管理員登入" onclick="AdminLogin()" style="width:120px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                             </div>
 
                             <div class="create">
                                 <h4 style="color:#25a2c3;font-weight:600;font-size:30px">歡迎來到窩居！</h4>
-                                <a style="background-color:#25a2c3;border-radius:5px;width:150px;text-align:center " class="hvr-sweep-to-right" href="../Member/Register"><label style="color:white">註冊帳號</label></a>
+                                <a style="background-color:#25a2c3;border-radius:4px;width:150px;height:60px;text-align:center;line-height:35px" class="hvr-sweep-to-right" href="../Member/Register"><label style="color:white">註冊帳號</label></a>
                                 <div class="clearfix"> </div>
                             </div>
 

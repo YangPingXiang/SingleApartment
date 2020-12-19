@@ -6,7 +6,33 @@
 
 
 }
+<head>
+    <style>
 
+        .form-info input[type="text"], .form-info input[type="password"],
+        input [type="date"], input[type="time"], input[type="datetime-local"], input[type="month"] {
+            outline: none;
+            background: none;
+            color: #a3a3a3;
+            width: 100%;
+            padding: 10px 10px;
+            border: none;
+            font-size: 0.9em;
+            border: 1px solid #eee;
+            margin: 0 0 1em;
+        }
+
+
+        .checkbox label {
+            min-height: 20px;
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
 @using (Html.BeginForm("Register", "Member", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
@@ -28,7 +54,7 @@
                             <!--姓名-->
                             <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">會員姓名</label>
-                               
+
                                 <input type="text" name="fMemberName" id="Username" placeholder="請輸入您的姓名" autofocus autocomplete="off" onchange="Usercheck()" onfocus="focusName()" required />
                                 @*<div class="col-md-10"></div>*@
                                 <label id="StatusName" />
@@ -64,114 +90,116 @@
                                 <label id="StatusPhone" />
 
                             </div>
-                        </div>
-                        <div class="form-info">
 
                             <!--生日-->
-                            <div class="form-group" id="bd">
+                            <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">出生日期</label>
-                                @Html.EditorFor(model => model.fBirthDate, new { htmlAttributes = new { @class = "form-control", type = "date", required = "required", @autocomplete = "off" } })
+                                <input type="text" name="fBirthDate" id="bd" placeholder="西元/月/日" autocomplete="off" required style="font-size:18px;font-weight:500;color:#9f9e9e;background:none" />
                                 @Html.ValidationMessageFor(model => model.fBirthDate, "", new { @class = "text-danger" })
                             </div>
-
                             <!--年齡-->
-                            <div class="form-group" id="age">
+                            <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">年齡</label>
-                                @Html.EditorFor(model => model.fAge, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                                <input type="text" name="fAge" id="age" placeholder="請輸入年齡" autocomplete="off" required style="font-size:18px;font-weight:500;color:#9f9e9e;background:none" />
                                 @Html.ValidationMessageFor(model => model.fAge, "", new { @class = "text-danger" })
                             </div>
-
                             <!--性別-->
                             <div class="form-group" id="sex">
                                 <label style="margin-bottom:10px;font-size:20px">性別</label>
-                                <select id="fSex" name="fSex" class="form-control">
+                                <select id="fSex" name="fSex" class="form-select" style="font-size:18px;font-weight:500;color:#9f9e9e;background:none">
                                     <option value="0" style="display:none">請選擇性別...</option>
-                                    <option value="男性">男性</option>
-                                    <option value="女性">女性</option>
-                                    <option value="第三性">第三性</option>
+                                    <option value="男性">&bull; 男性</option>
+                                    <option value="女性">&bull; 女性</option>
+                                    <option value="第三性">&bull; 第三性</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-info">
 
 
                             <!--職業-->
                             <div class="form-group" id="car">
                                 <label style="margin-bottom:10px;font-size:20px">職業</label>
-                                <select id="fCareer" name="fCareer" class="form-control">
-                                    <option value="0" style="display:none">請選擇職業...</option>
-                                    <option value="1">經營/人資類</option>
-                                    <option value="2">行政/總務/法務類</option>
-                                    <option value="3">行銷/企劃/專案管理類</option>
-                                    <option value="4">客服/門市/業務/貿易類</option>
-                                    <option value="5">餐飲/旅遊/美容美髮類</option>
-                                    <option value="6">資訊軟體系統類</option>
-                                    <option value="7">操作/技術/維修類</option>
-                                    <option value="8">資材/物流/運輸類</option>
-                                    <option value="9">營建/製圖類</option>
-                                    <option value="10">傳播藝術/設計類</option>
-                                    <option value="11">文字/傳媒工作類</option>
-                                    <option value="12">醫療/保健服務類</option>
-                                    <option value="13">學術/教育/輔導類</option>
-                                    <option value="14">研發相關類</option>
-                                    <option value="15">生產製造/品管/環衛類</option>
-                                    <option value="16">軍警消/保全類</option>
-                                    <option value="17">財會/金融專業類</option>
+                                <select id="fCareer" name="fCareer" class="form-select" style="font-size:18px;font-weight:500;color:#9f9e9e;background:none">
+                                    <option value="0" style="display:none;">請選擇職業...</option>
+                                    <option value="1">&bull; 經營/人資類</option>
+                                    <option value="2">&bull; 行政/總務/法務類</option>
+                                    <option value="3">&bull; 行銷/企劃/專案管理類</option>
+                                    <option value="4">&bull; 客服/門市/業務/貿易類</option>
+                                    <option value="5">&bull; 餐飲/旅遊/美容美髮類</option>
+                                    <option value="6">&bull; 資訊軟體系統類</option>
+                                    <option value="7">&bull; 操作/技術/維修類</option>
+                                    <option value="8">&bull; 資材/物流/運輸類</option>
+                                    <option value="9">&bull; 營建/製圖類</option>
+                                    <option value="10">&bull; 傳播藝術/設計類</option>
+                                    <option value="11">&bull; 文字/傳媒工作類</option>
+                                    <option value="12">&bull; 醫療/保健服務類</option>
+                                    <option value="13">&bull; 學術/教育/輔導類</option>
+                                    <option value="14">&bull; 研發相關類</option>
+                                    <option value="15">&bull; 生產製造/品管/環衛類</option>
+                                    <option value="16">&bull; 軍警消/保全類</option>
+                                    <option value="17">&bull; 財會/金融專業類</option>
                                 </select>
                             </div>
                             <!--12/06 修改-->
                             <!--薪水-->
                             <div class="form-group" id="salary">
                                 <label style="margin-bottom:10px;font-size:20px">年薪</label>
-                                <select id="fSalary" name="fSalary" class="form-control">
+                                <select id="fSalary" name="fSalary" class="form-select" style="font-size:18px;font-weight:500;color:#9f9e9e;background:none">
                                     <option value="0" style="display:none">請選擇年薪...</option>
-                                    <option value="小於(等於)50萬">小於(等於)50萬</option>
-                                    <option value="50-100萬">50-100萬</option>
-                                    <option value="大於50萬">大於50萬</option>
+                                    <option value="小於(等於)50萬">&bull; 小於(等於)50萬</option>
+                                    <option value="50-100萬">&bull; 50-100萬</option>
+                                    <option value="大於50萬">&bull; 大於50萬</option>
                                 </select>
 
-
                             </div>
-
+                            <!--1217修-->
                             <!--活動訊息-->
                             <div class="form-group" id="mesg">
                                 <label style="margin-bottom:10px;font-size:20px">欲接受活動訊息種類</label>
-                                <div>
-                                    <label><input type="checkbox" name="1" value="1" />娛樂類</label>
-                                    <label><input type="checkbox" name="1" value="1" />娛樂類</label>
-                                    <label><input type="checkbox" name="2" value="2" />知識類</label>
-                                    <label><input type="checkbox" name="3" value="3" />技藝類</label>
-                                    <label><input type="checkbox" name="4" value="4" />健身類</label>
-                                    <label><input type="checkbox" name="5" value="5" />休憩類</label>
-                                    <label><input type="checkbox" name="6" value="6" />社會類</label>
+
+
+                                <div class="form-check form-check-inline" style="margin-bottom:20px;">
+                                    <input class="form-check-input" type="checkbox" id="1" value="option1">
+                                    <label style="font-weight:600" class="form-check-label" for="1">娛樂類</label>
+                                    <input class="form-check-input" type="checkbox" id="2" value="option2">
+                                    <label style="font-weight:600" class="form-check-labe2" for="2">知識類</label>
+                                    <input class="form-check-input" type="checkbox" id="3" value="option3">
+                                    <label style="font-weight:600" class="form-check-labe3" for="3">技藝類</label>
 
                                 </div>
+                                <div class="form-check form-check-inline" style="margin-bottom:20px;">
+                                    <input class="form-check-input" type="checkbox" id="4" value="option4">
+                                    <label style="font-weight:600" class="form-check-labe4" for="4">健身類</label>
+                                    <input class="form-check-input" type="checkbox" id="5" value="option5">
+                                    <label style="font-weight:600" class="form-check-labe5" for="5">休憩類</label>
+                                    <input class="form-check-input" type="checkbox" id="6" value="option6">
+                                    <label style="font-weight:600" class="form-check-labe6" for="6">社會類</label>
+                                </div>
+                                <!--照片-->
+                                <div class="form-group" id=" pic">
+                                    <label style="margin-bottom:10px;font-size:20px">會員照片</label>
+                                    <input type="file" name="myImage" />
+                                </div>
+                                <br />
+
+                                <!--第三方按鈕-->
+                                <ul class="login-icons" style="float:initial;">
+                                    <li style="padding-left:0em;width:43%;margin-right:20em">
+                                        <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
+                                    </li>
+
+                                </ul>
+
 
                             </div>
-
-                            <!--照片-->
-                            <div class="form-group" id=" pic">
-                                <label style="margin-bottom:10px;font-size:20px">會員照片</label>
-                                <input type="file" name="myImage" />
-                            </div>
-                            <br />
-
-                            <!--第三方按鈕(尚未有功能)-->
-                            <ul class="login-icons">
-                                <li style="padding-left:0em;">
-                                    <a href="#"><i class="facebook"> </i><span>Facebook</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="go"><i class="google"></i><span>Google +</span></a>
-                                </li>
-                            </ul>
-
-                        </div>
-                        <!--註冊-->
-                        <label class="label-info">
-                            <input type="submit" value="註冊會員">
-                            @ViewBag.Message
-                        </label>
+                            <!--註冊-->
+                            <label class="Button" style="float:left;border-radius:4px;width:30%;text-align:center">
+                                <input style="padding:0" type="submit" value="註冊會員">
+                                @ViewBag.Message
+                            </label>
+                            <label class="label-info" style="float:right;border-radius:1.5em;margin-top:1em;">
+                                <input style="width:130px; height:50px; padding:0; line-height:45px;background-color:#87CEEB" type="button" value="Damo">
+                                @ViewBag.Message
+                            </label>
                     </form>
                 </div>
             </div>
@@ -261,7 +289,7 @@
                 else {
                     $("#StatusPhone").html('<font color="Red"> 手機號碼已重複，請重新輸入!</font>');
                     $("#tel").css("border-coloe", "Red");
-                    
+
                 }
             });
       }
