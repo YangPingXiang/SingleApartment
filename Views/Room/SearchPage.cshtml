@@ -22,7 +22,7 @@
                 </li>
                 @foreach (var item in Model.buildcaseViewModels)
                 {
-                    <li>
+                    <li class="myli">
                         <a class="txt" href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a>
                     </li>
                 }
@@ -32,16 +32,16 @@
                 <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     類型：
                 </li>
-                <li>
+                <li class="myli">
                     <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房">1人房</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="2人房">2人房</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="3人房">3人房</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="4人房">4人房</a>
                 </li>
             </ul>
@@ -50,19 +50,19 @@
                 <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     租金：
                 </li>
-                <li>
+                <li class="myli">
                     <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="1">10000元以下</a>
                 </li>
-                <li class="mydi">
+                <li class="mydi myli">
                     <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="2">10000-20000元</a>
                 </li>
-                <li class="mydi">
+                <li class="mydi myli">
                     <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="3">20000-30000元</a>
                 </li>
-                <li class="mydi">
+                <li class="mydi myli">
                     <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="4">30000-40000元</a>
                 </li>
-                <li class="mydi">
+                <li class="mydi myli">
                     <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="5">40000元以上</a>
                 </li>
 
@@ -76,7 +76,7 @@
                 </li>
                 @foreach (var item in Model.roomStyleViewModels)
                 {
-                    <li>
+                    <li class="myli">
                         <a class="txt" href="javascript:;" onclick="filter(this);" data-item="4" data-case="@item.ID">@item.entity_roomstyle.RoomStyleName</a>
                     </li>
                 }
@@ -229,7 +229,7 @@
 
     <script>
         $(function () {
-            $('li').click(function () {
+            $('.myli').click(function () {
                 $(this).css("background-color", "#e76f51")
                     .siblings().css("background-color", "#e8e8e8")
                 $(this.firstElementChild).css("color", "white")
