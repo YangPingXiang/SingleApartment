@@ -7,11 +7,144 @@
     ViewBag.Title = "BackRoomDetail";
     Layout = "~/Views/Shared/NewBack_Layout.cshtml";
 }
-<body>
-    
-    <h3 style="margin-left:150px;"> XXX 房間資訊 </h3>
+<link href="~/Content/Room/css/styleforbackroomdetail.css" rel="stylesheet" />
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
-    <div style=" width:1200px; margin:25px auto;">
+
+<body>
+
+    <div class="bg" id="whole">
+        <!--For Row containing all card-->
+        <div class="row mainRow">
+            <!--Card 1-->
+            <div class="col-sm-8" id="abtimg">
+                <div class="card card-cascade wider shadow p-3 mb-5 ">
+                    <!--Card image-->
+                    <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+                        <div id="innerdiv" style="position:absolute;">
+                            <img id="bigimg" style="border:5px solid #fff;" src="" />
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="view view-cascade overlay text-center">
+                            <img class="card-img-top" src="@item.entity_room.Picture.FirstOrDefault().RoomStylePicture" alt="">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                    }
+                    <input type="button" value="回到前一頁" class="btn btn-default" onclick="history.back()" />
+                </div>
+            </div>
+            <!--Card 2-->
+            <div class="col-sm-4">
+                <div class="card card-cascade card-ecommerce wider shadow p-3 mb-5 ">
+                    <!--Card Body-->
+                    <div class="card-body card-body-cascade">
+
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="payment">
+                                <p class="heading2">
+                                    <strong>@item.roomname 詳細資訊</strong>
+
+                                </p>
+                                <p class="cardAndExpire">
+                                    建案名稱
+                                </p>
+                                <p class="cardAndExpireValue">
+                                    @Html.DisplayFor(modelItem => item.entity_room.BuildCase.BuildCaseName)
+                                </p>
+                                @*<p class="cardAndExpire">
+                                        房間名稱
+                                    </p>
+                                    <p class="cardAndExpireValue">
+                                        @Html.DisplayFor(modelItem => item.roomname)
+                                    </p>*@
+
+                                <p class="cardAndExpire">
+                                    房客帳號
+                                </p>
+                                <p class="cardAndExpireValue">
+                                    @foreach (var i in item.entity_room.Lease)
+                                    {
+                                        @Html.DisplayFor(modelItem => i.tMember.fMemberName)
+                                    }
+                                </p>
+
+                                <div style="float:left;  margin-right:80px; width:100px; margin-left:18px;">
+
+
+                                    <p class="cardAndExpire">
+                                        房間種類
+                                    </p>
+                                    <p class="cardAndExpireValue">
+                                        @Html.DisplayFor(modelItem => item.roomtype)
+                                    </p>
+
+                                </div>
+
+                                <div>
+
+
+                                    <p class="cardAndExpire">
+                                        風格
+                                    </p>
+                                    <p class="cardAndExpireValue">
+                                        @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
+                                    </p>
+                                </div>
+                                <p class="cardAndExpire">
+                                    @Html.DisplayNameFor(model => model.rent)
+                                </p>
+                                <p class="cardAndExpireValue">
+                                    @Html.DisplayFor(modelItem => item.rent)
+                                </p>
+
+
+
+                                <p class="nameAndcvc" style="margin-bottom:-10px;">
+                                    @Html.DisplayNameFor(model => model.squarefootage)
+
+                                </p>
+                                <p class="nameAndcvcValue">
+                                    @Html.DisplayFor(modelItem => item.squarefootage)
+
+                                </p>
+
+                                <p class="nameAndcvc" style="margin-bottom:-10px;">
+                                    @Html.DisplayNameFor(model => model.floor)
+
+                                </p>
+                                <p class="nameAndcvcValue">
+                                    @Html.DisplayFor(modelItem => item.floor)
+
+                                </p>
+                            </div>
+
+                            <!--Card footer-->
+                            <a href="" class="purchaseLink">
+                                <div class="card-footer text-center"> @Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }, new { @class = "btnedit" }) &#8594; </div>
+                            </a>
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--wait-->
+    <!--<div style=" width:1200px; margin:25px auto;">
 
         <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
             <div id="innerdiv" style="position:absolute;">
@@ -26,13 +159,13 @@
                 </th>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.roomname)
+                    Html.DisplayNameFor(model => model.roomname)
                 </th>
                 <th>
                     房客姓名
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.roomtype)
+                    Html.DisplayNameFor(model => model.roomtype)
                 </th>
                 <th>
                     風格
@@ -43,85 +176,84 @@
                 </th>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.rent)
+                    Html.DisplayNameFor(model => model.rent)
                 </th>
                 <th>
                     建案名稱
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.squarefootage)
+                    Html.DisplayNameFor(model => model.squarefootage)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.floor)
+                    Html.DisplayNameFor(model => model.floor)
                 </th>
                 <th>編輯</th>
             </tr>
 
 
 
-            @foreach (var item in Model)
+            foreach (var item in Model)
             {
-                <tr style="text-align:center; ">
+                <tr style="text-align:center; ">-->
+    @*@{
+            var filename = item.entity_room.RoomStyle.RoomStyleName + "-1.jpg";
+        }*@
+    <!--<td>
 
-                    @*@{
-                        var filename = item.entity_room.RoomStyle.RoomStyleName + "-1.jpg";
-                    }*@
-                    <td>
-                        
-                        <img class="pimg" src="@item.entity_room.Picture.FirstOrDefault().RoomStylePicture" alt="Alternate Text" style="width:300px; height:250px;" />
-                    </td>
+        <img class="pimg" src="item.entity_room.Picture.FirstOrDefault().RoomStylePicture" alt="Alternate Text" style="width:300px; height:250px;" />
+    </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.roomname)
-                    </td>
-                    <td>
-                        @foreach (var i in item.entity_room.Lease)
-                        {
-                            @Html.DisplayFor(modelItem => i.tMember.fMemberName)
-                        }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.roomtype)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
-                    </td>
-                    @*<td>
-                        @foreach (var i in item.entity_room.RoomFacilities)
-                        {
-                            @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
-                        }
-                    </td>*@
-
+    <td>
+        Html.DisplayFor(modelItem => item.roomname)
+    </td>
+    <td>
+        foreach (var i in item.entity_room.Lease)
+        {
+            Html.DisplayFor(modelItem => i.tMember.fMemberName)
+        }
+    </td>
+    <td>
+        Html.DisplayFor(modelItem => item.roomtype)
+    </td>
+    <td>
+        Html.DisplayFor(modelItem => item.entity_room.RoomStyle.RoomStyleName)
+    </td>-->
+    @*<td>
+            @foreach (var i in item.entity_room.RoomFacilities)
+            {
+                @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
+            }
+        </td>*@
 
 
-                    <td>
-                        NT @Html.DisplayFor(modelItem => item.rent)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.entity_room.BuildCase.BuildCaseName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.squarefootage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.floor)
-                    </td>
-                    <td>
-                        @Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
 
-                        @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })
+    <!--<td>
+                        NT Html.DisplayFor(modelItem => item.rent)
+                    </td>
+                    <td>
+                        Html.DisplayFor(modelItem => item.entity_room.BuildCase.BuildCaseName)
+                    </td>
+                    <td>
+                        Html.DisplayFor(modelItem => item.squarefootage)
+                    </td>
+                    <td>
+                        Html.DisplayFor(modelItem => item.floor)
+                    </td>
+                    <td>
+                        Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
+
+                        Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>
             }
 
         </table>
 
-        <input type="button" value="回到前一頁" class="btn btn-default" onclick="history.back()" />
-    </div>
+
+    </div>-->
     @*<div style="float:inherit; margin-left:480px;">
-        @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomDetail", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-    </div>*@
+            @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomDetail", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </div>*@
 
     <script>
         $(function () {
@@ -129,6 +261,20 @@
                 var _this = $(this);//將當前的pimg元素作為_this傳入函式
                 imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
             });
+
+            $('#abtimg').css({
+                "margin-top": "200px"
+            })
+            $('#whole').css({
+                "padding-bottom": "50px"
+            })
+
+            $('.btnedit').css({
+                "color": "white",
+                "text-decoration": "none",
+                "line-height": "2em"
+            })
+
         });
 
 

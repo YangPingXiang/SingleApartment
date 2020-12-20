@@ -34,14 +34,14 @@
                                 <form method="post">
                                     <div class="section-title mb-30">
                                         <h2 id="roomstylename">
-                                            @item.entity_lease.Room.RoomName
+                                            我的房間 -   @item.entity_lease.Room.RoomName
 
 
                                             <input id="leaseId" type="hidden" value="@item.leaseID" name="roomstyleid" />
 
                                         </h2>
 
-                                        <a href="~/Room/RoomCheckOut">
+                                        <a href="@Url.Action("RoomCheckOut","Room")">
                                             <input class="submit-form" type="button" id="book" value="繳房租" style="width:100px; float:right;" />
                                         </a>
 
@@ -69,16 +69,16 @@
                                                 <span>5.</span> 租金： @Html.DisplayFor(modelItem => item.entity_lease.Room.Rent)
                                             </li>
                                             @*<li>
-                                                <span>6.</span> 設備：
-                                            </li>*@
+                                                    <span>6.</span> 設備：
+                                                </li>*@
                                             @*@foreach (var i in Model.facilityViewModels)
-                                            {
-                                                <li style="margin-left:50px">
-                                                    @i.facilityName
-                                                </li>
+                                                {
+                                                    <li style="margin-left:50px">
+                                                        @i.facilityName
+                                                    </li>
 
 
-                                            }*@
+                                                }*@
 
                                         </ul>
                                     </div>
