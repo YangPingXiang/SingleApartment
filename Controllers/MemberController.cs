@@ -430,10 +430,17 @@ namespace sln_SingleApartment.Controllers
             }
 
         }
-
+        public ActionResult Chat()
+        {
+            if (Session[CDictionary.welcome] as CMember == null) { return RedirectToAction("Login"); }
+            return View();
+        }
         public ActionResult ChatRoom()
         {
-            return View();
+            if (Session[CDictionary.welcome] as CMember == null) { return RedirectToAction("Login"); }
+            CMember cMember = Session[CDictionary.welcome] as CMember;
+            var user = db.tMember.Where(m => m.fMemberId == cMember.fMemberId).FirstOrDefault();
+            return View(user);
         }
     }
 }

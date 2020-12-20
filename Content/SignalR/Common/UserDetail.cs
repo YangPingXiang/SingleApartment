@@ -9,5 +9,11 @@ namespace SignalRChat.Common
     {
         public string ConnectionId { get; set; }
         public string UserName { get; set; }
+
+        public string Image {
+            get {
+                return (new sln_SingleApartment.Models.SingleApartmentEntities()).tMember.FirstOrDefault(r => r.fMemberName == UserName).fImage;
+            }
+        }
     }
 }

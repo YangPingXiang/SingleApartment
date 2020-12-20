@@ -30,8 +30,10 @@ namespace sln_SingleApartment.Models
                 // send to caller
                 Clients.Caller.onConnected(id, userName, ConnectedUsers, CurrentMessage);
 
+                SingleApartmentEntities db = new SingleApartmentEntities();
+                var img = db.tMember.FirstOrDefault(r => r.fMemberName == userName).fImage;
                 // send to all except caller client
-                Clients.AllExcept(id).onNewUserConnected(id, userName);
+                Clients.AllExcept(id).onNewUserConnected(id, userName, img);
 
             }
 

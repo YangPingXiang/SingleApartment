@@ -1648,6 +1648,7 @@
     <Content Include="Views\Activity\PowerBI.cshtml" />
     <Content Include="Views\Shared\NewBack_Layout.cshtml" />
     <Content Include="Views\Member\ChatRoom.cshtml" />
+    <Content Include="Views\Member\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
