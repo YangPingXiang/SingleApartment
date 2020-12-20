@@ -69,7 +69,22 @@
     <Reference Include="GoogleRecaptchaMvc, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\GoogleRecaptchaMvc.1.0.1\lib\GoogleRecaptchaMvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.1.0.0\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Owin.1.0.0\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.1.0.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.1.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -152,6 +167,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Content\SignalR\Common\MessageDetail.cs" />
+    <Compile Include="Content\SignalR\Common\UserDetail.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\BackInformationController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
@@ -181,6 +198,7 @@
       <DependentUpon>SingleApartmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CDictionary.cs" />
+    <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Models\CImage.cs" />
     <Compile Include="Models\CImageGallery.cs" />
     <Compile Include="Models\CInformationFactory.cs" />
@@ -1172,6 +1190,7 @@
     <Content Include="Content\Room\css\shortcode\shortcodes.css" />
     <Content Include="Content\Room\css\shortcode\video.css" />
     <Content Include="Content\Room\css\style.css" />
+    <Content Include="Content\Room\css\styleforbackroomdetail.css" />
     <Content Include="Content\Room\css\style_web.css" />
     <Content Include="Content\Room\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Room\fonts\materialdesignicons-webfont.svg" />
@@ -1282,6 +1301,8 @@
     <Content Include="Content\Room\images\gallery\item4\g-8.jpg" />
     <Content Include="Content\Room\images\gallery\item4\g-9.jpg" />
     <Content Include="Content\Room\images\icons\ajax-loader.gif" />
+    <Content Include="Content\Room\images\icons\favicon-16x16.png" />
+    <Content Include="Content\Room\images\icons\favicon-32x32.png" />
     <Content Include="Content\Room\images\icons\title.jpg" />
     <Content Include="Content\Room\images\icons\title.png" />
     <Content Include="Content\Room\images\icons\title2.jpg" />
@@ -1401,6 +1422,12 @@
     <Content Include="Content\Room\js\video-player.js" />
     <Content Include="Content\Room\js\waypoints.min.js" />
     <Content Include="Content\Room\Site.css" />
+    <None Include="Content\SignalR\Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Content\SignalR\Css\ChatStyle.css" />
+    <Content Include="Content\SignalR\Scripts\jquery-1.8.2.js" />
+    <Content Include="Content\SignalR\Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Content\SignalR\Scripts\jquery.signalR-1.0.0.js" />
+    <Content Include="Content\SignalR\Scripts\jquery.signalR-1.0.0.min.js" />
     <Content Include="datetimepicker.css" />
     <Content Include="datetimepicker.js" />
     <Content Include="ECPay.Payment.Integration.dll" />
@@ -1523,6 +1550,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.mousewheel.js" />
+    <Content Include="Scripts\jquery.signalR-1.0.0.js" />
+    <Content Include="Scripts\jquery.signalR-1.0.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1621,9 +1650,16 @@
     <Content Include="Views\RoomBackend\BackLeaseDelete.cshtml" />
     <Content Include="Views\Activity\PowerBI.cshtml" />
     <Content Include="Views\Shared\NewBack_Layout.cshtml" />
+    <Content Include="Views\Member\ChatRoom.cshtml" />
+    <Content Include="Views\Member\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\SignalR\Css\JQueryUI\themes\base\images\" />
+    <Folder Include="Content\SignalR\Css\JQueryUI\themes\base\minified\images\" />
+    <Folder Include="Content\SignalR\Css\JQueryUI\themes\ui-lightness\images\" />
+    <Folder Include="Content\SignalR\Css\JQueryUI\themes\ui-lightness\minified\images\" />
+    <Folder Include="Content\SignalR\Scripts\ui\" />
     <Folder Include="Views\Back\" />
   </ItemGroup>
   <ItemGroup>
