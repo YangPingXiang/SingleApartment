@@ -430,5 +430,10 @@ namespace sln_SingleApartment.Controllers
             }
 
         }
+
+        public ActionResult ChatRoom()
+        {
+            return View();
+        }
     }
 }
