@@ -45,16 +45,16 @@
                 <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     建案：
                 </li>
-                <li>
+                <li class="myli">
                     <a onclick="GetResult('A')">綠意大安森活窩</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a onclick="GetResult('B')">城市西門快捷窩</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a onclick="GetResult('C')">慢活文山雲景窩</a>
                 </li>
-                <li>
+                <li class="myli">
                     <a onclick="GetResult('D')">心醉信義忘憂窩</a>
                 </li>
             </ul>
@@ -175,7 +175,7 @@
 
         $(function () {
 
-            $('li').click(function () {
+            $('.myli').click(function () {
 
                 $(this).css("background-color", "#e76f51")
                     .siblings().css("background-color", "#e8e8e8")
