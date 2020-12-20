@@ -35,33 +35,33 @@
 <!-- Main -->
 <section id="main" class="wrapper" style="padding:2em">
     <!--style="border:solid 1px;border-color:black"-->
-    <div class="inner">
-        <header class="align-center">
-            <h1 style="font-size:2em;font-weight:700;line-height:1.3">留言板</h1>
-            @*<div id="timer"></div>*@
-        </header>
-        @*=================================================================*@
+    @*<div class="inner">*@
+    <header class="align-center">
+        <h1 style="font-size:2em;font-weight:700;line-height:1.3">留言板</h1>
+        @*<div id="timer"></div>*@
+    </header>
+    @*=================================================================*@
 
-        <br />
-        <div class="row" style="width:800px;margin:0 auto;">
-            <div class="col-md-8" style="padding-left:0;">
-                <button type="button" onclick="openModal()">留言</button>
-            </div>
-
-            @*style="text-align:right"*@
-            <div class="col-md-4">
-                @*value="@ViewBag.OrderBy"*@
-                <select id="id_OrderType" onchange="queryOrderBy(this.value)" style="display:inline;width:250px;line-height:3em;height:3em;background-color:white;">
-                    <option value="ByDateAsc">依日期-遞增</option>
-                    <option value="ByDateDesc">依日期-遞減</option>
-                </select>
-                @*<button type="button" onclick="openModal()">查詢</button>*@
-            </div>
+    <br />
+    <div class="row" style="width:1000px;margin:0 auto;">
+        <div class="col-md-8" style="padding-left:0;">
+            <button type="button" onclick="openModal()">留言</button>
         </div>
-        <br />
-        <table class="alt table-hover" style="width:800px;margin:0 auto">
-            <tr>
 
+        @*style="text-align:right"*@
+        <div class="col-md-4">
+            @*value="@ViewBag.OrderBy"*@
+            <select id="id_OrderType" onchange="queryOrderBy(this.value)" style="display:inline;width:250px;line-height:3em;height:3em;background-color:white;">
+                <option value="ByDateAsc">依日期-遞增</option>
+                <option value="ByDateDesc">依日期-遞減</option>
+            </select>
+            @*<button type="button" onclick="openModal()">查詢</button>*@
+        </div>
+    </div>
+    <br />
+    <table class="alt" style="width:1000px;margin:0 auto">
+        <thead>
+            <tr>
                 <th style="font-size:unset">
                     項目
                     @*@Html.DisplayNameFor(model => model.FirstOrDefault().MessageID)*@
@@ -82,125 +82,126 @@
 
                 <th style="font-size:unset"></th>
             </tr>
-
+            </thead>
             @foreach (var item in Model)
             {
                 <tr>
 
-                    <td>
+                    <td style="width:150px">
                         @Html.DisplayFor(modelItem => item.MessageID)
                     </td>
-                    <td>
+                    <td style="width:150px">
                         @item.MessageDate.ToString("yyyy/MM/dd")
                         @*@Html.DisplayFor(modelItem => item.MessageDate)*@
                     </td>
 
-                    <td>
+                    <td style="width:150px">
                         @Html.DisplayFor(modelItem => item.GuestName)
                     </td>
-                    <td>
+                    <td >
                         @Html.DisplayFor(modelItem => item.MessageSubject)
                     </td>
                     @*<td>
                             @Html.DisplayFor(modelItem => item.MessageContent)
                         </td>*@
 
-                    <td>
+                    <td style="width:200px">
                         <button onclick="showTable(this, @item.MessageID, '@item.MessageContent', '@item.AdminContent')" class="btn" style="height:unset;background-color:#8ddd59" flag="true">內文</button>
                         @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
                         <button onclick="updateApply(@item.MessageID, '@item.GuestName', '@item.MessageSubject', '@item.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>
                     </td>
                 </tr>
-            }
+            }        
+    </table>
 
-        </table>
-        <div style="width:800px;margin:0 auto">
-            @Html.PagedListPager(Model, Page => Url.Action("MessageList", new { pageNum = Page, orderByString = ViewBag.OrderBy }))
-        </div>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">留言者</label>
-                                <input type="text" class="form-control" id="id_guestname">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">主旨</label>
-                                <input type="text" class="form-control" id="id_subject">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">內文</label>
-                                <textarea class="form-control" style="height:100px" id="id_content"></textarea>
-                            </div>
-                            <div class="form-group" id="group_apply">
-                                <label for="message-text" class="col-form-label">回覆</label>
-                                <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save">存檔</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @*修改的modal*@
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group" hidden="hidden">
-                                <label for="recipient-name" class="col-form-label">留言者</label>
-                                <input type="text" class="form-control" id="id_messageID2">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">留言者</label>
-                                <input type="text" class="form-control" id="id_guestname2">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">主旨</label>
-                                <input type="text" class="form-control" id="id_subject2">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">內文</label>
-                                <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
-                            </div>
-                            <div class="form-group" id="group_apply2">
-                                <label for="message-text" class="col-form-label">回覆</label>
-                                <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save2">存檔</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @*=================================================================*@
-        @*<p> Aenean iaculis, neque sed preti</p>*@
+    <div style="width:1000px;margin:0 auto">
+        @Html.PagedListPager(Model, Page => Url.Action("MessageList", new { pageNum = Page, orderByString = ViewBag.OrderBy }))
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">留言者</label>
+                            <input type="text" class="form-control" id="id_guestname">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">主旨</label>
+                            <input type="text" class="form-control" id="id_subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">內文</label>
+                            <textarea class="form-control" style="height:100px" id="id_content"></textarea>
+                        </div>
+                        <div class="form-group" id="group_apply">
+                            <label for="message-text" class="col-form-label">回覆</label>
+                            <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="id_demo">Demo鍵</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="id_save">存檔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*修改的modal*@
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group" hidden="hidden">
+                            <label for="recipient-name" class="col-form-label">留言者</label>
+                            <input type="text" class="form-control" id="id_messageID2">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">留言者</label>
+                            <input type="text" class="form-control" id="id_guestname2">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">主旨</label>
+                            <input type="text" class="form-control" id="id_subject2">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">內文</label>
+                            <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
+                        </div>
+                        <div class="form-group" id="group_apply2">
+                            <label for="message-text" class="col-form-label">回覆</label>
+                            <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="id_save2">存檔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*=================================================================*@
+    @*<p> Aenean iaculis, neque sed preti</p>*@
+    @*</div>*@
 </section>
 
 <!-- Footer -->
@@ -265,6 +266,13 @@
         $("#id_subject2").val(p_MessageSubject);
         $("#id_content2").val(p_MessageContent);
     }
+
+    //Demo鍵
+    $("#id_demo").click(function () {
+        $("#id_guestname").val("吳書慶");
+        $("#id_subject").val("租房服務");
+        $("#id_content").val("請問大廳的鑰匙弄丟了，要去哪補申請~");
+    })
 
     $("#id_save").click(function () {
         let p_guestname = $("#id_guestname").val();
