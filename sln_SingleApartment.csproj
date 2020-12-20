@@ -1172,6 +1172,7 @@
     <Content Include="Content\Room\css\shortcode\shortcodes.css" />
     <Content Include="Content\Room\css\shortcode\video.css" />
     <Content Include="Content\Room\css\style.css" />
+    <Content Include="Content\Room\css\styleforbackroomdetail.css" />
     <Content Include="Content\Room\css\style_web.css" />
     <Content Include="Content\Room\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Room\fonts\materialdesignicons-webfont.svg" />
@@ -1282,6 +1283,8 @@
     <Content Include="Content\Room\images\gallery\item4\g-8.jpg" />
     <Content Include="Content\Room\images\gallery\item4\g-9.jpg" />
     <Content Include="Content\Room\images\icons\ajax-loader.gif" />
+    <Content Include="Content\Room\images\icons\favicon-16x16.png" />
+    <Content Include="Content\Room\images\icons\favicon-32x32.png" />
     <Content Include="Content\Room\images\icons\title.jpg" />
     <Content Include="Content\Room\images\icons\title.png" />
     <Content Include="Content\Room\images\icons\title2.jpg" />
