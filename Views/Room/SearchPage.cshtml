@@ -108,12 +108,12 @@
             <div class="our-room-show">
                 <div class="row">
                     <div class="carousel-list">
-                        @foreach (var item in Model.roomViewModels)
+                        @foreach (var item in Model.roomViewModels.Take(9))
                         {
                             <div class="col-md-4">
                                 <div class="single-room">
                                     <div class="room-img">
-                                        <a href="#"><img src="~/Content/Room/images/room/room1.jpg" alt=""></a>
+                                        <a href="#"><img src="~/Content/Room/images/room/房型_北歐風雙人房.jpg" alt=""></a>
                                     </div>
                                     <div class="room-desc">
                                         <div class="room-name">
