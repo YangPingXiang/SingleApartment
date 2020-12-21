@@ -325,7 +325,7 @@
                                                     <div class="quick-thumb">
                                                         <div class="nav nav-tabs">
                                                             <ul>
-                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" width="200px" height="200px" /> </a></li>
+                                                                <li><a data-toggle="tab" href="#sin-pro-5"> <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="quick view" /> </a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -339,14 +339,27 @@
                                                         <div class="amount">
                                                             <h4>$ @item.UnitPrice</h4>
                                                         </div>
-                                                        <p>@item.Description</p>
+                                                        <p style="font-size:20px; color:dimgray"><strong>@item.Description</strong></p>
                                                         <div class="row m-p-b">
                                                             <div class="col-sm-6">
                                                                 <div class="por-dse">
                                                                     <ul>
-                                                                        <li><span>庫存</span><strong>:</strong>@item.Stock</li>
-                                                                        <li><span>商品狀態</span><strong>:</strong>全新</li>
-                                                                        @*<li><span>類別</span><strong>:</strong> <a href="#">Men</a> <a href="#">Fashion</a> <a href="#">Shirt</a></li>*@
+                                                                        <li style="font-size:20px; color:red"><span style="font-size:20px; color:black">庫存   :</span> @item.Stock</li>
+
+                                                                    </ul>
+                                                                    <div class="por-dse">
+
+                                                                        <ul>
+                                                                            <li style="font-size:20px; color:black"><span style="font-size:20px; color:black"></span></li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="por-dse">
+
+                                                                    <ul>
+                                                                        <li style="font-size:20px; color:black  "><span style="font-size:20px; color:black">商品狀態</span>: 全新</li>
+
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -358,7 +371,7 @@
                                                                     <div class="por-dse">
                                                                         <ul>
                                                                             <li class="share-btn qty clearfix">
-                                                                                <span>數量</span>
+                                                                                <span  style="font-size:20px ;color:black">數量</span>
                                                                                 <form action="#" method="POST">
                                                                                     <div class="plus-minus">
                                                                                         <a class="dec qtybutton">-</a>
@@ -378,7 +391,7 @@
                                                                         </ul>
                                                                     </div>
                                                                     <div class="por-dse add-to">
-                                                                        <a name="@item.ProductID" onclick="AddToCart()" >加到購物車</a>
+                                                                        <a name="@item.ProductID" onclick="AddToCart()" class="btn btn-default">加到購物車</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
