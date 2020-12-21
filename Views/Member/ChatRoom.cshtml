@@ -103,7 +103,6 @@
 
             // On New User Connected
             chatHub.client.onNewUserConnected = function (id, name, img) {
-                console.log("test " + img)
                 AddUser(chatHub, id, name, img);
             }
 
@@ -126,7 +125,7 @@
             }
 
             chatHub.client.messageReceived = function (userName, message) {
-                console.log("recccc");
+
                 AddMessage(userName, message);
             }
             chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message) {
@@ -135,8 +134,8 @@
 
 
                 if ($('#' + ctrId).length == 0) {
-
-                    createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName);
+                    let img = $("#" + fromUserName + "pic").prop('src');
+                    createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName,img);
 
                 }
                 if (fromUserName == $('#hdUserName').val()) {
@@ -145,9 +144,6 @@
                 else {
                     var word = AddMessageFromOther(fromUserName, message);
                 }
-                console.log("HIHI");
-                console.log($('#' + ctrId).find('#divMessage'));
-                console.log(word);
                 $('#' + ctrId).find('#divMessage').append(word);
 
                 // set scrollbar
@@ -174,7 +170,7 @@
                 code = $('<li id="' + id + '" class="active">' +
                     '<div class="d-flex bd-highlight">' +
                     '<div class= "img_cont">' +
-                    '<img src = "'+ img +'" class= "rounded-circle user_img">' +
+                    '<img src = "'+ img +'" class= "rounded-circle user_img" id="' +name+ 'pic">' +
                     '<span class="online_icon offline"></span>' +
                     '</div>' +
                     '<div class="user_info">' +
@@ -224,7 +220,7 @@
                 + '<div class="card-header msg_head">'
                 + '<div class="d-flex bd-highlight">'
                 + '<div class="img_cont">'
-                + '<img src="' + img + '" class="rounded-circle user_img" id="' + userName +'pic">'
+                + '<img src="' + img + '" class="rounded-circle user_img">'
                 + '<span class="online_icon"></span>'
                 + '</div>'
                 + '<div class="user_info">'
@@ -350,7 +346,6 @@
     <script>
         function AddMessageFromOther(UserID, message) {
             let img = $("#" + UserID + "pic").prop('src');
-            console.log($("#" + UserID + "pic").prop('src'));
             var MsgHtml = '<div class= "d-flex justify-content-start mb-4">'
                 + '<div class="img_cont_msg">'
                 + '<h6>' + UserID + '</h6>'
