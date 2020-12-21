@@ -369,6 +369,48 @@ namespace sln_SingelApartment.Controllers
             //return Content(model.MemberId.ToString());
         }
 
+        public ActionResult DeleteMyLease(int id)
+        {
+            var user = Session[CDictionary.welcome] as CMember;
+            var memberId = user.fMemberId;
+
+            Lease l = dbSA.Lease.FirstOrDefault(t => t.ID == id);
+            string roomID = null;
+            
+            if (l != null)
+            {
+                roomID = l.RoomID.ToString();
+                dbSA.Lease.Remove(l);
+                dbSA.SaveChanges();
+
+                //退租成功通知訊息
+                CInformationFactory x = new CInformationFactory();
+                x.Add(memberId, 400, id, 40040);
+
+                var rf = from r in dbSA.RoomFavorite
+                         where r.RoomID.ToString() == roomID
+                         select r.MemberID;
+
+                if (rf != null)
+                {
+                    foreach (var item in rf)
+                    {
+                        int reID = item.Value;
+                        //通知空房訊息
+                        CInformationFactory y = new CInformationFactory();
+                        y.Add(reID, 400, 0 , 40030);
+
+                    }
+                }
+
+                return RedirectToAction("SearchPage");
+
+            }
+
+            return View(l);
+
+        }
+
         public ActionResult MyRoom()
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();

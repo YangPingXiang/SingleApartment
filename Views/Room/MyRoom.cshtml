@@ -41,6 +41,9 @@
 
                                         </h2>
 
+                                        <a href="@Url.Action("DeleteMyLease", "Room", new { id = item.leaseID })" onclick="return confirm('確定要刪除嗎?')">
+                                            <input class="submit-form" type="button" id="book" value="我要退房" style="width:100px; float:right; margin-left:15px; " />
+                                        </a>
                                         <a href="@Url.Action("RoomCheckOut","Room")">
                                             <input class="submit-form" type="button" id="book" value="繳房租" style="width:100px; float:right;" />
                                         </a>
