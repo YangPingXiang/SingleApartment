@@ -552,11 +552,11 @@
                         for (var i = 0; i < objJson.length; i++) {
                             //console.log(JSON.parse(objJson[i]).ContentID);
                             //console.log(JSON.parse(objJson[i]).ContentName);
-                            if (JSON.parse(objJson[i]).ContentID == "100" && JSON.parse(objJson[i]).ContentName != "0")
+                            if (JSON.parse(objJson[i]).ContentID == "100")
                                 $("#AA100").text("已讀(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "200" && JSON.parse(objJson[i]).ContentName != "0")
+                            else if (JSON.parse(objJson[i]).ContentID == "200")
                                 $("#AA200").text("未讀(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "900" && JSON.parse(objJson[i]).ContentName != "0")
+                            else if (JSON.parse(objJson[i]).ContentID == "900")
                                 $("#AA900").text("全部(" + JSON.parse(objJson[i]).ContentName + ")");
                         }
                     }
