@@ -90,9 +90,9 @@
             </td>
 
             <td>
-                @Html.ActionLink("確定參加", "AddToDB", new { id = item.fJoinedId }) |
+                @Html.ActionLink("確定參加", "AddToDB", new { id = item.fJoinedId }, new { OnClick = "return confirm('確定要參加活動嗎?')" }) |
 
-                @Html.ActionLink("取消", "Delete", new { id = item.fJoinedId })
+                @Html.ActionLink("取消", "Delete", new { id = item.fJoinedId }, new { OnClick = "return confirm('確定要取消活動嗎?')" })
             </td>
         </tr>
     }

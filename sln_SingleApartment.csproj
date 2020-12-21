@@ -1319,7 +1319,9 @@
     <Content Include="Content\Room\images\logo\logo.png" />
     <Content Include="Content\Room\images\logo\pay-card.png" />
     <Content Include="Content\Room\images\logo\ ?~ r  ] p7.png" />
+    <Content Include="Content\Room\images\logo\歐付寶100x60.png" />
     <Content Include="Content\Room\images\logo\窩居字體設計7.png" />
+    <Content Include="Content\Room\images\logo\綠界科技100x60.png" />
     <Content Include="Content\Room\images\map-marker.png" />
     <Content Include="Content\Room\images\news\item2\n-10.jpg" />
     <Content Include="Content\Room\images\news\item2\n-11.jpg" />
@@ -1423,6 +1425,7 @@
     <Content Include="Content\Room\js\waypoints.min.js" />
     <Content Include="Content\Room\Site.css" />
     <None Include="Content\SignalR\Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Content\SignalR\christmas.jpg" />
     <Content Include="Content\SignalR\Css\ChatStyle.css" />
     <Content Include="Content\SignalR\Scripts\jquery-1.8.2.js" />
     <Content Include="Content\SignalR\Scripts\jquery-1.8.2.min.js" />

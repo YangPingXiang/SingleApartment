@@ -1,4 +1,7 @@
-﻿
+﻿body, html {
+    background-image: url('../christmas.jpg');
+    background-repeat: repeat;
+}
 
 .login
 {
@@ -96,11 +99,13 @@
 .chat {
     margin-top: auto;
     margin-bottom: auto;
+    width:300px;
+
 }
 
 .card {
-    width: 385px;
-    height: 500px;
+    width: 355px;
+    height: 450px;
     border-radius: 15px !important;
     background-color: rgba(0,0,0,0.4) !important;
 }
@@ -264,7 +269,7 @@
     margin-bottom: auto;
     margin-left: 10px;
     border-radius: 25px;
-    background-color: #82ccdd;
+    background-color: #c6def1;
     padding: 10px;
     position: relative;
 }
@@ -274,7 +279,7 @@
     margin-bottom: auto;
     margin-right: 10px;
     border-radius: 25px;
-    background-color: #78e08f;
+    background-color: #f9c6c9;
     padding: 10px;
     position: relative;
 }
@@ -346,3 +351,4 @@
         margin-bottom: 15px !important;
     }
 }
+

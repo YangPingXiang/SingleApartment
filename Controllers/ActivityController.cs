@@ -826,7 +826,7 @@ namespace sln_SingleApartment.Controllers
 
             //}
             //list.Remove(list);
-            return RedirectToAction("List");
+            return RedirectToAction("CartView");
         }
         public ActionResult subActivity(int id)
         {

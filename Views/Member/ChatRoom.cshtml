@@ -34,7 +34,6 @@
 
         $(function () {
 
-            setScreen(false);
 
             // Declare a proxy to reference the hub.
             var chatHub = $.connection.chatHub;
@@ -50,17 +49,6 @@
 
 
         });
-        //尚未登入時要求輸入ID
-        function setScreen(isLogin) {
-
-            if (!isLogin) {
-                $("#divLogin").show();
-            }
-            else {
-                $("#divLogin").hide();
-            }
-
-        }
 
         //以名字註冊進入聊天室
         function registerEvents(chatHub) {
@@ -84,7 +72,6 @@
             // Calls when user successfully logged in
             chatHub.client.onConnected = function (id, userName, allUsers, messages) {
 
-                setScreen(true);
 
                 $('#hdId').val(id);
                 $('#hdUserName').val(userName);
@@ -162,7 +149,7 @@
 
             if (userId == id) {
 
-                code = $('<div class="loginUser">' + name + "</div>");
+               // code = $('<div class="loginUser">' + name + "</div>");
 
             }
             else {
@@ -185,9 +172,11 @@
                         OpenPrivateChatWindow(chatHub, id, name, img);
 
                 });
+
+                $("#divusers").append(code);
             }
 
-            $("#divusers").append(code);
+          
 
         }
 
@@ -215,7 +204,7 @@
 
         function createPrivateChatWindow(chatHub, userId, ctrId, userName, img) {
 
-            var div = '<div id="' + ctrId + '" class="col-md-8 col-xl-6 chat">'
+            var div = '<div id="' + ctrId + '" class="col-md-8 col-xl-6 chat" style="bottom:139px;">'
                 + '<div class="card">'
                 + '<div class="card-header msg_head">'
                 + '<div class="d-flex bd-highlight">'
@@ -224,7 +213,7 @@
                 + '<span class="online_icon"></span>'
                 + '</div>'
                 + '<div class="user_info">'
-                + '<span>Chat with' + userName + '</span>'
+                + '<span> －' + userName + '－ </span>'
                 //+'<p>1767 Messages</p>'
                 + '</div>'
                 + '</div>'
@@ -301,22 +290,11 @@
     </script>
     <div><br /><br /><br /><br /><br /><br /><br /><br /></div>
 
-    <div id="divContainer">
-        <div id="divLogin" class="login">
-            <div>
-                Your Name:<br />
-                <input id="txtNickName" value="" type="text" class="textBox" />
-            </div>
-            <div id="divButton">
-                <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
-            </div>
-        </div>
-
-
-
-        <div class="container-fluid h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-md-4 col-xl-3 chat">
+    <div style="display:inline-flex; margin-left:300px;  bottom:70px" >
+    
+        <div class="container-fluid h-100" id="divContainer" style="display:inline-flex;">
+            <div class="row justify-content-center h-100" style="margin-left:20px;">
+                <div class="col-md-4 col-xl-3 chat"  style="bottom:139px"> 
                     <div class="card mb-sm-3 mb-md-0 contacts_card">
                         <div class="card-header">
                             <div class="input-group">
@@ -335,7 +313,6 @@
                         <div class="card-footer"></div>
                     </div>
                 </div>
-
             </div>
         </div>
 
