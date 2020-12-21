@@ -1425,6 +1425,8 @@
     <Content Include="Content\Room\js\waypoints.min.js" />
     <Content Include="Content\Room\Site.css" />
     <None Include="Content\SignalR\Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Content\SignalR\ChatBackgroundimg.png" />
+    <Content Include="Content\SignalR\christmas.jpg" />
     <Content Include="Content\SignalR\Css\ChatStyle.css" />
     <Content Include="Content\SignalR\Scripts\jquery-1.8.2.js" />
     <Content Include="Content\SignalR\Scripts\jquery-1.8.2.min.js" />
