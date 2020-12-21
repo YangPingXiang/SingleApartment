@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "OrderList";
-    Layout = "~/Views/Shared/Information_Layout.cshtml";/*(12/1新增)*/
+    Layout = "~/Views/Shared/NewBack_Layout.cshtml";/*(12/1新增)*/
 }
 
 <!-- pages-title-start -->
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <div class="con-text">
+                <div class="con-text align-center">
                     <h2 class="page-title"><a href="https://vendor-stage.ecpay.com.tw/User/LogOn_Step1">所有訂單</a></h2>
                     <p></p>
                 </div>
@@ -61,11 +61,11 @@
                                         @Html.DisplayFor(modelItem => item.ArrivedDate)
                                     </td>
                                     <td class="sop-cart">
-                                        <a onclick="SearchONEOrder(@item.OrderID)" class="btn btn-default orderdetail" href="#bookmark">訂單明細456</a>
+                                        <a onclick="SearchONEOrder(@item.OrderID)" class="btn btn-default orderdetail" href="#bookmark" style="background-color:#f6755e; border-color:#f6755e; text-decoration:none; color:white; line-height:2em;">訂單明細456</a>
                                     </td>
                                     <td class="sop-cart">
 
-                                        @Html.ActionLink("取消訂單", "Delete", new { id = item.order_entity.OrderID }, new { @class = "btn btn-default" })
+                                        @Html.ActionLink("取消訂單", "Delete", new { id = item.order_entity.OrderID }, new { @class = "btn btn-default", @style = " background-color:#5bc0de; border-color:#5bc0de; text-decoration:none; color:white; line-height:2em; " })
 
                                     </td>
                                     <td class="sop-cart">
@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col-md-12 col-xs-12">
                 <div class="s-cart-all">
-                    
+
                     <div id="OrderDetail">
 
                     </div>
@@ -133,5 +133,19 @@
             });
 
     }
+
+    $(document).ready(function () {
+        $('table').css({
+            "color": "#767d85",
+            "font-size": "100%",
+            "font": "inherit",
+            "font-size": "22px",
+            "border-collapse": "collapse",
+            "border-spacing": "0"
+        })
+
+
+
+    })
 </script>
 

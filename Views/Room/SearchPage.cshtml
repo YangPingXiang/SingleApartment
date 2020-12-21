@@ -12,56 +12,58 @@
     <input type="hidden" id="case3" value="0" />
     <input type="hidden" id="case4" value="0" />
 
-    <div style="background-color: #edf2fb; width: 900px; margin: 50px auto; text-align: center;">
+    <div id="condition" style="background-color: #edf2fb; width: 900px; margin: 50px auto; text-align: center;">
 
         <form method="post">
 
             <ul class="list">
-                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px; ">
+                <li style="font-weight:800; float:left;  margin-top:12px; width:100px; ">
                     建案：
                 </li>
                 @foreach (var item in Model.buildcaseViewModels)
                 {
-                    <li><a href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a></li>
+                    <li class="myli">
+                        <a class="txt" href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a>
+                    </li>
                 }
             </ul>
 
             <ul class="list">
-                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     類型：
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房">1人房</a>
+                <li class="myli">
+                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房">1人房</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="2人房">2人房</a>
+                <li class="myli">
+                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="2人房">2人房</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="3人房">3人房</a>
+                <li class="myli">
+                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="3人房">3人房</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="2" data-case="4人房">4人房</a>
+                <li class="myli">
+                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="4人房">4人房</a>
                 </li>
             </ul>
 
             <ul class="list">
-                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     租金：
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="1">10000元以下</a>
+                <li class="myli">
+                    <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="1">10000元以下</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="2">10000-20000元</a>
+                <li class="mydi myli">
+                    <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="2">10000-20000元</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="3">20000-30000元</a>
+                <li class="mydi myli">
+                    <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="3">20000-30000元</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="4">30000-40000元</a>
+                <li class="mydi myli">
+                    <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="4">30000-40000元</a>
                 </li>
-                <li>
-                    <a href="javascript:;" onclick="filter(this);" data-item="3" data-case="5">40000元以上</a>
+                <li class="mydi myli">
+                    <a class="txt rentCuz" href="javascript:;" onclick="filter(this);" data-item="3" data-case="5">40000元以上</a>
                 </li>
 
             </ul>
@@ -69,13 +71,13 @@
 
 
             <ul class="list">
-                <li style="font-weight:800; float:left; border:2px solid red; margin-top:12px; width:100px;">
+                <li style="font-weight:800; float:left;  margin-top:12px; width:100px;">
                     風格：
                 </li>
                 @foreach (var item in Model.roomStyleViewModels)
                 {
-                    <li>
-                        <a href="javascript:;" onclick="filter(this);" data-item="4" data-case="@item.ID">@item.entity_roomstyle.RoomStyleName</a>
+                    <li class="myli">
+                        <a class="txt" href="javascript:;" onclick="filter(this);" data-item="4" data-case="@item.ID">@item.entity_roomstyle.RoomStyleName</a>
                     </li>
                 }
             </ul>
@@ -142,7 +144,7 @@
     </div>
     <!--trending end-->
     <!--start browse-->
-    <div class="our-news text-center ptb-80 white_bg">
+    <div id="searchresult" class="our-news text-center ptb-80 white_bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -155,7 +157,7 @@
                             <option style="background-color:#eceff8;">排序</option>
                             <option style="background-color:#eceff8;">坪數大->小</option>
                             <option style="background-color:#eceff8;">坪數小->大</option>
-                            <option style="background-color:#eceff8;">租金小->大</optionstyle="background-color:#eceff8;">
+                            <option style="background-color:#eceff8;">租金小->大</option>
                             <option style="background-color:#eceff8;">租金大->小</option>
                         </select>
                     </div>
@@ -170,6 +172,11 @@
                             @foreach (var item in Model.roomViewModels)
                             {
                                 <div class="col-md-12 pb-80">
+                                    @{
+                                        DateTime? time = item.entity_room.BuildCase.BuildTimes;
+
+
+                                    }
                                     <div class="news-inner">
                                         @*@{
                                                 var fiilename = "房型_" + item.roomStyleName + ".jpg";
@@ -178,7 +185,7 @@
                                             <img src="~/Content/Room/images/roomstyle/工業風-1.jpg" alt="@item.roomname">
                                             <div class="news-post">
                                                 @*評價*@
-                                                <div class="n-date">@item.entity_room.BuildCase.BuildTimes</div>
+                                                <div class="n-date">@time.ToString().AsDateTime().Date.ToShortDateString()</div>
                                                 <div class="news-views">
                                                     <a name="@item.roomID" onclick="AddRoomToFavoriteList(@ViewBag.MemberID)">
                                                         <i class="mdi mdi-heart"></i>
@@ -192,6 +199,7 @@
                                                     @item.roomname
                                                 </a>
                                             </h3>
+
                                             <p class="news_desc">建案： @item.entity_room.BuildCase.BuildCaseName  /  坪數：  @item.squarefootage   </p>
                                             <div class="news-action">
                                                 <div class="read-more">
@@ -221,7 +229,7 @@
 
     <script>
         $(function () {
-            $('li').click(function () {
+            $('.myli').click(function () {
                 $(this).css("background-color", "#e76f51")
                     .siblings().css("background-color", "#e8e8e8")
                 $(this.firstElementChild).css("color", "white")
@@ -234,6 +242,20 @@
             //    console.log(this.innerText);
             //});
 
+            $('.mydi').css({
+                "margin-left":"10px"
+            })
+
+            $('.txt').css({
+                "color":"#4bb3de",
+                "font-weight": "500",
+                "font-size":"14px"
+            })
+            $('#condition').mouseleave(function () {
+                $('html, body').animate({
+                    scrollTop: $('#searchresult').offset().top
+                }, 'slow');
+            })
 
 
         });
