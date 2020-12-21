@@ -6,7 +6,7 @@
 
 @{
     ViewBag.Title = "List";
-    Layout = "~/Views/Shared/NewBack_Layout.cshtml";
+    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
     CMember member = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
     string memberName = member.fMemberName;
     int memberid = member.fMemberId;

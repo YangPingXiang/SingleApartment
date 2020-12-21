@@ -34,7 +34,6 @@
 
         $(function () {
 
-            setScreen(false);
 
             // Declare a proxy to reference the hub.
             var chatHub = $.connection.chatHub;
@@ -50,17 +49,6 @@
 
 
         });
-        //尚未登入時要求輸入ID
-        function setScreen(isLogin) {
-
-            if (!isLogin) {
-                $("#divLogin").show();
-            }
-            else {
-                $("#divLogin").hide();
-            }
-
-        }
 
         //以名字註冊進入聊天室
         function registerEvents(chatHub) {
@@ -84,7 +72,6 @@
             // Calls when user successfully logged in
             chatHub.client.onConnected = function (id, userName, allUsers, messages) {
 
-                setScreen(true);
 
                 $('#hdId').val(id);
                 $('#hdUserName').val(userName);
@@ -302,18 +289,7 @@
     <div><br /><br /><br /><br /><br /><br /><br /><br /></div>
 
     <div id="divContainer">
-        <div id="divLogin" class="login">
-            <div>
-                Your Name:<br />
-                <input id="txtNickName" value="" type="text" class="textBox" />
-            </div>
-            <div id="divButton">
-                <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
-            </div>
-        </div>
-
-
-
+    
         <div class="container-fluid h-100">
             <div class="row justify-content-center h-100">
                 <div class="col-md-4 col-xl-3 chat">
