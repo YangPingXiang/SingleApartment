@@ -5,245 +5,304 @@
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
 }
 
-<!-- pages-title-start -->
-@*<section class="contact-img-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="con-text">
-                    <h2 class="page-title">Checkout</h2>
-                    <p><a href="#">Home</a> | Checkout</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@
-<!-- pages-title-end -->
+
+
 <!-- checkout content section start -->
-<div class="checkout-area">
-    @*會員*@
-    @*================================================================================*@
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 col-sm-12">
-                <div class="text">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <!--<li role="presentation" class="active ano complete">
-                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab"></a>
-                            <span>填寫資料</span>-->@*11/28新增*@
-                        <!--</li>-->
-                        <li role="presentation" class="ano ">
-                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"></a>
-                            <span>付款方式</span>@*11/28新增*@
-                        </li>
-                        <li role="presentation" class="ano la">
-                            <a href="#message" aria-controls="message" role="tab" data-toggle="tab"></a>
-                            <span>完成付款</span>@*11/28新增*@
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <!--<div role="tabpanel" class="tab-pane active" id="home">
-                            <div class="row">
-                                <form action="#">
-                                    <div class="checkbox-form">
-                                        <div class="col-md-12">
-                                            <h3 class="checkbox9">填寫資料</h3>
-                                        </div>-->
-
-
-                                        @*@*會員姓名*@
-                                        <!--<div class="col-md-6">
-                                            <div class="di-na bs">
-                                                <label class="l-contact">
-                                                    姓名:
-                                                    <em>*</em>
-                                                </label>
-                                                <input class="form-control" type="text" required name="TXTMEMBERNAME"--> @*name="name"*@<!-->
-                                            </div>
-                                        </div>-->
-                                        @*會員信箱*@
-                                        <!--<div class="col-md-6">
-                                            <div class="di-na bs">
-                                                <label class="l-contact">
-                                                    會員信箱
-                                                    <em>*</em>
-                                                </label>
-                                                <input class="form-control" type="email" required name="TXTPHONE"--> @*name="name"*@<!-->
-                                            </div>
-                                        </div>-->
-                                        @*手機號碼*@
-                                        <!--<div class="col-md-6">
-                                            <div class="di-na bs">
-                                                <label class="l-contact">
-                                                    會員手機號碼
-                                                    <em>*</em>
-                                                </label>
-                                                <input class="form-control" type="tel" required name="TXTEMAIL"--> @*name="name"*@<!-->
-                                            </div>
-                                        </div>-->
-                                        @*@*房號*@
-                                        @*<div class="col-md-12">
-                                                <label class="l-contact">
-                                                    幾號房
-                                                    <em>*</em>
-                                                    <div class="di-na bs tana">
-                                                        <input class="form-control" type="text" required="" name="name" placeholder="EX:(104)">
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            @*出生日期*@
-                                        @*<div class="col-md-6">
-                                                <div class="country-select">
-                                                    <label class="l-contact">
-                                                        出生日期
-                                                        <em>*</em>
-                                                    </label>
-                                                    <select class="email s-email s-wid">
-                                                        <option>mymensingh</option>
-                                                        <option>dhaka</option>
-                                                        <option>khulna</option>
-                                                        <option>kumillah</option>
-                                                        <option>chadpur</option>
-                                                    </select>
-                                                </div>
-                                            </div>*@
-
-
-                                    <!--</div>
-                                </form>
+<!--<div class="checkout-area">-->
+@*會員*@
+@*================================================================================*@
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-sm-12">
+            <div class="text">
+                <!-- Nav tabs -->
+<!--<ul class="nav nav-tabs" role="tablist">-->
+<!--<li role="presentation" class="active ano complete">
+    <a href="#home" aria-controls="home" role="tab" data-toggle="tab"></a>
+    <span>填寫資料</span>-->
+<!--@*11/28新增*@-->
+<!--<!--</li>-->
+<!--<li role="presentation" class="ano ">
+    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"></a>
+    <span>付款方式</span>-->
+@*11/28新增*@
+<!--</li>
+<li role="presentation" class="ano la">
+    <a href="#message" aria-controls="message" role="tab" data-toggle="tab"></a>
+    <span>完成付款</span>-->
+@*11/28新增*@
+<!--</li>
+</ul>-->
+<!-- Tab panes -->
+<!--<div class="tab-content">-->
+@*================================================================================================*@
+@*付款方式*@
+<!--<div role="tabpanel" class="tab-pane" id="profile">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="top-check-text">
+                            <div class="check-down">
+                                <h3 class="checkbox9">確認資料</h3>
+                                <span><a class="ro-edit-customer-info" href="#">Edit</a></span>
                             </div>
-                            <div class="row">
-
-                                <div class="col-md-12 text-center">
-                                    <p class="checkout-coupon">
-                                        <input type="submit" value="CONTINUE">
+                            <div class="ro-content2">
+                                <div class="ro-info2">
+                                    <p>
+                                        <span>Email Address: </span>
+                                        tasnimakter903@yahoo.com
+                                    </p>
+                                </div>
+                                <div class="ro-info2">
+                                    <p>
+                                        <span>Country: </span>
+                                        BD
                                     </p>
                                 </div>
                             </div>
-                        </div>-->
-                        @*================================================================================================*@
-                        @*付款方式*@
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="top-check-text">
-                                        <div class="check-down">
-                                            <h3 class="checkbox9">確認資料</h3>
-                                            <span><a class="ro-edit-customer-info" href="#">Edit</a></span>
-                                        </div>
-                                        <div class="ro-content2">
-                                            <div class="ro-info2">
-                                                <p>
-                                                    <span>Email Address: </span>
-                                                    tasnimakter903@yahoo.com
-                                                </p>
-                                            </div>
-                                            <div class="ro-info2">
-                                                <p>
-                                                    <span>Country: </span>
-                                                    BD
-                                                </p>
-                                            </div>
+                        </div>
+                        <form action="#" class="all-payment" method="post">
+                            <div class="all-paymet-border">
+                                <div class="payment-method">
+                                    <div class="pay-top sin-payment">
+                                        <input id="payment_method_1" class="input-radio payment_methods" type="radio" value="歐付寶" checked="checked" name="payment_method">
+                                        <label for="payment_method_1"> 歐付寶 </label>
+                                        <div class="payment_box payment_method_bacs">
+                                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                                         </div>
                                     </div>
-                                    <form action="#" class="all-payment" method="post">
-                                        <div class="all-paymet-border">
-                                            <div class="payment-method">
-                                                <div class="pay-top sin-payment">
-                                                    <input id="payment_method_1" class="input-radio" type="radio" value="歐付寶" checked="checked" name="payment_method">
-                                                    <label for="payment_method_1"> 歐付寶 </label>
-                                                    <div class="payment_box payment_method_bacs">
-                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="pay-top sin-payment">
-                                                    <input id="payment_method_2" class="input-radio" type="radio" value="綠界科技" name="payment_method">
-                                                    <label for="payment_method_2"> 綠界科技  </label>
-                                                    <div class="payment_box payment_method_bacs">
-                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="pay-top sin-payment">
-                                                    <input id="payment_method_3" class="input-radio" type="radio" value="cheque" name="payment_method">
-                                                    <label for="payment_method_3">PayPal <img alt="" src="img/icon-img/44.png"><a href="#">What is PayPal?</a></label>
-                                                    <div class="payment_box payment_method_bacs">
-                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row place-order">
-                                                <input class="button alt" type="submit" value="下訂">
-                                            </div>
+                                    <div class="pay-top sin-payment">
+                                        <input id="payment_method_2" class="input-radio payment_methods" type="radio" value="綠界科技" name="payment_method">
+                                        <label for="payment_method_2"> 綠界科技  </label>
+                                        <div class="payment_box payment_method_bacs">
+                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div class="pay-top sin-payment">
+                                        <input id="payment_method_3" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                        <label for="payment_method_3">PayPal <img alt="" src="~/Content/Room/images/icons/favicon-16x16.png"><a href="#">What is PayPal?</a></label>
+                                        <div class="payment_box payment_method_bacs">
+                                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row place-order">
+                                    <input class="button alt" type="submit" value="下訂">
                                 </div>
                             </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="message">
-                            <div class="last-check">
-                                <h3 class="checkbox9">完成付款</h3>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            @*===========================================================================================*@
-            @*訂單明細*@
-            <div class="col-md-5 col-sm-12">
-                <div class="ro-checkout-summary">
-                    <div class="ro-title">
-                        <h3 class="checkbox9">訂單內容</h3>
-                    </div>
-                    @foreach (var item in Model)
-                    {
-                        //string pic = item.ProductID.ToString() + ".jpg";
-                        <div class="ro-body">
-                            <div class="ro-item">
-                                @*<div class="ro-image">
-                                    <a href="#">
-                                        <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="">
-                                    </a>
-                                </div>
-                                <div>*@
-                                    <div class="tb-beg">
-                                        <a href="#">@item.entity_lease.Room.RoomName</a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="ro-price">
-                                        <span class="amount">@item.rent 元</span>
-                                    </div>
-                                    @*<div class="ro-quantity">
-                                        <strong class="product-quantity">X  @item.Quantity</strong>
-                                    </div>*@
-                                    @*<div class="product-total">
-                                        <span class="amount">@item.TotalPrice 元</span>
-                                    </div>*@
-                                </div>
-                            </div>
-                            <div>
-                        </div>
-                    }
-
-                    <div class="ro-footer">
-                        <div>
-                            <p>
-                                總計
-                                <span>
-                                    <strong>
-                                        <span class="amount">@Model.Sum(p => p.rent)</span>
-                                    </strong>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-
+            <div role="tabpanel" class="tab-pane" id="message">
+                <div class="last-check">
+                    <h3 class="checkbox9">完成付款</h3>
                 </div>
             </div>
-            @*========================================================================================*@
+        </div>
+    </div>
+</div>-->
+@*===========================================================================================*@
+@*訂單明細*@
+<!--<div class="col-md-5 col-sm-12">
+    <div class="ro-checkout-summary">
+        <div class="ro-title">
+            <h3 class="checkbox9">訂單內容</h3>
+        </div>
+        foreach (var item in Model)
+        {
+            //string pic = item.ProductID.ToString() + ".jpg";
+            <div class="ro-body">
+                <div class="ro-item">-->
+@*<div class="ro-image">
+        <a href="#">
+            <img src="@DisplayImage(item.prodpic.ProductPicture)" alt="">
+        </a>
+    </div>
+    <div>*@
+<!--<div class="tb-beg">
+        <a href="#">item.entity_lease.Room.RoomName</a>
+    </div>
+</div>
+<div>
+    <div class="ro-price">
+        <span class="amount">item.rent 元</span>
+    </div>-->
+@*<div class="ro-quantity">
+        <strong class="product-quantity">X  @item.Quantity</strong>
+    </div>*@
+@*<div class="product-total">
+        <span class="amount">@item.TotalPrice 元</span>
+    </div>*@
+<!--</div>
+            </div>
+            <div>
+            </div>
+        }
+
+        <div class="ro-footer">
+            <div>
+                <p>
+                    總計
+                    <span>
+                        <strong>
+                            <span class="amount">Model.Sum(p => p.rent)</span>
+                        </strong>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>-->
+@*========================================================================================*@
+@*</div>
+        </div>
+    </div>-->*@
+<!-- checkout  content section end -->
+
+
+<div id="abtpayment" class='container'>
+    <div class='row' style='padding-top:25px; padding-bottom:25px;'>
+        <div class='col-md-12'>
+            <div id='mainContentWrapper'>
+                <div class="col-md-8 col-md-offset-2">
+
+
+                    <h2 style="text-align: center;">
+                        完成訂房
+                    </h2>
+                    <hr />
+                    <a href="~/Room/SearchPage" class="btn btn-info" style="width: 100%; font-size:16px; padding-bottom:30px; height:30px;"> 繼續看房</a>
+                    <hr />
+                    <div class="shopping_cart">
+                        <form class="form-horizontal" role="form" action="" method="post" id="payment-form">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title paytitle">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="font-weight:800;">
+                                                訂單內容
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    @foreach (var item in Model)
+                                    {
+
+
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="items">
+                                                    <div class="col-md-9">
+                                                        <table class="table table-striped">
+                                                            <tr>
+                                                                <td colspan="2">
+
+                                                                    <b>
+                                                                        @item.entity_lease.Room.RoomName
+                                                                    </b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <ul>
+                                                                        <li style="margin-bottom:8px;">@item.entity_lease.Room.BuildCase.BuildCaseName</li>
+
+                                                                        <li style="margin-bottom:8px;">合約開始日  @item.entity_lease.StartDate.Value.Date.ToShortDateString()</li>
+
+                                                                        <li style="margin-bottom:8px;">合約結束日 @item.expirydate.Value.Date.ToShortDateString()</li>
+
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    <b>NT @item.rent</b>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div style="text-align: center;">
+                                                            <h3>總計</h3>
+                                                            <h3>
+                                                                <span style="color:green;">NT @Model.Sum(p => p.rent)</span>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title paytitle">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            <b>付費方式</b>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <span class='payment-errors'></span>
+                                        <fieldset>
+                                            <legend style="font-size:16px;">今天想用什麼方式付費呢？</legend>
+                                            <div class="form-group" style="margin-left:20px;">
+                                                <input id="payment_method_1" class="input-radio payment_methods" type="radio" value="歐付寶" checked="checked" name="payment_method" style="float:left; height:25px; width:50px; margin-right:15px; display:inline;">
+                                                <label for="payment_method_1">
+                                                    <img src="~/Content/Room/images/logo/歐付寶100x60.png" />
+                                                </label>
+                                                @*<div class="payment_box payment_method_bacs">
+                                                        <p>
+                                                            <img src="~/Content/Room/images/logo/歐付寶.png" />
+                                                        </p>
+                                                    </div>*@
+                                            </div>
+                                            <div class="form-group" style="margin-left:20px;">
+
+
+                                                <input id="payment_method_2" class="input-radio payment_methods" type="radio" value="綠界科技" name="payment_method" style="float:left; height:25px; width:50px; margin-right:15px; display:inline;">
+                                                <label for="payment_method_2">
+                                                    <img src="~/Content/Room/images/logo/綠界科技100x60.png" />
+                                                </label>
+                                                @*<div class="payment_box payment_method_bacs">
+                                                        <p>Put ICON</p>
+                                                    </div>*@
+                                            </div>
+
+
+                                        </fieldset>
+                                        <button type="submit" class="btn btn-success btn-lg" style="width:100%; padding-bottom:30px;">
+                                            立即下訂
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
-<!-- checkout  content section end -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(function () {
+        $('#abtpayment').css({
+            "font-size":"16px"
+        })
+
+        $('.paytitle').css({
+            "font-size": "20px",
+
+        })
+    })
+</script>
+<!------ Include the above in your HEAD tag ---------->

@@ -1,90 +1,192 @@
 ﻿@*@using PagedList;
-@using PagedList.Mvc;
-@model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>*@
+    @using PagedList.Mvc;
+    @model IPagedList<sln_SingleApartment.ViewModels.CRoomFavorite>*@
 
 @model  List<sln_SingleApartment.ViewModels.CRoomFavorite>
 
 @{
     ViewBag.Title = "RoomFavoritelist";
     Layout = "~/Views/Shared/Room/_LayoutRoom.cshtml";
+
+    int count = 0;
 }
 
-<body>
-    <h3 style="margin-left:150px;"> 我的最愛 房間資訊 </h3>
+<link href="~/Content/Room/css/StyleforFavoriteList.css" rel="stylesheet" />
 
-    <div style=" width:1000px; margin:30px auto;">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <table class="table" style=" margin:10px auto; width:800px; ">
-            <tr style="background-color:#afd0e7; ">
+<h3 style="margin-left:150px;"> 我的最愛 房間資訊 </h3>
+<div id="backcolor">
+    <div id="mywishlist" class="container mb-4" style="margin-left:400px; margin-top:40px;">
+        @{
+            count++;
+        }
+        <div class="row" style="">
 
-                <th>
-                    房間名稱
-                    @*@Html.DisplayNameFor(model => model.roomname)*@
-                </th>
-                <th>
-                    房間設備
-                </th>
-                <th>
-                    房型
-                    @*@Html.DisplayNameFor(model => model.roomtype)*@
-                </th>
+            @foreach (var item in Model)
+            {
+                <!-- Wishlist-->
+                <div id="wishlist" class="col-lg-8 pb-5" style="line-height:1.5em;">
 
-                <th>
-                    租金
-                    @*@Html.DisplayNameFor(model => model.rent)*@
-                </th>
-                <th>
-                    建案名稱
-                </th>
-                <th>
-                    坪數
-                    @*@Html.DisplayNameFor(model => model.squarefootage)*@
-                </th>
+
+                    <!-- Item-->
+                    <div class="cart-item d-md-flex justify-content-between">
+                        <span class="remove-item" onclick="remove(this)"><i class="fa fa-times"></i></span>
+                        <div class="px-3 my-3">
+                            @{
+                                var filename = item.Room.RoomStyle.RoomStyleName + "-" + count + ".jpg";
+                            }
+                            <a class="cart-item-product" href="#">
+                                <div class="cart-item-product-thumb" style="width:180px;">
+                                    <img src="~/Content/Room/images/roomstyle/@filename " style="margin-top:20px; width:250px;">
+                                </div>
+                                <div class="cart-item-product-info">
+                                    <h4 class="cart-item-product-title" style="margin-left:10px;"> @Html.DisplayFor(modelItem => item.Room.RoomName)</h4>
+                                    <div style="margin-left:10px; color:black;">
+
+
+                                        <span>
+                                            建案
+                                            <span class="text-success font-weight-medium" style="margin-left:10px;">
+                                                @Html.DisplayFor(modelItem => item.Room.BuildCase.BuildCaseName)
+                                            </span>
+
+                                        </span>
+                                        <br>
+                                        <span>
+                                            設備  <span class="text-success font-weight-medium" style="margin-left:10px;">
+                                                @foreach (var i in item.entity_RoomFavorite.Room.RoomFacilities)
+                                                {
+                                                    @Html.DisplayFor(modelItem => i.Facility.FacilityName) @("  ")
+
+
+                                                }
+                                            </span>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            坪數
+                                            <span class="text-success font-weight-medium" style="margin-left:10px;">
+                                                @Html.DisplayFor(modelItem => item.Room.SquareFootage)
+                                            </span>
+
+                                        </span>
+                                        <br>
+                                        <span>
+                                            樓層 <span class="text-success font-weight-medium" style="margin-left:10px;">
+                                                @Html.DisplayFor(modelItem => item.Room.Floor)
+                                            </span>
+                                        </span>
+
+                                    </div>
+
+                                    <div class="text-lg text-body font-weight-medium pb-1" style="margin-top:20px; margin-left:10px; font-weight:600;">
+                                        NT @Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.Rent)
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function remove(el) {
+        var element = document.getElementById('wishlist');
+        element.remove();
+    }
+
+    $(function () {
+        if ($('#backcolor').exist()) { $('#mywishlist').css({ "background-color": "#2364aa" }) }
+    })
+
+
+</script>
+
+
+@*<div style=" width:1000px; margin:30px auto;">
+
+    <table class="table" style=" margin:10px auto; width:800px; ">
+        <tr style="background-color:#afd0e7; ">
+
+            <th>
+                房間名稱
+                @Html.DisplayNameFor(model => model.roomname)
+            </th>
+            <th>
+                房間設備
+            </th>
+            <th>
+                房型
+                @Html.DisplayNameFor(model => model.roomtype)*@
+@*</th>
+
+    <th>
+        @*租金*@
+@*Html.DisplayNameFor(model => model.rent)*@
+@*</th>
+    <th>
+        建案名稱
+    </th>
+    <th>
+        坪數*@
+@*@Html.DisplayNameFor(model => model.squarefootage)
+                @*/th>
                 <th>
                     樓層
-                    @*@Html.DisplayNameFor(model => model.floor)*@
+                    Html.DisplayNameFor(model => model.floor)
                 </th>
             </tr>
 
-            @foreach (var item in Model)
+            foreach (var item in Model)
             {
                 <tr>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Room.RoomName)
+                       Html.DisplayFor(modelItem => item.Room.RoomName)
                     </td>
 
                     <td>
-                        @foreach (var i in item.entity_RoomFavorite.Room.RoomFacilities)
+                       foreach (var i in item.entity_RoomFavorite.Room.RoomFacilities)
                         {
-                            @Html.DisplayFor(modelItem => i.Facility.FacilityName) <br>
+                           Html.DisplayFor(modelItem => i.Facility.FacilityName)
+                            <br>
                         }
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.RoomType)
+                        Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.RoomType)
                     </td>
 
                     <td>
-                        NT @Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.Rent)
+                        NT Html.DisplayFor(modelItem => item.entity_RoomFavorite.Room.Rent)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Room.BuildCase.BuildCaseName)
+                        Html.DisplayFor(modelItem => item.Room.BuildCase.BuildCaseName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Room.SquareFootage)
+                        Html.DisplayFor(modelItem => item.Room.SquareFootage)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Room.Floor)
+                        Html.DisplayFor(modelItem => item.Room.Floor)
                     </td>
                     <td>
-                        @*@Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
+                        Html.ActionLink("編輯", "BackEditTheRoomDetail", new { id = item.roomID }) |
 
-                            @Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })*@
+                            Html.ActionLink("刪除", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>
             }
 
         </table>
-    </div>
-</body>
+    </div>*@
+
 
