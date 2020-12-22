@@ -230,7 +230,10 @@ namespace sln_SingelApartment.Controllers
         public ActionResult DeleteRoomFavorite(int id)
         {
             var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+            
             int memberID = user.fMemberId;
+            
             RoomFavorite roomfa = dbSA.RoomFavorite.FirstOrDefault(r => r.RoomID == id);
             if (roomfa != null)
             {
@@ -330,6 +333,8 @@ namespace sln_SingelApartment.Controllers
         // RoomBooking
         public ActionResult BookingInfo(int id)
         {
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
 
             CMember member = Session[CDictionary.welcome] as CMember;
 
@@ -372,6 +377,8 @@ namespace sln_SingelApartment.Controllers
         public ActionResult DeleteMyLease(int id)
         {
             var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
             var memberId = user.fMemberId;
 
             Lease l = dbSA.Lease.FirstOrDefault(t => t.ID == id);
@@ -385,7 +392,7 @@ namespace sln_SingelApartment.Controllers
 
                 //退租成功通知訊息
                 CInformationFactory x = new CInformationFactory();
-                x.Add(memberId, 400, id, 40040);
+                x.Add(memberId, 400, id, 40030);
 
                 var rf = from r in dbSA.RoomFavorite
                          where r.RoomID.ToString() == roomID
@@ -398,7 +405,7 @@ namespace sln_SingelApartment.Controllers
                         int reID = item.Value;
                         //通知空房訊息
                         CInformationFactory y = new CInformationFactory();
-                        y.Add(reID, 400, 0 , 40030);
+                        y.Add(reID, 400, 0 , 40040);
 
                     }
                 }
@@ -415,7 +422,11 @@ namespace sln_SingelApartment.Controllers
         {
             CAboutRoomViewModel abtRoom_VM = new CAboutRoomViewModel();
 
+            var user = Session[CDictionary.welcome] as CMember;
+            if (user == null) { return RedirectToAction("Login", "Member"); }
+
             CMember member = Session[CDictionary.welcome] as CMember;
+            
             int memberID = member.fMemberId;
 
             var result = from L in dbSA.Lease
