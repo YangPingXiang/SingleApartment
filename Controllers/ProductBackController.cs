@@ -132,7 +132,7 @@ namespace sln_SingleApartment.Controllers
             db.SaveChanges();
             //======================================================
             
-            return RedirectToAction("ProductList");
+            return RedirectToAction("Home","Product");
 
         }
         //==========================================================
@@ -204,7 +204,7 @@ namespace sln_SingleApartment.Controllers
             db.SaveChanges();
             //======================================================
 
-            return RedirectToAction("ProductList");
+            return RedirectToAction("Home","Product");
 
         }
 

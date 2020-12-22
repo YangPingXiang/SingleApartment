@@ -177,7 +177,7 @@
                     }
                     &Iota;
                     @{
-                        if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
+                        if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類" && item.entity.MemberID == memberid)
                         {
 
                             <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
