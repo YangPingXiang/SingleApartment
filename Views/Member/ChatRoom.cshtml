@@ -144,9 +144,10 @@
         function AddUser(chatHub, id, name, img) {
 
             var userId = $('#hdId').val();
-
+            console.log(id)
             var code = "";
-
+            var interest = "";
+            if ((name == "Eva" && $('#hdUserName').val() == "Bob") || name == "Bob" && $('#hdUserName').val()=="Eva") interest = "，他也喜歡B201房..";
             if (userId == id) {
 
                // code = $('<div class="loginUser">' + name + "</div>");
@@ -158,11 +159,11 @@
                     '<div class="d-flex bd-highlight">' +
                     '<div class= "img_cont">' +
                     '<img src = "'+ img +'" class= "rounded-circle user_img" id="' +name+ 'pic">' +
-                    '<span class="online_icon offline"></span>' +
+                    '<span class="online_icon "></span>' +
                     '</div>' +
                     '<div class="user_info">' +
                     '<span class="user" >' + name + '</span>' +
-                    '<p>他跟你有一樣的興趣捏</p>' +
+                    '<p>正在線上 '+interest +' </p>' +
                     '</div>' +
                     '</div>' +
                     '</li>');
