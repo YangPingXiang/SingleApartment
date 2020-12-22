@@ -1,39 +1,47 @@
 ﻿@model sln_SingleApartment.ViewModels.CActivityNew
 @using sln_SingleApartment.ViewModels
-
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/Information_Layout.cshtml";
-
+    Layout = "~/Views/Shared/HomePage/_LayoutHomeMember.cshtml";
     CMember member = Session[sln_SingleApartment.Models.CDictionary.welcome] as CMember;
     string memberName = member.fMemberName;
+
 }
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+
 <link href="~/datetimepicker.css" rel="stylesheet" />
-<script src="~/datetimepicker.js"></script>
-<script src="~/ckeditor/ckeditor.js"></script>
-
-@using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <section id="main" class="wrapper" style="padding:3em">
-        <!--style="border:solid 1px;border-color:black"-->
-        <div class="inner">
-            <header class="align-center">
-                <h1 style="font-size:2em;font-weight:700;line-height:1.3">新增活動</h1>
-            </header>
-            @*<h2></h2>*@
+<style>
 
 
+    label {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+</style>
+
+
+
+<div id="main" class="wrapper" style="padding:3em;margin-bottom:20px ">
+
+    <div class="inner">
+        <header class="align-center">
+            <h1 style="font-size:2em;font-weight:700;line-height:1.3">新增活動</h1>
+        </header>
+    </div>
+    @using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="container" style="background-color:#FBEEE4;margin-left:5em;margin-bottom:6em;padding:2em;border:solid 0.2em #f6755e;border-radius:10px;margin:auto;width:50em;">
             @using (Html.BeginForm("Create", "Activity", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SubCategoryDetailID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName" ,@id="subid"})
+                    <label>
+                        活動類別&nbsp;:
+                    </label>
+                    <div>
+                        @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName", @id = "subid" })
                         @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -41,8 +49,10 @@
 
                 <!--活動名稱-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ActivityName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label>
+                        活動名稱&nbsp;:
+                    </label>
+                    <div>
                         @Html.EditorFor(model => model.ActivityName, new { htmlAttributes = new { @class = "form-control", @id = "actname" } })
                         @Html.ValidationMessageFor(model => model.ActivityName, "", new { @class = "text-danger" })
                     </div>
@@ -50,33 +60,36 @@
 
                 <!--活動人數-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PeopleCount, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PeopleCount, new { htmlAttributes = new { @class = "form-control", @id = "people" } })
+                    <label>活動人數&nbsp;:</label>
+                    <div>
+                        <input type="text" name="people" id="people" autocomplete="off" required style="font-size:18px;font-weight:500;color:#9f9e9e;" />
+
                         @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <!--開始時間-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label>開始時間&nbsp;:</label>
+                    <div>
                         <input type="datetime-local" name="StartTime" id="StartTime">
                     </div>
                 </div>
 
                 <!--結束時間-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2"})
-                    <div class="col-md-10">
+                    <label>
+                        結束時間&nbsp;:
+                    </label>
+                    <div>
                         <input type="datetime-local" name="EndTime" id="EndTime">
                     </div>
                 </div>
 
                 <!--活動地點-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.MeetingPoint, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label>活動地點&nbsp;:</label>
+                    <div>
                         @Html.EditorFor(model => model.MeetingPoint, new { htmlAttributes = new { @class = "form-control", @id = "location" } })
                         @Html.ValidationMessageFor(model => model.MeetingPoint, "", new { @class = "text-danger" })
                     </div>
@@ -84,55 +97,72 @@
 
                 <!--備註-->
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label>備註&nbsp;:</label>
+                    <div>
                         @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control", @id = "note" } })
                         @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <!--照片-->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ActivityImage, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <input type="file" name="myImage" />
-                    </div>
-                </div>
 
-                <div style="width:800px" id="div_editor">
+                    <label >照片&nbsp;:</label>
+                    <div >
+                        <input  style="font-size: 20px;" type="file" name="myImage" />
+                    </div>
+
+
+
+                <div style="width:600px;height:300px" id="div_editor">
                     <textarea id="editor1" name="editor1">
                      Hello World! 這是 CKeditorf!
                      </textarea>
                 </div>
 
-                <br />
 
-                <div>
-                    <!--Button鍵-->
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
-                            <input id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />
-                            @*<input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />*@
-                        </div>
-                    </div>
-                </div>
 
-                <div style="display:inline; margin-left:13.5em;font-size:18px;">
-                    <input type="button" value="Demo鍵" onclick="FastCreate()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
-                    @*<input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">*@
-                </div>
 
             }
 
-            <div>
-                @Html.ActionLink("返回活動列表", "List")
+            <div style="display:inline; float:right;font-size:18px;">
+                <input type="button" value="Demo鍵" onclick="FastCreate()" style="margin-left:30em;width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                @*<input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">*@
+                @*<label style="" class="btn btn-info">
+                    @Html.ActionLink("返回活動列表", "List")
+                </label>*@
             </div>
+
+
+
+
+
         </div>
-    </section>
-}
+    }
+    <!--Button鍵-->
+
+    <div style="float:right;" >
+        <input style="width:150px;padding:0;" id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
+        <input style="margin-left:10px" id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />
+        @*<input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />*@
+    </div>
 
 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+
+<script src="~/datetimepicker.js"></script>
+<script src="~/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     //$(function () {
 
@@ -144,9 +174,9 @@
         $("#people").val("100");
         $("#location").val("窩居公寓地下室的廁所");
         $("#note").val("見證奇蹟的時刻到了");
-        $("#StartTime").val("2020/12/20T13: 30: 30");
+        $("#StartTime").val("2020/12/24 上午 10:20");
         $("#EndTime").val("2020/12/26 上午 10:20");
-        
+
 
     }
 
