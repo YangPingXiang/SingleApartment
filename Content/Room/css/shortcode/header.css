@@ -125,14 +125,14 @@ NOTE: This is Header style file. All Header related style included in this file.
  }
  /*Sticky Menu*/
 .sticky {
-  background: rgba(0,0,0,0.9);
-  box-shadow: 0 1px 3px rgba(50, 50, 50, 0.4);
-  left: 0;
-  margin: auto;
-  position: fixed;
-  top: 0;
-  z-index: 9999999;
-  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown
+    background: #68aee3;
+    box-shadow: 0 1px 3px rgba(50, 50, 50, 0.4);
+    left: 0;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    z-index: 9999999;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown
 }
  .sticky .main-menu > li > a{
  	padding: 20px 18px;
