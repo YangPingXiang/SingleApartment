@@ -107,7 +107,7 @@
     width: 355px;
     height: 450px;
     border-radius: 15px !important;
-    background-color: rgba(0,0,0,0.4) !important;
+    background-color: rgba(69, 123, 157,0.6) !important;
 }
 
 .contacts_body {
@@ -136,7 +136,7 @@
 
 .search {
     border-radius: 15px 0 0 15px !important;
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(69, 123, 157,0.4) !important;
     border: 0 !important;
     color: white !important;
 }
@@ -147,7 +147,7 @@
     }
 
 .type_msg {
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(69, 123, 157,0.4) !important;
     border: 0 !important;
     color: white !important;
     height: 60px !important;
@@ -161,7 +161,7 @@
 
 .attach_btn {
     border-radius: 15px 0 0 15px !important;
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(69, 123, 157,0.4) !important;
     border: 0 !important;
     color: white !important;
     cursor: pointer;
@@ -169,7 +169,7 @@
 
 .send_btn {
     border-radius: 0 15px 15px 0 !important;
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(69, 123, 157,0.4) !important;
     border: 0 !important;
     color: white !important;
     cursor: pointer;
@@ -177,7 +177,7 @@
 
 .search_btn {
     border-radius: 0 15px 15px 0 !important;
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(69, 123, 157,0.4) !important;
     border: 0 !important;
     color: white !important;
     cursor: pointer;
@@ -195,7 +195,7 @@
     }
 
 .active {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(69, 123, 157,0.4);
 }
 
 .user_img {
@@ -279,7 +279,7 @@
     margin-bottom: auto;
     margin-right: 10px;
     border-radius: 25px;
-    background-color: #f9c6c9;
+    background-color: #f9dcc6/*f9c6c9*/;
     padding: 10px;
     position: relative;
 }
