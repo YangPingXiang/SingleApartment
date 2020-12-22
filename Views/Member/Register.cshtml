@@ -72,7 +72,7 @@
                             <!--密碼-->
                             <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">會員密碼</label>
-                                @Html.EditorFor(model => model.fPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "請輸入密碼" } })
+                                @Html.EditorFor(model => model.fPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "請輸入密碼",@id="pwd" } })
                                 @Html.ValidationMessageFor(model => model.fPassword, "", new { @class = "text-danger" })
 
                             </div>
@@ -219,7 +219,7 @@
                                 @ViewBag.Message
                             </label>
                             <label class="label-info" style="float:right;border-radius:1.5em;margin-top:1em;">
-                                <input style="width:130px; height:50px; padding:0; line-height:45px;background-color:#87CEEB" type="button" value="Damo">
+                                <input style="width:130px; height:50px; padding:0; line-height:45px;background-color:#87CEEB" type="button" value="Damo" onclick="demo()">
                                 @ViewBag.Message
 
                             </label>
@@ -238,6 +238,20 @@
 }
 
 <script>
+    function demo() {
+        $("#fMemberName").val("志明");
+        $("#Account").val("Bob01");
+        $("#pwd").val("Bob01");
+        $("#Email").val("Singleapart");
+        $("#tel").val("0972-569-654");
+        $("#bd").val("1995/08/01");
+        $("#age").val("25歲");
+        
+    }
+
+
+
+
     function Usercheck() {
         $("#StatusName").html("檢查是否重複中.....");
         $.post("@Url.Action("CheckName", "Member")",
