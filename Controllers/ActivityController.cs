@@ -547,8 +547,8 @@ namespace sln_SingleApartment.Controllers
 
         // GET: Create
         string subNamebuffer = null;
+
         [HttpPost]
-        
         public ActionResult Create(CActivityNew ac,string subName)
         {
             #region 登入者名稱
