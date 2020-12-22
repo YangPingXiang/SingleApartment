@@ -16,7 +16,6 @@
         margin-bottom: 10px;
         font-size: 20px;
     }
-
 </style>
 
 
@@ -32,8 +31,8 @@
     {
 
         <div class="container" style="background-color:#FBEEE4;margin-left:5em;margin-bottom:6em;padding:2em;border:solid 0.2em #f6755e;border-radius:10px;margin:auto;width:50em;">
-            @using (Html.BeginForm("Create", "Activity", FormMethod.Post))
-            {
+            @*@using (Html.BeginForm("Create", "Activity", FormMethod.Post))
+            {*@
                 @Html.AntiForgeryToken()
 
                 <div class="form-group">
@@ -41,7 +40,7 @@
                         活動類別&nbsp;:
                     </label>
                     <div>
-                        @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName", @id = "subid" })
+                        @Html.DropDownList("subName", (SelectList)ViewBag.SelectList, "", new { Name = "subName", @id = "subName" })
                         @Html.ValidationMessageFor(model => model.SubCategoryDetailID, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -53,7 +52,7 @@
                         活動名稱&nbsp;:
                     </label>
                     <div>
-                        @Html.EditorFor(model => model.ActivityName, new { htmlAttributes = new { @class = "form-control", @id = "actname" } })
+                        @Html.EditorFor(model => model.ActivityName, new { htmlAttributes = new { @class = "form-control", @id = "ActivityName" } })
                         @Html.ValidationMessageFor(model => model.ActivityName, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -62,7 +61,7 @@
                 <div class="form-group">
                     <label>活動人數&nbsp;:</label>
                     <div>
-                        <input type="text" name="people" id="people" autocomplete="off" required style="font-size:18px;font-weight:500;color:#9f9e9e;" />
+                        <input type="text" name="people" id="PeopleCount" autocomplete="off" required style="font-size:18px;font-weight:500;color:#9f9e9e;" />
 
                         @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
                     </div>
@@ -90,7 +89,7 @@
                 <div class="form-group">
                     <label>活動地點&nbsp;:</label>
                     <div>
-                        @Html.EditorFor(model => model.MeetingPoint, new { htmlAttributes = new { @class = "form-control", @id = "location" } })
+                        @Html.EditorFor(model => model.MeetingPoint, new { htmlAttributes = new { @class = "form-control", @id = "MeetingPoint" } })
                         @Html.ValidationMessageFor(model => model.MeetingPoint, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -106,10 +105,10 @@
 
                 <!--照片-->
 
-                    <label >照片&nbsp;:</label>
-                    <div >
-                        <input  style="font-size: 20px;" type="file" name="myImage" />
-                    </div>
+                <label>照片&nbsp;:</label>
+                <div>
+                    <input style="font-size: 20px;" type="file" name="myImage" />
+                </div>
 
 
 
@@ -122,14 +121,14 @@
 
 
 
-            }
+           
 
             <div style="display:inline; float:right;font-size:18px;">
                 <input type="button" value="Demo鍵" onclick="FastCreate()" style="margin-left:30em;width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                 @*<input type="button" value="管理員快速登入" onclick="AdminLogin()" style="width:150px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">*@
                 @*<label style="" class="btn btn-info">
-                    @Html.ActionLink("返回活動列表", "List")
-                </label>*@
+                        @Html.ActionLink("返回活動列表", "List")
+                    </label>*@
             </div>
 
 
@@ -137,16 +136,16 @@
 
 
         </div>
-    }
-    <!--Button鍵-->
 
-    <div style="float:right;" >
-        <input style="width:150px;padding:0;" id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
-        <input style="margin-left:10px" id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />
-        @*<input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />*@
-    </div>
+        <!--Button鍵-->
 
+        <div style="float:right;">
+            <input style="width:150px;padding:0;" id="btnEditMail" onclick="showEditor();" type="button" value="編輯郵件內容" />
+            <input style="margin-left:10px" id="btnSubmit" type="submit" value="送出" class="btn btn-default" onclick="showHtmlSendmail()" />
+            @*<input id="Button1" onclick="showHtmlSendmail();" type="button" value="取得編輯後內容, 並且發送mail" />*@
+        </div>
 
+     }
 </div>
 
 
@@ -159,20 +158,20 @@
 
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
 
-<script src="~/datetimepicker.js"></script>
-<script src="~/ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
+    <script src="~/datetimepicker.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
     //$(function () {
 
     //});
     function FastCreate()
     {
-        $("#subid").val("團購類");
-        $("#actname").val("不只要排便順也要讓馬桶順");
-        $("#people").val("100");
-        $("#location").val("窩居公寓地下室的廁所");
+        $("#subName").val("團購類");
+        $("#ActivityName").val("不只要排便順也要讓馬桶順");
+        $("#PeopleCount").val("100");
+        $("#MeetingPoint").val("窩居公寓地下室的廁所");
         $("#note").val("見證奇蹟的時刻到了");
         $("#StartTime").val("2020/12/24 上午 10:20");
         $("#EndTime").val("2020/12/26 上午 10:20");
@@ -276,6 +275,6 @@
         //$("#editor1").html(strHtml)
 
     });
-</script>
-<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />
-<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />
+    </script>
+    <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />
+    <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/humanity/jquery-ui.css" rel="stylesheet" />
