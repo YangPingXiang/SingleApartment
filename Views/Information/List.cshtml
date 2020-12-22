@@ -125,7 +125,7 @@
     <div class="row" style="width:1100px;margin:0 auto;">
         @*style="border:2px #46b8da solid;width:150px;border-radius:20px"*@
         @*=動態區塊2 優先等級======================================================*@
-        <div id="id_divAdvance2" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance2" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">優先等級</div>
             <button class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
             <div>
@@ -141,19 +141,25 @@
         @*=動態區塊2 優先等級======================================================*@
 
         @*=動態區塊1 已讀/未讀======================================================*@
-        <div id="id_divAdvance1" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance1" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">已讀/未讀</div>
-            <button id="AA900" class="btn button_style" onclick="clickReadYN_ALL();">全部</button>
+            <button id="AA901" class="btn button_style" onclick="clickReadYN_ALL();">
+                全部&nbsp<span id="AA900" class="badge" style="background-color:orange;font-size:15px"></span>
+            </button>
             <div>
-                <button id="AA100" class="btn button_style" onclick="clickReadYN_Y();">已讀</button>
+                <button id="AA101" class="btn button_style" onclick="clickReadYN_Y();">
+                    已讀&nbsp<span id="AA100" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="AA200" class="btn button_style" onclick="clickReadYN_N();">未讀</button>
+                <button id="AA201" class="btn button_style" onclick="clickReadYN_N();">
+                    未讀&nbsp<span id="AA200" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
         </div>
         @*=動態區塊1 已讀/未讀======================================================*@
         @*=動態區塊3 系統分類======================================================*@
-        <div id="id_divAdvance3" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance3" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">系統分類</div>
             <button class="btn button_style" style="margin-left:0" onclick="queryData('ALL','N','999','N')">全部</button>
             <div>
@@ -172,7 +178,7 @@
         @*=動態區塊3 系統分類======================================================*@
 
         @*=動態區塊4 訊息內容分類==================================================*@
-        <div id="id_divAdvance4" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance4" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">訊息內容分類</div>
             <button id="A90000" class="btn button_style" onclick="queryData('ALL','N','999','N')">全部</button>
             <div>
@@ -206,7 +212,7 @@
         @*=動態區塊4 訊息內容分類==================================================*@
 
         @*=動態區塊5 關鍵字========================================================*@
-        <div id="id_divAdvance5" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance5" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">關鍵字</div>
             <div style="padding-left:0.75em">
                 @Html.TextBox("txtKeyword", null, new { style = "display:inline;width:100px;line-height:3em;height:3em" })
@@ -219,13 +225,13 @@
         @*=動態區塊5 關鍵字========================================================*@
 
         @*=動態區塊6 個人分類======================================================*@
-        <div id="id_divAdvance6" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance6" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">個人分類</div>
             <div style="padding-left:0.75em">
                 <select id="txtUserCategory" onchange="two_multiQueryData('200','XXXXX');" style="display:inline;line-height:3em;height:3em"></select>
             </div>
             <br />
-            <div style="padding-left:0.75em" hidden="hidden" >
+            <div style="padding-left:0.75em" hidden="hidden">
                 <button onclick="two_multiQueryData('200','XXXXX');" class="btn btn-info" style="height:unset;">查詢</button>
             </div>
             <br />
@@ -236,35 +242,55 @@
         @*=動態區塊6 個人分類======================================================*@
 
         @*=動態區塊7 最新消息+訊息內容分類==================================================*@
-        <div id="id_divAdvance7" hidden="hidden" style="width:170px;">
+        <div id="id_divAdvance7" hidden="hidden" style="width:180px;">
             <div style="color:#727a82;font-size:16px;font-weight:700;padding:0 0.75em 0.75em 0.75em;text-align:left;margin:2px">最新訊息</div>
-            <button id="N90000" class="btn button_style" onclick="queryData('ALL','N','500','N');">全部</button>
+            <button id="N90001" class="btn button_style" onclick="queryData('ALL','N','500','N');">
+                全部&nbsp<span id="N90000" class="badge" style="background-color:orange;font-size:15px"></span>
+            </button>
             <div>
-                <button id="N20010" class="btn button_style" onclick="two_multiQueryData('500','20010');">新活動上架</button>
+                <button id="N20011" class="btn button_style" onclick="two_multiQueryData('500','20010');">
+                    新活動上架&nbsp<span id="N20010" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N20030" class="btn button_style" onclick="two_multiQueryData('500','20030');">發起新活動完成</button>
+                <button id="N20031" class="btn button_style" onclick="two_multiQueryData('500','20030');">
+                    發起新活動完成&nbsp<span id="N20030" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N20040" class="btn button_style" onclick="two_multiQueryData('500','20040');">有新活動可以參加</button>
+                <button id="N20041" class="btn button_style" onclick="two_multiQueryData('500','20040');">
+                    有新活動可以參加&nbsp<span id="N20040" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N30010" class="btn button_style" onclick="two_multiQueryData('500','30010');">商品訂單成立</button>
+                <button id="N30011" class="btn button_style" onclick="two_multiQueryData('500','30010');">
+                    商品訂單成立&nbsp<span id="N30010" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N30020" class="btn button_style" onclick="two_multiQueryData('500','30020');">商品訂單取消</button>
+                <button id="N30021" class="btn button_style" onclick="two_multiQueryData('500','30020');">
+                    商品訂單取消&nbsp<span id="N30020" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N40010" class="btn button_style" onclick="two_multiQueryData('500','40010');">關注房加入最愛</button>
+                <button id="N40011" class="btn button_style" onclick="two_multiQueryData('500','40010');">
+                    關注房加入最愛&nbsp<span id="N40010" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N40020" class="btn button_style" onclick="two_multiQueryData('500','40020');">訂房成功</button>
+                <button id="N40021" class="btn button_style" onclick="two_multiQueryData('500','40020');">
+                    訂房成功&nbsp<span id="N40020" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N40030" class="btn button_style" onclick="two_multiQueryData('500','40030');">訂房取消</button>
+                <button id="N40031" class="btn button_style" onclick="two_multiQueryData('500','40030');">
+                    訂房取消&nbsp<span id="N40030" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
             <div>
-                <button id="N40040" class="btn button_style" onclick="two_multiQueryData('500','40040');">空房通知</button>
+                <button id="N40041" class="btn button_style" onclick="two_multiQueryData('500','40040');">
+                    空房通知&nbsp<span id="N40040" class="badge" style="background-color:orange;font-size:15px"></span>
+                </button>
             </div>
         </div>
 
@@ -553,11 +579,11 @@
                             //console.log(JSON.parse(objJson[i]).ContentID);
                             //console.log(JSON.parse(objJson[i]).ContentName);
                             if (JSON.parse(objJson[i]).ContentID == "100")
-                                $("#AA100").text("已讀(" + JSON.parse(objJson[i]).ContentName + ")");
+                                $("#AA100").text(JSON.parse(objJson[i]).ContentName);   //已讀
                             else if (JSON.parse(objJson[i]).ContentID == "200")
-                                $("#AA200").text("未讀(" + JSON.parse(objJson[i]).ContentName + ")");
+                                $("#AA200").text(JSON.parse(objJson[i]).ContentName);   //未讀
                             else if (JSON.parse(objJson[i]).ContentID == "900")
-                                $("#AA900").text("全部(" + JSON.parse(objJson[i]).ContentName + ")");
+                                $("#AA900").text(JSON.parse(objJson[i]).ContentName);   //全部
                         }
                     }
                 },
@@ -662,7 +688,7 @@
                         f_data = "您有 " + data + " 筆新訊息!";
 
                     $("#id_type7").text(f_data);
-                    $("#N90000").text("全部(" + data + ")");   //新訊息全部
+                    $("#N90000").text(data);   //新訊息 全部
                 }
             });
 
@@ -670,7 +696,7 @@
             //    $("#timer").html(new Date().getSeconds());
             //}, 1000)
             //用秒數驗證
-            
+
             $.ajax({
                  url: "/Information/GetActivityNotify_ContentCategory",
                 type: "POST",
@@ -687,22 +713,24 @@
                         for (var i = 0; i < objJson.length; i++) {
                           //console.log(JSON.parse(objJson[i]).ContentID);
                           //console.log(JSON.parse(objJson[i]).ContentName);
-                            if (JSON.parse(objJson[i]).ContentID == "20010" && JSON.parse(objJson[i]).ContentName !="0")
-                               $("#N20010").text("新活動上架(" + JSON.parse(objJson[i]).ContentName+")");
-                            else if (JSON.parse(objJson[i]).ContentID == "20030" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N20030").text("發起新活動完成(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "20040" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N20040").text("有新活動可以參加(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "30010" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N30010").text("商品訂單成立(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "30020" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N30020").text("商品訂單取消(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "40010" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N40010").text("關注房加入最愛(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "40020" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N40020").text("訂房成功(" + JSON.parse(objJson[i]).ContentName + ")");
-                            else if (JSON.parse(objJson[i]).ContentID == "40030" && JSON.parse(objJson[i]).ContentName != "0")
-                               $("#N40030").text("訂房取消(" + JSON.parse(objJson[i]).ContentName + ")");
+                            if (JSON.parse(objJson[i]).ContentID == "20010")
+                                $("#N20010").text(JSON.parse(objJson[i]).ContentName);  //新活動上架
+                            else if (JSON.parse(objJson[i]).ContentID == "20030")
+                                $("#N20030").text(JSON.parse(objJson[i]).ContentName);  //發起新活動完成
+                            else if (JSON.parse(objJson[i]).ContentID == "20040")
+                                $("#N20040").text(JSON.parse(objJson[i]).ContentName);  //有新活動可以參加
+                            else if (JSON.parse(objJson[i]).ContentID == "30010")
+                                $("#N30010").text(JSON.parse(objJson[i]).ContentName);  //商品訂單成立
+                            else if (JSON.parse(objJson[i]).ContentID == "30020")
+                                $("#N30020").text(JSON.parse(objJson[i]).ContentName);  //商品訂單取消
+                            else if (JSON.parse(objJson[i]).ContentID == "40010")
+                                $("#N40010").text(JSON.parse(objJson[i]).ContentName);  //關注房加入最愛
+                            else if (JSON.parse(objJson[i]).ContentID == "40020")
+                                $("#N40020").text(JSON.parse(objJson[i]).ContentName);  //訂房成功
+                            else if (JSON.parse(objJson[i]).ContentID == "40030")
+                                $("#N40030").text(JSON.parse(objJson[i]).ContentName);  //訂房取消
+                            else if (JSON.parse(objJson[i]).ContentID == "40040")
+                                $("#N40040").text(JSON.parse(objJson[i]).ContentName);  //空房通知
                         }
                     }
                 },
