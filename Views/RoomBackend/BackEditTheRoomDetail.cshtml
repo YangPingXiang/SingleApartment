@@ -43,10 +43,10 @@
             <div class="form-group">
                
                 @*@Html.LabelFor(model => model.entity_room.Picture.FirstOrDefault().RoomStylePicture, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div class="col-md-10" style="width:300px;">
+                <div class="col-md-10" style=" margin-left:20px;">
                     @*<img src="~/Content/Room/images/roomstyle/@filename"  />*@
-                    房型風格照片
-                    <input type="file" name="mypic" value="瀏覽照片..." />
+                    @Html.Label("房間照片", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <input type="file" name="mypic" value="瀏覽照片..." style="margin-left:30px;" />
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.entity_room.RoomStyle.RoomStyleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label("房間風格", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
                     @Html.EditorFor(model => model.entity_room.RoomStyle.RoomStyleName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.entity_room.RoomStyle.RoomStyleName, "", new { @class = "text-danger" })
@@ -76,7 +76,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.entity_room.BuildCase.BuildCaseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label("建案名稱", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style="width:300px;">
                     @Html.EditorFor(model => model.entity_room.BuildCase.BuildCaseName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.entity_room.BuildCase.BuildCaseName, "", new { @class = "text-danger" })
@@ -130,7 +130,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <p>@Model.roomID</p>
+                   
                     <input type="hidden" value="@Model.roomID" name="roomID" />
                     <input type="submit" value="確定儲存" class="btn btn-default" style="float:right;  margin-right:15px;" />
                     <input type="button" value="回到前一頁" class="btn btn-default" onclick="history.back()" style="float:right; margin-right:15px;" />

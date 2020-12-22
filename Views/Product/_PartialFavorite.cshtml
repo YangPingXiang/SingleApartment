@@ -2,7 +2,6 @@
 @using PagedList.Mvc;
 @model IPagedList<sln_SingleApartment.ViewModels.CFavoriteList>
 
-<h1>this is PartialView</h1>
 <input type="hidden" name="MemberID" value="@ViewBag.MemberID" />
 <table id="shopping-cart-table" class="data-table cart-table">
     <tr>
@@ -61,7 +60,6 @@
         }
     }
 </table>
-<h1>this is PartialView</h1>
 @Html.PagedListPager(Model, page => Url.Action("PartialFavorite", new { page = page, MemberID=ViewBag.MemberID  }),
 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
 {

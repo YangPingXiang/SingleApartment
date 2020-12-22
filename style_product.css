@@ -4632,7 +4632,7 @@ input.cart-plus-minus-box {
   margin-top: 90px;
 }
 .contact-img-area::before {
-  background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;
