@@ -870,6 +870,7 @@
     <Content Include="Content\img\ ?~ r  ] p7.png" />
     <Content Include="Content\img\窩居字體設計.png" />
     <Content Include="Content\img\窩居字體設計3.png" />
+    <Content Include="Content\img\窩居字體設計4.png" />
     <Content Include="Content\img\窩居字體設計6.png" />
     <Content Include="Content\img\窩居字體設計7.png" />
     <Content Include="Content\img\頭 %281%29.png" />
@@ -1092,6 +1093,12 @@
     <Content Include="Content\Product\img\quick-view\10.jpg" />
     <Content Include="Content\Product\img\slider\1.png" />
     <Content Include="Content\Product\img\slider\2.png" />
+    <Content Include="Content\Product\img\slider\7e3a39711462d9481c884fb188db193e.jpg" />
+    <Content Include="Content\Product\img\slider\b8e2272121bc31fc339954710e3037fd.jpg" />
+    <Content Include="Content\Product\img\slider\商品Banner.png" />
+    <Content Include="Content\Product\img\slider\窩居字體設計.png" />
+    <Content Include="Content\Product\img\slider\窩居字體設計3.png" />
+    <Content Include="Content\Product\img\slider\窩居字體設計6.png" />
     <Content Include="Content\Product\img\testimonial\1.jpg" />
     <Content Include="Content\Product\img\testimonial\1.png" />
     <Content Include="Content\Product\img\testimonial\2.png" />
