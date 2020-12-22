@@ -2,53 +2,61 @@
 @using PagedList;
 @model IEnumerable<sln_SingelApartment.ViewModels.CRoomStyleViewModel>
 
-    <div style="margin-left:250px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
-       
-        <h3>房型總表</h3>
-    </div>
+<div style="margin-left:250px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
 
-    <div id="title">
-        
-    </div>
-  
+    <h3>房型總表</h3>
+</div>
 
-    <table id="abtleasetable" style="width:1000px; margin:10px auto; ">
-        <tr style="text-align:center;">
+<div id="title">
 
-            <th>
-                風格序號
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.roomStyleName)
-            </th>
-            <th></th>
-           
+</div>
+
+
+<table id="abtleasetable" style="width:1000px; margin:10px auto; ">
+    <tr style="text-align:center;">
+
+        <th>
+            風格序號
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomStyleName)
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => item.roomStyleName)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("瀏覽圖片", "BackImageGalleryforRoomStyle", new { id = item.ID }, new { @class = "btn btn-primary nounderline", style = "background-color:#5bc0de; border-color:#5bc0de;" }) |
+                @Html.ActionLink("刪除房型", "Delete", new { id = item.ID }, new { @class = "btn btn-danger nounderline" })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
+</table>
+@*<div id="abtleasetable_pagelist" style="float:inherit; margin-left:480px;">
+        @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>*@
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
+<script>
+    $(function () {
 
-                <td>
-                    @Html.DisplayFor(model => item.roomStyleName)
-                </td>
-              
+        $('.nounderline').css({
+            "text-decoration": "none"
+        })
 
-                <td>
-                    @Html.ActionLink("瀏覽圖片", "BackImageGalleryforRoomStyle", new { id = item.ID }, new { @class = "btn btn-primary" , style = "background-color:#5bc0de; border-color:#5bc0de;" }) |
-                    @Html.ActionLink("刪除房型", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
-        }
-
-    </table>
-    @*<div id="abtleasetable_pagelist" style="float:inherit; margin-left:480px;">
-            @Html.PagedListPager((IPagedList)Model, x => Url.Action("BackRoomManage", new { Page = x }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-        </div>*@
-
-
+    })
+</script>
 

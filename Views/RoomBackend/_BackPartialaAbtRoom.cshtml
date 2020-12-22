@@ -10,14 +10,14 @@
     <div style=" border:2px solid black; margin:100px 80px 50px 230px; padding:40px; width:1200px;">
 
         @*<div>
-            <button id="btnAdd" type="button" class="btn btn-info" style="">
-                新增房間
-            </button>
-        </div>*@
+                <button id="btnAdd" type="button" class="btn btn-info" style="">
+                    新增房間
+                </button>
+            </div>*@
 
         <!--如果有時間 做關鍵字的Partial View -->
         <div id="" style="margin-left:50px; margin-bottom:50px; width:1000px; padding-bottom:20px; ">
-            
+
             <h3 style="margin-bottom:35px; text-align:center; ">查詢條件</h3>
             <span style="margin-left:60px; font-weight:500;">建案代號</span>
             @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_b", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
@@ -28,7 +28,7 @@
             <span style=" margin-left:35px; margin-left:15px; font-weight:500;">房客姓名</span>
             @Html.TextBox("txtKeyword", null, new { @class = "txtkeybox", @id = "txtkeybox_mn", style = "display:inline;width:100px;line-height:3em;height:3em;margin-left:15px;" })
 
-           
+
 
         </div>
 
@@ -63,7 +63,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.floor)
                 </th>
-                <th>Information</th>
+                <th>詳細資訊</th>
             </tr>
 
             @foreach (var item in Model)
@@ -106,8 +106,8 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("編輯", "BackRoomEdit", new { id = item.roomID }, new { @class = " btn btn-info" }) |*@
-                        @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary", style = "background-color:#5bc0de; border-color:#5bc0de;" }) |
-                        @Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("詳細資料", "BackRoomDetail", new { id = item.roomID }, new { @class = "btn btn-primary", style = "background-color:#5bc0de; border-color:#5bc0de; text-decoration:none;" })
+                        @*@Html.ActionLink("刪除", "Delete", new { id = item.roomID }, new { @class = "btn btn-danger" , style="text-decoration:none;" })*@
                     </td>
                 </tr>
             }
@@ -151,7 +151,7 @@
                 $(this).parents("tr").remove();
             });
 
-         
+
             $('h2').css({
                 "margin-bottom": "35px",
                 "margin-left": "60px"

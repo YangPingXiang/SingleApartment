@@ -133,8 +133,8 @@
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td style="width:140px">
-                        <button onclick="showTable(this,'@item.Note', @item.ActivityID)" style="height:unset;background-color:transparent; color:#337ab7; padding:0; width:40px; text-align:center" flag="true">訊息</button> |
-                        @Html.ActionLink("修改", "Edit", new { id = item.ActivityID }, new { @class = "btn" })
+                        <button class="btn btn-default" onclick="showTable(this,'@item.Note', @item.ActivityID)" style="height:unset;background-color:#f6755e; border-color:#f6755e; color:#ffffff; padding:0; width:40px; text-align:center; line-height:2.5em;" flag="true">訊息</button> |
+                        @Html.ActionLink("修改", "Edit", new { id = item.ActivityID }, new { @class = "btn btn-primary myedit" })
 
 
                         @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
@@ -179,7 +179,17 @@
             //$(obj).parent().parent().css('color', '#46b8da')
         }
     }
+    $(function () {
+        $('.myedit').css({
+            "background-color": "#5bc0de",
+            "border-color": "#5bc0de",
+            "text-decoration": "none",
+            "text-align": "center"
 
+
+        })
+
+    })
 
 
 </script>
