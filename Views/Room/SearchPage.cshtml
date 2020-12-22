@@ -14,16 +14,15 @@
 
     <div id="condition" style="background-color: #edf2fb; width: 1000px; margin: 50px auto; text-align: center;">
 
-        <form method="post" id="myform" style="background-color: #f2d
-fd7;">
+        <form method="post" id="myform" style="background-color: #f2dfd7;">
 
             <ul class="list" style="background-color: #d7e0ea; font-size:18px;">
-                <li style="font-weight:800; float:left;  margin-top:12px; width:110px; ">
+                <li style="font-weight:800; float:left;  margin-top:12px; width:100px; ">
                     建案：
                 </li>
                 @foreach (var item in Model.buildcaseViewModels)
                 {
-                    <li class="myli" style="width:150px; font-size:18px;">
+                    <li class="myli" style="width:140px; font-size:18px;">
                         <a class="txt" href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID" style="">@item.buildcasename</a>
                     </li>
                 }
@@ -114,7 +113,7 @@ fd7;">
                             <div class="col-md-4">
                                 <div class="single-room">
                                     <div class="room-img">
-                                        <a href="#"><img src="~/Content/Room/images/room/房型_北歐風雙人房.jpg" alt=""></a>
+                                        <a href="#"><img src="~/Content/Room/images/room/房型_單身套房.jpg" alt=""></a>
                                     </div>
                                     <div class="room-desc">
                                         <div class="room-name">
@@ -236,7 +235,7 @@ fd7;">
                     .siblings().css("background-color", "#d7e0ea")
                 $(this.firstElementChild).css("color", "white")
                 $(this).find("a:first-child").css("color", "white")
-                $(this).siblings().find("a:first-child").css("color", "#4FC1F0");
+                $(this).siblings().find("a:first-child").css("color", "#023e7d");
                 console.log(this.innerText);
             });
 
