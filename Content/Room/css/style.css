@@ -194,12 +194,12 @@
   position: relative
 }
 .bg-opacity {
-  background: #000 none repeat scroll 0 0;
-  height: 100%;
-  opacity: 0.7;
-  position: absolute;
-  width: 100%;
-  pointer-events: none
+    background: #68aee3 none repeat scroll 0 0;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    width: 100%;
+    pointer-events: none
 }
 .adresses .phone, .adresses .email, .adresses, .social-links,.menu-list, .search-bar {
     display: inline-block;
@@ -1217,7 +1217,7 @@ h3.news-title {
   background-size: cover;
 }
 .footer-bg-opacity {
-  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    background: #68aee3 none repeat scroll 0 0;
 }
 .f-adress > p, .hotel-contact > p {
   font-family: "Montserrat",sans-serif;

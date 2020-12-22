@@ -25,7 +25,7 @@
 
         </div>
         <br />
-        <table class="alt table-hover" style="width:750px;margin:0 auto">
+        <table class="alt" style="width:750px;margin:0 auto">
             <thead>
                 <tr>
                     <th style="font-size:unset">
@@ -83,7 +83,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" style="font-size:unset">訊息類別編號</label>
                     <div class="col-md-10">
-                        <input type="text" name="MemberCategoryID" id="e_InformationCategoryID" class="form-control" style="width:400px" onblur="checkEmpty();" />
+                        <input type="text" name="MemberCategoryID" id="e_InformationCategoryID" class="form-control" style="width:400px" />
+                        @*onblur="checkEmpty();"*@
                         <span id="idsp1"></span>
                     </div>
                 </div>
@@ -102,6 +103,7 @@
                         @*<input type="submit" value="修改" class="btn btn-default" />*@
                         <input type="submit" value="新增" id="idCreate" onclick='this.form.action="@Url.Action("CategoryCreate")"' class="btn btn-info" style="background-color:#5bc0de;" />
                         <input type="submit" value="修改" id="idEdit" onclick='this.form.action="@Url.Action("CategoryEdit")"' class="btn btn-info" style="background-color:#5bc0de;" />
+                        <input type="button" class="btn btn-info" style="background-color:#5bc0de;" onclick="showDemo();" value="Demo"/>
                         @*<button id="btnEdit" class="btn btn-info" style="height:unset;">修改</button>*@
                     </div>
                 </div>
@@ -241,6 +243,14 @@
         $("#e_InformationCategoryName").focus();
         $("#idCreate").hide();
         $("#idEdit").show();
+    }
+
+    function showDemo() {
+
+        $("#e_InformationCategoryID").val("300");
+        $("#e_InformationCategoryName").val("入住第一天");
+        //$("#idCreate").focus();
+
     }
 
     //一啟動馬上執行

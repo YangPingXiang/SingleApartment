@@ -50,12 +50,13 @@
                                 </li>
                             </ul>
                             <label class="button">
-                                <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;">
+                                <input type="submit" value="會員登入" style="font-size:18px;padding:0px 0px 10px 0px;;line-height:15px">
                             </label>
 
-                            <div style="display:inline; margin-left:9em;margin-top:2.5em;font-size:18px;">
-                                <input type="button" value="Bob登入" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
-                                <input type="button" value="Eva登入" onclick="veryFastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                            <div style="display:inline; margin-left:5em;margin-top:2.5em;font-size:18px;">
+                                <input type="button" value="Bob" onclick="FastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="Eva" onclick="veryFastLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
+                                <input type="button" value="Tommy" onclick="TommyLogin()" style="width:100px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                                 <input type="button" value="管理員登入" onclick="AdminLogin()" style="width:120px; height:45px; padding:0; line-height:45px;background-color:#87CEEB">
                             </div>
 
@@ -78,7 +79,7 @@
 <script>
     function FastLogin() {
         $("#account").val("Bob01");
-        $("#pwd").val("Bob01");
+        $("#pwd").val("Bob001");
     }
     function AdminLogin() {
         $("#account").val("admin");
@@ -87,6 +88,10 @@
     function veryFastLogin() {
         $("#account").val("Eva04");
         $("#pwd").val("Eva04");
+    }
+    function TommyLogin() {
+        $("#account").val("Tommy16");
+        $("#pwd").val("Tommy16");
     }
 </script>
 

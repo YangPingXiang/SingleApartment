@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">會員姓名</label>
 
-                                <input type="text" name="fMemberName" id="Username" placeholder="請輸入您的姓名" autofocus autocomplete="off" onchange="Usercheck()" onfocus="focusName()" required />
+                                <input type="text" name="fMemberName" id="fMemberName" placeholder="請輸入您的姓名"  autocomplete="off" onchange="Usercheck()" onfocus="focusName()" required/>
                                 @*<div class="col-md-10"></div>*@
                                 <label id="StatusName" />
                             </div>
@@ -72,7 +72,7 @@
                             <!--密碼-->
                             <div class="form-group">
                                 <label style="margin-bottom:10px;font-size:20px">會員密碼</label>
-                                @Html.EditorFor(model => model.fPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.fPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "請輸入密碼",@id="pwd" } })
                                 @Html.ValidationMessageFor(model => model.fPassword, "", new { @class = "text-danger" })
 
                             </div>
@@ -147,32 +147,54 @@
                                     <option value="0" style="display:none">請選擇年薪...</option>
                                     <option value="小於(等於)50萬">&bull; 小於(等於)50萬</option>
                                     <option value="50-100萬">&bull; 50-100萬</option>
-                                    <option value="大於50萬">&bull; 大於50萬</option>
+                                    <option value="大於50萬">&bull; 大於100萬</option>
                                 </select>
 
                             </div>
                             <!--1217修-->
                             <!--活動訊息-->
+                            @*<div class="form-group" id="salary">
+            <label style="margin-bottom:10px;font-size:20px">是否願意接收窩居訊息</label>
+            <select id="fActivityMessage" name="fActivityMessage" class="form-select" style="font-size:18px;font-weight:500;color:#9f9e9e;background:none">
+                <option value="0" style="display:none">是否願意接收訊息...</option>
+                <option value="TRUE">&bull; 我願意接收窩居訊息</option>
+                <option value="FALSE">&bull; 不了，暫時先不接受</option>
+
+            </select>
+
+        </div>*@
                             <div class="form-group" id="mesg">
-                                <label style="margin-bottom:10px;font-size:20px">欲接受活動訊息種類</label>
+                                <label style="margin-bottom:10px;font-size:20px">請選擇欲接收的窩居訊息</label>
 
 
                                 <div class="form-check form-check-inline" style="margin-bottom:20px;">
-                                    <input class="form-check-input" type="checkbox" id="1" value="option1">
-                                    <label style="font-weight:600" class="form-check-label" for="1">娛樂類</label>
-                                    <input class="form-check-input" type="checkbox" id="2" value="option2">
-                                    <label style="font-weight:600" class="form-check-labe2" for="2">知識類</label>
-                                    <input class="form-check-input" type="checkbox" id="3" value="option3">
-                                    <label style="font-weight:600" class="form-check-labe3" for="3">技藝類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage1" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-label" for="fActivityMessage1">娛樂類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage2" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-labe2" for="fActivityMessage2">知識類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage3" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-labe3" for="fActivityMessage3">技藝類</label>
 
                                 </div>
                                 <div class="form-check form-check-inline" style="margin-bottom:20px;">
-                                    <input class="form-check-input" type="checkbox" id="4" value="option4">
-                                    <label style="font-weight:600" class="form-check-labe4" for="4">健身類</label>
-                                    <input class="form-check-input" type="checkbox" id="5" value="option5">
-                                    <label style="font-weight:600" class="form-check-labe5" for="5">休憩類</label>
-                                    <input class="form-check-input" type="checkbox" id="6" value="option6">
-                                    <label style="font-weight:600" class="form-check-labe6" for="6">社會類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage4" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-labe4" for="fActivityMessage4">健身類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage5" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-labe5" for="fActivityMessage5">休憩類</label>
+                                    <input class="form-check-input" type="checkbox" id="fActivityMessage6" name="fActivityMessage" value="TRUE">
+                                    <label style="font-weight:600" class="form-check-labe6" for="fActivityMessage6">團購類</label>
+                                </div>
+
+                                <!--窩居EMAIL-->
+                                <div class="form-group" id="salary">
+                                    <label style="margin-bottom:10px;font-size:20px">是否願意收到窩居電子報</label>
+                                    <select id="fActivityEmail" name="fActivityEmail" class="form-select" style="font-size:18px;font-weight:500;color:#9f9e9e;background:none">
+                                        <option value="0" style="display:none">是否願意接收窩居Email...</option>
+                                        <option value="TRUE">&bull; 我願意接收窩居Email</option>
+                                        <option value="FALSE">&bull; 不了，暫時先不接受</option>
+
+                                    </select>
+
                                 </div>
                                 <!--照片-->
                                 <div class="form-group" id=" pic">
@@ -197,9 +219,11 @@
                                 @ViewBag.Message
                             </label>
                             <label class="label-info" style="float:right;border-radius:1.5em;margin-top:1em;">
-                                <input style="width:130px; height:50px; padding:0; line-height:45px;background-color:#87CEEB" type="button" value="Damo">
+                                <input style="width:130px; height:50px; padding:0; line-height:45px;background-color:#87CEEB" type="button" value="Damo" onclick="demo()">
                                 @ViewBag.Message
+
                             </label>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -214,6 +238,20 @@
 }
 
 <script>
+    function demo() {
+        $("#fMemberName").val("Bob");
+        $("#Account").val("Bob01");
+        $("#pwd").val("Bob001");
+        $("#Email").val("Singleapart@gmail.com");
+        $("#tel").val("0972-569-654");
+        $("#bd").val("1995/08/01");
+        $("#age").val("25");
+        
+    }
+
+
+
+
     function Usercheck() {
         $("#StatusName").html("檢查是否重複中.....");
         $.post("@Url.Action("CheckName", "Member")",

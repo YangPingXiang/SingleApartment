@@ -22,7 +22,7 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
             Message message = new Message();
 
-            int pageSize = 5;
+            int pageSize = 6;
             
             int currentpage = page < 1 ? 1 : page;
             //ViewBag.MessageID = message.MemberID;
@@ -547,8 +547,8 @@ namespace sln_SingleApartment.Controllers
 
         // GET: Create
         string subNamebuffer = null;
+
         [HttpPost]
-        
         public ActionResult Create(CActivityNew ac,string subName)
         {
             #region 登入者名稱
@@ -826,7 +826,7 @@ namespace sln_SingleApartment.Controllers
 
             //}
             //list.Remove(list);
-            return RedirectToAction("List");
+            return RedirectToAction("CartView");
         }
         public ActionResult subActivity(int id)
         {

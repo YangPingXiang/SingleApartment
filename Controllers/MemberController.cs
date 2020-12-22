@@ -194,6 +194,8 @@ namespace sln_SingleApartment.Controllers
                 t.fImage = input.fImage;
                 t.fLeave = input.fLeave;
                 t.fRole = input.fRole;
+                t.fActivityMessage = input.fActivityMessage;
+                t.fActivityEmail = input.fActivityEmail;
                 //----------------------------------
 
 

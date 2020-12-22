@@ -24,10 +24,6 @@
                 font-family: 'Adobe Fan Heiti Std';
             }
 
-            .inner {
-                margin: 0 auto;
-                max-width: 55em;
-            }
 
             .Boxsize {
                 width: 330px;
@@ -38,16 +34,17 @@
             }
         </style>
     </head>
-    <body class="subpage">
+    <body class="subpage" style="background-color:#FCF4ED">
         <!-- Main -->
-        <section id="main" class="wrapper">
+        <section id="main" class="wrapper" style="margin: 0 auto;
+                max-width: 40em;">
             <div class="inner">
                 <header class="align-center">
                     <h1> 窩的資訊 </h1>
 
                     <p style="font-size:20px;margin-bottom:30px">個人資料|聯絡資料|租房|活動|訊息</p>
                 </header>
-                <div class="Boxsize" style="margin-left:18em">
+                <div class="Boxsize" style="margin-left:11em">
                     <img style="display:inline" src="@Model.t.fImage" width="300" height="280" />
                 </div>
 
@@ -57,41 +54,41 @@
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
 
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">帳號</td>
-                        <td>@Model.t.fAccount</td>
+                        <td rowspan="1" width=":10em" style="font-size:20px;font-weight:700">&emsp;帳號 : &emsp;&emsp;&emsp;&emsp;@Model.t.fAccount</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">姓名</td>
-                        <td>@Model.t.fMemberName</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;姓名 : &emsp;&emsp;&emsp;&emsp;@Model.t.fMemberName</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">生日</td>
-                        <td>@Model.t.fBirthDate</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;生日 : &emsp;&emsp;&emsp;&emsp;@Model.t.fBirthDate</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">年齡</td>
-                        <td>@Model.t.fAge</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;年齡 : &emsp;&emsp;&emsp;&emsp;@Model.t.fAge</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">性別</td>
-                        <td>@Model.t.fSex</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;性別 : &emsp;&emsp;&emsp;&emsp;@Model.t.fSex</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">年收入</td>
-                        <td>@Model.t.fSalary</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;年收入 : &emsp;&emsp;&emsp;@Model.t.fSalary</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">密碼</td>
-                        <td>@Model.t.fPassword</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;密碼 : &emsp;&emsp;&emsp;&emsp;@Model.t.fPassword</td>
+                        <td></td>
                     </tr>
 
                     @*@foreach (var item in Model)
-            {
-                <tr>
-                    <td>@db.fAccount</td>
+                        {
+                            <tr>
+                                <td>@db.fAccount</td>
 
-                </tr>
-            }*@
+                            </tr>
+                        }*@
                 </table>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'></table>
             </div>
@@ -99,12 +96,12 @@
                 <h3 style="font-size:2em"> 聯絡資料 </h3>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">手機</td>
-                        <td>@Model.t.fPhone</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;手機 :&emsp;&emsp;&emsp;&emsp;@Model.t.fPhone</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">信箱</td>
-                        <td>@Model.t.fEmail</td>
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;信箱 :&emsp;&emsp;&emsp;&emsp;@Model.t.fEmail</td>
+                        <td></td>
                     </tr>
                 </table>
             </div>
@@ -112,25 +109,25 @@
                 <h3 style="font-size:2em"> 租房資訊 </h3>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">房號</td>
-                        <td>
-                            @if (Model.r != null)
+                        <td rowspan="1" style="font-size:20px;font-weight:700">
+                            &emsp;房號 :&emsp;&emsp;&emsp;&emsp; @if (Model.r != null)
                             {@Model.r.RoomName}
                         </td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">房型</td>
-                        <td>
-                            @if (Model.r != null)
+                        <td rowspan="1" style="font-size:20px;font-weight:700">
+                            &emsp;房型 :&emsp;&emsp;&emsp;&emsp; @if (Model.r != null)
                             {@Model.rs.RoomStyleName}
                         </td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">租金/每期</td>
-                        <td>
-                            @if (Model.r != null)
+                        <td rowspan="1" style="font-size:20px;font-weight:700">
+                            &emsp;租金/每期 :&emsp;&emsp;&emsp;&emsp;@if (Model.r != null)
                             {@Model.r.Rent}
                         </td>
+                        <td></td>
                     </tr>
                 </table>
             </div>
@@ -139,17 +136,18 @@
                 <h3 style="font-size:2em"> 參加的活動 </h3>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
                     <tr>
-                        <td rowspan="1" style="font-size:20px;font-weight:700">活動</td>
-
+                        <td rowspan="1" style="font-size:20px;font-weight:700">&emsp;活動 : &emsp;&emsp;&emsp;&emsp;</td>
                         <td>@s</td>
                     </tr>
+
                 </table>
+
             </div>
             <div class="inner">
                 <h3 style="font-size:2em"> 團購紀錄 </h3>
                 <table style="border:2px #97CBFF solid;padding:5px;" rules="all" cellpadding='5'>
                     <tr>
-                        <td style="font-size:20px;font-weight:700">團購紀錄</td>
+                        <td style="font-size:20px;font-weight:700">&emsp;團購紀錄 : &emsp;&emsp;</td>
                         <td>@z</td>
                     </tr>
                 </table>

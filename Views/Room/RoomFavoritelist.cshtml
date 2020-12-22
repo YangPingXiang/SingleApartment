@@ -15,7 +15,7 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-<h3 style="margin-left:150px;"> 我的最愛 房間資訊 </h3>
+<h3 style="margin-left:420px ; margin-top:20px"> 我的最愛 房間清單 </h3>
 <div id="backcolor">
     <div id="mywishlist" class="container mb-4" style="margin-left:400px; margin-top:40px;">
         @{
@@ -31,20 +31,20 @@
 
                     <!-- Item-->
                     <div class="cart-item d-md-flex justify-content-between">
-                        <span class="remove-item" onclick="remove(this)"><i class="fa fa-times"></i></span>
+                        <span class="remove-item"><a style="color:white" href="@Url.Action("DeleteRoomFavorite","Room",new { id =item.RoomID})" onclick="return confirm('確定要刪除嗎?')"><i class="fa fa-times"></i></a></span>
                         <div class="px-3 my-3">
                             @{
                                 var filename = item.Room.RoomStyle.RoomStyleName + "-" + count + ".jpg";
                             }
-                            <a class="cart-item-product" href="#">
+                            <a class="cart-item-product" href="@Url.Action("ListRoomDetail","Room",new { id =item.RoomID})">
                                 <div class="cart-item-product-thumb" style="width:180px;">
                                     <img src="~/Content/Room/images/roomstyle/@filename " style="margin-top:20px; width:250px;">
                                 </div>
                                 <div class="cart-item-product-info">
-                                    <h4 class="cart-item-product-title" style="margin-left:10px;"> @Html.DisplayFor(modelItem => item.Room.RoomName)</h4>
+                                    
+                                    <h4 class="cart-item-product-title" style="margin-left:10px;">@Html.DisplayFor(modelItem => item.Room.RoomName)</h4>
                                     <div style="margin-left:10px; color:black;">
-
-
+                        
                                         <span>
                                             建案
                                             <span class="text-success font-weight-medium" style="margin-left:10px;">

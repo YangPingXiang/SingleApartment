@@ -12,28 +12,28 @@
     <input type="hidden" id="case3" value="0" />
     <input type="hidden" id="case4" value="0" />
 
-    <div id="condition" style="background-color: #edf2fb; width: 900px; margin: 50px auto; text-align: center;">
+    <div id="condition" style="background-color: #edf2fb; width: 1000px; margin: 50px auto; text-align: center;">
 
-        <form method="post">
+        <form method="post" id="myform" style="background-color: #f2dfd7;">
 
-            <ul class="list">
+            <ul class="list" style="background-color: #d7e0ea; font-size:18px;">
                 <li style="font-weight:800; float:left;  margin-top:12px; width:100px; ">
                     建案：
                 </li>
                 @foreach (var item in Model.buildcaseViewModels)
                 {
-                    <li class="myli">
-                        <a class="txt" href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID">@item.buildcasename</a>
+                    <li class="myli" style="width:140px; font-size:18px;">
+                        <a class="txt" href="javascript:;" onclick="filter(this);" data-item="1" data-case="@item.ID" style="">@item.buildcasename</a>
                     </li>
                 }
             </ul>
 
-            <ul class="list">
+            <ul class="list" style="background-color: #d7e0ea; font-size:18px;">
                 <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     類型：
                 </li>
                 <li class="myli">
-                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房">1人房</a>
+                    <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="1人房" >1人房</a>
                 </li>
                 <li class="myli">
                     <a class="txt" href="javascript:;" onclick="filter(this);" data-item="2" data-case="2人房">2人房</a>
@@ -46,7 +46,7 @@
                 </li>
             </ul>
 
-            <ul class="list">
+            <ul class="list" style="background-color: #d7e0ea; font-size:18px;">
                 <li style="font-weight:800; float:left; margin-top:12px; width:100px;">
                     租金：
                 </li>
@@ -70,7 +70,7 @@
 
 
 
-            <ul class="list">
+            <ul class="list" style="background-color: #d7e0ea; font-size:18px;">
                 <li style="font-weight:800; float:left;  margin-top:12px; width:100px;">
                     風格：
                 </li>
@@ -91,9 +91,9 @@
 
 
     <!--trending  start-->
-    <div class="our-room text-center ptb-80 white-bg">
+    <div class="our-room text-center ptb-80 white-bg" style="background-color: #d7e0ea;">
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-12">
                     <div class="section-title mb-75">
                         <h2>
@@ -108,12 +108,12 @@
             <div class="our-room-show">
                 <div class="row">
                     <div class="carousel-list">
-                        @foreach (var item in Model.roomViewModels)
+                        @foreach (var item in Model.roomViewModels.Take(9))
                         {
                             <div class="col-md-4">
                                 <div class="single-room">
                                     <div class="room-img">
-                                        <a href="#"><img src="~/Content/Room/images/room/room1.jpg" alt=""></a>
+                                        <a href="#"><img src="~/Content/Room/images/room/房型_單身套房.jpg" alt=""></a>
                                     </div>
                                     <div class="room-desc">
                                         <div class="room-name">
@@ -143,6 +143,7 @@
         </div>
     </div>
     <!--trending end-->
+
     <!--start browse-->
     <div id="searchresult" class="our-news text-center ptb-80 white_bg">
         <div class="container">
@@ -193,7 +194,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="news-desc">
+                                        <div class="news-desc" style="background-color:#d7e0ea;">
                                             <h3 class="news-title">
                                                 <a href="#">
                                                     @item.roomname
@@ -231,10 +232,10 @@
         $(function () {
             $('.myli').click(function () {
                 $(this).css("background-color", "#e76f51")
-                    .siblings().css("background-color", "#e8e8e8")
+                    .siblings().css("background-color", "#d7e0ea")
                 $(this.firstElementChild).css("color", "white")
                 $(this).find("a:first-child").css("color", "white")
-                $(this).siblings().find("a:first-child").css("color", "#4FC1F0");
+                $(this).siblings().find("a:first-child").css("color", "#023e7d");
                 console.log(this.innerText);
             });
 
@@ -247,14 +248,19 @@
             })
 
             $('.txt').css({
-                "color":"#4bb3de",
+                "color":"#023e7d",
                 "font-weight": "500",
-                "font-size":"14px"
+                "font-size": "14px",
+                "width":"130px"
             })
             $('#condition').mouseleave(function () {
                 $('html, body').animate({
                     scrollTop: $('#searchresult').offset().top
                 }, 'slow');
+            })
+
+            $('#myform').css({
+                "background-color":" #f2dfd7"
             })
 
 

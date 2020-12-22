@@ -16,21 +16,28 @@
 <head>
     <style>
         td {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
         }
 
         .td1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
         }
-        #header{
-            height:7em;
+
+        .box {
+            -webkit-box-shadow: 3px 4px 5px #A0BFD9;
+            -moz-box-shadow: 3px 4px 5px #A0BFD9;
+            box-shadow: 3px 4px 5px #A0BFD9;
+        }
+
+        #header {
+            height: 7em;
         }
     </style>
 </head>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<section id="main" class="wrapper" style="padding:3em">
+<section id="main" class="wrapper" style="padding:5em;margin-bottom:8em">
 
     <div class="inner">
         <header class="align-center">
@@ -57,295 +64,226 @@
             <div style="margin-top:20px">
                 <label>
                     <a style="margin-right:10px" href="~/Activity/Create" class="btn btn-primary btn-lg">新增活動</a>
-                    <a href="~/Activity/CartView" class="btn btn-info btn-lg">查看參加的活動</a>
-                    @*<a style="margin-right:10px" href="~/Activity/Create" class="btn btn-primary btn-lg">查看最新活動</a>*@
-
+                    <a style="margin-right:15px" href="~/Activity/CartView" class="btn btn-info btn-lg">查看參加的活動</a>
+                    <input style="border-radius:7px;float:right;line-height:2.5em;padding:0em;width:160px;height:46px;font-size:1.5em;font-weight:500;" type="submit" value="查看最新活動" name="newActivity">
 
                 </label>
-                <label style="float:right;margin-top:2em">
-                    <input style="line-height:2.5em;padding:0em;width:150px;height:50px;font-size:20px;font-weight:500;" type="submit" value="查看最新活動" name="newActivity">
-                </label>
+
             </div>
 
         }
         <h2 style="font-weight:600 ;text-align:center;margin-bottom:20px">可參加活動</h2>
-
+    </div>
+    <div style="width:auto;height:50em">
         @foreach (var item in Model)
         {
-            <table class="table" style="margin-left:0.5em;width:64em;border:solid 0.2em #f6755e;">
+            <div class="box" style="float:left;background-color:aliceblue;margin-left:5em;margin-bottom:3em;padding:1em;border:solid 0.2em #f6755e;height:38em;width:35em;">
 
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        活動類別 : &nbsp;
-                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)</mark>
-                    </td>
+                <p class="td1">
+                    活動類別&nbsp;:
+                    <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.entity.ActivitySubCategory.ActivitySubCategoryName)</mark>
+                    &nbsp;
+                    活動名稱&nbsp;:
+                    <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.ActivityName)</mark>
 
-                    <td class="td1" style="padding:1em 2em 1em 0em;">
-                        活動名稱 : &nbsp;
-                        <mark style="background-color:lightsalmon;background-size:auto">@Html.DisplayFor(modelItem => item.ActivityName)</mark>
-                        <br />
+                </p>
 
+                <p class="td1">
+                    開始時間&nbsp;:
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </p>
+                <p class="td1">
+                    結束時間&nbsp;:
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </p>
 
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        開始時間:&nbsp;
-                        <p>@Html.DisplayFor(modelItem => item.StartTime)</p>
-                    </td>
-
-                    <td class="td1" style="padding:1em 0em 1em 0em;">
-                        結束時間:&nbsp;
-                        <p> @Html.DisplayFor(modelItem => item.EndTime)</p>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        發起人:&nbsp;
-                        @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
-                    </td>
-
-                    <td class="td1" style="padding:1em 0em 1em 0em;">
-                        地點 : &nbsp;
-                        @Html.DisplayFor(modelItem => item.MeetingPoint)
-                    </td>
-
-                </tr>
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        活動人數: &nbsp;
-                        @{
-                            int nowPeopleCount = 0;
-                            for (int i = 0; i < ViewBag.subActivityIDCount.Count; i++)
+                <p class="td1">
+                    發起人&nbsp;:
+                    @Html.DisplayFor(modelItem => item.entity.tMember.fMemberName)
+                </p>
+                <p class="td1">
+                    地點&nbsp;:
+                    @Html.DisplayFor(modelItem => item.MeetingPoint)
+                </p>
+                <p class="td1">
+                    活動人數&nbsp;:
+                    @{
+                        int nowPeopleCount = 0;
+                        for (int i = 0; i < ViewBag.subActivityIDCount.Count; i++)
+                        {
+                            if (item.ActivityID == ViewBag.subParticipantID[i])
                             {
-                                if (item.ActivityID == ViewBag.subParticipantID[i])
-                                {
-                                    nowPeopleCount = ViewBag.subActivityIDCount[i];
-                                }
-                            }
-                            @nowPeopleCount;
-                        }
-                        /
-                        @Html.DisplayFor(modelItem => item.PeopleCount) 位
-                    </td>
-
-
-                    <td class="td1" style="padding:1em 0em 1em 0em;">
-                        狀態 :&nbsp;
-                        @{if
-                                           (item.Status == "人員已滿")
-                            {
-                                <span style="color:red"> @Html.DisplayFor(modelItem => item.Status) </span>
-                            }
-                            else
-                            {
-                                <span style="color:black"> @Html.DisplayFor(modelItem => item.Status)</span>
-                            }
-
-                        }
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        備註 :&nbsp;
-                        @Html.DisplayFor(modelItem => item.Note)
-                    </td>
-                    <td></td>
-
-
-                </tr>
-
-                <tr>
-                    <td class="td1" style="padding:1em 0em 1em 3em;">
-                        圖片 :&nbsp;
-                        <img src="@item.ActivityImage" width="150" height="110" />
-                    </td>
-                    <td></td>
-                </tr>
-
-                <tr>
-
-                    <td></td>
-                    <td class="td1" style="float:right">
-                        @{
-                            if (3 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
-                            {
-                                @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
-                            }
-                            else
-                            {
-                                @("修改")
+                                nowPeopleCount = ViewBag.subActivityIDCount[i];
                             }
                         }
-                        |
-                        @{
-                            if (item.Status == "可參加"&&item.MemberID!=memberid)
-                            {
-                                @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID }, new { OnClick = "return confirm('確認欲加入活動')" })
-                            }
-                            else if (item.Status == "人員已滿")
-                            {
-                                @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
-                            }
-                            else
-                            {
-                                @("已加入");
+                        @nowPeopleCount;
+                    }
+                    /
+                    @Html.DisplayFor(modelItem => item.PeopleCount) 位
+                </p>
 
-                            }
-
-                            @*@Html.ActionLink("刪除", "Deleteacdb", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要刪除嗎?')" })*@
-                            @*<a href="~/Product/Create">編輯商品</a>*@
+                <p class="td1">
+                    狀態 &nbsp;:
+                    @{if
+                                          (item.Status == "人員已滿")
+                        {
+                            <span style="color:red"> @Html.DisplayFor(modelItem => item.Status) </span>
                         }
-                        |
-                        @{
+                        else
+                        {
+                            <span style="color:black"> @Html.DisplayFor(modelItem => item.Status)</span>
+                        }
 
+                    }
+                </p>
+                <p class="td1">
+                    圖片&nbsp;:&nbsp;
+                    <img class="border-end" src="@item.ActivityImage" width="150" height="110" />
+                </p>
 
-                            if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類")
-                            {
+                <p class="td1">
+                    備註&nbsp;:
+                    @Html.DisplayFor(modelItem => item.Note)
+                </p>
+                &nbsp;
+                <p class="td1" style="text-align:right;">
 
-                                <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
-                            }
-                            else
-                            {
-                                @("");
-                            }
-                            <br />
-                            if (item.entity.MemberID != memberid)
-                            {
-                                <button type="button" class="btn btn-info AdminReply" style="height:unset" onclick="openModal(@item.ActivityID )">留言</button>
-                            }
-                            else
-                            {
-                                @("");
-                            }
-
-                            if (item.entity.MemberID == memberid)
-                            {
-
-                                Message m = db.Message.FirstOrDefault(p => p.AdditionField3 == item.ActivityID);
-                                if (m != null)
-                                {
-                                    <button onclick="showMessage(@item.ActivityID);" class="btn btn-info AdminReply" style="height:unset;">查看留言</button>
-                                }
-                                else
-                                {
-                                    @("");
-                                }
-                            }
-                            else
-                            {
-                                @("");
-                            }
-
-
-                            @*<button onclick="updateApply(@ViewBag.MessageID, '@ViewBag.GuestName', '@ViewBag.MessageSubject', '@ViewBag.MessageContent');" class="btn btn-info AdminReply" style="height:unset;">回覆</button>*@
+                    &Iota;
+                    @{
+                        if (19 == @ViewBag.memberID || item.MemberID == @ViewBag.memberID)
+                        {
+                            @Html.ActionLink("修改", "Edit", new { id = item.ActivityID })
+                        }
+                        else
+                        {
+                            @("修改")
+                        }
+                    }
+                    &Iota;
+                    @{
+                        if (item.Status == "可參加")
+                        {
+                            @Html.ActionLink("加入", "AddToCart_Session", new { id = item.ActivityID })
+                        }
+                        else if (item.Status == "人員已滿")
+                        {
+                            @Html.ActionLink("備取", "subActivity", new { id = item.ActivityID }, new { OnClick = "return confirm('確定要備取活動嗎?')" })
+                        }
+                        else
+                        {
+                            @("加入")
 
                         }
-                        @*<td class="col-md-8" style="padding-left:0;">*@
+                    }
+                    &Iota;
+                    @{
+                        if (item.entity.ActivitySubCategory.ActivitySubCategoryName == "團購類" && item.entity.MemberID == memberid)
+                        {
 
-                        @*</td>*@
+                            <a href="@Url.Action("Create", "ProductBack", new { id = item.ActivityID })">編輯商品</a>
+                        }
+                        else
+                        {
+                            @("");
+                        }
+                    }
 
 
+                </p>
 
+            </div>
 
-                    </td>
-
-
-
-                </tr>
-
-            </table>
 
         }
 
-        @Html.PagedListPager(Model, Page => Url.Action("List", new { page = Page, subName = ViewBag.V_SubName }))
+    </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for=recipient-name class="col-form-label">留言者</label>
-                                <input type="text" class="form-control" id="id_guestname" value="@member.fMemberName" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">主旨</label>
-                                <input type="text" class="form-control" id="id_subject">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">內文</label>
-                                <textarea class="form-control" style="height:100px" id="id_content"></textarea>
-                            </div>
-                            <div class="form-group" id="group_apply">
-                                <label for="message-text" class="col-form-label">回覆</label>
-                                <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
-                            </div>
-                            <span hidden="hidden">
-                                <input type="text" class="form-control" id="id_acid">
-                            </span>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save">發送</button>
-                    </div>
+
+    <div class="inner" style="text-align:center;">
+        @Html.PagedListPager(Model, Page => Url.Action("List", new { page = Page, subName = ViewBag.V_SubName }))
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-        </div>
-        @*修改的modal*@
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group" hidden="hidden" >
-                                <label for="recipient-name" class="col-form-label">留言者ID</label>
-                                <input type="text" class="form-control" id="id_messageID2">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">留言者</label>
-                                <input type="text" class="form-control" id="id_guestname2">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">主旨</label>
-                                <input type="text" class="form-control" id="id_subject2">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">內文</label>
-                                <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
-                            </div>
-                            <div class="form-group" id="group_apply2">
-                                <label for="message-text" class="col-form-label">回覆</label>
-                                <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="button" class="btn btn-primary" id="id_save2">發送</button>
-                    </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for=recipient-name class="col-form-label">留言者</label>
+                            <input type="text" class="form-control" id="id_guestname" value="@member.fMemberName" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">主旨</label>
+                            <input type="text" class="form-control" id="id_subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">內文</label>
+                            <textarea class="form-control" style="height:100px" id="id_content"></textarea>
+                        </div>
+                        <div class="form-group" id="group_apply">
+                            <label for="message-text" class="col-form-label">回覆</label>
+                            <textarea class="form-control" style="height:100px" id="id_apply"></textarea>
+                        </div>
+                        <span hidden="hidden">
+                            <input type="text" class="form-control" id="id_acid">
+                        </span>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="id_save">發送</button>
                 </div>
             </div>
         </div>
     </div>
+    @*修改的modal*@
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">留言板</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group" hidden="hidden">
+                            <label for="recipient-name" class="col-form-label">留言者ID</label>
+                            <input type="text" class="form-control" id="id_messageID2">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">留言者</label>
+                            <input type="text" class="form-control" id="id_guestname2">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">主旨</label>
+                            <input type="text" class="form-control" id="id_subject2">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">內文</label>
+                            <textarea class="form-control" style="height:100px" id="id_content2"></textarea>
+                        </div>
+                        <div class="form-group" id="group_apply2">
+                            <label for="message-text" class="col-form-label">回覆</label>
+                            <textarea class="form-control" style="height:100px" id="id_apply2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="id_save2">發送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </section>
 <script>
@@ -361,7 +299,7 @@
 
     function showMessage(p_id) {
         $("#exampleModal2").modal('show');
-        
+
         let id = p_id;  //$("#id_acid").val();
         console.log(id);
         $.ajax({
@@ -447,7 +385,7 @@
     })
 
     $("#id_save2").click(function () {
-        let l_messageID2 = $("#id_messageID2").val();  //這是 activity id 
+        let l_messageID2 = $("#id_messageID2").val();  //這是 activity id
         let l_messagerequest = $("#id_apply2").val();
         console.log("l_messageID2:"+l_messageID2);
 
