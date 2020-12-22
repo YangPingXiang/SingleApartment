@@ -22,7 +22,7 @@ namespace sln_SingleApartment.Controllers
             SingleApartmentEntities db = new SingleApartmentEntities();
             Message message = new Message();
 
-            int pageSize = 5;
+            int pageSize = 6;
             
             int currentpage = page < 1 ? 1 : page;
             //ViewBag.MessageID = message.MemberID;
